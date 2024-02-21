@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "divinityunbound:raw_celestite_block"
+    }
+  ],
+  "result": {
+    "item": "divinityunbound:raw_celestite",
+    "count": 9
+  }
+}

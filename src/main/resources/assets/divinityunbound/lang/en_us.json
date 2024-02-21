@@ -1,0 +1,13 @@
+{
+  "item.divinityunbound.raw_celestite": "Raw Celestite",
+  "item.divinityunbound.celestite": "Celestite",
+  "item.divinityunbound.celestite_nugget": "Celestite Nugget",
+
+  "block.divinityunbound.celestite_block": "Block of Celestite",
+  "block.divinityunbound.raw_celestite_block": "Block of Raw Celestite",
+
+  "block.divinityunbound.celestite_ore": "Celestite Ore",
+  "block.divinityunbound.deepslate_celestite_ore": "Deepslate Celestite Ore",
+
+  "itemgroup.celestite": "Celestite Group"
+}

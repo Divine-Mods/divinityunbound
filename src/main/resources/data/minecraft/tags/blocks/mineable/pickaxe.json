@@ -1,0 +1,9 @@
+{
+  "replace": "false",
+  "values": [
+    "divinityunbound:celestite_block",
+    "divinityunbound:raw_celestite_block",
+    "divinityunbound:celestite_ore",
+    "divinityunbound:deepslate_celestite_ore"
+  ]
+}

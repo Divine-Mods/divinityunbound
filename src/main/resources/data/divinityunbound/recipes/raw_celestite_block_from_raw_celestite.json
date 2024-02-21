@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "divinityunbound:raw_celestite"
+    }
+  },
+  "result": {
+    "item": "divinityunbound:raw_celestite_block"
+  }
+}
