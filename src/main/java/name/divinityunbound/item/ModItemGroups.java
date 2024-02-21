@@ -24,6 +24,15 @@ public class ModItemGroups {
 
                         entries.add(ModBlocks.CELESTITE_ORE);
                         entries.add(ModBlocks.DEEPSLATE_CELESTITE_ORE);
+
+                        entries.add(ModItems.MAGIC_CELESTITE_DETECTOR);
+
+                        /* Tools */
+                        entries.add(ModItems.CELESTITE_PICKAXE);
+                        entries.add(ModItems.CELESTITE_AXE);
+                        entries.add(ModItems.CELESTITE_SHOVEL);
+                        entries.add(ModItems.CELESTITE_SWORD);
+                        entries.add(ModItems.CELESTITE_HOE);
                     }).build());
     public static void registerItemGroups() {
         DivinityUnbound.LOGGER.info("Registering Item Groups for " + DivinityUnbound.MOD_ID);
