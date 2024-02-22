@@ -29,6 +29,14 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 
         addDrop(ModBlocks.CELESTITE_ORE, copperLikeOreDrops(ModBlocks.CELESTITE_ORE, ModItems.RAW_CELESTITE));
         addDrop(ModBlocks.DEEPSLATE_CELESTITE_ORE, copperLikeOreDrops(ModBlocks.DEEPSLATE_CELESTITE_ORE, ModItems.RAW_CELESTITE));
+
+        addDrop(ModBlocks.WILDERSUNG_LOG);
+        addDrop(ModBlocks.WILDERSUNG_WOOD);
+        addDrop(ModBlocks.STRIPPED_WILDERSUNG_LOG);
+        addDrop(ModBlocks.STRIPPED_WILDERSUNG_WOOD);
+        addDrop(ModBlocks.WILDERSUNG_SAPLING);
+
+        addDrop(ModBlocks.WILDERSUNG_LEAVES, leavesDrops(ModBlocks.WILDERSUNG_LEAVES, ModBlocks.WILDERSUNG_SAPLING, 0.005f));
     }
 
     public LootTable.Builder copperLikeOreDrops(Block drop, Item item) {

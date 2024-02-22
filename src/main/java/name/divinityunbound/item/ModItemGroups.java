@@ -39,6 +39,16 @@ public class ModItemGroups {
                         entries.add(ModItems.CELESTITE_CHESTPLATE);
                         entries.add(ModItems.CELESTITE_LEGGINGS);
                         entries.add(ModItems.CELESTITE_BOOTS);
+
+                        /* Wood */
+                        entries.add(ModBlocks.WILDERSUNG_LOG);
+                        entries.add(ModBlocks.WILDERSUNG_WOOD);
+                        entries.add(ModBlocks.STRIPPED_WILDERSUNG_LOG);
+                        entries.add(ModBlocks.STRIPPED_WILDERSUNG_WOOD);
+                        entries.add(ModBlocks.WILDERSUNG_PLANKS);
+                        entries.add(ModBlocks.WILDERSUNG_LEAVES);
+                        entries.add(ModBlocks.WILDERSUNG_SAPLING);
+
                     }).build());
     public static void registerItemGroups() {
         DivinityUnbound.LOGGER.info("Registering Item Groups for " + DivinityUnbound.MOD_ID);

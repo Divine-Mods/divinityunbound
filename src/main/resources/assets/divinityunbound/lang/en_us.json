@@ -22,5 +22,13 @@
   "item.divinityunbound.celestite_leggings": "Celestite Leggings",
   "item.divinityunbound.celestite_boots": "Celestite Boots",
 
+  "block.divinityunbound.wildersung_log": "Wildersung Log",
+  "block.divinityunbound.wildersung_wood": "Wildersung Wood",
+  "block.divinityunbound.stripped_wildersung_log": "Stripped Wildersung Log",
+  "block.divinityunbound.stripped_wildersung_wood": "Stripped Wildersung Wood",
+  "block.divinityunbound.wildersung_planks": "Wildersung Planks",
+  "block.divinityunbound.wildersung_leaves": "Wildersung Leaves",
+  "block.divinityunbound.wildersung_sapling": "Wildersung Sapling",
+
   "itemgroup.celestite": "Celestite Group"
 }

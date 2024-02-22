@@ -1,11 +1,10 @@
 package name.divinityunbound.block;
 
 import name.divinityunbound.DivinityUnbound;
+import name.divinityunbound.world.tree.ModSaplingGenerators;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.ExperienceDroppingBlock;
+import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -29,6 +28,23 @@ public class ModBlocks {
 //            new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), FabricBlockSettings.copyOf(Blocks.NETHERRACK).strength(1.5f)));
 //    public static final Block END_STONE_CELESTITE_ORE = registerBlock("end_stone_celestite_ore",
 //            new ExperienceDroppingBlock(UniformIntProvider.create(4, 7), FabricBlockSettings.copyOf(Blocks.END_STONE).strength(4f)));
+
+    public static final Block WILDERSUNG_LOG = registerBlock("wildersung_log",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG).strength(4f)));
+    public static final Block WILDERSUNG_WOOD = registerBlock("wildersung_wood",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_WOOD).strength(4f)));
+    public static final Block STRIPPED_WILDERSUNG_LOG = registerBlock("stripped_wildersung_log",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.STRIPPED_OAK_LOG).strength(4f)));
+    public static final Block STRIPPED_WILDERSUNG_WOOD = registerBlock("stripped_wildersung_wood",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.STRIPPED_OAK_WOOD).strength(4f)));
+
+    public static final Block WILDERSUNG_PLANKS = registerBlock("wildersung_planks",
+            new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).strength(4f)));
+    public static final Block WILDERSUNG_LEAVES = registerBlock("wildersung_leaves",
+            new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).strength(4f).nonOpaque()));
+
+    public static final Block WILDERSUNG_SAPLING = registerBlock("wildersung_sapling",
+            new SaplingBlock(ModSaplingGenerators.WILDERSUNG, FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
 
 
     private static Block registerBlock(String name, Block block) {
