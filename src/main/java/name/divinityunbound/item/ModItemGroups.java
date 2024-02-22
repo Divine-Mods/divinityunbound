@@ -33,6 +33,12 @@ public class ModItemGroups {
                         entries.add(ModItems.CELESTITE_SHOVEL);
                         entries.add(ModItems.CELESTITE_SWORD);
                         entries.add(ModItems.CELESTITE_HOE);
+
+                        /* Armor */
+                        entries.add(ModItems.CELESTITE_HELMET);
+                        entries.add(ModItems.CELESTITE_CHESTPLATE);
+                        entries.add(ModItems.CELESTITE_LEGGINGS);
+                        entries.add(ModItems.CELESTITE_BOOTS);
                     }).build());
     public static void registerItemGroups() {
         DivinityUnbound.LOGGER.info("Registering Item Groups for " + DivinityUnbound.MOD_ID);

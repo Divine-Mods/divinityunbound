@@ -2,6 +2,7 @@ package name.divinityunbound.item;
 
 import name.divinityunbound.DivinityUnbound;
 import name.divinityunbound.item.custom.MagicOreDetectorItem;
+import name.divinityunbound.item.custom.ModArmorItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
@@ -29,6 +30,17 @@ public class ModItems {
             new SwordItem(ModToolMaterial.CELESTITE, 6, 2f, new FabricItemSettings()));
     public static final Item CELESTITE_HOE = registerItem("celestite_hoe",
             new HoeItem(ModToolMaterial.CELESTITE, 1, 1.5f, new FabricItemSettings()));
+
+
+    public static final Item CELESTITE_HELMET = registerItem("celestite_helmet",
+            new ArmorItem(ModArmorMaterials.CELESTITE, ArmorItem.Type.HELMET, new FabricItemSettings()));
+    public static final Item CELESTITE_CHESTPLATE = registerItem("celestite_chestplate",
+            new ModArmorItem(ModArmorMaterials.CELESTITE, ArmorItem.Type.CHESTPLATE, new FabricItemSettings()));
+    public static final Item CELESTITE_LEGGINGS = registerItem("celestite_leggings",
+            new ArmorItem(ModArmorMaterials.CELESTITE, ArmorItem.Type.LEGGINGS, new FabricItemSettings()));
+    public static final Item CELESTITE_BOOTS = registerItem("celestite_boots",
+            new ArmorItem(ModArmorMaterials.CELESTITE, ArmorItem.Type.BOOTS, new FabricItemSettings()));
+
 
 
     private static void addItemsToIngredientItemGroup(FabricItemGroupEntries entries) {

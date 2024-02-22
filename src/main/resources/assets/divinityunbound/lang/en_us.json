@@ -17,5 +17,10 @@
   "item.divinityunbound.celestite_sword": "Celestite Sword",
   "item.divinityunbound.celestite_hoe": "Celestite Hoe",
 
+  "item.divinityunbound.celestite_helmet": "Celestite Helmet",
+  "item.divinityunbound.celestite_chestplate": "Celestite Chestplate",
+  "item.divinityunbound.celestite_leggings": "Celestite Leggings",
+  "item.divinityunbound.celestite_boots": "Celestite Boots",
+
   "itemgroup.celestite": "Celestite Group"
 }
