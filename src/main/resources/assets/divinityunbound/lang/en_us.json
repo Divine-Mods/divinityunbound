@@ -30,5 +30,13 @@
   "block.divinityunbound.wildersung_leaves": "Wildersung Leaves",
   "block.divinityunbound.wildersung_sapling": "Wildersung Sapling",
 
+  "block.divinityunbound.generation_station": "Generation Station",
+
+  "item.divinityunbound.celestite_coal_focus": "Celestite Coal Focus",
+  "item.divinityunbound.celestite_iron_focus": "Celestite Iron Focus",
+  "item.divinityunbound.celestite_gold_focus": "Celestite Gold Focus",
+  "item.divinityunbound.celestite_diamond_focus": "Celestite Diamond Focus",
+  "item.divinityunbound.celestite_netherite_focus": "Celestite Netherite Focus",
+
   "itemgroup.celestite": "Celestite Group"
 }

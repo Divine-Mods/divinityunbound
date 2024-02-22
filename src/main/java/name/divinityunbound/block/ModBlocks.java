@@ -1,6 +1,7 @@
 package name.divinityunbound.block;
 
 import name.divinityunbound.DivinityUnbound;
+import name.divinityunbound.block.custom.GenerationStationBlock;
 import name.divinityunbound.world.tree.ModSaplingGenerators;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -45,6 +46,9 @@ public class ModBlocks {
 
     public static final Block WILDERSUNG_SAPLING = registerBlock("wildersung_sapling",
             new SaplingBlock(ModSaplingGenerators.WILDERSUNG, FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
+
+    public static final Block GENERATION_STATION = registerBlock("generation_station",
+            new GenerationStationBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
 
 
     private static Block registerBlock(String name, Block block) {

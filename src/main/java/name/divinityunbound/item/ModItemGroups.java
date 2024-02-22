@@ -49,6 +49,16 @@ public class ModItemGroups {
                         entries.add(ModBlocks.WILDERSUNG_LEAVES);
                         entries.add(ModBlocks.WILDERSUNG_SAPLING);
 
+                        /* Block Entities */
+                        entries.add(ModBlocks.GENERATION_STATION);
+
+                        /* Foci */
+                        entries.add(ModItems.CELESTITE_COAL_FOCUS);
+                        entries.add(ModItems.CELESTITE_IRON_FOCUS);
+                        entries.add(ModItems.CELESTITE_GOLD_FOCUS);
+                        entries.add(ModItems.CELESTITE_DIAMOND_FOCUS);
+                        entries.add(ModItems.CELESTITE_NETHERITE_FOCUS);
+
                     }).build());
     public static void registerItemGroups() {
         DivinityUnbound.LOGGER.info("Registering Item Groups for " + DivinityUnbound.MOD_ID);

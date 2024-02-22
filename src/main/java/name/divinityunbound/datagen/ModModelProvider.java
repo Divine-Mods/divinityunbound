@@ -27,6 +27,8 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.WILDERSUNG_PLANKS);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.WILDERSUNG_LEAVES);
         blockStateModelGenerator.registerTintableCross(ModBlocks.WILDERSUNG_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
+
+        blockStateModelGenerator.registerSimpleState(ModBlocks.GENERATION_STATION);
     }
 
     @Override
@@ -36,15 +38,24 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.RAW_CELESTITE, Models.GENERATED);
         itemModelGenerator.register(ModItems.MAGIC_CELESTITE_DETECTOR, Models.GENERATED);
 
+        /* Tools */
         itemModelGenerator.register(ModItems.CELESTITE_PICKAXE, Models.HANDHELD);
         itemModelGenerator.register(ModItems.CELESTITE_AXE, Models.HANDHELD);
         itemModelGenerator.register(ModItems.CELESTITE_SHOVEL, Models.HANDHELD);
         itemModelGenerator.register(ModItems.CELESTITE_SWORD, Models.HANDHELD);
         itemModelGenerator.register(ModItems.CELESTITE_HOE, Models.HANDHELD);
 
+        /* Armor */
         itemModelGenerator.registerArmor((ArmorItem) ModItems.CELESTITE_HELMET);
         itemModelGenerator.registerArmor((ArmorItem) ModItems.CELESTITE_CHESTPLATE);
         itemModelGenerator.registerArmor((ArmorItem) ModItems.CELESTITE_LEGGINGS);
         itemModelGenerator.registerArmor((ArmorItem) ModItems.CELESTITE_BOOTS);
+
+        /* Foci */
+        itemModelGenerator.register(ModItems.CELESTITE_COAL_FOCUS, Models.GENERATED);
+        itemModelGenerator.register(ModItems.CELESTITE_IRON_FOCUS, Models.GENERATED);
+        itemModelGenerator.register(ModItems.CELESTITE_GOLD_FOCUS, Models.GENERATED);
+        itemModelGenerator.register(ModItems.CELESTITE_DIAMOND_FOCUS, Models.GENERATED);
+        itemModelGenerator.register(ModItems.CELESTITE_NETHERITE_FOCUS, Models.GENERATED);
     }
 }
