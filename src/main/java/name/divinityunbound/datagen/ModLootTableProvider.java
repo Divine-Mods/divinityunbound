@@ -37,6 +37,9 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.WILDERSUNG_SAPLING);
 
         addDrop(ModBlocks.WILDERSUNG_LEAVES, leavesDrops(ModBlocks.WILDERSUNG_LEAVES, ModBlocks.WILDERSUNG_SAPLING, 0.005f));
+
+        addDrop(ModBlocks.GENERATION_STATION);
+        addDrop(ModBlocks.MYSTIC_CHRONOGRAPH);
     }
 
     public LootTable.Builder copperLikeOreDrops(Block drop, Item item) {

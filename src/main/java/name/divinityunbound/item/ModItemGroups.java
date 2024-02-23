@@ -51,6 +51,7 @@ public class ModItemGroups {
 
                         /* Block Entities */
                         entries.add(ModBlocks.GENERATION_STATION);
+                        entries.add(ModBlocks.MYSTIC_CHRONOGRAPH);
 
                         /* Foci */
                         entries.add(ModItems.CELESTITE_COAL_FOCUS);

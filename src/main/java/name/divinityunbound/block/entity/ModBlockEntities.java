@@ -14,6 +14,11 @@ public class ModBlockEntities {
                     FabricBlockEntityTypeBuilder.create(GenerationStationBlockEntity::new,
                             ModBlocks.GENERATION_STATION).build());
 
+    public static final BlockEntityType<MysticChronographBlockEntity> MYSTIC_CHRONOGRAPH_BLOCK_ENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(DivinityUnbound.MOD_ID, "mystic_chronograph_be"),
+                    FabricBlockEntityTypeBuilder.create(MysticChronographBlockEntity::new,
+                            ModBlocks.MYSTIC_CHRONOGRAPH).build());
+
     public static void registerBlockEntities() {
         DivinityUnbound.LOGGER.info("Registering Block Entities for " + DivinityUnbound.MOD_ID);
     }

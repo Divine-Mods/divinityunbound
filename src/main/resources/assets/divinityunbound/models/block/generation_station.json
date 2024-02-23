@@ -4,7 +4,7 @@
 	"textures": {
 		"0": "divinityunbound:block/leg_texture",
 		"1": "divinityunbound:block/tabletop_texture",
-		"particle": "leg_texture"
+		"particle": "divinityunbound:block/leg_texture"
 	},
 	"elements": [
 		{
