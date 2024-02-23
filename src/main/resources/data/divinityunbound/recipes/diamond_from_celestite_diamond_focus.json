@@ -1,0 +1,12 @@
+{
+  "type": "divinityunbound:generation_station",
+  "ingredients": [
+    {
+      "item": "divinityunbound:celestite_diamond_focus"
+    }
+  ],
+  "output": {
+    "item": "minecraft:diamond",
+    "count": 1
+  }
+}

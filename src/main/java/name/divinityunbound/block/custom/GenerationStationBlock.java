@@ -21,6 +21,8 @@ import org.jetbrains.annotations.Nullable;
 
 public class GenerationStationBlock extends BlockWithEntity implements BlockEntityProvider {
     private static final VoxelShape SHAPE = Block.createCuboidShape(0, 0, 0, 16, 7, 16);
+
+    public static final MapCodec<GenerationStationBlock> CODEC = GenerationStationBlock.createCodec(GenerationStationBlock::new);
     public GenerationStationBlock(Settings settings) {
         super(settings);
     }
@@ -37,7 +39,7 @@ public class GenerationStationBlock extends BlockWithEntity implements BlockEnti
 
     @Override
     protected MapCodec<? extends BlockWithEntity> getCodec() {
-        return null;
+        return CODEC;
     }
 
     @Nullable

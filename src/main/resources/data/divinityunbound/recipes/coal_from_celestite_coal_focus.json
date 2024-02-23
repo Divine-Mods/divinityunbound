@@ -1,0 +1,12 @@
+{
+  "type": "divinityunbound:generation_station",
+  "ingredients": [
+    {
+      "item": "divinityunbound:celestite_coal_focus"
+    }
+  ],
+  "output": {
+    "item": "minecraft:coal",
+    "count": 1
+  }
+}

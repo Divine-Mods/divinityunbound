@@ -4,6 +4,7 @@ import name.divinityunbound.block.ModBlocks;
 import name.divinityunbound.block.entity.ModBlockEntities;
 import name.divinityunbound.item.ModItemGroups;
 import name.divinityunbound.item.ModItems;
+import name.divinityunbound.recipe.ModRecipes;
 import name.divinityunbound.screen.ModScreenHandlers;
 import name.divinityunbound.world.gen.ModWorldGeneration;
 import net.fabricmc.api.ModInitializer;
@@ -26,6 +27,8 @@ public class DivinityUnbound implements ModInitializer {
 
 		ModBlockEntities.registerBlockEntities();
 		ModScreenHandlers.registerScreenHandlers();
+
+		ModRecipes.registerRecipes();
 
 		StrippableBlockRegistry.register(ModBlocks.WILDERSUNG_LOG, ModBlocks.STRIPPED_WILDERSUNG_LOG);
 		StrippableBlockRegistry.register(ModBlocks.WILDERSUNG_WOOD, ModBlocks.STRIPPED_WILDERSUNG_WOOD);

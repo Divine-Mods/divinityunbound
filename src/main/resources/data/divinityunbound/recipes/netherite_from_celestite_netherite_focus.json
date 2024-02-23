@@ -1,0 +1,12 @@
+{
+  "type": "divinityunbound:generation_station",
+  "ingredients": [
+    {
+      "item": "divinityunbound:celestite_netherite_focus"
+    }
+  ],
+  "output": {
+    "item": "minecraft:netherite_ingot",
+    "count": 1
+  }
+}

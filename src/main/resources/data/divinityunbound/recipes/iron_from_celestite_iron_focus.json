@@ -1,0 +1,12 @@
+{
+  "type": "divinityunbound:generation_station",
+  "ingredients": [
+    {
+      "item": "divinityunbound:celestite_iron_focus"
+    }
+  ],
+  "output": {
+    "item": "minecraft:iron_ingot",
+    "count": 1
+  }
+}

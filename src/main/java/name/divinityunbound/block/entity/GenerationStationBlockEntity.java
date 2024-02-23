@@ -1,6 +1,7 @@
 package name.divinityunbound.block.entity;
 
 import name.divinityunbound.item.ModItems;
+import name.divinityunbound.recipe.GenerationStationRecipe;
 import name.divinityunbound.screen.GenerationStationScreenHandler;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.BlockState;
@@ -9,11 +10,13 @@ import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
+import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
+import net.minecraft.recipe.RecipeEntry;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -22,6 +25,8 @@ import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Optional;
 
 public class GenerationStationBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory, ImplementedInventory {
     private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(2, ItemStack.EMPTY);
@@ -122,11 +127,11 @@ public class GenerationStationBlockEntity extends BlockEntity implements Extende
     }
 
     private void craftItem() {
+        Optional<RecipeEntry<GenerationStationRecipe>> recipe = getCurrentRecipe();
         //this.removeStack(INPUT_SLOT, 1);
-        //ItemStack result = new ItemStack(ModItems.CELESTITE);
-        ItemStack result = new ItemStack(Items.COAL);
 
-        this.setStack(OUTPUT_SLOT, new ItemStack(result.getItem(), getStack(OUTPUT_SLOT).getCount() + result.getCount()));
+        this.setStack(OUTPUT_SLOT, new ItemStack(recipe.get().value().getResult(null).getItem(),
+                getStack(OUTPUT_SLOT).getCount() + recipe.get().value().getResult(null).getCount()));
     }
 
     private boolean hasCraftingFinished() {
@@ -138,12 +143,19 @@ public class GenerationStationBlockEntity extends BlockEntity implements Extende
     }
 
     private boolean hasRecipe() {
-//        ItemStack result = new ItemStack(ModItems.CELESTITE);
-//        boolean hasInput = getStack(INPUT_SLOT).getItem() == ModItems.RAW_CELESTITE;
-        ItemStack result = new ItemStack(Items.COAL);
-        boolean hasInput = getStack(INPUT_SLOT).getItem() == ModItems.CELESTITE_COAL_FOCUS;
+        Optional<RecipeEntry<GenerationStationRecipe>> recipe = getCurrentRecipe();
 
-        return hasInput && canInsertAmountIntoOutputSlot(result) && canInsertItemIntoOutputSlot(result.getItem());
+        return recipe.isPresent() && canInsertAmountIntoOutputSlot(recipe.get().value().getResult(null)) &&
+                canInsertItemIntoOutputSlot(recipe.get().value().getResult(null).getItem());
+    }
+
+    private Optional<RecipeEntry<GenerationStationRecipe>> getCurrentRecipe() {
+        SimpleInventory inv = new SimpleInventory(this.size());
+        for (int i = 0; i < this.size(); i++) {
+            inv.setStack(i, this.getStack(i));
+        }
+
+        return getWorld().getRecipeManager().getFirstMatch(GenerationStationRecipe.Type.INSTANCE, inv, getWorld());
     }
 
     private boolean canInsertItemIntoOutputSlot(Item item) {
