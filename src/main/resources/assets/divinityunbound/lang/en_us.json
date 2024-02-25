@@ -2,6 +2,11 @@
   "item.divinityunbound.raw_celestite": "Raw Celestite",
   "item.divinityunbound.celestite": "Celestite",
   "item.divinityunbound.celestite_nugget": "Celestite Nugget",
+  "item.divinityunbound.celestium_dust": "Celestium Dust",
+  "item.divinityunbound.grain_of_time": "Grain of Time",
+  "item.divinityunbound.chronos_clock": "Chronos Clock",
+  "item.divinityunbound.unholy_dust": "Unholy Dust",
+  "item.divinityunbound.wildersung_string": "Wildersung String",
 
   "block.divinityunbound.celestite_block": "Block of Celestite",
   "block.divinityunbound.raw_celestite_block": "Block of Raw Celestite",
@@ -27,11 +32,15 @@
   "block.divinityunbound.stripped_wildersung_log": "Stripped Wildersung Log",
   "block.divinityunbound.stripped_wildersung_wood": "Stripped Wildersung Wood",
   "block.divinityunbound.wildersung_planks": "Wildersung Planks",
+  "block.divinityunbound.celestite_infused_wildersung_planks": "Celestite Infused Wildersung Planks",
+  "block.divinityunbound.celestite_infused_stone": "Celestite Infused Stone",
+  "block.divinityunbound.golden_celestite_infused_stone": "Golden Celestite Infused Stone",
   "block.divinityunbound.wildersung_leaves": "Wildersung Leaves",
   "block.divinityunbound.wildersung_sapling": "Wildersung Sapling",
 
   "block.divinityunbound.generation_station": "Generation Station",
   "block.divinityunbound.mystic_chronograph": "Mystic Chronograph",
+  "block.divinityunbound.chronos_time_accumulator": "Chronos Time Accumulator",
 
   "item.divinityunbound.celestite_coal_focus": "Celestite Coal Focus",
   "item.divinityunbound.celestite_iron_focus": "Celestite Iron Focus",

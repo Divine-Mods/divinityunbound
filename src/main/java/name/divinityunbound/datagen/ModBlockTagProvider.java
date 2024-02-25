@@ -26,20 +26,31 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.CELESTITE_BLOCK)
                 .add(ModBlocks.RAW_CELESTITE_BLOCK)
                 .add(ModBlocks.CELESTITE_ORE)
-                .add(ModBlocks.DEEPSLATE_CELESTITE_ORE);
+                .add(ModBlocks.DEEPSLATE_CELESTITE_ORE)
+                .add(ModBlocks.CELESTITE_INFUSED_STONE)
+                .add(ModBlocks.GOLDEN_CELESTITE_INFUSED_STONE)
+                .add(ModBlocks.CHRONOS_TIME_ACCUMULATOR)
+                .add(ModBlocks.GENERATION_STATION)
+                .add(ModBlocks.MYSTIC_CHRONOGRAPH);
 
         getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
                 .add(ModBlocks.CELESTITE_BLOCK)
                 .add(ModBlocks.RAW_CELESTITE_BLOCK)
                 .add(ModBlocks.CELESTITE_ORE)
-                .add(ModBlocks.DEEPSLATE_CELESTITE_ORE);
+                .add(ModBlocks.DEEPSLATE_CELESTITE_ORE)
+                .add(ModBlocks.CELESTITE_INFUSED_STONE)
+                .add(ModBlocks.GOLDEN_CELESTITE_INFUSED_STONE)
+                .add(ModBlocks.CHRONOS_TIME_ACCUMULATOR)
+                .add(ModBlocks.GENERATION_STATION)
+                .add(ModBlocks.MYSTIC_CHRONOGRAPH);
 
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
                 .add(ModBlocks.WILDERSUNG_LOG)
                 .add(ModBlocks.WILDERSUNG_WOOD)
                 .add(ModBlocks.STRIPPED_WILDERSUNG_LOG)
                 .add(ModBlocks.STRIPPED_WILDERSUNG_WOOD)
-                .add(ModBlocks.WILDERSUNG_PLANKS);
+                .add(ModBlocks.WILDERSUNG_PLANKS)
+                .add(ModBlocks.CELESTITE_INFUSED_WILDERSUNG_PLANKS);
 
         getOrCreateTagBuilder(BlockTags.LEAVES)
                 .add(ModBlocks.WILDERSUNG_LEAVES);

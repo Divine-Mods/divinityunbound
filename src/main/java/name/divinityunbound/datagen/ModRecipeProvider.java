@@ -4,6 +4,7 @@ import name.divinityunbound.block.ModBlocks;
 import name.divinityunbound.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.minecraft.block.Blocks;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
@@ -45,6 +46,45 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .input(ModItems.CELESTITE)
                                 .criterion(hasItem(ModItems.CELESTITE), conditionsFromItem((ModItems.CELESTITE)))
                                         .offerTo(exporter, new Identifier("celestite_nuggets_from_celestite"));
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.CELESTITE_INFUSED_STONE, 1)
+                .input(ModItems.CELESTITE)
+                .input(Blocks.STONE)
+                .criterion(hasItem(ModItems.CELESTITE), conditionsFromItem((ModItems.CELESTITE)))
+                .criterion(hasItem(Blocks.STONE), conditionsFromItem((Blocks.STONE)))
+                .offerTo(exporter, new Identifier("celestite_infused_stone"));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.GOLDEN_CELESTITE_INFUSED_STONE, 1)
+                .pattern("GGG")
+                .pattern("GCG")
+                .pattern("GGG")
+                .input('G', Items.GOLD_INGOT)
+                .input('C', ModBlocks.CELESTITE_INFUSED_STONE)
+                .criterion(hasItem(Items.GOLD_INGOT), conditionsFromItem(Items.GOLD_INGOT))
+                .criterion(hasItem(ModBlocks.CELESTITE_INFUSED_STONE), conditionsFromItem(ModBlocks.CELESTITE_INFUSED_STONE))
+                .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.GOLDEN_CELESTITE_INFUSED_STONE)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.CHRONOS_CLOCK, 1)
+                .pattern(" C ")
+                .pattern("BGB")
+                .pattern(" C ")
+                .input('G', Items.CLOCK)
+                .input('B', ModBlocks.CELESTITE_BLOCK)
+                .input('C', ModItems.CELESTITE)
+                .criterion(hasItem(Items.GOLD_INGOT), conditionsFromItem(Items.GOLD_INGOT))
+                .criterion(hasItem(ModItems.CELESTITE), conditionsFromItem(ModItems.CELESTITE))
+                .criterion(hasItem(ModBlocks.CELESTITE_BLOCK), conditionsFromItem(ModBlocks.CELESTITE_BLOCK))
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.CHRONOS_CLOCK)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.CHRONOS_TIME_ACCUMULATOR, 1)
+                .pattern("SSS")
+                .pattern("SCS")
+                .pattern("SSS")
+                .input('S', ModBlocks.CELESTITE_INFUSED_STONE)
+                .input('C', ModItems.CHRONOS_CLOCK)
+                .criterion(hasItem(ModBlocks.CELESTITE_INFUSED_STONE), conditionsFromItem(ModBlocks.CELESTITE_INFUSED_STONE))
+                .criterion(hasItem(ModItems.CHRONOS_CLOCK), conditionsFromItem(ModItems.CHRONOS_CLOCK))
+                .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.CHRONOS_TIME_ACCUMULATOR)));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.CELESTITE_ORE, 1)
                 .pattern("SSS")

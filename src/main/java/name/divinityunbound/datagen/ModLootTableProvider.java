@@ -26,11 +26,15 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
     public void generate() {
         addDrop(ModBlocks.CELESTITE_BLOCK);
         addDrop(ModBlocks.RAW_CELESTITE_BLOCK);
+        addDrop(ModBlocks.CELESTITE_INFUSED_STONE);
+        addDrop(ModBlocks.GOLDEN_CELESTITE_INFUSED_STONE);
 
         addDrop(ModBlocks.CELESTITE_ORE, copperLikeOreDrops(ModBlocks.CELESTITE_ORE, ModItems.RAW_CELESTITE));
         addDrop(ModBlocks.DEEPSLATE_CELESTITE_ORE, copperLikeOreDrops(ModBlocks.DEEPSLATE_CELESTITE_ORE, ModItems.RAW_CELESTITE));
 
         addDrop(ModBlocks.WILDERSUNG_LOG);
+        addDrop(ModBlocks.WILDERSUNG_PLANKS);
+        addDrop(ModBlocks.CELESTITE_INFUSED_WILDERSUNG_PLANKS);
         addDrop(ModBlocks.WILDERSUNG_WOOD);
         addDrop(ModBlocks.STRIPPED_WILDERSUNG_LOG);
         addDrop(ModBlocks.STRIPPED_WILDERSUNG_WOOD);
@@ -40,6 +44,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 
         addDrop(ModBlocks.GENERATION_STATION);
         addDrop(ModBlocks.MYSTIC_CHRONOGRAPH);
+        addDrop(ModBlocks.CHRONOS_TIME_ACCUMULATOR);
     }
 
     public LootTable.Builder copperLikeOreDrops(Block drop, Item item) {

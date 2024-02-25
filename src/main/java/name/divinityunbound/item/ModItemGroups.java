@@ -15,6 +15,7 @@ public class ModItemGroups {
             new Identifier(DivinityUnbound.MOD_ID, "celestite"),
             FabricItemGroup.builder().displayName(Text.translatable("itemgroup.celestite"))
                     .icon(() -> new ItemStack(ModItems.CELESTITE)).entries((displayContext, entries) -> {
+                        /* Items */
                         entries.add(ModItems.CELESTITE);
                         entries.add(ModItems.CELESTITE_NUGGET);
                         entries.add(ModItems.RAW_CELESTITE);
@@ -26,6 +27,11 @@ public class ModItemGroups {
                         entries.add(ModBlocks.DEEPSLATE_CELESTITE_ORE);
 
                         entries.add(ModItems.MAGIC_CELESTITE_DETECTOR);
+                        entries.add(ModItems.CELESTIUM_DUST);
+                        entries.add(ModItems.GRAIN_OF_TIME);
+                        entries.add(ModItems.CHRONOS_CLOCK);
+                        entries.add(ModItems.UNHOLY_DUST);
+                        entries.add(ModItems.WILDERSUNG_STRING);
 
                         /* Tools */
                         entries.add(ModItems.CELESTITE_PICKAXE);
@@ -46,12 +52,18 @@ public class ModItemGroups {
                         entries.add(ModBlocks.STRIPPED_WILDERSUNG_LOG);
                         entries.add(ModBlocks.STRIPPED_WILDERSUNG_WOOD);
                         entries.add(ModBlocks.WILDERSUNG_PLANKS);
+                        entries.add(ModBlocks.CELESTITE_INFUSED_WILDERSUNG_PLANKS);
                         entries.add(ModBlocks.WILDERSUNG_LEAVES);
                         entries.add(ModBlocks.WILDERSUNG_SAPLING);
+
+                        /* Blocks */
+                        entries.add(ModBlocks.CELESTITE_INFUSED_STONE);
+                        entries.add(ModBlocks.GOLDEN_CELESTITE_INFUSED_STONE);
 
                         /* Block Entities */
                         entries.add(ModBlocks.GENERATION_STATION);
                         entries.add(ModBlocks.MYSTIC_CHRONOGRAPH);
+                        entries.add(ModBlocks.CHRONOS_TIME_ACCUMULATOR);
 
                         /* Foci */
                         entries.add(ModItems.CELESTITE_COAL_FOCUS);

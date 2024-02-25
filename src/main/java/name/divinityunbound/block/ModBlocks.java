@@ -42,6 +42,13 @@ public class ModBlocks {
 
     public static final Block WILDERSUNG_PLANKS = registerBlock("wildersung_planks",
             new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).strength(4f)));
+
+    public static final Block CELESTITE_INFUSED_WILDERSUNG_PLANKS = registerBlock("celestite_infused_wildersung_planks",
+            new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).strength(5f)));
+    public static final Block CELESTITE_INFUSED_STONE = registerBlock("celestite_infused_stone",
+            new Block(FabricBlockSettings.copyOf(Blocks.STONE).strength(5f)));
+    public static final Block GOLDEN_CELESTITE_INFUSED_STONE = registerBlock("golden_celestite_infused_stone",
+            new Block(FabricBlockSettings.copyOf(Blocks.STONE).strength(5f)));
     public static final Block WILDERSUNG_LEAVES = registerBlock("wildersung_leaves",
             new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).strength(4f).nonOpaque()));
 
@@ -53,6 +60,8 @@ public class ModBlocks {
 
     public static final Block MYSTIC_CHRONOGRAPH = registerBlock("mystic_chronograph",
             new MysticChronographBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
+    public static final Block CHRONOS_TIME_ACCUMULATOR = registerBlock("chronos_time_accumulator",
+            new Block(FabricBlockSettings.copyOf(Blocks.STONE).strength(5f)));
 
 
     private static Block registerBlock(String name, Block block) {

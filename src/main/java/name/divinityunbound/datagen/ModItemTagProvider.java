@@ -20,7 +20,8 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.CELESTITE_HELMET, ModItems.CELESTITE_CHESTPLATE, ModItems.CELESTITE_LEGGINGS, ModItems.CELESTITE_BOOTS);
 
         getOrCreateTagBuilder(ItemTags.PLANKS)
-                .add(ModBlocks.WILDERSUNG_PLANKS.asItem());
+                .add(ModBlocks.WILDERSUNG_PLANKS.asItem())
+                .add(ModBlocks.CELESTITE_INFUSED_WILDERSUNG_PLANKS.asItem());
 
         getOrCreateTagBuilder(ItemTags.LOGS_THAT_BURN)
                 .add(ModBlocks.WILDERSUNG_LOG.asItem())

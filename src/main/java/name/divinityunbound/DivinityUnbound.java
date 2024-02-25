@@ -39,6 +39,7 @@ public class DivinityUnbound implements ModInitializer {
 		FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.STRIPPED_WILDERSUNG_WOOD, 5, 5);
 
 		FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.WILDERSUNG_PLANKS, 5, 20);
+		FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.CELESTITE_INFUSED_WILDERSUNG_PLANKS, 5, 20);
 		FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.WILDERSUNG_LEAVES, 30, 60);
 	}
 }

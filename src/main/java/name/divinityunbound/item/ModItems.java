@@ -1,6 +1,7 @@
 package name.divinityunbound.item;
 
 import name.divinityunbound.DivinityUnbound;
+import name.divinityunbound.item.custom.GrainOfTimeItem;
 import name.divinityunbound.item.custom.MagicOreDetectorItem;
 import name.divinityunbound.item.custom.ModArmorItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -16,6 +17,11 @@ public class ModItems {
     public static final Item RAW_CELESTITE = registerItem("raw_celestite", new Item(new FabricItemSettings()));
     public static final Item CELESTITE = registerItem("celestite", new Item(new FabricItemSettings()));
     public static final Item CELESTITE_NUGGET = registerItem("celestite_nugget", new Item(new FabricItemSettings()));
+    public static final Item CELESTIUM_DUST = registerItem("celestium_dust", new Item(new FabricItemSettings()));
+    public static final Item GRAIN_OF_TIME = registerItem("grain_of_time", new GrainOfTimeItem(new FabricItemSettings()));
+    public static final Item CHRONOS_CLOCK = registerItem("chronos_clock", new Item(new FabricItemSettings()));
+    public static final Item UNHOLY_DUST = registerItem("unholy_dust", new Item(new FabricItemSettings()));
+    public static final Item WILDERSUNG_STRING = registerItem("wildersung_string", new Item(new FabricItemSettings()));
 
     public static final Item MAGIC_CELESTITE_DETECTOR = registerItem("magic_celestite_detector",
             new MagicOreDetectorItem(new FabricItemSettings().maxDamage(64)));
@@ -54,6 +60,11 @@ public class ModItems {
         entries.add(RAW_CELESTITE);
         entries.add(CELESTITE);
         entries.add(CELESTITE_NUGGET);
+        entries.add(CELESTIUM_DUST);
+        entries.add(GRAIN_OF_TIME);
+        entries.add(CHRONOS_CLOCK);
+        entries.add(UNHOLY_DUST);
+        entries.add(WILDERSUNG_STRING);
     }
 
     private static Item registerItem(String name, Item item) {
