@@ -47,6 +47,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.CHRONOS_CLOCK, Models.GENERATED);
         itemModelGenerator.register(ModItems.UNHOLY_DUST, Models.GENERATED);
         itemModelGenerator.register(ModItems.WILDERSUNG_STRING, Models.GENERATED);
+        itemModelGenerator.register(ModItems.TIME_FORGED_INGOT, Models.GENERATED);
 
         /* Tools */
         itemModelGenerator.register(ModItems.CELESTITE_PICKAXE, Models.HANDHELD);

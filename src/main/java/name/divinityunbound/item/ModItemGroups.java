@@ -32,6 +32,7 @@ public class ModItemGroups {
                         entries.add(ModItems.CHRONOS_CLOCK);
                         entries.add(ModItems.UNHOLY_DUST);
                         entries.add(ModItems.WILDERSUNG_STRING);
+                        entries.add(ModItems.TIME_FORGED_INGOT);
 
                         /* Tools */
                         entries.add(ModItems.CELESTITE_PICKAXE);

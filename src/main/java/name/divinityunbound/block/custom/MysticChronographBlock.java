@@ -21,7 +21,7 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 public class MysticChronographBlock extends BlockWithEntity implements BlockEntityProvider {
-    private static final VoxelShape SHAPE = Block.createCuboidShape(0, 0, 0, 16, 7, 16);
+    private static final VoxelShape SHAPE = Block.createCuboidShape(0, 0, 0, 16, 1, 16);
     public static final MapCodec<MysticChronographBlock> CODEC = MysticChronographBlock.createCodec(MysticChronographBlock::new);
     public MysticChronographBlock(Settings settings) {
         super(settings);

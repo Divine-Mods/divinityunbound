@@ -22,30 +22,31 @@ public class ModItems {
     public static final Item CHRONOS_CLOCK = registerItem("chronos_clock", new Item(new FabricItemSettings()));
     public static final Item UNHOLY_DUST = registerItem("unholy_dust", new Item(new FabricItemSettings()));
     public static final Item WILDERSUNG_STRING = registerItem("wildersung_string", new Item(new FabricItemSettings()));
+    public static final Item TIME_FORGED_INGOT = registerItem("time_forged_ingot", new Item(new FabricItemSettings()));
 
     public static final Item MAGIC_CELESTITE_DETECTOR = registerItem("magic_celestite_detector",
-            new MagicOreDetectorItem(new FabricItemSettings().maxDamage(64)));
+            new MagicOreDetectorItem(new FabricItemSettings().maxDamage(64).maxCount(1)));
 
     public static final Item CELESTITE_PICKAXE = registerItem("celestite_pickaxe",
-            new PickaxeItem(ModToolMaterial.CELESTITE, 2, 1.5f, new FabricItemSettings()));
+            new PickaxeItem(ModToolMaterial.CELESTITE, 2, 1.5f, new FabricItemSettings().maxCount(1)));
     public static final Item CELESTITE_AXE = registerItem("celestite_axe",
-            new AxeItem(ModToolMaterial.CELESTITE, 8, 1.5f, new FabricItemSettings()));
+            new AxeItem(ModToolMaterial.CELESTITE, 8, 1.5f, new FabricItemSettings().maxCount(1)));
     public static final Item CELESTITE_SHOVEL = registerItem("celestite_shovel",
-            new ShovelItem(ModToolMaterial.CELESTITE, 1, 1.5f, new FabricItemSettings()));
+            new ShovelItem(ModToolMaterial.CELESTITE, 1, 1.5f, new FabricItemSettings().maxCount(1)));
     public static final Item CELESTITE_SWORD = registerItem("celestite_sword",
-            new SwordItem(ModToolMaterial.CELESTITE, 6, 2f, new FabricItemSettings()));
+            new SwordItem(ModToolMaterial.CELESTITE, 6, 2f, new FabricItemSettings().maxCount(1)));
     public static final Item CELESTITE_HOE = registerItem("celestite_hoe",
-            new HoeItem(ModToolMaterial.CELESTITE, 1, 1.5f, new FabricItemSettings()));
+            new HoeItem(ModToolMaterial.CELESTITE, 1, 1.5f, new FabricItemSettings().maxCount(1)));
 
 
     public static final Item CELESTITE_HELMET = registerItem("celestite_helmet",
-            new ArmorItem(ModArmorMaterials.CELESTITE, ArmorItem.Type.HELMET, new FabricItemSettings()));
+            new ArmorItem(ModArmorMaterials.CELESTITE, ArmorItem.Type.HELMET, new FabricItemSettings().maxCount(1)));
     public static final Item CELESTITE_CHESTPLATE = registerItem("celestite_chestplate",
-            new ModArmorItem(ModArmorMaterials.CELESTITE, ArmorItem.Type.CHESTPLATE, new FabricItemSettings()));
+            new ModArmorItem(ModArmorMaterials.CELESTITE, ArmorItem.Type.CHESTPLATE, new FabricItemSettings().maxCount(1)));
     public static final Item CELESTITE_LEGGINGS = registerItem("celestite_leggings",
-            new ArmorItem(ModArmorMaterials.CELESTITE, ArmorItem.Type.LEGGINGS, new FabricItemSettings()));
+            new ArmorItem(ModArmorMaterials.CELESTITE, ArmorItem.Type.LEGGINGS, new FabricItemSettings().maxCount(1)));
     public static final Item CELESTITE_BOOTS = registerItem("celestite_boots",
-            new ArmorItem(ModArmorMaterials.CELESTITE, ArmorItem.Type.BOOTS, new FabricItemSettings()));
+            new ArmorItem(ModArmorMaterials.CELESTITE, ArmorItem.Type.BOOTS, new FabricItemSettings().maxCount(1)));
 
 
     public static final Item CELESTITE_COAL_FOCUS = registerItem("celestite_coal_focus", new Item(new FabricItemSettings().maxCount(1)));
@@ -65,6 +66,7 @@ public class ModItems {
         entries.add(CHRONOS_CLOCK);
         entries.add(UNHOLY_DUST);
         entries.add(WILDERSUNG_STRING);
+        entries.add(TIME_FORGED_INGOT);
     }
 
     private static Item registerItem(String name, Item item) {

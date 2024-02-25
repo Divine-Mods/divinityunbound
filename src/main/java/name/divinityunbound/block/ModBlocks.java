@@ -1,6 +1,7 @@
 package name.divinityunbound.block;
 
 import name.divinityunbound.DivinityUnbound;
+import name.divinityunbound.block.custom.ChronosTimeAccumulatorBlock;
 import name.divinityunbound.block.custom.GenerationStationBlock;
 import name.divinityunbound.block.custom.MysticChronographBlock;
 import name.divinityunbound.world.tree.ModSaplingGenerators;
@@ -61,7 +62,7 @@ public class ModBlocks {
     public static final Block MYSTIC_CHRONOGRAPH = registerBlock("mystic_chronograph",
             new MysticChronographBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
     public static final Block CHRONOS_TIME_ACCUMULATOR = registerBlock("chronos_time_accumulator",
-            new Block(FabricBlockSettings.copyOf(Blocks.STONE).strength(5f)));
+            new ChronosTimeAccumulatorBlock(FabricBlockSettings.copyOf(Blocks.STONE).strength(5f)));
 
 
     private static Block registerBlock(String name, Block block) {

@@ -33,6 +33,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerShapelessRecipe(exporter, ModBlocks.WILDERSUNG_PLANKS, ModBlocks.WILDERSUNG_WOOD, "celestite",4);
         offerShapelessRecipe(exporter, ModBlocks.WILDERSUNG_PLANKS, ModBlocks.STRIPPED_WILDERSUNG_LOG, "celestite",4);
         offerShapelessRecipe(exporter, ModBlocks.WILDERSUNG_PLANKS, ModBlocks.STRIPPED_WILDERSUNG_WOOD, "celestite",4);
+        offer2x2CompactingRecipe(exporter, RecipeCategory.MISC, ModItems.WILDERSUNG_STRING, ModBlocks.WILDERSUNG_LEAVES);
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.CELESTITE, 1)
                 .pattern("NNN")
@@ -85,6 +86,28 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(ModBlocks.CELESTITE_INFUSED_STONE), conditionsFromItem(ModBlocks.CELESTITE_INFUSED_STONE))
                 .criterion(hasItem(ModItems.CHRONOS_CLOCK), conditionsFromItem(ModItems.CHRONOS_CLOCK))
                 .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.CHRONOS_TIME_ACCUMULATOR)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.TIME_FORGED_INGOT, 1)
+                .pattern("DUD")
+                .pattern("UCU")
+                .pattern("DUD")
+                .input('C', ModItems.CELESTITE)
+                .input('D', ModItems.CELESTIUM_DUST)
+                .input('U', ModItems.UNHOLY_DUST)
+                .criterion(hasItem(ModItems.CELESTITE), conditionsFromItem(ModItems.CELESTITE))
+                .criterion(hasItem(ModItems.CELESTIUM_DUST), conditionsFromItem(ModItems.CELESTIUM_DUST))
+                .criterion(hasItem(ModItems.UNHOLY_DUST), conditionsFromItem(ModItems.UNHOLY_DUST))
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.TIME_FORGED_INGOT)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.MYSTIC_CHRONOGRAPH, 1)
+                .pattern("TTT")
+                .pattern("TCT")
+                .pattern("TTT")
+                .input('C', ModItems.CHRONOS_CLOCK)
+                .input('T', ModItems.TIME_FORGED_INGOT)
+                .criterion(hasItem(ModItems.CHRONOS_CLOCK), conditionsFromItem(ModItems.CHRONOS_CLOCK))
+                .criterion(hasItem(ModItems.TIME_FORGED_INGOT), conditionsFromItem(ModItems.TIME_FORGED_INGOT))
+                .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.MYSTIC_CHRONOGRAPH)));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.CELESTITE_ORE, 1)
                 .pattern("SSS")

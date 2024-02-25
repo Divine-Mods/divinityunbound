@@ -19,6 +19,11 @@ public class ModBlockEntities {
                     FabricBlockEntityTypeBuilder.create(MysticChronographBlockEntity::new,
                             ModBlocks.MYSTIC_CHRONOGRAPH).build());
 
+    public static final BlockEntityType<ChronosTimeAccumulatorBlockEntity> CHRONOS_TIME_ACCUMULATOR_BLOCK_ENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(DivinityUnbound.MOD_ID, "chronos_time_accumulator_be"),
+                    FabricBlockEntityTypeBuilder.create(ChronosTimeAccumulatorBlockEntity::new,
+                            ModBlocks.CHRONOS_TIME_ACCUMULATOR).build());
+
     public static void registerBlockEntities() {
         DivinityUnbound.LOGGER.info("Registering Block Entities for " + DivinityUnbound.MOD_ID);
     }

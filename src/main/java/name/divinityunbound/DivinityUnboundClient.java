@@ -1,6 +1,7 @@
 package name.divinityunbound;
 
 import name.divinityunbound.block.ModBlocks;
+import name.divinityunbound.screen.ChronosTimeAccumulatorScreen;
 import name.divinityunbound.screen.GenerationStationScreen;
 import name.divinityunbound.screen.ModScreenHandlers;
 import net.fabricmc.api.ClientModInitializer;
@@ -15,5 +16,6 @@ public class DivinityUnboundClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.WILDERSUNG_SAPLING, RenderLayer.getCutout());
 
         HandledScreens.register(ModScreenHandlers.GENERATION_STATION_SCREEN_HANDLER, GenerationStationScreen::new);
+        HandledScreens.register(ModScreenHandlers.CHRONOS_TIME_ACCUMULATOR_SCREEN_HANDLER, ChronosTimeAccumulatorScreen::new);
     }
 }
