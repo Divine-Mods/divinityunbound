@@ -16,6 +16,7 @@
   "block.divinityunbound.deepslate_celestite_ore": "Deepslate Celestite Ore",
 
   "item.divinityunbound.magic_celestite_detector": "Magic Celestite Detector",
+  "item.divinityunbound.unholy_wand": "Unholy Wand",
 
   "item.divinityunbound.celestite_pickaxe": "Celestite Pickaxe",
   "item.divinityunbound.celestite_axe": "Celestite Axe",
@@ -49,5 +50,5 @@
   "item.divinityunbound.celestite_diamond_focus": "Celestite Diamond Focus",
   "item.divinityunbound.celestite_netherite_focus": "Celestite Netherite Focus",
 
-  "itemgroup.celestite": "Celestite Group"
+  "itemgroup.celestite": "DivinityUnbound"
 }

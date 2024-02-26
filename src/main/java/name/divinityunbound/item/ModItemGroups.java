@@ -27,6 +27,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.DEEPSLATE_CELESTITE_ORE);
 
                         entries.add(ModItems.MAGIC_CELESTITE_DETECTOR);
+                        entries.add(ModItems.UNHOLY_WAND);
                         entries.add(ModItems.CELESTIUM_DUST);
                         entries.add(ModItems.GRAIN_OF_TIME);
                         entries.add(ModItems.CHRONOS_CLOCK);
