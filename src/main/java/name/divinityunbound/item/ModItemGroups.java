@@ -28,6 +28,7 @@ public class ModItemGroups {
 
                         entries.add(ModItems.MAGIC_CELESTITE_DETECTOR);
                         entries.add(ModItems.UNHOLY_WAND);
+                        entries.add(ModItems.DIVINE_WAND_OF_FLIGHT);
                         entries.add(ModItems.CELESTIUM_DUST);
                         entries.add(ModItems.GRAIN_OF_TIME);
                         entries.add(ModItems.CHRONOS_CLOCK);
@@ -66,6 +67,8 @@ public class ModItemGroups {
                         entries.add(ModBlocks.GENERATION_STATION);
                         entries.add(ModBlocks.MYSTIC_CHRONOGRAPH);
                         entries.add(ModBlocks.CHRONOS_TIME_ACCUMULATOR);
+                        entries.add(ModBlocks.SPEED_UPGRADE);
+                        entries.add(ModBlocks.QUANTITY_UPGRADE);
 
                         /* Foci */
                         entries.add(ModItems.CELESTITE_COAL_FOCUS);

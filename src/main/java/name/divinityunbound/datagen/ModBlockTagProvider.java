@@ -31,7 +31,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.GOLDEN_CELESTITE_INFUSED_STONE)
                 .add(ModBlocks.CHRONOS_TIME_ACCUMULATOR)
                 .add(ModBlocks.GENERATION_STATION)
-                .add(ModBlocks.MYSTIC_CHRONOGRAPH);
+                .add(ModBlocks.MYSTIC_CHRONOGRAPH)
+                .add(ModBlocks.SPEED_UPGRADE)
+                .add(ModBlocks.QUANTITY_UPGRADE);
 
         getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
                 .add(ModBlocks.CELESTITE_BLOCK)
@@ -42,7 +44,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.GOLDEN_CELESTITE_INFUSED_STONE)
                 .add(ModBlocks.CHRONOS_TIME_ACCUMULATOR)
                 .add(ModBlocks.GENERATION_STATION)
-                .add(ModBlocks.MYSTIC_CHRONOGRAPH);
+                .add(ModBlocks.MYSTIC_CHRONOGRAPH)
+                .add(ModBlocks.SPEED_UPGRADE)
+                .add(ModBlocks.QUANTITY_UPGRADE);
 
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
                 .add(ModBlocks.WILDERSUNG_LOG)

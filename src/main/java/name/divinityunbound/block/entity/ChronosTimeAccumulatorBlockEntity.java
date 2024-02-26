@@ -1,5 +1,6 @@
 package name.divinityunbound.block.entity;
 
+import name.divinityunbound.block.ModBlocks;
 import name.divinityunbound.item.ModItems;
 import name.divinityunbound.screen.ChronosTimeAccumulatorScreenHandler;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
@@ -22,9 +23,15 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Iterator;
+import java.util.List;
+
 public class ChronosTimeAccumulatorBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory, ImplementedInventory, SidedInventory {
     private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(1, ItemStack.EMPTY);
     private static final int OUTPUT_SLOT = 0;
+
+    private int speedCount = 0;
+    private int quantityCount = 0;
 
     protected final PropertyDelegate propertyDelegate;
     private int progress = 0;
@@ -96,12 +103,15 @@ public class ChronosTimeAccumulatorBlockEntity extends BlockEntity implements Ex
             return;
         }
 
-        if (isOutputSlotEmptyOrReceivable()) {
-            this.increaseCraftProgress();
-            markDirty(world, pos, state);
-            if (hasCraftingFinished()) {
-                this.craftItem();
-                this.resetProgress();
+        if (isOutputSlotEmptyOrReceivable() && canInsertAmountIntoOutputSlot()) {
+            this.countUpgrades(world, pos);
+            for (int i = 0; i <= speedCount; i++) {
+                this.increaseCraftProgress();
+                markDirty(world, pos, state);
+                if (hasCraftingFinished()) {
+                    this.craftItem();
+                    this.resetProgress();
+                }
             }
         }
         else {
@@ -115,9 +125,29 @@ public class ChronosTimeAccumulatorBlockEntity extends BlockEntity implements Ex
     }
 
     private void craftItem() {
-        ItemStack item = new ItemStack(ModItems.GRAIN_OF_TIME, getStack(OUTPUT_SLOT).getCount() + 1);
+        ItemStack item = new ItemStack(ModItems.GRAIN_OF_TIME, getStack(OUTPUT_SLOT).getCount() + 1 + quantityCount);
 
         this.setStack(OUTPUT_SLOT, item);
+    }
+
+    public static final List<BlockPos> UPGRADE_PROVIDER_OFFSETS = BlockPos.stream(-1, 0, -1, 1, 0, 1).filter((pos) -> {
+        return Math.abs(pos.getX()) == 1 || Math.abs(pos.getZ()) == 1;
+    }).map(BlockPos::toImmutable).toList();
+    public void countUpgrades(World world, BlockPos pos) {
+        speedCount = 0;
+        quantityCount = 0;
+        Iterator it = UPGRADE_PROVIDER_OFFSETS.iterator();
+        while(it.hasNext()) {
+            BlockPos blockPosOffset = (BlockPos)it.next();
+            BlockPos calcPos = new BlockPos(pos.getX() + blockPosOffset.getX(),
+                    pos.getY() + blockPosOffset.getY(), pos.getZ() + blockPosOffset.getZ());
+            if(world.getBlockState(calcPos).getBlock().equals(ModBlocks.SPEED_UPGRADE)) {
+                speedCount++;
+            }
+            else if(world.getBlockState(calcPos).getBlock().equals(ModBlocks.QUANTITY_UPGRADE)) {
+                quantityCount++;
+            }
+        }
     }
 
     private boolean hasCraftingFinished() {
@@ -130,6 +160,10 @@ public class ChronosTimeAccumulatorBlockEntity extends BlockEntity implements Ex
 
     private boolean isOutputSlotEmptyOrReceivable() {
         return this.getStack(OUTPUT_SLOT).isEmpty() || this.getStack(OUTPUT_SLOT).getCount() < this.getStack(OUTPUT_SLOT).getMaxCount();
+    }
+
+    private boolean canInsertAmountIntoOutputSlot() {
+        return this.getStack(OUTPUT_SLOT).getCount() + 1 + quantityCount <= getStack(OUTPUT_SLOT).getMaxCount();
     }
 
     @Override

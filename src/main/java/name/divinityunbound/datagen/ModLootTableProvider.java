@@ -45,6 +45,8 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.GENERATION_STATION);
         addDrop(ModBlocks.MYSTIC_CHRONOGRAPH);
         addDrop(ModBlocks.CHRONOS_TIME_ACCUMULATOR);
+        addDrop(ModBlocks.SPEED_UPGRADE);
+        addDrop(ModBlocks.QUANTITY_UPGRADE);
     }
 
     public LootTable.Builder copperLikeOreDrops(Block drop, Item item) {

@@ -1,10 +1,7 @@
 package name.divinityunbound.item;
 
 import name.divinityunbound.DivinityUnbound;
-import name.divinityunbound.item.custom.GrainOfTimeItem;
-import name.divinityunbound.item.custom.MagicOreDetectorItem;
-import name.divinityunbound.item.custom.ModArmorItem;
-import name.divinityunbound.item.custom.UnholyWandItem;
+import name.divinityunbound.item.custom.*;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
@@ -29,6 +26,9 @@ public class ModItems {
             new MagicOreDetectorItem(new FabricItemSettings().maxDamage(64)));
     public static final Item UNHOLY_WAND = registerItem("unholy_wand",
             new UnholyWandItem(new FabricItemSettings().maxDamage(32)));
+
+    public static final Item DIVINE_WAND_OF_FLIGHT = registerItem("divine_wand_of_flight",
+            new DivineWandOfFlightItem(new FabricItemSettings().maxDamage(16)));
 
     public static final Item CELESTITE_PICKAXE = registerItem("celestite_pickaxe",
             new PickaxeItem(ModToolMaterial.CELESTITE, 2, 1.5f, new FabricItemSettings().maxCount(1)));

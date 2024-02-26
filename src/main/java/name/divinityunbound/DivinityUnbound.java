@@ -2,6 +2,7 @@ package name.divinityunbound;
 
 import name.divinityunbound.block.ModBlocks;
 import name.divinityunbound.block.entity.ModBlockEntities;
+import name.divinityunbound.entity.effect.ModStatusEffect;
 import name.divinityunbound.item.ModItemGroups;
 import name.divinityunbound.item.ModItems;
 import name.divinityunbound.recipe.ModRecipes;
@@ -27,6 +28,7 @@ public class DivinityUnbound implements ModInitializer {
 
 		ModBlockEntities.registerBlockEntities();
 		ModScreenHandlers.registerScreenHandlers();
+		ModStatusEffect.registerStatusEffects();
 
 		ModRecipes.registerRecipes();
 

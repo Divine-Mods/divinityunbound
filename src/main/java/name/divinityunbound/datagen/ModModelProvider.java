@@ -33,6 +33,8 @@ public class ModModelProvider extends FabricModelProvider {
 
         blockStateModelGenerator.registerSimpleState(ModBlocks.GENERATION_STATION);
         blockStateModelGenerator.registerSimpleState(ModBlocks.MYSTIC_CHRONOGRAPH);
+        blockStateModelGenerator.registerSimpleState(ModBlocks.SPEED_UPGRADE);
+        blockStateModelGenerator.registerSimpleState(ModBlocks.QUANTITY_UPGRADE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHRONOS_TIME_ACCUMULATOR);
     }
 
@@ -43,6 +45,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.RAW_CELESTITE, Models.GENERATED);
         itemModelGenerator.register(ModItems.MAGIC_CELESTITE_DETECTOR, Models.GENERATED);
         itemModelGenerator.register(ModItems.UNHOLY_WAND, Models.GENERATED);
+        itemModelGenerator.register(ModItems.DIVINE_WAND_OF_FLIGHT, Models.GENERATED);
         itemModelGenerator.register(ModItems.CELESTIUM_DUST, Models.GENERATED);
         itemModelGenerator.register(ModItems.GRAIN_OF_TIME, Models.GENERATED);
         itemModelGenerator.register(ModItems.CHRONOS_CLOCK, Models.GENERATED);

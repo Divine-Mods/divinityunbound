@@ -1,5 +1,6 @@
 package name.divinityunbound.block.entity;
 
+import name.divinityunbound.block.ModBlocks;
 import name.divinityunbound.item.ModItems;
 import name.divinityunbound.recipe.GenerationStationRecipe;
 import name.divinityunbound.screen.GenerationStationScreenHandler;
@@ -28,12 +29,17 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Iterator;
+import java.util.List;
 import java.util.Optional;
 import net.minecraft.entity.mob.*;
 public class GenerationStationBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory, ImplementedInventory, SidedInventory {
     private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(2, ItemStack.EMPTY);
     private static final int INPUT_SLOT = 0;
     private static final int OUTPUT_SLOT = 1;
+
+    private int speedCount = 0;
+    private int quantityCount = 0;
 
     protected final PropertyDelegate propertyDelegate;
     private int progress = 0;
@@ -107,11 +113,14 @@ public class GenerationStationBlockEntity extends BlockEntity implements Extende
 
         if (isOutputSlotEmptyOrReceivable()) {
             if (this.hasRecipe()) {
-                this.increaseCraftProgress();
-                markDirty(world, pos, state);
-                if (hasCraftingFinished()) {
-                    this.craftItem();
-                    this.resetProgress();
+                this.countUpgrades(world, pos);
+                for (int i = 0; i <= speedCount; i++) {
+                    this.increaseCraftProgress();
+                    markDirty(world, pos, state);
+                    if (hasCraftingFinished()) {
+                        this.craftItem();
+                        this.resetProgress();
+                    }
                 }
             }
             else {
@@ -133,7 +142,28 @@ public class GenerationStationBlockEntity extends BlockEntity implements Extende
         //this.removeStack(INPUT_SLOT, 1);
 
         this.setStack(OUTPUT_SLOT, new ItemStack(recipe.get().value().getResult(null).getItem(),
-                getStack(OUTPUT_SLOT).getCount() + recipe.get().value().getResult(null).getCount()));
+                getStack(OUTPUT_SLOT).getCount() + recipe.get().value().getResult(null).getCount() + quantityCount));
+    }
+
+    public static final List<BlockPos> UPGRADE_PROVIDER_OFFSETS = BlockPos.stream(-1, 0, -1, 1, 0, 1).filter((pos) -> {
+        return Math.abs(pos.getX()) == 1 || Math.abs(pos.getZ()) == 1;
+    }).map(BlockPos::toImmutable).toList();
+
+    public void countUpgrades(World world, BlockPos pos) {
+        speedCount = 0;
+        quantityCount = 0;
+        Iterator it = UPGRADE_PROVIDER_OFFSETS.iterator();
+        while(it.hasNext()) {
+            BlockPos blockPosOffset = (BlockPos)it.next();
+            BlockPos calcPos = new BlockPos(pos.getX() + blockPosOffset.getX(),
+                    pos.getY() + blockPosOffset.getY(), pos.getZ() + blockPosOffset.getZ());
+            if(world.getBlockState(calcPos).getBlock().equals(ModBlocks.SPEED_UPGRADE)) {
+                speedCount++;
+            }
+            else if(world.getBlockState(calcPos).getBlock().equals(ModBlocks.QUANTITY_UPGRADE)) {
+                quantityCount++;
+            }
+        }
     }
 
     private boolean hasCraftingFinished() {
@@ -165,7 +195,7 @@ public class GenerationStationBlockEntity extends BlockEntity implements Extende
     }
 
     private boolean canInsertAmountIntoOutputSlot(ItemStack result) {
-        return this.getStack(OUTPUT_SLOT).getCount() + result.getCount() <= getStack(OUTPUT_SLOT).getMaxCount();
+        return this.getStack(OUTPUT_SLOT).getCount() + result.getCount() + quantityCount <= getStack(OUTPUT_SLOT).getMaxCount();
     }
 
     private boolean isOutputSlotEmptyOrReceivable() {
