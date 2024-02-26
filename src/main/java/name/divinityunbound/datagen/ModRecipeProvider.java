@@ -13,6 +13,7 @@ import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.util.Identifier;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class ModRecipeProvider extends FabricRecipeProvider {
@@ -26,6 +27,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     public void generate(RecipeExporter exporter) {
         offerSmelting(exporter, CELESTITE_SMELTABLES, RecipeCategory.MISC, ModItems.CELESTITE, 0.7f, 200, "celestite");
         offerBlasting(exporter, CELESTITE_SMELTABLES, RecipeCategory.MISC, ModItems.CELESTITE, 0.7f, 100, "celestite");
+        offerSmelting(exporter, Arrays.asList(ModItems.UNHOLY_DUST), RecipeCategory.MISC, ModItems.UNHOLY_INGOT, 0.7f, 200, "celestite");
+        offerBlasting(exporter, Arrays.asList(ModItems.UNHOLY_DUST), RecipeCategory.MISC, ModItems.UNHOLY_INGOT, 0.7f, 100, "celestite");
         offerReversibleCompactingRecipes(exporter, RecipeCategory.BUILDING_BLOCKS, ModItems.CELESTITE, RecipeCategory.DECORATIONS, ModBlocks.CELESTITE_BLOCK);
         offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItems.RAW_CELESTITE, RecipeCategory.BUILDING_BLOCKS, ModBlocks.RAW_CELESTITE_BLOCK);
         //offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItems.CELESTITE_NUGGET, RecipeCategory.MISC, ModItems.CELESTITE);
@@ -34,6 +37,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerShapelessRecipe(exporter, ModBlocks.WILDERSUNG_PLANKS, ModBlocks.STRIPPED_WILDERSUNG_LOG, "celestite",4);
         offerShapelessRecipe(exporter, ModBlocks.WILDERSUNG_PLANKS, ModBlocks.STRIPPED_WILDERSUNG_WOOD, "celestite",4);
         offer2x2CompactingRecipe(exporter, RecipeCategory.MISC, ModItems.WILDERSUNG_STRING, ModBlocks.WILDERSUNG_LEAVES);
+        offer2x2CompactingRecipe(exporter, RecipeCategory.MISC, ModItems.GRAIN_OF_TIME, ModBlocks.SAND_OF_TIME);
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.CELESTITE, 1)
                 .pattern("NNN")
@@ -108,6 +112,54 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(ModItems.CHRONOS_CLOCK), conditionsFromItem(ModItems.CHRONOS_CLOCK))
                 .criterion(hasItem(ModItems.TIME_FORGED_INGOT), conditionsFromItem(ModItems.TIME_FORGED_INGOT))
                 .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.MYSTIC_CHRONOGRAPH)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.SPEED_CORE, 1)
+                .pattern("UUU")
+                .pattern("TLT")
+                .pattern("UUU")
+                .input('U', ModItems.UNHOLY_INGOT)
+                .input('T', ModItems.TIME_FORGED_INGOT)
+                .input('L', Items.LIME_DYE)
+                .criterion(hasItem(ModItems.UNHOLY_INGOT), conditionsFromItem(ModItems.UNHOLY_INGOT))
+                .criterion(hasItem(ModItems.TIME_FORGED_INGOT), conditionsFromItem(ModItems.TIME_FORGED_INGOT))
+                .criterion(hasItem(Items.LIME_DYE), conditionsFromItem(Items.LIME_DYE))
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.SPEED_CORE)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.QUANTITY_CORE, 1)
+                .pattern("UUU")
+                .pattern("TLT")
+                .pattern("UUU")
+                .input('U', ModItems.UNHOLY_INGOT)
+                .input('T', ModItems.TIME_FORGED_INGOT)
+                .input('L', Items.LIGHT_BLUE_DYE)
+                .criterion(hasItem(ModItems.UNHOLY_INGOT), conditionsFromItem(ModItems.UNHOLY_INGOT))
+                .criterion(hasItem(ModItems.TIME_FORGED_INGOT), conditionsFromItem(ModItems.TIME_FORGED_INGOT))
+                .criterion(hasItem(Items.LIME_DYE), conditionsFromItem(Items.LIME_DYE))
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.QUANTITY_CORE)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.SPEED_UPGRADE, 1)
+                .pattern("EEE")
+                .pattern("TST")
+                .pattern("EEE")
+                .input('S', ModItems.SPEED_CORE)
+                .input('T', ModItems.TIME_FORGED_INGOT)
+                .input('E', Blocks.END_STONE_BRICKS)
+                .criterion(hasItem(ModItems.SPEED_CORE), conditionsFromItem(ModItems.SPEED_CORE))
+                .criterion(hasItem(ModItems.TIME_FORGED_INGOT), conditionsFromItem(ModItems.TIME_FORGED_INGOT))
+                .criterion(hasItem(Blocks.END_STONE_BRICKS), conditionsFromItem(Blocks.END_STONE_BRICKS))
+                .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.SPEED_UPGRADE)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.QUANTITY_UPGRADE, 1)
+                .pattern("EEE")
+                .pattern("TQT")
+                .pattern("EEE")
+                .input('Q', ModItems.QUANTITY_CORE)
+                .input('T', ModItems.TIME_FORGED_INGOT)
+                .input('E', Blocks.END_STONE_BRICKS)
+                .criterion(hasItem(ModItems.QUANTITY_CORE), conditionsFromItem(ModItems.QUANTITY_CORE))
+                .criterion(hasItem(ModItems.TIME_FORGED_INGOT), conditionsFromItem(ModItems.TIME_FORGED_INGOT))
+                .criterion(hasItem(Blocks.END_STONE_BRICKS), conditionsFromItem(Blocks.END_STONE_BRICKS))
+                .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.QUANTITY_UPGRADE)));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.CELESTITE_ORE, 1)
                 .pattern("SSS")

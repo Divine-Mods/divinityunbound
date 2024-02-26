@@ -22,6 +22,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.CELESTITE_ORE)
                 .add(ModBlocks.DEEPSLATE_CELESTITE_ORE);
 
+        getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE)
+                .add(ModBlocks.SAND_OF_TIME);
+
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
                 .add(ModBlocks.CELESTITE_BLOCK)
                 .add(ModBlocks.RAW_CELESTITE_BLOCK)
@@ -42,6 +45,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.DEEPSLATE_CELESTITE_ORE)
                 .add(ModBlocks.CELESTITE_INFUSED_STONE)
                 .add(ModBlocks.GOLDEN_CELESTITE_INFUSED_STONE)
+                .add(ModBlocks.SAND_OF_TIME)
                 .add(ModBlocks.CHRONOS_TIME_ACCUMULATOR)
                 .add(ModBlocks.GENERATION_STATION)
                 .add(ModBlocks.MYSTIC_CHRONOGRAPH)

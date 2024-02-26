@@ -35,6 +35,9 @@ public class ModItemGroups {
                         entries.add(ModItems.UNHOLY_DUST);
                         entries.add(ModItems.WILDERSUNG_STRING);
                         entries.add(ModItems.TIME_FORGED_INGOT);
+                        entries.add(ModItems.UNHOLY_INGOT);
+                        entries.add(ModItems.SPEED_CORE);
+                        entries.add(ModItems.QUANTITY_CORE);
 
                         /* Tools */
                         entries.add(ModItems.CELESTITE_PICKAXE);
@@ -62,6 +65,7 @@ public class ModItemGroups {
                         /* Blocks */
                         entries.add(ModBlocks.CELESTITE_INFUSED_STONE);
                         entries.add(ModBlocks.GOLDEN_CELESTITE_INFUSED_STONE);
+                        entries.add(ModBlocks.SAND_OF_TIME);
 
                         /* Block Entities */
                         entries.add(ModBlocks.GENERATION_STATION);

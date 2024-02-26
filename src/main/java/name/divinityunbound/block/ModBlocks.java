@@ -1,5 +1,6 @@
 package name.divinityunbound.block;
 
+import com.mojang.serialization.MapCodec;
 import name.divinityunbound.DivinityUnbound;
 import name.divinityunbound.block.custom.*;
 import name.divinityunbound.world.tree.ModSaplingGenerators;
@@ -50,6 +51,14 @@ public class ModBlocks {
             new Block(FabricBlockSettings.copyOf(Blocks.STONE).strength(5f)));
     public static final Block GOLDEN_CELESTITE_INFUSED_STONE = registerBlock("golden_celestite_infused_stone",
             new Block(FabricBlockSettings.copyOf(Blocks.STONE).strength(5f)));
+
+    public static final Block SAND_OF_TIME = registerBlock("sand_of_time",
+            new FallingBlock(FabricBlockSettings.copyOf(Blocks.SAND)) {
+                @Override
+                protected MapCodec<? extends FallingBlock> getCodec() {
+                    return null;
+                }
+            });
     public static final Block WILDERSUNG_LEAVES = registerBlock("wildersung_leaves",
             new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).strength(4f).nonOpaque()));
 

@@ -21,6 +21,9 @@ public class ModItems {
     public static final Item UNHOLY_DUST = registerItem("unholy_dust", new Item(new FabricItemSettings()));
     public static final Item WILDERSUNG_STRING = registerItem("wildersung_string", new Item(new FabricItemSettings()));
     public static final Item TIME_FORGED_INGOT = registerItem("time_forged_ingot", new Item(new FabricItemSettings()));
+    public static final Item UNHOLY_INGOT = registerItem("unholy_ingot", new Item(new FabricItemSettings()));
+    public static final Item QUANTITY_CORE = registerItem("quantity_core", new Item(new FabricItemSettings()));
+    public static final Item SPEED_CORE = registerItem("speed_core", new Item(new FabricItemSettings()));
 
     public static final Item MAGIC_CELESTITE_DETECTOR = registerItem("magic_celestite_detector",
             new MagicOreDetectorItem(new FabricItemSettings().maxDamage(64)));
@@ -70,6 +73,9 @@ public class ModItems {
         entries.add(UNHOLY_DUST);
         entries.add(WILDERSUNG_STRING);
         entries.add(TIME_FORGED_INGOT);
+        entries.add(UNHOLY_INGOT);
+        entries.add(SPEED_CORE);
+        entries.add(QUANTITY_CORE);
     }
 
     private static Item registerItem(String name, Item item) {
