@@ -33,6 +33,9 @@ public class ModItems {
     public static final Item DIVINE_WAND_OF_FLIGHT = registerItem("divine_wand_of_flight",
             new DivineWandOfFlightItem(new FabricItemSettings().maxDamage(16)));
 
+    public static final Item WAND_OF_CAPTURING = registerItem("wand_of_capturing",
+            new WandOfCapturingItem(new FabricItemSettings().maxCount(1)));
+
     public static final Item CELESTITE_PICKAXE = registerItem("celestite_pickaxe",
             new PickaxeItem(ModToolMaterial.CELESTITE, 2, 1.5f, new FabricItemSettings().maxCount(1)));
     public static final Item CELESTITE_AXE = registerItem("celestite_axe",

@@ -21,6 +21,7 @@
   "item.divinityunbound.magic_celestite_detector": "Magic Celestite Detector",
   "item.divinityunbound.unholy_wand": "Unholy Wand",
   "item.divinityunbound.divine_wand_of_flight": "Divine Wand of Flight",
+  "item.divinityunbound.wand_of_capturing": "Wand of Capturing",
 
   "item.divinityunbound.celestite_pickaxe": "Celestite Pickaxe",
   "item.divinityunbound.celestite_axe": "Celestite Axe",
@@ -50,6 +51,7 @@
   "block.divinityunbound.chronos_time_accumulator": "Chronos Time Accumulator",
   "block.divinityunbound.speed_upgrade": "Speed Upgrade",
   "block.divinityunbound.quantity_upgrade": "Quantity Upgrade",
+  "block.divinityunbound.divine_replicator": "Divine Replicator",
 
   "item.divinityunbound.celestite_coal_focus": "Celestite Coal Focus",
   "item.divinityunbound.celestite_iron_focus": "Celestite Iron Focus",
@@ -58,6 +60,10 @@
   "item.divinityunbound.celestite_netherite_focus": "Celestite Netherite Focus",
 
   "effect.divinityunbound.flight": "Flight",
+
+  "tooltip.divinityunbound.wand_of_capturing": "Captures Mobs!",
+  "tooltip.divinityunbound.unholy_wand": "Pulls ores from underground to the surface",
+  "tooltip.divinityunbound.divine_wand_of_flight": "Provides flight for 1 minute on use",
 
   "itemgroup.celestite": "DivinityUnbound"
 }

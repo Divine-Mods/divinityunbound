@@ -6,15 +6,20 @@ import io.github.ladysnake.pal.Pal;
 import io.github.ladysnake.pal.VanillaAbilities;
 import name.divinityunbound.DivinityUnbound;
 import name.divinityunbound.entity.effect.ModStatusEffect;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class DivineWandOfFlightItem extends Item {
     public DivineWandOfFlightItem(Settings settings) {
@@ -36,5 +41,11 @@ public class DivineWandOfFlightItem extends Item {
         }
 
         return TypedActionResult.success(user.getStackInHand(hand));
+    }
+
+    @Override
+    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+        tooltip.add(Text.translatable("tooltip.divinityunbound.divine_wand_of_flight"));
+        super.appendTooltip(stack, world, tooltip, context);
     }
 }

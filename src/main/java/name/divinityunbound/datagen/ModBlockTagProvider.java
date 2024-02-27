@@ -35,6 +35,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.CHRONOS_TIME_ACCUMULATOR)
                 .add(ModBlocks.GENERATION_STATION)
                 .add(ModBlocks.MYSTIC_CHRONOGRAPH)
+                .add(ModBlocks.DIVINE_REPLICATOR)
                 .add(ModBlocks.SPEED_UPGRADE)
                 .add(ModBlocks.QUANTITY_UPGRADE);
 
@@ -49,6 +50,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.CHRONOS_TIME_ACCUMULATOR)
                 .add(ModBlocks.GENERATION_STATION)
                 .add(ModBlocks.MYSTIC_CHRONOGRAPH)
+                .add(ModBlocks.DIVINE_REPLICATOR)
                 .add(ModBlocks.SPEED_UPGRADE)
                 .add(ModBlocks.QUANTITY_UPGRADE);
 

@@ -76,6 +76,8 @@ public class ModBlocks {
 
     public static final Block MYSTIC_CHRONOGRAPH = registerBlock("mystic_chronograph",
             new MysticChronographBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
+    public static final Block DIVINE_REPLICATOR = registerBlock("divine_replicator",
+            new DivineReplicatorBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
     public static final Block CHRONOS_TIME_ACCUMULATOR = registerBlock("chronos_time_accumulator",
             new ChronosTimeAccumulatorBlock(FabricBlockSettings.copyOf(Blocks.STONE).strength(5f)));
 

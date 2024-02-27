@@ -24,6 +24,11 @@ public class ModBlockEntities {
                     FabricBlockEntityTypeBuilder.create(ChronosTimeAccumulatorBlockEntity::new,
                             ModBlocks.CHRONOS_TIME_ACCUMULATOR).build());
 
+    public static final BlockEntityType<DivineReplicatorBlockEntity> DIVINE_REPLICATOR_BLOCK_ENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(DivinityUnbound.MOD_ID, "divine_replicator_be"),
+                    FabricBlockEntityTypeBuilder.create(DivineReplicatorBlockEntity::new,
+                            ModBlocks.DIVINE_REPLICATOR).build());
+
     public static void registerBlockEntities() {
         DivinityUnbound.LOGGER.info("Registering Block Entities for " + DivinityUnbound.MOD_ID);
     }

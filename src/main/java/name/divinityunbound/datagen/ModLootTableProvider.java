@@ -46,6 +46,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.GENERATION_STATION);
         addDrop(ModBlocks.MYSTIC_CHRONOGRAPH);
         addDrop(ModBlocks.CHRONOS_TIME_ACCUMULATOR);
+        addDrop(ModBlocks.DIVINE_REPLICATOR);
         addDrop(ModBlocks.SPEED_UPGRADE);
         addDrop(ModBlocks.QUANTITY_UPGRADE);
     }
