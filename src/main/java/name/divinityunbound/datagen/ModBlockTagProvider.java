@@ -4,10 +4,8 @@ import name.divinityunbound.block.ModBlocks;
 import name.divinityunbound.util.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.minecraft.block.Block;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.registry.tag.ItemTags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -32,10 +30,12 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.DEEPSLATE_CELESTITE_ORE)
                 .add(ModBlocks.CELESTITE_INFUSED_STONE)
                 .add(ModBlocks.GOLDEN_CELESTITE_INFUSED_STONE)
+                .add(ModBlocks.FROZEN_TIME_GLASS)
                 .add(ModBlocks.CHRONOS_TIME_ACCUMULATOR)
                 .add(ModBlocks.GENERATION_STATION)
                 .add(ModBlocks.MYSTIC_CHRONOGRAPH)
                 .add(ModBlocks.DIVINE_REPLICATOR)
+                .add(ModBlocks.SPACE_SIPHON)
                 .add(ModBlocks.SPEED_UPGRADE)
                 .add(ModBlocks.QUANTITY_UPGRADE);
 
@@ -51,6 +51,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.GENERATION_STATION)
                 .add(ModBlocks.MYSTIC_CHRONOGRAPH)
                 .add(ModBlocks.DIVINE_REPLICATOR)
+                .add(ModBlocks.SPACE_SIPHON)
                 .add(ModBlocks.SPEED_UPGRADE)
                 .add(ModBlocks.QUANTITY_UPGRADE);
 

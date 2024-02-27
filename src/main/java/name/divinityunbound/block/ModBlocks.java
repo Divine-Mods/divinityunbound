@@ -9,8 +9,7 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.particle.DefaultParticleType;
-import net.minecraft.particle.ParticleTypes;
+import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
@@ -52,6 +51,9 @@ public class ModBlocks {
     public static final Block GOLDEN_CELESTITE_INFUSED_STONE = registerBlock("golden_celestite_infused_stone",
             new Block(FabricBlockSettings.copyOf(Blocks.STONE).strength(5f)));
 
+    public static final Block FROZEN_TIME_GLASS = registerBlock("frozen_time_glass",
+            new Block(FabricBlockSettings.copyOf(Blocks.GLASS).nonOpaque().allowsSpawning(Blocks::never).solidBlock(Blocks::never).suffocates(Blocks::never).blockVision(Blocks::never)));
+
     public static final Block SAND_OF_TIME = registerBlock("sand_of_time",
             new FallingBlock(FabricBlockSettings.copyOf(Blocks.SAND)) {
                 @Override
@@ -78,6 +80,9 @@ public class ModBlocks {
             new MysticChronographBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
     public static final Block DIVINE_REPLICATOR = registerBlock("divine_replicator",
             new DivineReplicatorBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
+
+    public static final Block SPACE_SIPHON = registerBlock("space_siphon",
+            new SpaceSiphonBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque().solidBlock(Blocks::never)));
     public static final Block CHRONOS_TIME_ACCUMULATOR = registerBlock("chronos_time_accumulator",
             new ChronosTimeAccumulatorBlock(FabricBlockSettings.copyOf(Blocks.STONE).strength(5f)));
 

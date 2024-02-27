@@ -39,6 +39,7 @@ public class ModItemGroups {
                         entries.add(ModItems.UNHOLY_INGOT);
                         entries.add(ModItems.SPEED_CORE);
                         entries.add(ModItems.QUANTITY_CORE);
+                        entries.add(ModItems.MOB_CORE);
 
                         /* Tools */
                         entries.add(ModItems.CELESTITE_PICKAXE);
@@ -66,6 +67,7 @@ public class ModItemGroups {
                         /* Blocks */
                         entries.add(ModBlocks.CELESTITE_INFUSED_STONE);
                         entries.add(ModBlocks.GOLDEN_CELESTITE_INFUSED_STONE);
+                        entries.add(ModBlocks.FROZEN_TIME_GLASS);
                         entries.add(ModBlocks.SAND_OF_TIME);
 
                         /* Block Entities */
@@ -73,6 +75,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.MYSTIC_CHRONOGRAPH);
                         entries.add(ModBlocks.CHRONOS_TIME_ACCUMULATOR);
                         entries.add(ModBlocks.DIVINE_REPLICATOR);
+                        entries.add(ModBlocks.SPACE_SIPHON);
                         entries.add(ModBlocks.SPEED_UPGRADE);
                         entries.add(ModBlocks.QUANTITY_UPGRADE);
 

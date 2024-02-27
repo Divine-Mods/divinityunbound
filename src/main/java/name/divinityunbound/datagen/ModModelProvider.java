@@ -23,6 +23,7 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DEEPSLATE_CELESTITE_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CELESTITE_INFUSED_STONE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.GOLDEN_CELESTITE_INFUSED_STONE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.FROZEN_TIME_GLASS);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.SAND_OF_TIME);
 
         blockStateModelGenerator.registerLog(ModBlocks.WILDERSUNG_LOG).log(ModBlocks.WILDERSUNG_LOG).wood(ModBlocks.WILDERSUNG_WOOD);
@@ -37,6 +38,7 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleState(ModBlocks.DIVINE_REPLICATOR);
         blockStateModelGenerator.registerSimpleState(ModBlocks.SPEED_UPGRADE);
         blockStateModelGenerator.registerSimpleState(ModBlocks.QUANTITY_UPGRADE);
+        blockStateModelGenerator.registerSimpleState(ModBlocks.SPACE_SIPHON);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHRONOS_TIME_ACCUMULATOR);
     }
 
@@ -58,6 +60,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.UNHOLY_INGOT, Models.GENERATED);
         itemModelGenerator.register(ModItems.SPEED_CORE, Models.GENERATED);
         itemModelGenerator.register(ModItems.QUANTITY_CORE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.MOB_CORE, Models.GENERATED);
 
         /* Tools */
         itemModelGenerator.register(ModItems.CELESTITE_PICKAXE, Models.HANDHELD);

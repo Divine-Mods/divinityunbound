@@ -8,7 +8,6 @@ import net.minecraft.block.Block;
 import net.minecraft.data.server.loottable.BlockLootTableGenerator;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Item;
-import net.minecraft.item.Items;
 import net.minecraft.loot.LootTable;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.entry.LeafEntry;
@@ -28,6 +27,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.RAW_CELESTITE_BLOCK);
         addDrop(ModBlocks.CELESTITE_INFUSED_STONE);
         addDrop(ModBlocks.GOLDEN_CELESTITE_INFUSED_STONE);
+        addDrop(ModBlocks.FROZEN_TIME_GLASS);
         addDrop(ModBlocks.SAND_OF_TIME);
 
         addDrop(ModBlocks.CELESTITE_ORE, copperLikeOreDrops(ModBlocks.CELESTITE_ORE, ModItems.RAW_CELESTITE));
@@ -47,6 +47,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.MYSTIC_CHRONOGRAPH);
         addDrop(ModBlocks.CHRONOS_TIME_ACCUMULATOR);
         addDrop(ModBlocks.DIVINE_REPLICATOR);
+        addDrop(ModBlocks.SPACE_SIPHON);
         addDrop(ModBlocks.SPEED_UPGRADE);
         addDrop(ModBlocks.QUANTITY_UPGRADE);
     }

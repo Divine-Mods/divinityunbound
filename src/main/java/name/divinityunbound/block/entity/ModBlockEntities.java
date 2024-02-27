@@ -29,6 +29,11 @@ public class ModBlockEntities {
                     FabricBlockEntityTypeBuilder.create(DivineReplicatorBlockEntity::new,
                             ModBlocks.DIVINE_REPLICATOR).build());
 
+    public static final BlockEntityType<SpaceSiphonBlockEntity> SPACE_SIPHON_BLOCK_ENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(DivinityUnbound.MOD_ID, "space_siphon_be"),
+                    FabricBlockEntityTypeBuilder.create(SpaceSiphonBlockEntity::new,
+                            ModBlocks.SPACE_SIPHON).build());
+
     public static void registerBlockEntities() {
         DivinityUnbound.LOGGER.info("Registering Block Entities for " + DivinityUnbound.MOD_ID);
     }

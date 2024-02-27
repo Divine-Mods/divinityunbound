@@ -11,6 +11,7 @@
   "item.divinityunbound.unholy_ingot": "Unholy Ingot",
   "item.divinityunbound.speed_core": "Speed Core",
   "item.divinityunbound.quantity_core": "Quantity Core",
+  "item.divinityunbound.mob_core": "Mob Core",
 
   "block.divinityunbound.celestite_block": "Block of Celestite",
   "block.divinityunbound.raw_celestite_block": "Block of Raw Celestite",
@@ -42,6 +43,7 @@
   "block.divinityunbound.celestite_infused_wildersung_planks": "Celestite Infused Wildersung Planks",
   "block.divinityunbound.celestite_infused_stone": "Celestite Infused Stone",
   "block.divinityunbound.golden_celestite_infused_stone": "Golden Celestite Infused Stone",
+  "block.divinityunbound.frozen_time_glass": "Frozen Time Glass",
   "block.divinityunbound.sand_of_time": "Sand of Time",
   "block.divinityunbound.wildersung_leaves": "Wildersung Leaves",
   "block.divinityunbound.wildersung_sapling": "Wildersung Sapling",
@@ -52,6 +54,7 @@
   "block.divinityunbound.speed_upgrade": "Speed Upgrade",
   "block.divinityunbound.quantity_upgrade": "Quantity Upgrade",
   "block.divinityunbound.divine_replicator": "Divine Replicator",
+  "block.divinityunbound.space_siphon": "Space Siphon",
 
   "item.divinityunbound.celestite_coal_focus": "Celestite Coal Focus",
   "item.divinityunbound.celestite_iron_focus": "Celestite Iron Focus",

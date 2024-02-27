@@ -24,6 +24,7 @@ public class ModItems {
     public static final Item UNHOLY_INGOT = registerItem("unholy_ingot", new Item(new FabricItemSettings()));
     public static final Item QUANTITY_CORE = registerItem("quantity_core", new Item(new FabricItemSettings()));
     public static final Item SPEED_CORE = registerItem("speed_core", new Item(new FabricItemSettings()));
+    public static final Item MOB_CORE = registerItem("mob_core", new Item(new FabricItemSettings()));
 
     public static final Item MAGIC_CELESTITE_DETECTOR = registerItem("magic_celestite_detector",
             new MagicOreDetectorItem(new FabricItemSettings().maxDamage(64)));
@@ -31,7 +32,7 @@ public class ModItems {
             new UnholyWandItem(new FabricItemSettings().maxDamage(32)));
 
     public static final Item DIVINE_WAND_OF_FLIGHT = registerItem("divine_wand_of_flight",
-            new DivineWandOfFlightItem(new FabricItemSettings().maxDamage(16)));
+            new DivineWandOfFlightItem(new FabricItemSettings().maxDamage(32)));
 
     public static final Item WAND_OF_CAPTURING = registerItem("wand_of_capturing",
             new WandOfCapturingItem(new FabricItemSettings().maxCount(1)));
@@ -79,6 +80,7 @@ public class ModItems {
         entries.add(UNHOLY_INGOT);
         entries.add(SPEED_CORE);
         entries.add(QUANTITY_CORE);
+        entries.add(MOB_CORE);
     }
 
     private static Item registerItem(String name, Item item) {

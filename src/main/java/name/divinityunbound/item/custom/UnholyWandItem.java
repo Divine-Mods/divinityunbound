@@ -114,4 +114,4 @@ public class UnholyWandItem extends Item {
         super.appendTooltip(stack, world, tooltip, context);
     }
 }
-}
+
