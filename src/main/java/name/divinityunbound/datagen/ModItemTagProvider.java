@@ -23,6 +23,18 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModBlocks.WILDERSUNG_PLANKS.asItem())
                 .add(ModBlocks.CELESTITE_INFUSED_WILDERSUNG_PLANKS.asItem());
 
+        getOrCreateTagBuilder(ItemTags.TOOLS)
+                .add(ModItems.CELESTITE_PICKAXE)
+                .add(ModItems.CELESTITE_AXE)
+                .add(ModItems.CELESTITE_SHOVEL)
+                .add(ModItems.CELESTITE_SWORD)
+                .add(ModItems.CELESTITE_HOE)
+                .add(ModItems.TIME_FORGED_PICKAXE)
+                .add(ModItems.TIME_FORGED_AXE)
+                .add(ModItems.TIME_FORGED_SHOVEL)
+                .add(ModItems.TIME_FORGED_SWORD)
+                .add(ModItems.TIME_FORGED_HOE);
+
         getOrCreateTagBuilder(ItemTags.LOGS_THAT_BURN)
                 .add(ModBlocks.WILDERSUNG_LOG.asItem())
                 .add(ModBlocks.WILDERSUNG_WOOD.asItem())

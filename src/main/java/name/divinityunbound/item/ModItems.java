@@ -12,6 +12,7 @@ import net.minecraft.util.Identifier;
 
 public class ModItems {
 
+    /* Items */
     public static final Item RAW_CELESTITE = registerItem("raw_celestite", new Item(new FabricItemSettings()));
     public static final Item CELESTITE = registerItem("celestite", new Item(new FabricItemSettings()));
     public static final Item CELESTITE_NUGGET = registerItem("celestite_nugget", new Item(new FabricItemSettings()));
@@ -26,6 +27,7 @@ public class ModItems {
     public static final Item SPEED_CORE = registerItem("speed_core", new Item(new FabricItemSettings()));
     public static final Item MOB_CORE = registerItem("mob_core", new Item(new FabricItemSettings()));
 
+    /* Wands */
     public static final Item MAGIC_CELESTITE_DETECTOR = registerItem("magic_celestite_detector",
             new MagicOreDetectorItem(new FabricItemSettings().maxDamage(64)));
     public static final Item UNHOLY_WAND = registerItem("unholy_wand",
@@ -37,18 +39,32 @@ public class ModItems {
     public static final Item WAND_OF_CAPTURING = registerItem("wand_of_capturing",
             new WandOfCapturingItem(new FabricItemSettings().maxCount(1)));
 
+    /* Tools */
+
     public static final Item CELESTITE_PICKAXE = registerItem("celestite_pickaxe",
-            new PickaxeItem(ModToolMaterial.CELESTITE, 2, 1.5f, new FabricItemSettings().maxCount(1)));
+            new PickaxeItem(ModToolMaterial.CELESTITE, 1, -2.8F, new FabricItemSettings().maxCount(1)));
     public static final Item CELESTITE_AXE = registerItem("celestite_axe",
-            new AxeItem(ModToolMaterial.CELESTITE, 8, 1.5f, new FabricItemSettings().maxCount(1)));
+            new AxeItem(ModToolMaterial.CELESTITE, 5.0F, -3.0F, new FabricItemSettings().maxCount(1)));
     public static final Item CELESTITE_SHOVEL = registerItem("celestite_shovel",
-            new ShovelItem(ModToolMaterial.CELESTITE, 1, 1.5f, new FabricItemSettings().maxCount(1)));
+            new ShovelItem(ModToolMaterial.CELESTITE, 1.5F, -3.0F, new FabricItemSettings().maxCount(1)));
     public static final Item CELESTITE_SWORD = registerItem("celestite_sword",
-            new SwordItem(ModToolMaterial.CELESTITE, 6, 2f, new FabricItemSettings().maxCount(1)));
+            new SwordItem(ModToolMaterial.CELESTITE, 3, -2.4F, new FabricItemSettings().maxCount(1)));
     public static final Item CELESTITE_HOE = registerItem("celestite_hoe",
-            new HoeItem(ModToolMaterial.CELESTITE, 1, 1.5f, new FabricItemSettings().maxCount(1)));
+            new HoeItem(ModToolMaterial.CELESTITE, -3, 0.0F, new FabricItemSettings().maxCount(1)));
+
+    public static final Item TIME_FORGED_PICKAXE = registerItem("time_forged_pickaxe",
+            new PickaxeItem(ModToolMaterial.TIME_FORGED, 1, -2.8F, new FabricItemSettings().maxCount(1)));
+    public static final Item TIME_FORGED_AXE = registerItem("time_forged_axe",
+            new AxeItem(ModToolMaterial.TIME_FORGED, 5.0F, -3.0F, new FabricItemSettings().maxCount(1)));
+    public static final Item TIME_FORGED_SHOVEL = registerItem("time_forged_shovel",
+            new ShovelItem(ModToolMaterial.TIME_FORGED, 1.5F, -3.0F, new FabricItemSettings().maxCount(1)));
+    public static final Item TIME_FORGED_SWORD = registerItem("time_forged_sword",
+            new SwordItem(ModToolMaterial.TIME_FORGED, 3, -2.4F, new FabricItemSettings().maxCount(1)));
+    public static final Item TIME_FORGED_HOE = registerItem("time_forged_hoe",
+            new HoeItem(ModToolMaterial.TIME_FORGED, -4, 0.0F, new FabricItemSettings().maxCount(1)));
 
 
+    /* Armor */
     public static final Item CELESTITE_HELMET = registerItem("celestite_helmet",
             new ArmorItem(ModArmorMaterials.CELESTITE, ArmorItem.Type.HELMET, new FabricItemSettings().maxCount(1)));
     public static final Item CELESTITE_CHESTPLATE = registerItem("celestite_chestplate",
@@ -58,6 +74,8 @@ public class ModItems {
     public static final Item CELESTITE_BOOTS = registerItem("celestite_boots",
             new ArmorItem(ModArmorMaterials.CELESTITE, ArmorItem.Type.BOOTS, new FabricItemSettings().maxCount(1)));
 
+
+    /* Foci */
 
     public static final Item CELESTITE_COAL_FOCUS = registerItem("celestite_coal_focus", new Item(new FabricItemSettings().maxCount(1)));
     public static final Item CELESTITE_IRON_FOCUS = registerItem("celestite_iron_focus", new Item(new FabricItemSettings().maxCount(1)));

@@ -6,7 +6,8 @@ import net.minecraft.recipe.Ingredient;
 import java.util.function.Supplier;
 
 public enum ModToolMaterial implements ToolMaterial {
-    CELESTITE(3, 1200, 8.5f, 2f, 35, () -> Ingredient.ofItems(ModItems.CELESTITE));
+    CELESTITE(3, 1000, 7.0f, 2.5f, 15, () -> Ingredient.ofItems(ModItems.CELESTITE)),
+    TIME_FORGED(4, 1500, 9.5f, 4.5f, 25, () -> Ingredient.ofItems(ModItems.TIME_FORGED_INGOT));
 
     private final int miningLevel;
     private final int itemDurability;

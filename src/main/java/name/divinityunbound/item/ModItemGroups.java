@@ -48,6 +48,12 @@ public class ModItemGroups {
                         entries.add(ModItems.CELESTITE_SWORD);
                         entries.add(ModItems.CELESTITE_HOE);
 
+                        entries.add(ModItems.TIME_FORGED_PICKAXE);
+                        entries.add(ModItems.TIME_FORGED_AXE);
+                        entries.add(ModItems.TIME_FORGED_SHOVEL);
+                        entries.add(ModItems.TIME_FORGED_SWORD);
+                        entries.add(ModItems.TIME_FORGED_HOE);
+
                         /* Armor */
                         entries.add(ModItems.CELESTITE_HELMET);
                         entries.add(ModItems.CELESTITE_CHESTPLATE);
