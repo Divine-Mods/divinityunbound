@@ -4,8 +4,10 @@ import name.divinityunbound.block.ModBlocks;
 import name.divinityunbound.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.minecraft.advancement.AdvancementCriterion;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.server.recipe.RecipeExporter;
+import net.minecraft.data.server.recipe.RecipeProvider;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
 import net.minecraft.item.ItemConvertible;
@@ -41,6 +43,50 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offer2x2CompactingRecipe(exporter, RecipeCategory.MISC, ModItems.WILDERSUNG_STRING, ModBlocks.WILDERSUNG_LEAVES);
         offer2x2CompactingRecipe(exporter, RecipeCategory.MISC, ModBlocks.SAND_OF_TIME, ModItems.GRAIN_OF_TIME);
 
+        offerHelmetRecipe(exporter, RecipeCategory.COMBAT, ModItems.CELESTITE_HELMET, ModItems.CELESTITE);
+        offerChestplateRecipe(exporter, RecipeCategory.COMBAT, ModItems.CELESTITE_CHESTPLATE, ModItems.CELESTITE);
+        offerLeggingsRecipe(exporter, RecipeCategory.COMBAT, ModItems.CELESTITE_LEGGINGS, ModItems.CELESTITE);
+        offerBootsRecipe(exporter, RecipeCategory.COMBAT, ModItems.CELESTITE_BOOTS, ModItems.CELESTITE);
+
+//        offerHelmetRecipe(exporter, RecipeCategory.COMBAT, ModItems.TIME_FORGED_HELMET, ModItems.TIME_FORGED_INGOT);
+//        offerChestplateRecipe(exporter, RecipeCategory.COMBAT, ModItems.TIME_FORGED_CHESTPLATE, ModItems.TIME_FORGED_INGOT);
+//        offerLeggingsRecipe(exporter, RecipeCategory.COMBAT, ModItems.TIME_FORGED_LEGGINGS, ModItems.TIME_FORGED_INGOT);
+//        offerBootsRecipe(exporter, RecipeCategory.COMBAT, ModItems.TIME_FORGED_BOOTS, ModItems.TIME_FORGED_INGOT);
+
+//        offerHelmetRecipe(exporter, RecipeCategory.COMBAT, ModItems.SPACE_FORGED_HELMET, ModItems.SPACE_FORGED_INGOT);
+//        offerChestplateRecipe(exporter, RecipeCategory.COMBAT, ModItems.SPACE_FORGED_CHESTPLATE, ModItems.SPACE_FORGED_INGOT);
+//        offerLeggingsRecipe(exporter, RecipeCategory.COMBAT, ModItems.SPACE_FORGED_LEGGINGS, ModItems.SPACE_FORGED_INGOT);
+//        offerBootsRecipe(exporter, RecipeCategory.COMBAT, ModItems.SPACE_FORGED_BOOTS, ModItems.SPACE_FORGED_INGOT);
+
+//        offerHelmetRecipe(exporter, RecipeCategory.COMBAT, ModItems.SPACE_TIME_HELMET, ModItems.SPACE_TIME_INGOT);
+//        offerChestplateRecipe(exporter, RecipeCategory.COMBAT, ModItems.SPACE_TIME, ModItems.SPACE_TIME_INGOT);
+//        offerLeggingsRecipe(exporter, RecipeCategory.COMBAT, ModItems.SPACE_TIME_LEGGINGS, ModItems.SPACE_TIME_INGOT);
+//        offerBootsRecipe(exporter, RecipeCategory.COMBAT, ModItems.SPACE_TIME_BOOTS, ModItems.SPACE_TIME_INGOT);
+
+        offerPickaxeRecipe(exporter, RecipeCategory.TOOLS, ModItems.CELESTITE_PICKAXE, ModItems.CELESTITE);
+        offerAxeRecipe(exporter, RecipeCategory.TOOLS, ModItems.CELESTITE_AXE, ModItems.CELESTITE);
+        offerShovelRecipe(exporter, RecipeCategory.TOOLS, ModItems.CELESTITE_SHOVEL, ModItems.CELESTITE);
+        offerSwordRecipe(exporter, RecipeCategory.TOOLS, ModItems.CELESTITE_SWORD, ModItems.CELESTITE);
+        offerHoeRecipe(exporter, RecipeCategory.TOOLS, ModItems.CELESTITE_HOE, ModItems.CELESTITE);
+
+        offerPickaxeRecipe(exporter, RecipeCategory.TOOLS, ModItems.TIME_FORGED_PICKAXE, ModItems.TIME_FORGED_INGOT);
+        offerAxeRecipe(exporter, RecipeCategory.TOOLS, ModItems.TIME_FORGED_AXE, ModItems.TIME_FORGED_INGOT);
+        offerShovelRecipe(exporter, RecipeCategory.TOOLS, ModItems.TIME_FORGED_SHOVEL, ModItems.TIME_FORGED_INGOT);
+        offerSwordRecipe(exporter, RecipeCategory.TOOLS, ModItems.TIME_FORGED_SWORD, ModItems.TIME_FORGED_INGOT);
+        offerHoeRecipe(exporter, RecipeCategory.TOOLS, ModItems.TIME_FORGED_HOE, ModItems.TIME_FORGED_INGOT);
+
+//        offerPickaxeRecipe(exporter, RecipeCategory.TOOLS, ModItems.SPACE_FORGED_PICKAXE, ModItems.SPACE_FORGED_INGOT);
+//        offerAxeRecipe(exporter, RecipeCategory.TOOLS, ModItems.SPACE_FORGED_AXE, ModItems.SPACE_FORGED_INGOT);
+//        offerShovelRecipe(exporter, RecipeCategory.TOOLS, ModItems.SPACE_FORGED, ModItems.SPACE_FORGED_INGOT);
+//        offerSwordRecipe(exporter, RecipeCategory.TOOLS, ModItems.SPACE_FORGED_SWORD, ModItems.SPACE_FORGED_INGOT);
+//        offerHoeRecipe(exporter, RecipeCategory.TOOLS, ModItems.SPACE_FORGED_HOE, ModItems.SPACE_FORGED_INGOT);
+//
+//        offerPickaxeRecipe(exporter, RecipeCategory.TOOLS, ModItems.SPACE_TIME_PICKAXE, ModItems.SPACE_TIME_INGOT);
+//        offerAxeRecipe(exporter, RecipeCategory.TOOLS, ModItems.SPACE_TIME_AXE, ModItems.SPACE_TIME_INGOT);
+//        offerShovelRecipe(exporter, RecipeCategory.TOOLS, ModItems.SPACE_TIME_SHOVEL, ModItems.SPACE_TIME_INGOT);
+//        offerSwordRecipe(exporter, RecipeCategory.TOOLS, ModItems.SPACE_TIME_SWORD, ModItems.SPACE_TIME_INGOT);
+//        offerHoeRecipe(exporter, RecipeCategory.TOOLS, ModItems.SPACE_TIME_HOE, ModItems.SPACE_TIME_INGOT);
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.CELESTITE, 1)
                 .pattern("NNN")
                 .pattern("NNN")
@@ -60,6 +106,22 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(ModItems.CELESTITE), conditionsFromItem((ModItems.CELESTITE)))
                 .criterion(hasItem(Blocks.STONE), conditionsFromItem((Blocks.STONE)))
                 .offerTo(exporter, new Identifier("celestite_infused_stone"));
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.SPACE_FUEL, 1)
+                .input(ModItems.SPACE_DUST)
+                .input(Items.COAL)
+                .criterion(hasItem(ModItems.SPACE_DUST), conditionsFromItem((ModItems.SPACE_DUST)))
+                .criterion(hasItem(Items.COAL), conditionsFromItem((Items.COAL)))
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.SPACE_FUEL)));
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.SPACE_TIME_INGOT, 3)
+                .input(ModItems.TIME_FORGED_INGOT)
+                .input(ModItems.SPACE_FORGED_INGOT)
+                .input(Items.NETHERITE_INGOT)
+                .criterion(hasItem(ModItems.TIME_FORGED_INGOT), conditionsFromItem((ModItems.TIME_FORGED_INGOT)))
+                .criterion(hasItem(ModItems.SPACE_FORGED_INGOT), conditionsFromItem((ModItems.SPACE_FORGED_INGOT)))
+                .criterion(hasItem(Items.NETHERITE_INGOT), conditionsFromItem((Items.NETHERITE_INGOT)))
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.SPACE_TIME_INGOT)));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.GOLDEN_CELESTITE_INFUSED_STONE, 1)
                 .pattern("GGG")
@@ -104,6 +166,18 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(ModItems.CELESTIUM_DUST), conditionsFromItem(ModItems.CELESTIUM_DUST))
                 .criterion(hasItem(ModItems.UNHOLY_DUST), conditionsFromItem(ModItems.UNHOLY_DUST))
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.TIME_FORGED_INGOT)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.SPACE_FORGED_INGOT, 1)
+                .pattern("SUS")
+                .pattern("UCU")
+                .pattern("SUS")
+                .input('C', ModItems.CELESTITE)
+                .input('S', ModItems.SPACE_DUST)
+                .input('U', ModItems.UNHOLY_DUST)
+                .criterion(hasItem(ModItems.CELESTITE), conditionsFromItem(ModItems.CELESTITE))
+                .criterion(hasItem(ModItems.SPACE_DUST), conditionsFromItem(ModItems.SPACE_DUST))
+                .criterion(hasItem(ModItems.UNHOLY_DUST), conditionsFromItem(ModItems.UNHOLY_DUST))
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.SPACE_FORGED_INGOT)));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.UNHOLY_WAND, 1)
                 .pattern(" DC")
@@ -303,5 +377,116 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(Items.NETHERITE_BLOCK), conditionsFromItem(Items.NETHERITE_BLOCK))
                 .criterion(hasItem(ModItems.CELESTITE), conditionsFromItem(ModItems.CELESTITE))
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.CELESTITE_NETHERITE_FOCUS)));
+    }
+
+    public static void offerHelmetRecipe(RecipeExporter exporter, RecipeCategory category,
+                                             ItemConvertible output, ItemConvertible input) {
+        ShapedRecipeJsonBuilder.create(category, output, 1)
+                .input(Character.valueOf('#'), input)
+                .pattern("###")
+                .pattern("# #")
+                .criterion(RecipeProvider.hasItem(input),
+                        (AdvancementCriterion)RecipeProvider.conditionsFromItem(input))
+                .offerTo(exporter);
+    }
+
+    public static void offerChestplateRecipe(RecipeExporter exporter, RecipeCategory category,
+                                             ItemConvertible output, ItemConvertible input) {
+        ShapedRecipeJsonBuilder.create(category, output, 1)
+                .input(Character.valueOf('#'), input)
+                .pattern("# #")
+                .pattern("###")
+                .pattern("###")
+                .criterion(RecipeProvider.hasItem(input),
+                        (AdvancementCriterion)RecipeProvider.conditionsFromItem(input))
+                .offerTo(exporter);
+    }
+
+    public static void offerLeggingsRecipe(RecipeExporter exporter, RecipeCategory category,
+                                             ItemConvertible output, ItemConvertible input) {
+        ShapedRecipeJsonBuilder.create(category, output, 1)
+                .input(Character.valueOf('#'), input)
+                .pattern("###")
+                .pattern("# #")
+                .pattern("# #")
+                .criterion(RecipeProvider.hasItem(input),
+                        (AdvancementCriterion)RecipeProvider.conditionsFromItem(input))
+                .offerTo(exporter);
+    }
+
+    public static void offerBootsRecipe(RecipeExporter exporter, RecipeCategory category,
+                                             ItemConvertible output, ItemConvertible input) {
+        ShapedRecipeJsonBuilder.create(category, output, 1)
+                .input(Character.valueOf('#'), input)
+                .pattern("# #")
+                .pattern("# #")
+                .criterion(RecipeProvider.hasItem(input),
+                        (AdvancementCriterion)RecipeProvider.conditionsFromItem(input))
+                .offerTo(exporter);
+    }
+
+    public static void offerPickaxeRecipe(RecipeExporter exporter, RecipeCategory category,
+                                        ItemConvertible output, ItemConvertible input) {
+        ShapedRecipeJsonBuilder.create(category, output, 1)
+                .input(Character.valueOf('#'), input)
+                .input(Character.valueOf('S'), Items.STICK)
+                .pattern("###")
+                .pattern(" S ")
+                .pattern(" S ")
+                .criterion(RecipeProvider.hasItem(input),
+                        (AdvancementCriterion)RecipeProvider.conditionsFromItem(input))
+                .offerTo(exporter);
+    }
+
+    public static void offerAxeRecipe(RecipeExporter exporter, RecipeCategory category,
+                                          ItemConvertible output, ItemConvertible input) {
+        ShapedRecipeJsonBuilder.create(category, output, 1)
+                .input(Character.valueOf('#'), input)
+                .input(Character.valueOf('S'), Items.STICK)
+                .pattern("##")
+                .pattern("#S")
+                .pattern(" S")
+                .criterion(RecipeProvider.hasItem(input),
+                        (AdvancementCriterion)RecipeProvider.conditionsFromItem(input))
+                .offerTo(exporter);
+    }
+
+    public static void offerShovelRecipe(RecipeExporter exporter, RecipeCategory category,
+                                      ItemConvertible output, ItemConvertible input) {
+        ShapedRecipeJsonBuilder.create(category, output, 1)
+                .input(Character.valueOf('#'), input)
+                .input(Character.valueOf('S'), Items.STICK)
+                .pattern("#")
+                .pattern("S")
+                .pattern("S")
+                .criterion(RecipeProvider.hasItem(input),
+                        (AdvancementCriterion)RecipeProvider.conditionsFromItem(input))
+                .offerTo(exporter);
+    }
+
+    public static void offerSwordRecipe(RecipeExporter exporter, RecipeCategory category,
+                                      ItemConvertible output, ItemConvertible input) {
+        ShapedRecipeJsonBuilder.create(category, output, 1)
+                .input(Character.valueOf('#'), input)
+                .input(Character.valueOf('S'), Items.STICK)
+                .pattern("#")
+                .pattern("#")
+                .pattern("S")
+                .criterion(RecipeProvider.hasItem(input),
+                        (AdvancementCriterion)RecipeProvider.conditionsFromItem(input))
+                .offerTo(exporter);
+    }
+
+    public static void offerHoeRecipe(RecipeExporter exporter, RecipeCategory category,
+                                      ItemConvertible output, ItemConvertible input) {
+        ShapedRecipeJsonBuilder.create(category, output, 1)
+                .input(Character.valueOf('#'), input)
+                .input(Character.valueOf('S'), Items.STICK)
+                .pattern("##")
+                .pattern(" S")
+                .pattern(" S")
+                .criterion(RecipeProvider.hasItem(input),
+                        (AdvancementCriterion)RecipeProvider.conditionsFromItem(input))
+                .offerTo(exporter);
     }
 }
