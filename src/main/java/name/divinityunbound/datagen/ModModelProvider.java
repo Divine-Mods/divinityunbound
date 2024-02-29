@@ -1,8 +1,10 @@
 package name.divinityunbound.datagen;
 
 import com.ibm.icu.text.Normalizer2;
+import dev.architectury.platform.Mod;
 import name.divinityunbound.block.ModBlocks;
 import name.divinityunbound.item.ModItems;
+import name.divinityunbound.item.client.SpaceSiphonItemModel;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.data.client.BlockStateModelGenerator;
@@ -55,6 +57,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.GRAIN_OF_TIME, Models.GENERATED);
         itemModelGenerator.register(ModItems.CHRONOS_CLOCK, Models.GENERATED);
         itemModelGenerator.register(ModItems.UNHOLY_DUST, Models.GENERATED);
+        itemModelGenerator.register(ModItems.SPACE_DUST, Models.GENERATED);
         itemModelGenerator.register(ModItems.WILDERSUNG_STRING, Models.GENERATED);
         itemModelGenerator.register(ModItems.TIME_FORGED_INGOT, Models.GENERATED);
         itemModelGenerator.register(ModItems.UNHOLY_INGOT, Models.GENERATED);

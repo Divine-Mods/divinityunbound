@@ -10,12 +10,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
-import net.minecraft.fluid.WaterFluid;
+import net.minecraft.world.dimension.DimensionTypes;
 
 public class GrainOfTimeItem extends Item {
     public GrainOfTimeItem(Settings settings) {
@@ -32,16 +31,7 @@ public class GrainOfTimeItem extends Item {
 
             PlayerEntity player = context.getPlayer();
 
-            if (world.getDimension().ultrawarm()) {
-                if (blockState.getBlock().equals(Blocks.BEDROCK)) {
-                    ItemStack item = new ItemStack(ModItems.UNHOLY_DUST);
-
-                    this.playUseSound(world, blockPos);
-                    context.getStack().decrement(1);
-                    player.giveItemStack(item);
-                }
-            }
-            else {
+            if (world.getDimensionKey() == DimensionTypes.OVERWORLD) {
                 if (blockState.getBlock().equals(ModBlocks.GOLDEN_CELESTITE_INFUSED_STONE)
                         && blockPos.getY() > 300) {
                     ItemStack item = new ItemStack(ModItems.CELESTIUM_DUST);
@@ -51,6 +41,25 @@ public class GrainOfTimeItem extends Item {
                     player.giveItemStack(item);
                 }
             }
+            else if (world.getDimensionKey() == DimensionTypes.THE_NETHER) {
+                if (blockState.getBlock().equals(Blocks.BEDROCK)) {
+                    ItemStack item = new ItemStack(ModItems.UNHOLY_DUST);
+
+                    this.playUseSound(world, blockPos);
+                    context.getStack().decrement(1);
+                    player.giveItemStack(item);
+                }
+            }
+            else if (world.getDimensionKey() == DimensionTypes.THE_END) {
+                if (blockState.getBlock().equals(Blocks.OBSIDIAN)) {
+                    ItemStack item = new ItemStack(ModItems.SPACE_DUST);
+
+                    this.playUseSound(world, blockPos);
+                    context.getStack().decrement(1);
+                    player.giveItemStack(item);
+                }
+            }
+
         }
 
 

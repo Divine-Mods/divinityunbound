@@ -13,6 +13,8 @@ public enum ModArmorMaterials implements ArmorMaterial {
     CELESTITE("celestite", 25, new int[] { 3, 8, 6, 3}, 25,
             SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 2f, 0.1f,
             () -> Ingredient.ofItems(ModItems.CELESTITE));
+
+    // TODO: Add time forged armor and other tiers of armor
     private final String name;
     private final int durabilityMultiplier;
     private final int[] protectionAmounts;

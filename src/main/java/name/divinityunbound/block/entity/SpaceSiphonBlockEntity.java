@@ -26,13 +26,20 @@ import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
+import software.bernie.geckolib.animatable.GeoBlockEntity;
+import software.bernie.geckolib.core.animatable.GeoAnimatable;
+import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInstanceCache;
+import software.bernie.geckolib.core.animation.*;
+import software.bernie.geckolib.core.object.PlayState;
+import software.bernie.geckolib.util.RenderUtils;
 
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
 
-public class SpaceSiphonBlockEntity extends BlockEntity implements ImplementedInventory, SidedInventory {
-
+public class SpaceSiphonBlockEntity extends BlockEntity implements ImplementedInventory, SidedInventory, GeoBlockEntity {
+    private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
     private final DefaultedList<ItemEntity> detectedList = DefaultedList.ofSize(0);
     private final Hashtable<ItemEntity, Long> detectedListTimes = new Hashtable<>();
     private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(1, ItemStack.EMPTY);
@@ -46,6 +53,7 @@ public class SpaceSiphonBlockEntity extends BlockEntity implements ImplementedIn
     protected final PropertyDelegate propertyDelegate;
     private int progress = 0;
     private int maxProgress = 72;
+    private int transferCooldown = 0;
 
     public SpaceSiphonBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.SPACE_SIPHON_BLOCK_ENTITY, pos, state);
@@ -97,6 +105,16 @@ public class SpaceSiphonBlockEntity extends BlockEntity implements ImplementedIn
         if (world.isClient()) {
             return;
         }
+        if (world.isReceivingRedstonePower(pos)) {
+            return;
+        }
+        countUpgrades(world, pos);
+        // TODO: tweak transfer cooldown and add range upgrade
+        transferCooldown += 1 + speedCount;
+        if (transferCooldown < 20) {
+            return;
+        }
+        transferCooldown = 0;
         //PlayerEntity pe = world.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), 10, false);
         BlockPos bp = pos.offset(Direction.DOWN);
         Inventory belowInventory = getInventoryAt(world, (double) bp.getX() + 0.5,
@@ -294,5 +312,25 @@ public class SpaceSiphonBlockEntity extends BlockEntity implements ImplementedIn
 
     public void removeFromDetectedList(ItemEntity ie) {
         this.detectedList.remove(ie);
+    }
+
+    @Override
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+        controllers.add(new AnimationController<GeoAnimatable>(this, "controller", 0, this::predicate));
+    }
+
+    private <T extends GeoAnimatable> PlayState predicate(AnimationState<T> tAnimationState) {
+        tAnimationState.getController().setAnimation(RawAnimation.begin().then("idle", Animation.LoopType.LOOP));
+        return PlayState.CONTINUE;
+    }
+
+    @Override
+    public AnimatableInstanceCache getAnimatableInstanceCache() {
+        return cache;
+    }
+
+    @Override
+    public double getTick(Object blockEntity) {
+        return RenderUtils.getCurrentTick();
     }
 }

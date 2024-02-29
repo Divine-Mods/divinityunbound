@@ -1,13 +1,15 @@
 package name.divinityunbound.item;
 
+import com.mojang.serialization.Lifecycle;
 import name.divinityunbound.DivinityUnbound;
+import name.divinityunbound.block.ModBlocks;
 import name.divinityunbound.item.custom.*;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.*;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
+import net.minecraft.registry.*;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
 
 public class ModItems {
@@ -17,6 +19,7 @@ public class ModItems {
     public static final Item CELESTITE = registerItem("celestite", new Item(new FabricItemSettings()));
     public static final Item CELESTITE_NUGGET = registerItem("celestite_nugget", new Item(new FabricItemSettings()));
     public static final Item CELESTIUM_DUST = registerItem("celestium_dust", new Item(new FabricItemSettings()));
+    public static final Item SPACE_DUST = registerItem("space_dust", new Item(new FabricItemSettings()));
     public static final Item GRAIN_OF_TIME = registerItem("grain_of_time", new GrainOfTimeItem(new FabricItemSettings()));
     public static final Item CHRONOS_CLOCK = registerItem("chronos_clock", new Item(new FabricItemSettings()));
     public static final Item UNHOLY_DUST = registerItem("unholy_dust", new Item(new FabricItemSettings()));
@@ -76,14 +79,17 @@ public class ModItems {
 
 
     /* Foci */
-
+    // TODO: Add foci for lapis, redstone, and maybe a few building blocks
     public static final Item CELESTITE_COAL_FOCUS = registerItem("celestite_coal_focus", new Item(new FabricItemSettings().maxCount(1)));
     public static final Item CELESTITE_IRON_FOCUS = registerItem("celestite_iron_focus", new Item(new FabricItemSettings().maxCount(1)));
     public static final Item CELESTITE_GOLD_FOCUS = registerItem("celestite_gold_focus", new Item(new FabricItemSettings().maxCount(1)));
     public static final Item CELESTITE_DIAMOND_FOCUS = registerItem("celestite_diamond_focus", new Item(new FabricItemSettings().maxCount(1)));
     public static final Item CELESTITE_NETHERITE_FOCUS = registerItem("celestite_netherite_focus", new Item(new FabricItemSettings().maxCount(1)));
 
-
+    /* Blocks */
+    // TODO: Fix broken animated item model for space siphon
+    //RegistryEntry.Reference reference = overrideItem("space_siphon", new SpaceSiphonItem(ModBlocks.SPACE_SIPHON, new FabricItemSettings()));
+    //public static final Item SPACE_SIPHON_ITEM = Registries.ITEM.get(new Identifier("space_siphon"));
 
     private static void addItemsToIngredientItemGroup(FabricItemGroupEntries entries) {
         entries.add(RAW_CELESTITE);
@@ -101,6 +107,9 @@ public class ModItems {
         entries.add(MOB_CORE);
     }
 
+    public static RegistryEntry.Reference overrideItem(String itemName, Item item) {
+        return ((MutableRegistry)Registries.ITEM).add(RegistryKey.of(Registries.ITEM.getKey(), new Identifier(itemName)), item, Lifecycle.stable());
+    }
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier(DivinityUnbound.MOD_ID, name), item);
     }
