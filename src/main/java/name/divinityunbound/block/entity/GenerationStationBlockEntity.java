@@ -34,9 +34,10 @@ import java.util.List;
 import java.util.Optional;
 import net.minecraft.entity.mob.*;
 public class GenerationStationBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory, ImplementedInventory, SidedInventory {
-    private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(2, ItemStack.EMPTY);
+    private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(3, ItemStack.EMPTY);
     private static final int INPUT_SLOT = 0;
-    private static final int OUTPUT_SLOT = 1;
+    private static final int FUEL_SLOT = 1;
+    private static final int OUTPUT_SLOT = 2;
 
     private int speedCount = 0;
     private int quantityCount = 0;
@@ -140,6 +141,7 @@ public class GenerationStationBlockEntity extends BlockEntity implements Extende
     private void craftItem() {
         Optional<RecipeEntry<GenerationStationRecipe>> recipe = getCurrentRecipe();
         //this.removeStack(INPUT_SLOT, 1);
+        this.getStack(FUEL_SLOT).setCount(this.getStack(FUEL_SLOT).getCount() - 1);
 
         this.setStack(OUTPUT_SLOT, new ItemStack(recipe.get().value().getResult(null).getItem(),
                 getStack(OUTPUT_SLOT).getCount() + recipe.get().value().getResult(null).getCount() + quantityCount));
@@ -215,7 +217,7 @@ public class GenerationStationBlockEntity extends BlockEntity implements Extende
 
     @Override
     public boolean canInsert(int slot, ItemStack stack, Direction direction) {
-        return slot == INPUT_SLOT && direction == Direction.UP;
+        return (slot == INPUT_SLOT || slot == FUEL_SLOT) && direction == Direction.UP;
     }
 
     @Override

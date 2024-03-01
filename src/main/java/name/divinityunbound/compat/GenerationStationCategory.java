@@ -46,8 +46,11 @@ public class GenerationStationCategory implements DisplayCategory<BasicDisplay> 
         List<Widget> widgets = new LinkedList<>();
         widgets.add(Widgets.createTexturedWidget(TEXTURE, new Rectangle(startPoint.x, startPoint.y, 175, 82)));
 
-        widgets.add(Widgets.createSlot(new Point(startPoint.x + 80, startPoint.y + 11))
+        widgets.add(Widgets.createSlot(new Point(startPoint.x + 20, startPoint.y + 11))
                 .entries(display.getInputEntries().get(0)));
+
+        widgets.add(Widgets.createSlot(new Point(startPoint.x + 80, startPoint.y + 11))
+                .entries(display.getInputEntries().get(1)));
 
         widgets.add(Widgets.createSlot(new Point(startPoint.x + 80, startPoint.y + 59))
                 .markOutput().entries(display.getOutputEntries().get(0)));

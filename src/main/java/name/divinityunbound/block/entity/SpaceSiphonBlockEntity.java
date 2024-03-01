@@ -110,8 +110,8 @@ public class SpaceSiphonBlockEntity extends BlockEntity implements ImplementedIn
         }
         countUpgrades(world, pos);
         // TODO: tweak transfer cooldown and add range upgrade
-        transferCooldown += 1 + speedCount;
-        if (transferCooldown < 20) {
+        transferCooldown += 1 + (speedCount * 7);
+        if (transferCooldown < 60) {
             return;
         }
         transferCooldown = 0;

@@ -27,14 +27,15 @@ public class GenerationStationScreenHandler extends ScreenHandler {
 
     public GenerationStationScreenHandler(int syncId, PlayerInventory playerInventory, BlockEntity blockEntity, PropertyDelegate arrayPropertyDelegate) {
         super(ModScreenHandlers.GENERATION_STATION_SCREEN_HANDLER, syncId);
-        checkSize((Inventory) blockEntity, 2);
+        checkSize((Inventory) blockEntity, 3);
         this.inventory = (Inventory) blockEntity;
         inventory.onOpen(playerInventory.player);
         this.propertyDelegate = arrayPropertyDelegate;
         this.blockEntity = (GenerationStationBlockEntity) blockEntity;
 
-        this.addSlot(new Slot(inventory, 0, 80, 11));
-        this.addSlot(new Slot(inventory, 1, 80, 59));
+        this.addSlot(new Slot(inventory, 0, 20, 11));
+        this.addSlot(new Slot(inventory, 1, 80, 11));
+        this.addSlot(new Slot(inventory, 2, 80, 59));
 
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);

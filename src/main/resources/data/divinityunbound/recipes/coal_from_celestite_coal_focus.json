@@ -3,6 +3,9 @@
   "ingredients": [
     {
       "item": "divinityunbound:celestite_coal_focus"
+    },
+    {
+      "item": "divinityunbound:celestium_dust"
     }
   ],
   "output": {

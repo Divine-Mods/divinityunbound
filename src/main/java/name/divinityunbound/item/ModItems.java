@@ -34,8 +34,8 @@ public class ModItems {
     public static final Item MOB_CORE = registerItem("mob_core", new Item(new FabricItemSettings()));
 
     /* Wands */
-    public static final Item MAGIC_CELESTITE_DETECTOR = registerItem("magic_celestite_detector",
-            new MagicOreDetectorItem(new FabricItemSettings().maxDamage(64)));
+//    public static final Item MAGIC_CELESTITE_DETECTOR = registerItem("magic_celestite_detector",
+//            new MagicOreDetectorItem(new FabricItemSettings().maxDamage(64)));
     public static final Item UNHOLY_WAND = registerItem("unholy_wand",
             new UnholyWandItem(new FabricItemSettings().maxDamage(32)));
 

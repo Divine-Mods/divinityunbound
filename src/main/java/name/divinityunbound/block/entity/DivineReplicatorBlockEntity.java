@@ -36,8 +36,9 @@ import java.util.List;
 import java.util.Optional;
 
 public class DivineReplicatorBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory, ImplementedInventory, SidedInventory {
-    private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(1, ItemStack.EMPTY);
-    private static final int INPUT_SLOT = 0;
+    private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(2, ItemStack.EMPTY);
+    private static final int WAND_SLOT = 1;
+    private static final int FUEL_SLOT = 0;
 
     private int speedCount = 0;
     private int quantityCount = 0;
@@ -113,13 +114,14 @@ public class DivineReplicatorBlockEntity extends BlockEntity implements Extended
             return;
         }
 
-        if (this.hasValidWand()) {
+        if (this.hasValidWand() && this.hasFuel()) {
             this.countUpgrades(world, pos);
             for (int i = 0; i <= speedCount; i++) {
                 this.increaseCraftProgress();
                 markDirty(world, pos, state);
                 if (hasCraftingFinished()) {
                     this.spawnMob(world, pos);
+                    this.spendFuel();
                     this.resetProgress();
                 }
             }
@@ -135,7 +137,7 @@ public class DivineReplicatorBlockEntity extends BlockEntity implements Extended
     }
 
     private void spawnMob(World world, BlockPos pos) {
-        ItemStack item = this.getStack(INPUT_SLOT);
+        ItemStack item = this.getStack(WAND_SLOT);
         if (item.getNbt() != null) {
             EntityType type = EntityType.fromNbt(item.getNbt()).orElse(null);
             Entity entity = type.create(world);
@@ -148,6 +150,15 @@ public class DivineReplicatorBlockEntity extends BlockEntity implements Extended
                 }
             }
         }
+    }
+
+    private void spendFuel() {
+        ItemStack stack = getStack(FUEL_SLOT);
+        stack.setCount(stack.getCount() - 1);
+    }
+
+    private boolean hasFuel() {
+        return getStack(FUEL_SLOT).getCount() > 0 && getStack(FUEL_SLOT).getItem().equals(ModItems.SPACE_FUEL);
     }
 
     public static final List<BlockPos> UPGRADE_PROVIDER_OFFSETS = BlockPos.stream(-1, 0, -1, 1, 0, 1).filter((pos) -> {
@@ -180,8 +191,8 @@ public class DivineReplicatorBlockEntity extends BlockEntity implements Extended
     }
 
     private boolean hasValidWand() {
-        return this.getStack(INPUT_SLOT).getItem().equals(ModItems.WAND_OF_CAPTURING) &&
-                this.getStack(INPUT_SLOT).getNbt() != null;
+        return this.getStack(WAND_SLOT).getItem().equals(ModItems.WAND_OF_CAPTURING) &&
+                this.getStack(WAND_SLOT).getNbt() != null;
     }
 
     @Override
@@ -197,11 +208,11 @@ public class DivineReplicatorBlockEntity extends BlockEntity implements Extended
 
     @Override
     public boolean canInsert(int slot, ItemStack stack, Direction direction) {
-        return slot == INPUT_SLOT && direction == Direction.UP;
+        return slot == FUEL_SLOT && direction == Direction.UP;
     }
 
     @Override
     public boolean canExtract(int slot, ItemStack stack, Direction direction) {
-        return slot == INPUT_SLOT && direction == Direction.DOWN;
+        return slot == WAND_SLOT && direction == Direction.DOWN;
     }
 }

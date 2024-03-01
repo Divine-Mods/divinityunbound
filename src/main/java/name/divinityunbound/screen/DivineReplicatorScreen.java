@@ -18,8 +18,8 @@ public class DivineReplicatorScreen extends HandledScreen<DivineReplicatorScreen
     @Override
     protected void init() {
         super.init();
-//        titleY = 1000;
-//        playerInventoryTitleY = 1000;
+        titleY = 1000;
+        playerInventoryTitleY = 1000;
     }
 
     @Override

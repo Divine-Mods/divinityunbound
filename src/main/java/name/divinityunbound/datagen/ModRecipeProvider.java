@@ -12,6 +12,7 @@ import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
+import net.minecraft.potion.Potions;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.util.Identifier;
 
@@ -87,6 +88,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 //        offerSwordRecipe(exporter, RecipeCategory.TOOLS, ModItems.SPACE_TIME_SWORD, ModItems.SPACE_TIME_INGOT);
 //        offerHoeRecipe(exporter, RecipeCategory.TOOLS, ModItems.SPACE_TIME_HOE, ModItems.SPACE_TIME_INGOT);
 
+        // TODO: Make some helper methods to clean up these Json Builders
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.CELESTITE, 1)
                 .pattern("NNN")
                 .pattern("NNN")
@@ -146,12 +148,14 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.CHRONOS_CLOCK)));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.CHRONOS_TIME_ACCUMULATOR, 1)
-                .pattern("SSS")
+                .pattern("GSG")
                 .pattern("SCS")
-                .pattern("SSS")
+                .pattern("GSG")
+                .input('G', ModBlocks.GOLDEN_CELESTITE_INFUSED_STONE)
                 .input('S', ModBlocks.CELESTITE_INFUSED_STONE)
                 .input('C', ModItems.CHRONOS_CLOCK)
                 .criterion(hasItem(ModBlocks.CELESTITE_INFUSED_STONE), conditionsFromItem(ModBlocks.CELESTITE_INFUSED_STONE))
+                .criterion(hasItem(ModBlocks.GOLDEN_CELESTITE_INFUSED_STONE), conditionsFromItem(ModBlocks.GOLDEN_CELESTITE_INFUSED_STONE))
                 .criterion(hasItem(ModItems.CHRONOS_CLOCK), conditionsFromItem(ModItems.CHRONOS_CLOCK))
                 .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.CHRONOS_TIME_ACCUMULATOR)));
 
@@ -180,13 +184,13 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.SPACE_FORGED_INGOT)));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.UNHOLY_WAND, 1)
-                .pattern(" DC")
-                .pattern(" TD")
+                .pattern(" UC")
+                .pattern(" TU")
                 .pattern("S  ")
                 .input('S', Items.STICK)
                 .input('T', ModItems.TIME_FORGED_INGOT)
                 .input('C', ModItems.CHRONOS_CLOCK)
-                .input('D', ModItems.UNHOLY_DUST)
+                .input('U', ModItems.UNHOLY_INGOT)
                 .criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
                 .criterion(hasItem(ModItems.TIME_FORGED_INGOT), conditionsFromItem(ModItems.TIME_FORGED_INGOT))
                 .criterion(hasItem(ModItems.CHRONOS_CLOCK), conditionsFromItem(ModItems.CHRONOS_CLOCK))
@@ -207,8 +211,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(ModItems.TIME_FORGED_INGOT), conditionsFromItem(ModItems.TIME_FORGED_INGOT))
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.WAND_OF_CAPTURING)));
 
-        // TODO: Add generation station, space siphon, armor, and tool recipes
-
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.DIVINE_WAND_OF_FLIGHT, 1)
                 .pattern(" GE")
                 .pattern(" TG")
@@ -216,22 +218,51 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .input('S', Items.STICK)
                 .input('G', Items.GOLD_BLOCK)
                 .input('E', Items.ELYTRA)
-                .input('T', ModItems.TIME_FORGED_INGOT)
+                .input('T', ModItems.SPACE_FORGED_INGOT)
                 .criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
                 .criterion(hasItem(Items.GOLD_BLOCK), conditionsFromItem(Items.GOLD_BLOCK))
                 .criterion(hasItem(Items.ELYTRA), conditionsFromItem(Items.ELYTRA))
                 .criterion(hasItem(ModItems.TIME_FORGED_INGOT), conditionsFromItem(ModItems.TIME_FORGED_INGOT))
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.DIVINE_WAND_OF_FLIGHT)));
 
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.WAND_OF_RESPIRATION, 1)
+                .pattern(" LP")
+                .pattern(" TL")
+                .pattern("S  ")
+                .input('S', Items.STICK)
+                .input('L', Items.LAPIS_BLOCK)
+                .input('P', Items.PUFFERFISH)
+                .input('T', ModItems.TIME_FORGED_INGOT)
+                .criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
+                .criterion(hasItem(Items.LAPIS_BLOCK), conditionsFromItem(Items.LAPIS_BLOCK))
+                .criterion(hasItem(Items.PUFFERFISH), conditionsFromItem(Items.PUFFERFISH))
+                .criterion(hasItem(ModItems.TIME_FORGED_INGOT), conditionsFromItem(ModItems.TIME_FORGED_INGOT))
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.WAND_OF_RESPIRATION)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.WAND_OF_TELEPORTATION, 1)
+                .pattern(" DE")
+                .pattern(" TD")
+                .pattern("S  ")
+                .input('S', Items.STICK)
+                .input('D', Items.DIAMOND_BLOCK)
+                .input('E', Items.ENDER_PEARL)
+                .input('T', ModItems.SPACE_FORGED_INGOT)
+                .criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
+                .criterion(hasItem(Items.DIAMOND_BLOCK), conditionsFromItem(Items.DIAMOND_BLOCK))
+                .criterion(hasItem(Items.ENDER_PEARL), conditionsFromItem(Items.ENDER_PEARL))
+                .criterion(hasItem(ModItems.SPACE_FORGED_INGOT), conditionsFromItem(ModItems.SPACE_FORGED_INGOT))
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.WAND_OF_TELEPORTATION)));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.MYSTIC_CHRONOGRAPH, 1)
-                .pattern("TTT")
+                .pattern("STS")
                 .pattern("TCT")
-                .pattern("TTT")
+                .pattern("STS")
                 .input('C', ModItems.CHRONOS_CLOCK)
                 .input('T', ModItems.TIME_FORGED_INGOT)
+                .input('S', ModItems.SPACE_TIME_INGOT)
                 .criterion(hasItem(ModItems.CHRONOS_CLOCK), conditionsFromItem(ModItems.CHRONOS_CLOCK))
                 .criterion(hasItem(ModItems.TIME_FORGED_INGOT), conditionsFromItem(ModItems.TIME_FORGED_INGOT))
+                .criterion(hasItem(ModItems.SPACE_TIME_INGOT), conditionsFromItem(ModItems.SPACE_TIME_INGOT))
                 .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.MYSTIC_CHRONOGRAPH)));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.DIVINE_REPLICATOR, 1)
@@ -247,6 +278,36 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(Items.CHORUS_FRUIT), conditionsFromItem(Items.CHORUS_FRUIT))
                 .criterion(hasItem(ModItems.TIME_FORGED_INGOT), conditionsFromItem(ModItems.TIME_FORGED_INGOT))
                 .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.DIVINE_REPLICATOR)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.GENERATION_STATION, 1)
+                .pattern("TFT")
+                .pattern("GCG")
+                .pattern("SFS")
+                .input('C', ModBlocks.CELESTITE_BLOCK)
+                .input('F', ModBlocks.FROZEN_TIME_GLASS)
+                .input('G', Blocks.GOLD_BLOCK)
+                .input('T', ModItems.TIME_FORGED_INGOT)
+                .input('S', ModItems.SPACE_FORGED_INGOT)
+                .criterion(hasItem(ModItems.SPACE_FORGED_INGOT), conditionsFromItem(ModItems.SPACE_FORGED_INGOT))
+                .criterion(hasItem(ModItems.TIME_FORGED_INGOT), conditionsFromItem(ModItems.TIME_FORGED_INGOT))
+                .criterion(hasItem(ModBlocks.CELESTITE_BLOCK), conditionsFromItem(ModBlocks.CELESTITE_BLOCK))
+                .criterion(hasItem(ModBlocks.FROZEN_TIME_GLASS), conditionsFromItem(ModBlocks.FROZEN_TIME_GLASS))
+                .criterion(hasItem(Blocks.GOLD_BLOCK), conditionsFromItem(Blocks.GOLD_BLOCK))
+                .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.GENERATION_STATION)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.SPACE_SIPHON, 1)
+                .pattern("TST")
+                .pattern("SCS")
+                .pattern(" H ")
+                .input('H', Items.HOPPER)
+                .input('C', ModBlocks.CELESTITE_BLOCK)
+                .input('T', ModItems.TIME_FORGED_INGOT)
+                .input('S', ModItems.SPACE_FORGED_INGOT)
+                .criterion(hasItem(ModBlocks.CELESTITE_BLOCK), conditionsFromItem(ModBlocks.CELESTITE_BLOCK))
+                .criterion(hasItem(Items.HOPPER), conditionsFromItem(Items.HOPPER))
+                .criterion(hasItem(ModItems.TIME_FORGED_INGOT), conditionsFromItem(ModItems.TIME_FORGED_INGOT))
+                .criterion(hasItem(ModItems.SPACE_FORGED_INGOT), conditionsFromItem(ModItems.SPACE_FORGED_INGOT))
+                .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.SPACE_SIPHON)));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.MOB_CORE, 1)
                 .pattern("UUU")
@@ -367,13 +428,15 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.CELESTITE_DIAMOND_FOCUS)));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.CELESTITE_NETHERITE_FOCUS, 1)
-                .pattern("CGC")
+                .pattern("CNC")
                 .pattern("GBG")
                 .pattern("CGC")
                 .input('G', Items.GOLD_INGOT)
                 .input('B', Items.NETHERITE_BLOCK)
+                .input('N', Items.NETHER_STAR)
                 .input('C', ModItems.CELESTITE)
                 .criterion(hasItem(Items.GOLD_INGOT), conditionsFromItem(Items.GOLD_INGOT))
+                .criterion(hasItem(Items.NETHER_STAR), conditionsFromItem(Items.NETHER_STAR))
                 .criterion(hasItem(Items.NETHERITE_BLOCK), conditionsFromItem(Items.NETHERITE_BLOCK))
                 .criterion(hasItem(ModItems.CELESTITE), conditionsFromItem(ModItems.CELESTITE))
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.CELESTITE_NETHERITE_FOCUS)));

@@ -40,8 +40,8 @@ public class WandOfTeleportationItem extends Item {
             NbtCompound nbt = new NbtCompound();
             nbt.putIntArray("blockpos", Arrays.asList(pos.getX(), pos.getY(), pos.getZ()));
             stack.setNbt(nbt);
-            player.sendMessage(Text.literal("Saved block pos: " +
-                    pos.getX() + ", " + pos.getY() + ", " + pos.getZ()));
+//            player.sendMessage(Text.literal("Saved block pos: " +
+//                    pos.getX() + ", " + pos.getY() + ", " + pos.getZ()));
         }
         else {
             teleport(stack, player, worldIn);

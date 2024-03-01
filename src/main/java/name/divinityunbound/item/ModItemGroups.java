@@ -42,7 +42,7 @@ public class ModItemGroups {
                         entries.add(ModItems.MOB_CORE);
 
                         /* Wands */
-                        entries.add(ModItems.MAGIC_CELESTITE_DETECTOR);
+                        //entries.add(ModItems.MAGIC_CELESTITE_DETECTOR);
                         entries.add(ModItems.UNHOLY_WAND);
                         entries.add(ModItems.DIVINE_WAND_OF_FLIGHT);
                         entries.add(ModItems.WAND_OF_CAPTURING);
