@@ -26,10 +26,6 @@ public class ModItemGroups {
                         entries.add(ModBlocks.CELESTITE_ORE);
                         entries.add(ModBlocks.DEEPSLATE_CELESTITE_ORE);
 
-                        entries.add(ModItems.MAGIC_CELESTITE_DETECTOR);
-                        entries.add(ModItems.UNHOLY_WAND);
-                        entries.add(ModItems.DIVINE_WAND_OF_FLIGHT);
-                        entries.add(ModItems.WAND_OF_CAPTURING);
                         entries.add(ModItems.CELESTIUM_DUST);
                         entries.add(ModItems.GRAIN_OF_TIME);
                         entries.add(ModItems.CHRONOS_CLOCK);
@@ -44,6 +40,14 @@ public class ModItemGroups {
                         entries.add(ModItems.SPEED_CORE);
                         entries.add(ModItems.QUANTITY_CORE);
                         entries.add(ModItems.MOB_CORE);
+
+                        /* Wands */
+                        entries.add(ModItems.MAGIC_CELESTITE_DETECTOR);
+                        entries.add(ModItems.UNHOLY_WAND);
+                        entries.add(ModItems.DIVINE_WAND_OF_FLIGHT);
+                        entries.add(ModItems.WAND_OF_CAPTURING);
+                        entries.add(ModItems.WAND_OF_RESPIRATION);
+                        entries.add(ModItems.WAND_OF_TELEPORTATION);
 
                         /* Tools */
                         entries.add(ModItems.CELESTITE_PICKAXE);
@@ -63,6 +67,16 @@ public class ModItemGroups {
                         entries.add(ModItems.CELESTITE_CHESTPLATE);
                         entries.add(ModItems.CELESTITE_LEGGINGS);
                         entries.add(ModItems.CELESTITE_BOOTS);
+
+                        entries.add(ModItems.TIME_FORGED_HELMET);
+                        entries.add(ModItems.TIME_FORGED_CHESTPLATE);
+                        entries.add(ModItems.TIME_FORGED_LEGGINGS);
+                        entries.add(ModItems.TIME_FORGED_BOOTS);
+
+                        entries.add(ModItems.SPACE_FORGED_HELMET);
+                        entries.add(ModItems.SPACE_FORGED_CHESTPLATE);
+                        entries.add(ModItems.SPACE_FORGED_LEGGINGS);
+                        entries.add(ModItems.SPACE_FORGED_BOOTS);
 
                         /* Wood */
                         entries.add(ModBlocks.WILDERSUNG_LOG);

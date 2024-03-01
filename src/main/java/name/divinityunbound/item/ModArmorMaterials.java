@@ -10,9 +10,17 @@ import net.minecraft.sound.SoundEvents;
 import java.util.function.Supplier;
 
 public enum ModArmorMaterials implements ArmorMaterial {
-    CELESTITE("celestite", 25, new int[] { 3, 8, 6, 3}, 25,
-            SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 2f, 0.1f,
-            () -> Ingredient.ofItems(ModItems.CELESTITE));
+    CELESTITE("celestite", 25, new int[] { 3, 8, 6, 3}, 10,
+            SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 1f, 0.1f,
+            () -> Ingredient.ofItems(ModItems.CELESTITE)),
+
+    TIME_FORGED("time_forged", 30, new int[] { 3, 8, 6, 3}, 15,
+    SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 2f, 0.2f,
+            () -> Ingredient.ofItems(ModItems.TIME_FORGED_INGOT)),
+
+    SPACE_FORGED("space_forged", 35, new int[] { 3, 8, 6, 3}, 25,
+    SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.5f, 0.2f,
+            () -> Ingredient.ofItems(ModItems.SPACE_FORGED_INGOT));
 
     // TODO: Add time forged armor and other tiers of armor
     private final String name;

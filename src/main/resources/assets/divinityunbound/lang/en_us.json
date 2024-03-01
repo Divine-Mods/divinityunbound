@@ -27,6 +27,8 @@
   "item.divinityunbound.unholy_wand": "Unholy Wand",
   "item.divinityunbound.divine_wand_of_flight": "Divine Wand of Flight",
   "item.divinityunbound.wand_of_capturing": "Wand of Capturing",
+  "item.divinityunbound.wand_of_respiration": "Wand of Respiration",
+  "item.divinityunbound.wand_of_teleportation": "Wand of Teleportation",
 
   "item.divinityunbound.celestite_pickaxe": "Celestite Pickaxe",
   "item.divinityunbound.celestite_axe": "Celestite Axe",
@@ -43,6 +45,16 @@
   "item.divinityunbound.celestite_chestplate": "Celestite Chestplate",
   "item.divinityunbound.celestite_leggings": "Celestite Leggings",
   "item.divinityunbound.celestite_boots": "Celestite Boots",
+
+  "item.divinityunbound.time_forged_helmet": "Time Forged Helmet",
+  "item.divinityunbound.time_forged_chestplate": "Time Forged Chestplate",
+  "item.divinityunbound.time_forged_leggings": "Time Forged Leggings",
+  "item.divinityunbound.time_forged_boots": "Time Forged Boots",
+
+  "item.divinityunbound.space_forged_helmet": "Space Forged Helmet",
+  "item.divinityunbound.space_forged_chestplate": "Space Forged Chestplate",
+  "item.divinityunbound.space_forged_leggings": "Space Forged Leggings",
+  "item.divinityunbound.space_forged_boots": "Space Forged Boots",
 
   "block.divinityunbound.wildersung_log": "Wildersung Log",
   "block.divinityunbound.wildersung_wood": "Wildersung Wood",
@@ -76,6 +88,8 @@
   "tooltip.divinityunbound.wand_of_capturing": "Captures Mobs!",
   "tooltip.divinityunbound.unholy_wand": "Pulls ores from underground to the surface",
   "tooltip.divinityunbound.divine_wand_of_flight": "Provides flight for 1 minute on use",
+  "tooltip.divinityunbound.wand_of_respiration": "Gives water breathing!",
+  "tooltip.divinityunbound.wand_of_teleportation": "Teleports to saved coordinates",
 
   "itemgroup.celestite": "DivinityUnbound"
 }

@@ -16,7 +16,11 @@ import java.util.Map;
 public class ModArmorItem extends ArmorItem {
     private static final Map<ArmorMaterial, StatusEffectInstance> MATERIAL_TO_EFFECT_MAP =
             (new ImmutableMap.Builder<ArmorMaterial, StatusEffectInstance>())
-                    .put(ModArmorMaterials.CELESTITE, new StatusEffectInstance(StatusEffects.SPEED, 400, 1,
+                    .put(ModArmorMaterials.CELESTITE, new StatusEffectInstance(StatusEffects.LUCK, 400, 1,
+                            false, false, true))
+                    .put(ModArmorMaterials.TIME_FORGED, new StatusEffectInstance(StatusEffects.SPEED, 400, 1,
+                            false, false, true))
+                    .put(ModArmorMaterials.SPACE_FORGED, new StatusEffectInstance(StatusEffects.STRENGTH, 400, 2,
                             false, false, true)).build();
     public ModArmorItem(ArmorMaterial material, Type type, Settings settings) {
         super(material, type, settings);

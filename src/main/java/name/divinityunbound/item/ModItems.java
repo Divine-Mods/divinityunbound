@@ -45,6 +45,12 @@ public class ModItems {
     public static final Item WAND_OF_CAPTURING = registerItem("wand_of_capturing",
             new WandOfCapturingItem(new FabricItemSettings().maxCount(1)));
 
+    public static final Item WAND_OF_RESPIRATION = registerItem("wand_of_respiration",
+            new WandOfRespirationItem(new FabricItemSettings().maxCount(1)));
+
+    public static final Item WAND_OF_TELEPORTATION = registerItem("wand_of_teleportation",
+            new WandOfTeleportationItem(new FabricItemSettings().maxCount(1)));
+
     /* Tools */
 
     public static final Item CELESTITE_PICKAXE = registerItem("celestite_pickaxe",
@@ -79,6 +85,24 @@ public class ModItems {
             new ArmorItem(ModArmorMaterials.CELESTITE, ArmorItem.Type.LEGGINGS, new FabricItemSettings().maxCount(1)));
     public static final Item CELESTITE_BOOTS = registerItem("celestite_boots",
             new ArmorItem(ModArmorMaterials.CELESTITE, ArmorItem.Type.BOOTS, new FabricItemSettings().maxCount(1)));
+
+    public static final Item TIME_FORGED_HELMET = registerItem("time_forged_helmet",
+            new ArmorItem(ModArmorMaterials.TIME_FORGED, ArmorItem.Type.HELMET, new FabricItemSettings().maxCount(1)));
+    public static final Item TIME_FORGED_CHESTPLATE = registerItem("time_forged_chestplate",
+            new ModArmorItem(ModArmorMaterials.TIME_FORGED, ArmorItem.Type.CHESTPLATE, new FabricItemSettings().maxCount(1)));
+    public static final Item TIME_FORGED_LEGGINGS = registerItem("time_forged_leggings",
+            new ArmorItem(ModArmorMaterials.TIME_FORGED, ArmorItem.Type.LEGGINGS, new FabricItemSettings().maxCount(1)));
+    public static final Item TIME_FORGED_BOOTS = registerItem("time_forged_boots",
+            new ArmorItem(ModArmorMaterials.TIME_FORGED, ArmorItem.Type.BOOTS, new FabricItemSettings().maxCount(1)));
+
+    public static final Item SPACE_FORGED_HELMET = registerItem("space_forged_helmet",
+            new ArmorItem(ModArmorMaterials.SPACE_FORGED, ArmorItem.Type.HELMET, new FabricItemSettings().maxCount(1)));
+    public static final Item SPACE_FORGED_CHESTPLATE = registerItem("space_forged_chestplate",
+            new ModArmorItem(ModArmorMaterials.SPACE_FORGED, ArmorItem.Type.CHESTPLATE, new FabricItemSettings().maxCount(1)));
+    public static final Item SPACE_FORGED_LEGGINGS = registerItem("space_forged_leggings",
+            new ArmorItem(ModArmorMaterials.SPACE_FORGED, ArmorItem.Type.LEGGINGS, new FabricItemSettings().maxCount(1)));
+    public static final Item SPACE_FORGED_BOOTS = registerItem("space_forged_boots",
+            new ArmorItem(ModArmorMaterials.SPACE_FORGED, ArmorItem.Type.BOOTS, new FabricItemSettings().maxCount(1)));
 
 
     /* Foci */

@@ -40,7 +40,7 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleState(ModBlocks.DIVINE_REPLICATOR);
         blockStateModelGenerator.registerSimpleState(ModBlocks.SPEED_UPGRADE);
         blockStateModelGenerator.registerSimpleState(ModBlocks.QUANTITY_UPGRADE);
-        blockStateModelGenerator.registerSimpleState(ModBlocks.SPACE_SIPHON);
+        //blockStateModelGenerator.registerSimpleState(ModBlocks.SPACE_SIPHON);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHRONOS_TIME_ACCUMULATOR);
     }
 
@@ -53,6 +53,8 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.UNHOLY_WAND, Models.GENERATED);
         itemModelGenerator.register(ModItems.DIVINE_WAND_OF_FLIGHT, Models.GENERATED);
         itemModelGenerator.register(ModItems.WAND_OF_CAPTURING, Models.GENERATED);
+        itemModelGenerator.register(ModItems.WAND_OF_RESPIRATION, Models.GENERATED);
+        itemModelGenerator.register(ModItems.WAND_OF_TELEPORTATION, Models.GENERATED);
         itemModelGenerator.register(ModItems.CELESTIUM_DUST, Models.GENERATED);
         itemModelGenerator.register(ModItems.GRAIN_OF_TIME, Models.GENERATED);
         itemModelGenerator.register(ModItems.CHRONOS_CLOCK, Models.GENERATED);
@@ -87,11 +89,23 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.registerArmor((ArmorItem) ModItems.CELESTITE_LEGGINGS);
         itemModelGenerator.registerArmor((ArmorItem) ModItems.CELESTITE_BOOTS);
 
+        itemModelGenerator.registerArmor((ArmorItem) ModItems.TIME_FORGED_HELMET);
+        itemModelGenerator.registerArmor((ArmorItem) ModItems.TIME_FORGED_CHESTPLATE);
+        itemModelGenerator.registerArmor((ArmorItem) ModItems.TIME_FORGED_LEGGINGS);
+        itemModelGenerator.registerArmor((ArmorItem) ModItems.TIME_FORGED_BOOTS);
+
+        itemModelGenerator.registerArmor((ArmorItem) ModItems.SPACE_FORGED_HELMET);
+        itemModelGenerator.registerArmor((ArmorItem) ModItems.SPACE_FORGED_CHESTPLATE);
+        itemModelGenerator.registerArmor((ArmorItem) ModItems.SPACE_FORGED_LEGGINGS);
+        itemModelGenerator.registerArmor((ArmorItem) ModItems.SPACE_FORGED_BOOTS);
+
         /* Foci */
         itemModelGenerator.register(ModItems.CELESTITE_COAL_FOCUS, Models.GENERATED);
         itemModelGenerator.register(ModItems.CELESTITE_IRON_FOCUS, Models.GENERATED);
         itemModelGenerator.register(ModItems.CELESTITE_GOLD_FOCUS, Models.GENERATED);
         itemModelGenerator.register(ModItems.CELESTITE_DIAMOND_FOCUS, Models.GENERATED);
         itemModelGenerator.register(ModItems.CELESTITE_NETHERITE_FOCUS, Models.GENERATED);
+
+        itemModelGenerator.register(ModBlocks.SPACE_SIPHON.asItem(), Models.GENERATED);
     }
 }

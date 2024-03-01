@@ -42,12 +42,6 @@ public class WandOfCapturingItem extends Item {
         Direction facing = context.getSide();
         World worldIn = context.getWorld();
         ItemStack stack = context.getStack();
-        if (stack.getNbt() != null) {
-            player.sendMessage(Text.literal("Stack nbt " + stack.getNbt().toString()));
-        }
-        else {
-            player.sendMessage(Text.literal("Stack nbt null"));
-        }
         //player.sendMessage(Text.literal("Calling release function, hasNbt: " + capturedNbt.toString()));
         if (!release(player, pos, facing, worldIn, stack)) return ActionResult.FAIL;
         return ActionResult.SUCCESS;
@@ -58,17 +52,16 @@ public class WandOfCapturingItem extends Item {
             if (stack.getNbt() == null) {
                 return false;
             }
-            player.sendMessage(Text.literal("Stack nbt " + stack.getNbt().toString()));
-                    //if (!containsEntity(stack)) return false;
+            //player.sendMessage(Text.literal("Stack nbt " + stack.getNbt().toString()));
             Entity entity = getEntityFromStack(stack, worldIn, false, false);
-            player.sendMessage(Text.literal("Has entity " + (entity != null)));
+            //player.sendMessage(Text.literal("Has entity " + (entity != null)));
             if (entity != null) {
                 entity.refreshPositionAndAngles(pos.getX() + 0.5,
                         pos.getY() + 1, pos.getZ() + 0.5,
                         worldIn.getRandom().nextFloat() * 360.0F, 0.0F);
                 stack.setNbt(null);
                 boolean spawned = worldIn.spawnEntity(entity);
-                player.sendMessage(Text.literal("Spawned Entity " + spawned));
+                //player.sendMessage(Text.literal("Spawned Entity " + spawned));
                 return spawned;
             }
         }
@@ -94,10 +87,9 @@ public class WandOfCapturingItem extends Item {
             if(!(entity instanceof PlayerEntity)) {
                 NbtCompound nbt = new NbtCompound();
                 entity.saveSelfNbt(nbt);
-                user.sendMessage(Text.literal("Entity nbt " + nbt.get("id")));
-                //nbt.putString("entity", EntityType.get(entity.getType().toString()).toString());
+                //user.sendMessage(Text.literal("Entity nbt " + nbt.get("id")));
                 stack.setNbt(nbt);
-                user.sendMessage(Text.literal("Entity nbt " + stack.getNbt().toString()));
+                //user.sendMessage(Text.literal("Entity nbt " + stack.getNbt().toString()));
                 entity.remove(Entity.RemovalReason.KILLED);
                 return ActionResult.SUCCESS;
             }

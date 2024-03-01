@@ -48,15 +48,15 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerLeggingsRecipe(exporter, RecipeCategory.COMBAT, ModItems.CELESTITE_LEGGINGS, ModItems.CELESTITE);
         offerBootsRecipe(exporter, RecipeCategory.COMBAT, ModItems.CELESTITE_BOOTS, ModItems.CELESTITE);
 
-//        offerHelmetRecipe(exporter, RecipeCategory.COMBAT, ModItems.TIME_FORGED_HELMET, ModItems.TIME_FORGED_INGOT);
-//        offerChestplateRecipe(exporter, RecipeCategory.COMBAT, ModItems.TIME_FORGED_CHESTPLATE, ModItems.TIME_FORGED_INGOT);
-//        offerLeggingsRecipe(exporter, RecipeCategory.COMBAT, ModItems.TIME_FORGED_LEGGINGS, ModItems.TIME_FORGED_INGOT);
-//        offerBootsRecipe(exporter, RecipeCategory.COMBAT, ModItems.TIME_FORGED_BOOTS, ModItems.TIME_FORGED_INGOT);
+        offerHelmetRecipe(exporter, RecipeCategory.COMBAT, ModItems.TIME_FORGED_HELMET, ModItems.TIME_FORGED_INGOT);
+        offerChestplateRecipe(exporter, RecipeCategory.COMBAT, ModItems.TIME_FORGED_CHESTPLATE, ModItems.TIME_FORGED_INGOT);
+        offerLeggingsRecipe(exporter, RecipeCategory.COMBAT, ModItems.TIME_FORGED_LEGGINGS, ModItems.TIME_FORGED_INGOT);
+        offerBootsRecipe(exporter, RecipeCategory.COMBAT, ModItems.TIME_FORGED_BOOTS, ModItems.TIME_FORGED_INGOT);
 
-//        offerHelmetRecipe(exporter, RecipeCategory.COMBAT, ModItems.SPACE_FORGED_HELMET, ModItems.SPACE_FORGED_INGOT);
-//        offerChestplateRecipe(exporter, RecipeCategory.COMBAT, ModItems.SPACE_FORGED_CHESTPLATE, ModItems.SPACE_FORGED_INGOT);
-//        offerLeggingsRecipe(exporter, RecipeCategory.COMBAT, ModItems.SPACE_FORGED_LEGGINGS, ModItems.SPACE_FORGED_INGOT);
-//        offerBootsRecipe(exporter, RecipeCategory.COMBAT, ModItems.SPACE_FORGED_BOOTS, ModItems.SPACE_FORGED_INGOT);
+        offerHelmetRecipe(exporter, RecipeCategory.COMBAT, ModItems.SPACE_FORGED_HELMET, ModItems.SPACE_FORGED_INGOT);
+        offerChestplateRecipe(exporter, RecipeCategory.COMBAT, ModItems.SPACE_FORGED_CHESTPLATE, ModItems.SPACE_FORGED_INGOT);
+        offerLeggingsRecipe(exporter, RecipeCategory.COMBAT, ModItems.SPACE_FORGED_LEGGINGS, ModItems.SPACE_FORGED_INGOT);
+        offerBootsRecipe(exporter, RecipeCategory.COMBAT, ModItems.SPACE_FORGED_BOOTS, ModItems.SPACE_FORGED_INGOT);
 
 //        offerHelmetRecipe(exporter, RecipeCategory.COMBAT, ModItems.SPACE_TIME_HELMET, ModItems.SPACE_TIME_INGOT);
 //        offerChestplateRecipe(exporter, RecipeCategory.COMBAT, ModItems.SPACE_TIME, ModItems.SPACE_TIME_INGOT);
