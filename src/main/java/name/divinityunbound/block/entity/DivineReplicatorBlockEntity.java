@@ -40,12 +40,15 @@ public class DivineReplicatorBlockEntity extends BlockEntity implements Extended
     private static final int WAND_SLOT = 1;
     private static final int FUEL_SLOT = 0;
 
+    private static final int CHECK_UPGRADE_TICKS = 20;
+
     private int speedCount = 0;
     private int quantityCount = 0;
 
     protected final PropertyDelegate propertyDelegate;
     private int progress = 0;
     private int maxProgress = 72;
+    private int upgradeCheck = 0;
 
     public DivineReplicatorBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.DIVINE_REPLICATOR_BLOCK_ENTITY, pos, state);
@@ -115,7 +118,11 @@ public class DivineReplicatorBlockEntity extends BlockEntity implements Extended
         }
 
         if (this.hasValidWand() && this.hasFuel()) {
-            this.countUpgrades(world, pos);
+            if (upgradeCheck >= CHECK_UPGRADE_TICKS) {
+                countUpgrades(world, pos);
+                upgradeCheck = 0;
+            }
+            upgradeCheck++;
             for (int i = 0; i <= speedCount; i++) {
                 this.increaseCraftProgress();
                 markDirty(world, pos, state);

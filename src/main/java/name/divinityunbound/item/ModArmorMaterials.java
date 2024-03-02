@@ -10,19 +10,23 @@ import net.minecraft.sound.SoundEvents;
 import java.util.function.Supplier;
 
 public enum ModArmorMaterials implements ArmorMaterial {
-    CELESTITE("celestite", 25, new int[] { 3, 8, 6, 3}, 10,
-            SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 1f, 0.1f,
+    CELESTITE("celestite", 18, new int[] { 2, 7, 5, 2}, 10,
+            SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 0.0f, 0.0f,
             () -> Ingredient.ofItems(ModItems.CELESTITE)),
 
-    TIME_FORGED("time_forged", 30, new int[] { 3, 8, 6, 3}, 15,
-    SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 2f, 0.2f,
+    TIME_FORGED("time_forged", 24, new int[] { 3, 8, 6, 3}, 15,
+    SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 1f, 0.0f,
             () -> Ingredient.ofItems(ModItems.TIME_FORGED_INGOT)),
 
     SPACE_FORGED("space_forged", 35, new int[] { 3, 8, 6, 3}, 25,
-    SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.5f, 0.2f,
-            () -> Ingredient.ofItems(ModItems.SPACE_FORGED_INGOT));
+    SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 3f, 0.2f,
+            () -> Ingredient.ofItems(ModItems.SPACE_FORGED_INGOT)),
 
-    // TODO: Add time forged armor and other tiers of armor
+    SPACE_TIME_FORGED("space_time_forged", 40, new int[] { 4, 9, 7, 4}, 40,
+            SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 4f, 0.3f,
+            () -> Ingredient.ofItems(ModItems.SPACE_TIME_INGOT));
+
+    // TODO: Add space time forged armor
     private final String name;
     private final int durabilityMultiplier;
     private final int[] protectionAmounts;

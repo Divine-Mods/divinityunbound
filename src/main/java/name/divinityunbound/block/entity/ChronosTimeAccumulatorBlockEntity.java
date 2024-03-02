@@ -29,6 +29,7 @@ import java.util.List;
 public class ChronosTimeAccumulatorBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory, ImplementedInventory, SidedInventory {
     private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(1, ItemStack.EMPTY);
     private static final int OUTPUT_SLOT = 0;
+    private static final int CHECK_UPGRADE_TICKS = 20;
 
     private int speedCount = 0;
     private int quantityCount = 0;
@@ -36,6 +37,7 @@ public class ChronosTimeAccumulatorBlockEntity extends BlockEntity implements Ex
     protected final PropertyDelegate propertyDelegate;
     private int progress = 0;
     private int maxProgress = 72;
+    private int upgradeCheck = 0;
     public ChronosTimeAccumulatorBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.CHRONOS_TIME_ACCUMULATOR_BLOCK_ENTITY, pos, state);
         this.propertyDelegate = new PropertyDelegate() {
@@ -104,7 +106,11 @@ public class ChronosTimeAccumulatorBlockEntity extends BlockEntity implements Ex
         }
 
         if (isOutputSlotEmptyOrReceivable() && canInsertAmountIntoOutputSlot()) {
-            this.countUpgrades(world, pos);
+            if (upgradeCheck >= CHECK_UPGRADE_TICKS) {
+                countUpgrades(world, pos);
+                upgradeCheck = 0;
+            }
+            upgradeCheck++;
             for (int i = 0; i <= speedCount; i++) {
                 this.increaseCraftProgress();
                 markDirty(world, pos, state);

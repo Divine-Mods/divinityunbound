@@ -76,12 +76,12 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerSwordRecipe(exporter, RecipeCategory.TOOLS, ModItems.TIME_FORGED_SWORD, ModItems.TIME_FORGED_INGOT);
         offerHoeRecipe(exporter, RecipeCategory.TOOLS, ModItems.TIME_FORGED_HOE, ModItems.TIME_FORGED_INGOT);
 
-//        offerPickaxeRecipe(exporter, RecipeCategory.TOOLS, ModItems.SPACE_FORGED_PICKAXE, ModItems.SPACE_FORGED_INGOT);
-//        offerAxeRecipe(exporter, RecipeCategory.TOOLS, ModItems.SPACE_FORGED_AXE, ModItems.SPACE_FORGED_INGOT);
-//        offerShovelRecipe(exporter, RecipeCategory.TOOLS, ModItems.SPACE_FORGED, ModItems.SPACE_FORGED_INGOT);
-//        offerSwordRecipe(exporter, RecipeCategory.TOOLS, ModItems.SPACE_FORGED_SWORD, ModItems.SPACE_FORGED_INGOT);
-//        offerHoeRecipe(exporter, RecipeCategory.TOOLS, ModItems.SPACE_FORGED_HOE, ModItems.SPACE_FORGED_INGOT);
-//
+        offerPickaxeRecipe(exporter, RecipeCategory.TOOLS, ModItems.SPACE_FORGED_PICKAXE, ModItems.SPACE_FORGED_INGOT);
+        offerAxeRecipe(exporter, RecipeCategory.TOOLS, ModItems.SPACE_FORGED_AXE, ModItems.SPACE_FORGED_INGOT);
+        offerShovelRecipe(exporter, RecipeCategory.TOOLS, ModItems.SPACE_FORGED_SHOVEL, ModItems.SPACE_FORGED_INGOT);
+        offerSwordRecipe(exporter, RecipeCategory.TOOLS, ModItems.SPACE_FORGED_SWORD, ModItems.SPACE_FORGED_INGOT);
+        offerHoeRecipe(exporter, RecipeCategory.TOOLS, ModItems.SPACE_FORGED_HOE, ModItems.SPACE_FORGED_INGOT);
+
 //        offerPickaxeRecipe(exporter, RecipeCategory.TOOLS, ModItems.SPACE_TIME_PICKAXE, ModItems.SPACE_TIME_INGOT);
 //        offerAxeRecipe(exporter, RecipeCategory.TOOLS, ModItems.SPACE_TIME_AXE, ModItems.SPACE_TIME_INGOT);
 //        offerShovelRecipe(exporter, RecipeCategory.TOOLS, ModItems.SPACE_TIME_SHOVEL, ModItems.SPACE_TIME_INGOT);

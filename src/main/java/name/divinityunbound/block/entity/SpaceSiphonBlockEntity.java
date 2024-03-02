@@ -46,6 +46,8 @@ public class SpaceSiphonBlockEntity extends BlockEntity implements ImplementedIn
     private static final int INPUT_SLOT = 0;
     private static final int DEFAULT_RANGE = 6;
 
+    private static final int CHECK_UPGRADE_TICKS = 20;
+
     private int speedCount = 0;
     private int quantityCount = 0;
     private int rangeCount = 0;
@@ -54,6 +56,7 @@ public class SpaceSiphonBlockEntity extends BlockEntity implements ImplementedIn
     private int progress = 0;
     private int maxProgress = 72;
     private int transferCooldown = 0;
+    private int upgradeCheck = 0;
 
     public SpaceSiphonBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.SPACE_SIPHON_BLOCK_ENTITY, pos, state);
@@ -108,7 +111,7 @@ public class SpaceSiphonBlockEntity extends BlockEntity implements ImplementedIn
         if (world.isReceivingRedstonePower(pos)) {
             return;
         }
-        countUpgrades(world, pos);
+
         // TODO: tweak transfer cooldown and add range upgrade
         transferCooldown += 1 + (speedCount * 7);
         if (transferCooldown < 60) {
@@ -121,6 +124,11 @@ public class SpaceSiphonBlockEntity extends BlockEntity implements ImplementedIn
                 (double) bp.getY() + 0.5, (double) bp.getZ() + 0.5);
         //pe.sendMessage(Text.literal("Stack nbt "));
         if (belowInventory != null) {
+            if (upgradeCheck >= CHECK_UPGRADE_TICKS) {
+                countUpgrades(world, pos);
+                upgradeCheck = 0;
+            }
+            upgradeCheck++;
             this.detectAndRetrieveItems(world, pos);
             ItemStack itemStack = this.getStack(INPUT_SLOT);
             if (!itemStack.isEmpty()) {

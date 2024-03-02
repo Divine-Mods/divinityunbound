@@ -38,6 +38,7 @@ public class GenerationStationBlockEntity extends BlockEntity implements Extende
     private static final int INPUT_SLOT = 0;
     private static final int FUEL_SLOT = 1;
     private static final int OUTPUT_SLOT = 2;
+    private static final int CHECK_UPGRADE_TICKS = 20;
 
     private int speedCount = 0;
     private int quantityCount = 0;
@@ -45,6 +46,7 @@ public class GenerationStationBlockEntity extends BlockEntity implements Extende
     protected final PropertyDelegate propertyDelegate;
     private int progress = 0;
     private int maxProgress = 72;
+    private int upgradeCheck = 0;
     public GenerationStationBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.GENERATION_STATION_BLOCK_ENTITY, pos, state);
         this.propertyDelegate = new PropertyDelegate() {
@@ -114,7 +116,11 @@ public class GenerationStationBlockEntity extends BlockEntity implements Extende
 
         if (isOutputSlotEmptyOrReceivable()) {
             if (this.hasRecipe()) {
-                this.countUpgrades(world, pos);
+                if (upgradeCheck >= CHECK_UPGRADE_TICKS) {
+                    countUpgrades(world, pos);
+                    upgradeCheck = 0;
+                }
+                upgradeCheck++;
                 for (int i = 0; i <= speedCount; i++) {
                     this.increaseCraftProgress();
                     markDirty(world, pos, state);

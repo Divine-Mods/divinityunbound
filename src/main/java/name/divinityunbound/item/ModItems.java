@@ -75,6 +75,17 @@ public class ModItems {
     public static final Item TIME_FORGED_HOE = registerItem("time_forged_hoe",
             new HoeItem(ModToolMaterial.TIME_FORGED, -4, 0.0F, new FabricItemSettings().maxCount(1)));
 
+    public static final Item SPACE_FORGED_PICKAXE = registerItem("space_forged_pickaxe",
+            new PickaxeItem(ModToolMaterial.SPACE_FORGED, 1, -2.8F, new FabricItemSettings().maxCount(1)));
+    public static final Item SPACE_FORGED_AXE = registerItem("space_forged_axe",
+            new AxeItem(ModToolMaterial.SPACE_FORGED, 5.0F, -2.8F, new FabricItemSettings().maxCount(1)));
+    public static final Item SPACE_FORGED_SHOVEL = registerItem("space_forged_shovel",
+            new ShovelItem(ModToolMaterial.SPACE_FORGED, 1.5F, -3.0F, new FabricItemSettings().maxCount(1)));
+    public static final Item SPACE_FORGED_SWORD = registerItem("space_forged_sword",
+            new SwordItem(ModToolMaterial.SPACE_FORGED, 3, -2.2F, new FabricItemSettings().maxCount(1)));
+    public static final Item SPACE_FORGED_HOE = registerItem("space_forged_hoe",
+            new HoeItem(ModToolMaterial.SPACE_FORGED, -4, 0.0F, new FabricItemSettings().maxCount(1)));
+
 
     /* Armor */
     public static final Item CELESTITE_HELMET = registerItem("celestite_helmet",
