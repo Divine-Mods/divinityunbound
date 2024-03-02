@@ -21,6 +21,10 @@ public class ModScreenHandlers {
             Registry.register(Registries.SCREEN_HANDLER, new Identifier(DivinityUnbound.MOD_ID, "divine_replicator"),
                     new ExtendedScreenHandlerType<>(DivineReplicatorScreenHandler::new));
 
+    public static final ScreenHandlerType<UnholySilencerScreenHandler> UNHOLY_SILENCER_SCREEN_HANDLER =
+            Registry.register(Registries.SCREEN_HANDLER, new Identifier(DivinityUnbound.MOD_ID, "unholy_silencer"),
+                    new ExtendedScreenHandlerType<>(UnholySilencerScreenHandler::new));
+
     public static void registerScreenHandlers() {
         DivinityUnbound.LOGGER.info("Registering Screen Handlers for " + DivinityUnbound.MOD_ID);
     }

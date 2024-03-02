@@ -42,6 +42,7 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleState(ModBlocks.QUANTITY_UPGRADE);
         //blockStateModelGenerator.registerSimpleState(ModBlocks.SPACE_SIPHON);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHRONOS_TIME_ACCUMULATOR);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.UNHOLY_SILENCER);
     }
 
     @Override

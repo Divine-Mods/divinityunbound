@@ -50,6 +50,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.SPACE_SIPHON);
         addDrop(ModBlocks.SPEED_UPGRADE);
         addDrop(ModBlocks.QUANTITY_UPGRADE);
+        addDrop(ModBlocks.UNHOLY_SILENCER);
     }
 
     public LootTable.Builder copperLikeOreDrops(Block drop, Item item) {

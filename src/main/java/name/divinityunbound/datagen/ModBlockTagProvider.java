@@ -37,7 +37,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.DIVINE_REPLICATOR)
                 .add(ModBlocks.SPACE_SIPHON)
                 .add(ModBlocks.SPEED_UPGRADE)
-                .add(ModBlocks.QUANTITY_UPGRADE);
+                .add(ModBlocks.QUANTITY_UPGRADE)
+                .add(ModBlocks.UNHOLY_SILENCER);
 
         getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
                 .add(ModBlocks.CELESTITE_BLOCK)
@@ -53,7 +54,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.DIVINE_REPLICATOR)
                 .add(ModBlocks.SPACE_SIPHON)
                 .add(ModBlocks.SPEED_UPGRADE)
-                .add(ModBlocks.QUANTITY_UPGRADE);
+                .add(ModBlocks.QUANTITY_UPGRADE)
+                .add(ModBlocks.UNHOLY_SILENCER);
 
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
                 .add(ModBlocks.WILDERSUNG_LOG)

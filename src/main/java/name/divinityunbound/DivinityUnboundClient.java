@@ -3,10 +3,7 @@ package name.divinityunbound;
 import name.divinityunbound.block.ModBlocks;
 import name.divinityunbound.block.entity.ModBlockEntities;
 import name.divinityunbound.block.entity.client.SpaceSiphonBlockRenderer;
-import name.divinityunbound.screen.ChronosTimeAccumulatorScreen;
-import name.divinityunbound.screen.DivineReplicatorScreen;
-import name.divinityunbound.screen.GenerationStationScreen;
-import name.divinityunbound.screen.ModScreenHandlers;
+import name.divinityunbound.screen.*;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
@@ -23,6 +20,7 @@ public class DivinityUnboundClient implements ClientModInitializer {
         HandledScreens.register(ModScreenHandlers.GENERATION_STATION_SCREEN_HANDLER, GenerationStationScreen::new);
         HandledScreens.register(ModScreenHandlers.CHRONOS_TIME_ACCUMULATOR_SCREEN_HANDLER, ChronosTimeAccumulatorScreen::new);
         HandledScreens.register(ModScreenHandlers.DIVINE_REPLICATOR_SCREEN_HANDLER, DivineReplicatorScreen::new);
+        HandledScreens.register(ModScreenHandlers.UNHOLY_SILENCER_SCREEN_HANDLER, UnholySilencerScreen::new);
 
         BlockEntityRendererFactories.register(ModBlockEntities.SPACE_SIPHON_BLOCK_ENTITY, SpaceSiphonBlockRenderer::new);
     }

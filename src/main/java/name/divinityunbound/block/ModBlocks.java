@@ -86,6 +86,9 @@ public class ModBlocks {
     public static final Block CHRONOS_TIME_ACCUMULATOR = registerBlock("chronos_time_accumulator",
             new ChronosTimeAccumulatorBlock(FabricBlockSettings.copyOf(Blocks.STONE).strength(5f)));
 
+    public static final Block UNHOLY_SILENCER = registerBlock("unholy_silencer",
+            new UnholySilencerBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
+
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);

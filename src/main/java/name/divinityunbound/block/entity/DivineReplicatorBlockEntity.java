@@ -127,8 +127,10 @@ public class DivineReplicatorBlockEntity extends BlockEntity implements Extended
                 this.increaseCraftProgress();
                 markDirty(world, pos, state);
                 if (hasCraftingFinished()) {
-                    this.spawnMob(world, pos);
-                    this.spendFuel();
+                    for (int j = 0; j <= quantityCount; j++) {
+                        this.spawnMob(world, pos);
+                        this.spendFuel();
+                    }
                     this.resetProgress();
                 }
             }
@@ -147,14 +149,13 @@ public class DivineReplicatorBlockEntity extends BlockEntity implements Extended
         ItemStack item = this.getStack(WAND_SLOT);
         if (item.getNbt() != null) {
             EntityType type = EntityType.fromNbt(item.getNbt()).orElse(null);
-            Entity entity = type.create(world);
+                Entity entity = type.create(world);
             if (entity != null) {
-                for (int i = 0; i <= quantityCount; i++) {
-                    entity.refreshPositionAndAngles(pos.getX() + 0.5,
-                            pos.getY() + 1, pos.getZ() + 0.5,
-                            world.getRandom().nextFloat() * 360.0F, 0.0F);
-                    boolean spawned = world.spawnEntity(entity);
-                }
+                entity.refreshPositionAndAngles(pos.getX() + 0.5,
+                        pos.getY() + 1, pos.getZ() + 0.5,
+                        world.getRandom().nextFloat() * 360.0F, 0.0F);
+                boolean spawned = world.spawnEntity(entity);
+
             }
         }
     }

@@ -34,6 +34,11 @@ public class ModBlockEntities {
                     FabricBlockEntityTypeBuilder.create(SpaceSiphonBlockEntity::new,
                             ModBlocks.SPACE_SIPHON).build());
 
+    public static final BlockEntityType<UnholySilencerBlockEntity> UNHOLY_SILENCER_BLOCK_ENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(DivinityUnbound.MOD_ID, "unholy_silencer_be"),
+                    FabricBlockEntityTypeBuilder.create(UnholySilencerBlockEntity::new,
+                            ModBlocks.UNHOLY_SILENCER).build());
+
     public static void registerBlockEntities() {
         DivinityUnbound.LOGGER.info("Registering Block Entities for " + DivinityUnbound.MOD_ID);
     }
