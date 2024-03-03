@@ -124,7 +124,7 @@ Full sets of armor have different full set bonuses!
 - [ ] Paxels
 - [ ] Food items
 - [ ] More Wands
-- [ ] Space Time Fluid
+- [X] Space Time Fluid
 - [ ] Linked chests with filters
 - [ ] Processing type machines for automation
 

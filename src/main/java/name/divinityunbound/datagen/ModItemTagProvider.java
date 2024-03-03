@@ -1,10 +1,12 @@
 package name.divinityunbound.datagen;
 
 import name.divinityunbound.block.ModBlocks;
+import name.divinityunbound.fluid.ModFluids;
 import name.divinityunbound.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.FluidTags;
 import net.minecraft.registry.tag.ItemTags;
 
 import java.util.concurrent.CompletableFuture;

@@ -3,6 +3,7 @@ package name.divinityunbound.datagen;
 import com.ibm.icu.text.Normalizer2;
 import dev.architectury.platform.Mod;
 import name.divinityunbound.block.ModBlocks;
+import name.divinityunbound.fluid.ModFluids;
 import name.divinityunbound.item.ModItems;
 import name.divinityunbound.item.client.SpaceSiphonItemModel;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -70,6 +71,8 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.SPEED_CORE, Models.GENERATED);
         itemModelGenerator.register(ModItems.QUANTITY_CORE, Models.GENERATED);
         itemModelGenerator.register(ModItems.MOB_CORE, Models.GENERATED);
+
+        itemModelGenerator.register(ModFluids.SPACE_TIME_BUCKET, Models.GENERATED);
 
         /* Tools */
         itemModelGenerator.register(ModItems.CELESTITE_PICKAXE, Models.HANDHELD);

@@ -3,9 +3,12 @@ package name.divinityunbound;
 import name.divinityunbound.block.ModBlocks;
 import name.divinityunbound.block.entity.ModBlockEntities;
 import name.divinityunbound.block.entity.client.SpaceSiphonBlockRenderer;
+import name.divinityunbound.fluid.ModFluids;
 import name.divinityunbound.screen.*;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
+import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
@@ -23,5 +26,10 @@ public class DivinityUnboundClient implements ClientModInitializer {
         HandledScreens.register(ModScreenHandlers.UNHOLY_SILENCER_SCREEN_HANDLER, UnholySilencerScreen::new);
 
         BlockEntityRendererFactories.register(ModBlockEntities.SPACE_SIPHON_BLOCK_ENTITY, SpaceSiphonBlockRenderer::new);
+
+        FluidRenderHandlerRegistry.INSTANCE.register(ModFluids.STILL_SPACE_TIME, ModFluids.FLOWING_SPACE_TIME,
+                SimpleFluidRenderHandler.coloredWater(0x0CC3CA));
+        BlockRenderLayerMap.INSTANCE.putFluids(RenderLayer.getTranslucent(),
+                ModFluids.STILL_SPACE_TIME, ModFluids.FLOWING_SPACE_TIME);
     }
 }

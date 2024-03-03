@@ -2,6 +2,7 @@ package name.divinityunbound.item;
 
 import name.divinityunbound.DivinityUnbound;
 import name.divinityunbound.block.ModBlocks;
+import name.divinityunbound.fluid.ModFluids;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -40,6 +41,8 @@ public class ModItemGroups {
                         entries.add(ModItems.SPEED_CORE);
                         entries.add(ModItems.QUANTITY_CORE);
                         entries.add(ModItems.MOB_CORE);
+
+                        entries.add(ModFluids.SPACE_TIME_BUCKET);
 
                         /* Wands */
                         //entries.add(ModItems.MAGIC_CELESTITE_DETECTOR);
