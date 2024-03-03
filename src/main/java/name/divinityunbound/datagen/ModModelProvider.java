@@ -44,7 +44,7 @@ public class ModModelProvider extends FabricModelProvider {
         //blockStateModelGenerator.registerSimpleState(ModBlocks.SPACE_SIPHON);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHRONOS_TIME_ACCUMULATOR);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.UNHOLY_SILENCER);
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.SPACE_TIME_EVAPORATOR);
+        //blockStateModelGenerator.registerSimpleState(ModBlocks.SPACE_TIME_EVAPORATOR);
     }
 
     @Override
@@ -118,5 +118,6 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.CELESTITE_NETHERITE_FOCUS, Models.GENERATED);
 
         itemModelGenerator.register(ModBlocks.SPACE_SIPHON.asItem(), Models.GENERATED);
+        itemModelGenerator.register(ModBlocks.SPACE_TIME_EVAPORATOR.asItem(), Models.GENERATED);
     }
 }

@@ -1,0 +1,30 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"idle": {
+			"loop": true,
+			"animation_length": 9,
+			"bones": {
+				"bone": {
+					"rotation": {
+						"vector": [0, "-query.anim_time*20", 0]
+					}
+				},
+				"bone2": {
+					"position": {
+						"vector": [0, "math.sin(query.anim_time*120)", 0]
+					}
+				},
+				"bone3": {
+					"rotation": {
+						"vector": [0, "query.anim_time*20", 0]
+					},
+					"position": {
+						"vector": [0, "math.clamp(math.sin(query.anim_time*60), -1, 0)*22", 0]
+					}
+				}
+			}
+		}
+	},
+	"geckolib_format_version": 2
+}

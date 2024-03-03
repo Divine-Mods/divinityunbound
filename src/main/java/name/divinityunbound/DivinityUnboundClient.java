@@ -3,6 +3,7 @@ package name.divinityunbound;
 import name.divinityunbound.block.ModBlocks;
 import name.divinityunbound.block.entity.ModBlockEntities;
 import name.divinityunbound.block.entity.client.SpaceSiphonBlockRenderer;
+import name.divinityunbound.block.entity.client.SpaceTimeEvaporatorBlockRenderer;
 import name.divinityunbound.fluid.ModFluids;
 import name.divinityunbound.screen.*;
 import net.fabricmc.api.ClientModInitializer;
@@ -27,6 +28,7 @@ public class DivinityUnboundClient implements ClientModInitializer {
         HandledScreens.register(ModScreenHandlers.SPACE_TIME_EVAPORATOR_SCREEN_HANDLER, SpaceTimeEvaporatorScreen::new);
 
         BlockEntityRendererFactories.register(ModBlockEntities.SPACE_SIPHON_BLOCK_ENTITY, SpaceSiphonBlockRenderer::new);
+        BlockEntityRendererFactories.register(ModBlockEntities.SPACE_TIME_EVAPORATOR_BLOCK_ENTITY, SpaceTimeEvaporatorBlockRenderer::new);
 
         FluidRenderHandlerRegistry.INSTANCE.register(ModFluids.STILL_SPACE_TIME, ModFluids.FLOWING_SPACE_TIME,
                 SimpleFluidRenderHandler.coloredWater(0x0CC3CA));

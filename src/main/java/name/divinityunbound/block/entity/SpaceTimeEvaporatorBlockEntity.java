@@ -34,12 +34,20 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
+import software.bernie.geckolib.animatable.GeoBlockEntity;
+import software.bernie.geckolib.core.animatable.GeoAnimatable;
+import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInstanceCache;
+import software.bernie.geckolib.core.animation.*;
+import software.bernie.geckolib.core.object.PlayState;
+import software.bernie.geckolib.util.RenderUtils;
 import team.reborn.energy.api.base.SimpleEnergyStorage;
 
 import java.util.Iterator;
 import java.util.List;
 
-public class SpaceTimeEvaporatorBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory, ImplementedInventory, SidedInventory {
+public class SpaceTimeEvaporatorBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory, ImplementedInventory, SidedInventory, GeoBlockEntity {
+    private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
     private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(4, ItemStack.EMPTY);
     private static final int INPUT_SLOT = 0;
     private static final int FLUID_ITEM_SLOT = 1;
@@ -321,59 +329,81 @@ public class SpaceTimeEvaporatorBlockEntity extends BlockEntity implements Exten
 
     @Override
     public boolean canInsert(int slot, ItemStack stack, @Nullable Direction side) {
-        Direction localDir = this.getWorld().getBlockState(pos).get(SpaceTimeEvaporatorBlock.FACING);
-
-        if(side == Direction.DOWN) {
-            return false;
-        }
-
-        if(side == Direction.UP) {
-            return slot == INPUT_SLOT;
-        }
-
-        return switch (localDir) {
-            default -> //NORTH
-                    side.getOpposite() == Direction.NORTH && slot == INPUT_SLOT ||
-                            side.getOpposite() == Direction.WEST && slot == INPUT_SLOT;
-            case EAST ->
-                    side.rotateYClockwise() == Direction.NORTH && slot == INPUT_SLOT ||
-                            side.rotateYClockwise() == Direction.WEST && slot == INPUT_SLOT;
-            case SOUTH ->
-                    side == Direction.NORTH && slot == INPUT_SLOT ||
-                            side == Direction.WEST && slot == INPUT_SLOT;
-            case WEST ->
-                    side.rotateYCounterclockwise() == Direction.NORTH && slot == INPUT_SLOT ||
-                            side.rotateYCounterclockwise() == Direction.WEST && slot == INPUT_SLOT;
-        };
+        return true;
+//        Direction localDir = this.getWorld().getBlockState(pos).get(SpaceTimeEvaporatorBlock.FACING);
+//
+//        if(side == Direction.DOWN) {
+//            return false;
+//        }
+//
+//        if(side == Direction.UP) {
+//            return slot == INPUT_SLOT;
+//        }
+//
+//        return switch (localDir) {
+//            default -> //NORTH
+//                    side.getOpposite() == Direction.NORTH && slot == INPUT_SLOT ||
+//                            side.getOpposite() == Direction.WEST && slot == INPUT_SLOT;
+//            case EAST ->
+//                    side.rotateYClockwise() == Direction.NORTH && slot == INPUT_SLOT ||
+//                            side.rotateYClockwise() == Direction.WEST && slot == INPUT_SLOT;
+//            case SOUTH ->
+//                    side == Direction.NORTH && slot == INPUT_SLOT ||
+//                            side == Direction.WEST && slot == INPUT_SLOT;
+//            case WEST ->
+//                    side.rotateYCounterclockwise() == Direction.NORTH && slot == INPUT_SLOT ||
+//                            side.rotateYCounterclockwise() == Direction.WEST && slot == INPUT_SLOT;
+//        };
     }
 
     @Override
     public boolean canExtract(int slot, ItemStack stack, Direction side) {
-        Direction localDir = this.getWorld().getBlockState(this.pos).get(SpaceTimeEvaporatorBlock.FACING);
+        return true;
+//        Direction localDir = this.getWorld().getBlockState(this.pos).get(SpaceTimeEvaporatorBlock.FACING);
+//
+//        if(side == Direction.UP) {
+//            return false;
+//        }
+//
+//        // Down extract 2
+//        if(side == Direction.DOWN) {
+//            return slot == OUTPUT_SLOT;
+//        }
+//
+//        // bottom extract 2
+//        // right extract 2
+//        return switch (localDir) {
+//            default ->  side.getOpposite() == Direction.SOUTH && slot == OUTPUT_SLOT ||
+//                    side.getOpposite() == Direction.EAST && slot == OUTPUT_SLOT;
+//
+//            case EAST -> side.rotateYClockwise() == Direction.SOUTH && slot == OUTPUT_SLOT ||
+//                    side.rotateYClockwise() == Direction.EAST && slot == OUTPUT_SLOT;
+//
+//            case SOUTH ->   side == Direction.SOUTH && slot == OUTPUT_SLOT ||
+//                    side == Direction.EAST && slot == OUTPUT_SLOT;
+//
+//            case WEST -> side.rotateYCounterclockwise() == Direction.SOUTH && slot == OUTPUT_SLOT ||
+//                    side.rotateYCounterclockwise() == Direction.EAST && slot == OUTPUT_SLOT;
+//        };
+    }
 
-        if(side == Direction.UP) {
-            return false;
-        }
+    @Override
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+        controllers.add(new AnimationController<GeoAnimatable>(this, "controller", 0, this::predicate));
+    }
 
-        // Down extract 2
-        if(side == Direction.DOWN) {
-            return slot == OUTPUT_SLOT;
-        }
+    private <T extends GeoAnimatable> PlayState predicate(AnimationState<T> tAnimationState) {
+        tAnimationState.getController().setAnimation(RawAnimation.begin().then("idle", Animation.LoopType.LOOP));
+        return PlayState.CONTINUE;
+    }
 
-        // bottom extract 2
-        // right extract 2
-        return switch (localDir) {
-            default ->  side.getOpposite() == Direction.SOUTH && slot == OUTPUT_SLOT ||
-                    side.getOpposite() == Direction.EAST && slot == OUTPUT_SLOT;
+    @Override
+    public AnimatableInstanceCache getAnimatableInstanceCache() {
+        return cache;
+    }
 
-            case EAST -> side.rotateYClockwise() == Direction.SOUTH && slot == OUTPUT_SLOT ||
-                    side.rotateYClockwise() == Direction.EAST && slot == OUTPUT_SLOT;
-
-            case SOUTH ->   side == Direction.SOUTH && slot == OUTPUT_SLOT ||
-                    side == Direction.EAST && slot == OUTPUT_SLOT;
-
-            case WEST -> side.rotateYCounterclockwise() == Direction.SOUTH && slot == OUTPUT_SLOT ||
-                    side.rotateYCounterclockwise() == Direction.EAST && slot == OUTPUT_SLOT;
-        };
+    @Override
+    public double getTick(Object blockEntity) {
+        return RenderUtils.getCurrentTick();
     }
 }
