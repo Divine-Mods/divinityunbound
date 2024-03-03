@@ -51,7 +51,9 @@ public class UnholySilencerBlockEntity extends BlockEntity implements ExtendedSc
     private int rangeCount = 0;
 
     protected final PropertyDelegate propertyDelegate;
-    private static final GameProfile GAME_PROFILE = new GameProfile(UUID.nameUUIDFromBytes("fakeplayer.unholy_silencer".getBytes()),
+
+    //private static final GameProfile GAME_PROFILE = new GameProfile(UUID.nameUUIDFromBytes("fakeplayer.unholy_silencer".getBytes()),
+    private static final GameProfile GAME_PROFILE = new GameProfile(UUID.randomUUID(),
             "fakeplayer.unholy_silencer");
     private FakePlayer fakePlayer = null;
     private DamageSource damageSource = null;
@@ -136,45 +138,47 @@ public class UnholySilencerBlockEntity extends BlockEntity implements ExtendedSc
 //            return;
 //        }
 //        attackCooldown = 0;
-
-        if (this.hasWeapon() && this.hasFuel()) {
-            if (this.upgradeCheck >= this.CHECK_UPGRADE_TICKS) {
-                this.countUpgrades(world, pos);
-                this.upgradeCheck = 0;
+        //PlayerEntity player = world.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), 4, false);
+        if (hasWeapon() && hasFuel()) {
+            if (upgradeCheck >= CHECK_UPGRADE_TICKS) {
+                countUpgrades(world, pos);
+                upgradeCheck = 0;
             }
-            this.upgradeCheck++;
-            for (int i = 0; i < this.speedCount; i++) {
-                this.increaseCraftProgress();
-            }
-            markDirty(world, pos, state);
+            upgradeCheck++;
+            for (int i = 0; i <= speedCount; i++) {
+                increaseCraftProgress();
 
-            if (hasCraftingFinished()) {
-                ItemStack swordItem = this.getStack(SWORD_SLOT);
-                float swordDamage = ((SwordItem)swordItem.getItem()).getAttackDamage();
+                markDirty(world, pos, state);
+
+                if (hasCraftingFinished()) {
+                    ItemStack swordItem = getStack(SWORD_SLOT);
+                    float swordDamage = ((SwordItem) swordItem.getItem()).getAttackDamage();
 
 
-                List<LivingEntity> livingEntities = this.getLivingEntitiesInRange(world, pos);
-                if (fakePlayer == null) {
-                    this.fakePlayer = FakePlayer.get((ServerWorld) world, GAME_PROFILE);
-                }
-                if (this.damageSource == null) {
-                    this.damageSource = world.getDamageSources().playerAttack(fakePlayer);
-                }
-                if (this.fakePlayer.getEquippedStack(EquipmentSlot.MAINHAND).isEmpty()) {
-                    fakePlayer.equipStack(EquipmentSlot.MAINHAND, swordItem);
-                }
+                    List<LivingEntity> livingEntities = getLivingEntitiesInRange(world, pos);
+                    if (fakePlayer == null) {
+                        fakePlayer = FakePlayer.get((ServerWorld) world, GAME_PROFILE);
+                    }
+                    if (damageSource == null) {
+                        damageSource = world.getDamageSources().playerAttack(fakePlayer);
+                    }
+                    if (fakePlayer.getEquippedStack(EquipmentSlot.MAINHAND).isEmpty()) {
+                        fakePlayer.equipStack(EquipmentSlot.MAINHAND, swordItem);
+                    }
 
-                if (livingEntities.size() > 0) {
-                    this.spendFuel();
+                    if (livingEntities.size() > 0) {
+                        spendFuel();
+                    }
+                    for (LivingEntity entity : livingEntities) {
+                        entity.damage(damageSource, swordDamage);
+                    }
+
+                    resetProgress();
                 }
-                for (LivingEntity entity : livingEntities) {
-                    entity.damage(this.damageSource, swordDamage);
-                }
-                
-                this.resetProgress();
             }
         }
         else {
+            this.resetProgress();
             markDirty(world, pos, state);
         }
     }
@@ -194,8 +198,7 @@ public class UnholySilencerBlockEntity extends BlockEntity implements ExtendedSc
     }
 
     private void spendFuel() {
-        ItemStack stack = this.getStack(FUEL_SLOT);
-        stack.setCount(stack.getCount() - 1);
+        this.getStack(FUEL_SLOT).setCount(this.getStack(FUEL_SLOT).getCount() - 1);
     }
 
     private boolean hasWeapon() {
