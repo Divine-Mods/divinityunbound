@@ -89,6 +89,9 @@ public class ModBlocks {
     public static final Block UNHOLY_SILENCER = registerBlock("unholy_silencer",
             new UnholySilencerBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
 
+    public static final Block SPACE_TIME_EVAPORATOR = registerBlock("space_time_evaporator",
+            new SpaceTimeEvaporatorBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
+
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);

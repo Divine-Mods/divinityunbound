@@ -38,7 +38,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.SPACE_SIPHON)
                 .add(ModBlocks.SPEED_UPGRADE)
                 .add(ModBlocks.QUANTITY_UPGRADE)
-                .add(ModBlocks.UNHOLY_SILENCER);
+                .add(ModBlocks.UNHOLY_SILENCER)
+                .add(ModBlocks.SPACE_TIME_EVAPORATOR);
 
         getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
                 .add(ModBlocks.CELESTITE_BLOCK)
@@ -55,6 +56,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.SPACE_SIPHON)
                 .add(ModBlocks.SPEED_UPGRADE)
                 .add(ModBlocks.QUANTITY_UPGRADE)
+                .add(ModBlocks.SPACE_TIME_EVAPORATOR)
                 .add(ModBlocks.UNHOLY_SILENCER);
 
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)

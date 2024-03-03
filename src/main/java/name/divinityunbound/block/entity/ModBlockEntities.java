@@ -7,6 +7,7 @@ import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
+import team.reborn.energy.api.EnergyStorage;
 
 public class ModBlockEntities {
     public static final BlockEntityType<GenerationStationBlockEntity> GENERATION_STATION_BLOCK_ENTITY =
@@ -39,7 +40,14 @@ public class ModBlockEntities {
                     FabricBlockEntityTypeBuilder.create(UnholySilencerBlockEntity::new,
                             ModBlocks.UNHOLY_SILENCER).build());
 
+    public static final BlockEntityType<SpaceTimeEvaporatorBlockEntity> SPACE_TIME_EVAPORATOR_BLOCK_ENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(DivinityUnbound.MOD_ID, "space_time_evaporator_be"),
+                    FabricBlockEntityTypeBuilder.create(SpaceTimeEvaporatorBlockEntity::new,
+                            ModBlocks.SPACE_TIME_EVAPORATOR).build());
+
     public static void registerBlockEntities() {
         DivinityUnbound.LOGGER.info("Registering Block Entities for " + DivinityUnbound.MOD_ID);
+
+        EnergyStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.energyStorage, SPACE_TIME_EVAPORATOR_BLOCK_ENTITY);
     }
 }
