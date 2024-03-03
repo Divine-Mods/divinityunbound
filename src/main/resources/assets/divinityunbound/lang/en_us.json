@@ -93,6 +93,11 @@
 
   "effect.divinityunbound.flight": "Flight",
 
+  "block.divinityunbound.space_time": "Liquid Space Time",
+
+  "divinityunbound.tooltip.liquid.amount.with.capacity": "%s / %s mB",
+  "divinityunbound.tooltip.liquid.amount": "%s mB",
+
   "tooltip.divinityunbound.wand_of_capturing": "Captures Mobs!",
   "tooltip.divinityunbound.unholy_wand": "Pulls ores from underground to the surface",
   "tooltip.divinityunbound.divine_wand_of_flight": "Provides flight for 1 minute on use",

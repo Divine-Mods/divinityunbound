@@ -2,15 +2,20 @@ package name.divinityunbound.block.entity;
 
 import name.divinityunbound.block.ModBlocks;
 import name.divinityunbound.block.custom.SpaceTimeEvaporatorBlock;
+import name.divinityunbound.fluid.ModFluids;
 import name.divinityunbound.item.ModItems;
 import name.divinityunbound.screen.GenerationStationScreenHandler;
 import name.divinityunbound.screen.SpaceTimeEvaporatorScreenHandler;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
+import net.fabricmc.fabric.api.transfer.v1.fluid.FluidConstants;
+import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
+import net.fabricmc.fabric.api.transfer.v1.storage.base.SingleVariantStorage;
 import net.fabricmc.fabric.api.transfer.v1.transaction.Transaction;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.SidedInventory;
 import net.minecraft.item.ItemStack;
@@ -83,6 +88,24 @@ public class SpaceTimeEvaporatorBlockEntity extends BlockEntity implements Exten
             getWorld().updateListeners(pos, getCachedState(), getCachedState(), 3);
         }
     };
+
+    public final SingleVariantStorage<FluidVariant> fluidStorage = new SingleVariantStorage<FluidVariant>() {
+        @Override
+        protected FluidVariant getBlankVariant() {
+            return FluidVariant.blank();
+        }
+
+        @Override
+        protected long getCapacity(FluidVariant variant) {
+            return (FluidConstants.BUCKET / 81) * 64; // 1 Bucket = 81000 Droplets = 1000mB || *64 ==> 64,000mB = 64 Buckets
+        }
+
+        @Override
+        protected void onFinalCommit() {
+            markDirty();
+            getWorld().updateListeners(pos, getCachedState(), getCachedState(), 3);
+        }
+    };
     @Override
     public DefaultedList<ItemStack> getItems() {
         return inventory;
@@ -94,6 +117,8 @@ public class SpaceTimeEvaporatorBlockEntity extends BlockEntity implements Exten
         Inventories.writeNbt(nbt, inventory);
         nbt.putInt("space_time_evaporator.progress", progress);
         nbt.putLong(("space_time_evaporator.energy"), energyStorage.amount);
+        nbt.put("space_time_evaporator.variant", fluidStorage.variant.toNbt());
+        nbt.putLong("space_time_evaporator.fluid_amount", fluidStorage.amount);
     }
 
     @Override
@@ -102,6 +127,8 @@ public class SpaceTimeEvaporatorBlockEntity extends BlockEntity implements Exten
         Inventories.readNbt(nbt, inventory);
         progress = nbt.getInt("space_time_evaporator.progress");
         energyStorage.amount = nbt.getLong("space_time_evaporator.energy");
+        fluidStorage.variant = FluidVariant.fromNbt((NbtCompound) nbt.get("space_time_evaporator.variant"));
+        fluidStorage.amount = nbt.getLong("space_time_evaporator.fluid_amount");
     }
 
     @Override
@@ -125,6 +152,7 @@ public class SpaceTimeEvaporatorBlockEntity extends BlockEntity implements Exten
             return;
         }
         fillUpOnEnergy();
+        fillUpOnFluid();
 
         if (canInsertIntoOutputSlot() && hasRecipe()) {
             increaseCraftProgress();
@@ -133,6 +161,7 @@ public class SpaceTimeEvaporatorBlockEntity extends BlockEntity implements Exten
 
             if (hasCraftingFinished()) {
                 craftItem();
+                extractFluid();
                 resetProgress();
             }
         }
@@ -144,7 +173,7 @@ public class SpaceTimeEvaporatorBlockEntity extends BlockEntity implements Exten
     private boolean hasRecipe() {
         return  hasItemInInputSlot() && canInsertAmountIntoOutputSlot(1)
                 && canInsertItemIntoOutputSlot(new ItemStack(ModItems.SPACE_FUEL))
-                && hasEnoughEnergyToCraft();
+                && hasEnoughEnergyToCraft() && hasEnoughFluidToCraft();
     }
 
     private void craftItem() {
@@ -152,6 +181,33 @@ public class SpaceTimeEvaporatorBlockEntity extends BlockEntity implements Exten
 
         this.setStack(OUTPUT_SLOT, new ItemStack(ModItems.SPACE_FUEL,
                 this.getStack(OUTPUT_SLOT).getCount() + 1));
+    }
+
+    private void extractFluid() {
+        try(Transaction transaction = Transaction.openOuter()) {
+            this.fluidStorage.extract(FluidVariant.of(ModFluids.STILL_SPACE_TIME), 500, transaction);
+            transaction.commit();
+        }
+    }
+
+    private void fillUpOnFluid() {
+        if(hasFluidSourceItemInFluidSlot(FLUID_ITEM_SLOT)) {
+            transferItemFluidToTank(FLUID_ITEM_SLOT);
+        }
+    }
+
+    private void transferItemFluidToTank(int fluidItemSlot) {
+        try(Transaction transaction = Transaction.openOuter()) {
+            this.fluidStorage.insert(FluidVariant.of(ModFluids.STILL_SPACE_TIME),
+                    (FluidConstants.BUCKET / 81), transaction);
+            transaction.commit();
+
+            //this.setStack(fluidItemSlot, new ItemStack(Items.BUCKET));
+        }
+    }
+
+    private boolean hasFluidSourceItemInFluidSlot(int fluidItemSlot) {
+        return this.getStack(fluidItemSlot).getItem() == ModFluids.SPACE_TIME_BUCKET;
     }
 
     private void extractEnergy() {
@@ -183,6 +239,10 @@ public class SpaceTimeEvaporatorBlockEntity extends BlockEntity implements Exten
 
     private boolean hasEnoughEnergyToCraft() {
         return this.energyStorage.amount >= 32L * this.maxProgress;
+    }
+
+    private boolean hasEnoughFluidToCraft() {
+        return this.fluidStorage.amount >= 500; // mB amount!
     }
 
     private boolean hasItemInInputSlot() {

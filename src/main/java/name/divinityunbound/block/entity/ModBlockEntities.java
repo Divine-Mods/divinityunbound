@@ -3,6 +3,7 @@ package name.divinityunbound.block.entity;
 import name.divinityunbound.DivinityUnbound;
 import name.divinityunbound.block.ModBlocks;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
+import net.fabricmc.fabric.api.transfer.v1.fluid.FluidStorage;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -49,5 +50,6 @@ public class ModBlockEntities {
         DivinityUnbound.LOGGER.info("Registering Block Entities for " + DivinityUnbound.MOD_ID);
 
         EnergyStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.energyStorage, SPACE_TIME_EVAPORATOR_BLOCK_ENTITY);
+        FluidStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.fluidStorage, SPACE_TIME_EVAPORATOR_BLOCK_ENTITY);
     }
 }
