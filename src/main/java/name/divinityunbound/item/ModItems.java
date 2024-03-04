@@ -7,6 +7,7 @@ import name.divinityunbound.item.custom.*;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.item.*;
 import net.minecraft.registry.*;
 import net.minecraft.registry.entry.RegistryEntry;
@@ -36,6 +37,8 @@ public class ModItems {
     /* Wands */
 //    public static final Item MAGIC_CELESTITE_DETECTOR = registerItem("magic_celestite_detector",
 //            new MagicOreDetectorItem(new FabricItemSettings().maxDamage(64)));
+    public static final Item WAND_BINDING = registerItem("wand_binding",
+            new Item(new FabricItemSettings()));
     public static final Item UNHOLY_WAND = registerItem("unholy_wand",
             new UnholyWandItem(new FabricItemSettings().maxDamage(32)));
 
@@ -56,6 +59,9 @@ public class ModItems {
 
     public static final Item WAND_OF_CELEBRATION = registerItem("wand_of_celebration",
             new WandOfCelebrationItem(new FabricItemSettings().maxDamage(128)));
+
+    public static final Item WAND_OF_FIRE_BENDING = registerItem("wand_of_fire_bending",
+            new WandOfFireBendingItem(Fluids.LAVA,new FabricItemSettings().maxDamage(128)));
 
     /* Tools */
 

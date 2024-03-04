@@ -5,8 +5,10 @@
 ## v0.0.3
 - Added Wand of The Archer
 - Added Wand of Celebration
+- Added Wand of Fire Bending
+- Added Wand Binding
 - Added Space Time Amalgamator (Creates Liquid Space Time)
-- Added crafting recipes for Unholy Silencer and Space Time Evaporator
+- Added missing crafting recipes for Unholy Silencer and Space Time Evaporator
 
 ---
 ## v0.0.2

@@ -90,9 +90,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 //        offerHoeRecipe(exporter, RecipeCategory.TOOLS, ModItems.SPACE_TIME_HOE, ModItems.SPACE_TIME_INGOT);
 
         // TODO: Add recipes for:
-        // Unholy Silencer
-        // Space Time Evaporator
-        // Liquid Space Time
+        // Space Time Amalgamator
+        // Wand of Fire Bending
 
         // TODO: Make some helper methods to clean up these Json Builders
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.CELESTITE, 1)
@@ -189,32 +188,42 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(ModItems.UNHOLY_DUST), conditionsFromItem(ModItems.UNHOLY_DUST))
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.SPACE_FORGED_INGOT)));
 
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.WAND_BINDING, 1)
+                .pattern("U U")
+                .pattern(" T ")
+                .pattern("U U")
+                .input('T', ModItems.TIME_FORGED_INGOT)
+                .input('U', ModItems.UNHOLY_INGOT)
+                .criterion(hasItem(ModItems.TIME_FORGED_INGOT), conditionsFromItem(ModItems.TIME_FORGED_INGOT))
+                .criterion(hasItem(ModItems.UNHOLY_INGOT), conditionsFromItem(ModItems.UNHOLY_INGOT))
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.WAND_BINDING)));
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.UNHOLY_WAND, 1)
                 .pattern(" UC")
-                .pattern(" TU")
+                .pattern(" WU")
                 .pattern("S  ")
                 .input('S', Items.STICK)
-                .input('T', ModItems.TIME_FORGED_INGOT)
+                .input('W', ModItems.WAND_BINDING)
                 .input('C', ModItems.CHRONOS_CLOCK)
                 .input('U', ModItems.UNHOLY_INGOT)
                 .criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
-                .criterion(hasItem(ModItems.TIME_FORGED_INGOT), conditionsFromItem(ModItems.TIME_FORGED_INGOT))
+                .criterion(hasItem(ModItems.WAND_BINDING), conditionsFromItem(ModItems.WAND_BINDING))
                 .criterion(hasItem(ModItems.CHRONOS_CLOCK), conditionsFromItem(ModItems.CHRONOS_CLOCK))
                 .criterion(hasItem(ModItems.UNHOLY_DUST), conditionsFromItem(ModItems.UNHOLY_DUST))
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.UNHOLY_WAND)));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.WAND_OF_CAPTURING, 1)
                 .pattern(" GD")
-                .pattern(" TG")
+                .pattern(" WG")
                 .pattern("S  ")
                 .input('S', Items.STICK)
                 .input('G', Items.GREEN_DYE)
                 .input('D', Items.DIAMOND_BLOCK)
-                .input('T', ModItems.TIME_FORGED_INGOT)
+                .input('W', ModItems.WAND_BINDING)
                 .criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
                 .criterion(hasItem(Items.GREEN_DYE), conditionsFromItem(Items.GREEN_DYE))
                 .criterion(hasItem(Items.DIAMOND_BLOCK), conditionsFromItem(Items.DIAMOND_BLOCK))
-                .criterion(hasItem(ModItems.TIME_FORGED_INGOT), conditionsFromItem(ModItems.TIME_FORGED_INGOT))
+                .criterion(hasItem(ModItems.WAND_BINDING), conditionsFromItem(ModItems.WAND_BINDING))
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.WAND_OF_CAPTURING)));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.DIVINE_WAND_OF_FLIGHT, 1)
@@ -233,16 +242,16 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.WAND_OF_RESPIRATION, 1)
                 .pattern(" LP")
-                .pattern(" TL")
+                .pattern(" WL")
                 .pattern("S  ")
                 .input('S', Items.STICK)
                 .input('L', Items.LAPIS_BLOCK)
                 .input('P', Items.PUFFERFISH)
-                .input('T', ModItems.TIME_FORGED_INGOT)
+                .input('W', ModItems.WAND_BINDING)
                 .criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
                 .criterion(hasItem(Items.LAPIS_BLOCK), conditionsFromItem(Items.LAPIS_BLOCK))
                 .criterion(hasItem(Items.PUFFERFISH), conditionsFromItem(Items.PUFFERFISH))
-                .criterion(hasItem(ModItems.TIME_FORGED_INGOT), conditionsFromItem(ModItems.TIME_FORGED_INGOT))
+                .criterion(hasItem(ModItems.WAND_BINDING), conditionsFromItem(ModItems.WAND_BINDING))
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.WAND_OF_RESPIRATION)));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.WAND_OF_TELEPORTATION, 1)
@@ -286,6 +295,20 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(Items.PAPER), conditionsFromItem(Items.PAPER))
                 .criterion(hasItem(ModItems.SPACE_FORGED_INGOT), conditionsFromItem(ModItems.SPACE_FORGED_INGOT))
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.WAND_OF_CELEBRATION)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.WAND_OF_FIRE_BENDING, 1)
+                .pattern(" RB")
+                .pattern(" WR")
+                .pattern("S  ")
+                .input('S', Items.STICK)
+                .input('B', Items.LAVA_BUCKET)
+                .input('R', Items.REDSTONE_BLOCK)
+                .input('W', ModItems.WAND_BINDING)
+                .criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
+                .criterion(hasItem(Items.LAVA_BUCKET), conditionsFromItem(Items.LAVA_BUCKET))
+                .criterion(hasItem(Items.REDSTONE_BLOCK), conditionsFromItem(Items.REDSTONE_BLOCK))
+                .criterion(hasItem(ModItems.WAND_BINDING), conditionsFromItem(ModItems.WAND_BINDING))
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.WAND_OF_FIRE_BENDING)));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.MYSTIC_CHRONOGRAPH, 1)
                 .pattern("STS")

@@ -46,6 +46,7 @@ public class ModItemGroups {
 
                         /* Wands */
                         //entries.add(ModItems.MAGIC_CELESTITE_DETECTOR);
+                        entries.add(ModItems.WAND_BINDING);
                         entries.add(ModItems.UNHOLY_WAND);
                         entries.add(ModItems.DIVINE_WAND_OF_FLIGHT);
                         entries.add(ModItems.WAND_OF_CAPTURING);
@@ -53,6 +54,7 @@ public class ModItemGroups {
                         entries.add(ModItems.WAND_OF_TELEPORTATION);
                         entries.add(ModItems.WAND_OF_THE_ARCHER);
                         entries.add(ModItems.WAND_OF_CELEBRATION);
+                        entries.add(ModItems.WAND_OF_FIRE_BENDING);
 
                         /* Tools */
                         entries.add(ModItems.CELESTITE_PICKAXE);

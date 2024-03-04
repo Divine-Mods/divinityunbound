@@ -27,10 +27,10 @@ public class WandOfRespirationItem extends Item {
             boolean hasPlayerEffect = user.hasStatusEffect(StatusEffects.WATER_BREATHING);
             if (!hasPlayerEffect) {
                 user.addStatusEffect(new StatusEffectInstance(new StatusEffectInstance(StatusEffects.WATER_BREATHING,
-                        6000, 1,
+                        6000, 0,
                         false, false, true)));
                 user.addStatusEffect(new StatusEffectInstance(new StatusEffectInstance(StatusEffects.DOLPHINS_GRACE,
-                        6000, 1,
+                        6000, 0,
                         false, false, true)));
                 user.getStackInHand(hand).damage(1, user,
                         playerEntity -> playerEntity.sendToolBreakStatus(playerEntity.getActiveHand()));

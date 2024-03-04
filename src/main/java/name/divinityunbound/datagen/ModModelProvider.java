@@ -72,6 +72,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModFluids.SPACE_TIME_BUCKET, Models.GENERATED);
 
         /* Wands */
+        itemModelGenerator.register(ModItems.WAND_BINDING, Models.GENERATED);
         itemModelGenerator.register(ModItems.UNHOLY_WAND, Models.GENERATED);
         itemModelGenerator.register(ModItems.DIVINE_WAND_OF_FLIGHT, Models.GENERATED);
         itemModelGenerator.register(ModItems.WAND_OF_CAPTURING, Models.GENERATED);
@@ -79,6 +80,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.WAND_OF_TELEPORTATION, Models.GENERATED);
         itemModelGenerator.register(ModItems.WAND_OF_THE_ARCHER, Models.GENERATED);
         itemModelGenerator.register(ModItems.WAND_OF_CELEBRATION, Models.GENERATED);
+        itemModelGenerator.register(ModItems.WAND_OF_FIRE_BENDING, Models.GENERATED);
 
         /* Tools */
         itemModelGenerator.register(ModItems.CELESTITE_PICKAXE, Models.HANDHELD);

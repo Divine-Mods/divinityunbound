@@ -23,6 +23,7 @@
   "block.divinityunbound.celestite_ore": "Celestite Ore",
   "block.divinityunbound.deepslate_celestite_ore": "Deepslate Celestite Ore",
 
+  "item.divinityunbound.wand_binding": "Wand Binding",
   "item.divinityunbound.unholy_wand": "Unholy Wand",
   "item.divinityunbound.divine_wand_of_flight": "Divine Wand of Flight",
   "item.divinityunbound.wand_of_capturing": "Wand of Capturing",
@@ -30,6 +31,7 @@
   "item.divinityunbound.wand_of_teleportation": "Wand of Teleportation",
   "item.divinityunbound.wand_of_the_archer": "Wand of The Archer",
   "item.divinityunbound.wand_of_celebration": "Wand of Celebration",
+  "item.divinityunbound.wand_of_fire_bending": "Wand of Fire Bending",
 
   "item.divinityunbound.celestite_pickaxe": "Celestite Pickaxe",
   "item.divinityunbound.celestite_axe": "Celestite Axe",
@@ -104,10 +106,11 @@
   "tooltip.divinityunbound.wand_of_capturing": "Captures Mobs!",
   "tooltip.divinityunbound.unholy_wand": "Pulls ores from underground to the surface",
   "tooltip.divinityunbound.divine_wand_of_flight": "Provides flight for 1 minute on use",
-  "tooltip.divinityunbound.wand_of_respiration": "Gives water breathing!",
+  "tooltip.divinityunbound.wand_of_respiration": "Gives Water Breathing and Dolphins Grace",
   "tooltip.divinityunbound.wand_of_teleportation": "Teleports to saved coordinates",
   "tooltip.divinityunbound.wand_of_the_archer": "Shoots spectral arrows. Can be enchanted",
   "tooltip.divinityunbound.wand_of_celebration": "Shoots duration 3 fireworks",
+  "tooltip.divinityunbound.wand_of_fire_bending": "Summons temporary lava and gives fire resistance",
 
   "itemgroup.celestite": "DivinityUnbound"
 }

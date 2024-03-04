@@ -120,6 +120,8 @@ Wand of The Archer shoots spectral arrows and can be enchanted with bow enchantm
 
 Wand of the Celebration shoots firework rockets (duration 3).
 
+Wand of Fire Bending summons temporary lava in a plus pattern and provides Fire Resistance. Can be used on mobs and blocks.
+
 ---
 
 ### Armor and Tools
