@@ -89,7 +89,7 @@ public class SpaceTimeEvaporatorBlockEntity extends BlockEntity implements Exten
         };
     }
 
-    public final SimpleEnergyStorage energyStorage = new SimpleEnergyStorage(64000, 200, 200) {
+    public final SimpleEnergyStorage energyStorage = new SimpleEnergyStorage(100000000, Integer.MAX_VALUE, Integer.MAX_VALUE) {
         @Override
         protected void onFinalCommit() {
             markDirty();
@@ -159,16 +159,17 @@ public class SpaceTimeEvaporatorBlockEntity extends BlockEntity implements Exten
         if (world.isClient()) {
             return;
         }
-        fillUpOnEnergy();
+        //fillUpOnEnergy();
         fillUpOnFluid();
 
         if (canInsertIntoOutputSlot() && hasRecipe()) {
             increaseCraftProgress();
-            extractEnergy();
+            //extractEnergy();
             markDirty(world, pos, state);
 
             if (hasCraftingFinished()) {
                 craftItem();
+                produceEnergy();
                 extractFluid();
                 resetProgress();
             }
@@ -181,7 +182,7 @@ public class SpaceTimeEvaporatorBlockEntity extends BlockEntity implements Exten
     private boolean hasRecipe() {
         return  hasItemInInputSlot() && canInsertAmountIntoOutputSlot(1)
                 && canInsertItemIntoOutputSlot(new ItemStack(ModItems.SPACE_FUEL))
-                && hasEnoughEnergyToCraft() && hasEnoughFluidToCraft();
+                && hasEnoughFluidToCraft();
     }
 
     private void craftItem() {
@@ -221,6 +222,20 @@ public class SpaceTimeEvaporatorBlockEntity extends BlockEntity implements Exten
     private void extractEnergy() {
         try(Transaction transaction = Transaction.openOuter()) {
             this.energyStorage.extract(32L, transaction);
+            transaction.commit();
+        }
+    }
+
+    private void produceEnergy() {
+        try(Transaction transaction = Transaction.openOuter()) {
+            if (this.energyStorage.getCapacity() - this.energyStorage.getAmount() <= 1000000) {
+                this.energyStorage.insert(
+                        this.energyStorage.getCapacity() - this.energyStorage.getAmount(),
+                        transaction);
+            }
+            else {
+                this.energyStorage.insert(1000000, transaction);
+            }
             transaction.commit();
         }
     }
