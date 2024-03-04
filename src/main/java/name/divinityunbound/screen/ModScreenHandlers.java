@@ -29,6 +29,10 @@ public class ModScreenHandlers {
             Registry.register(Registries.SCREEN_HANDLER, new Identifier(DivinityUnbound.MOD_ID, "space_time_evaporator"),
                     new ExtendedScreenHandlerType<>(SpaceTimeEvaporatorScreenHandler::new));
 
+    public static final ScreenHandlerType<SpaceTimeAmalgamatorScreenHandler> SPACE_TIME_AMALGAMATOR_SCREEN_HANDLER =
+            Registry.register(Registries.SCREEN_HANDLER, new Identifier(DivinityUnbound.MOD_ID, "space_time_amalgamator"),
+                    new ExtendedScreenHandlerType<>(SpaceTimeAmalgamatorScreenHandler::new));
+
     public static void registerScreenHandlers() {
         DivinityUnbound.LOGGER.info("Registering Screen Handlers for " + DivinityUnbound.MOD_ID);
     }

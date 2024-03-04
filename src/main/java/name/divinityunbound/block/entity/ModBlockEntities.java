@@ -46,10 +46,18 @@ public class ModBlockEntities {
                     FabricBlockEntityTypeBuilder.create(SpaceTimeEvaporatorBlockEntity::new,
                             ModBlocks.SPACE_TIME_EVAPORATOR).build());
 
+    public static final BlockEntityType<SpaceTimeAmalgamatorBlockEntity> SPACE_TIME_AMALGAMATOR_BLOCK_ENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(DivinityUnbound.MOD_ID, "space_time_amalgamator_be"),
+                    FabricBlockEntityTypeBuilder.create(SpaceTimeAmalgamatorBlockEntity::new,
+                            ModBlocks.SPACE_TIME_AMALGAMATOR).build());
+
     public static void registerBlockEntities() {
         DivinityUnbound.LOGGER.info("Registering Block Entities for " + DivinityUnbound.MOD_ID);
 
         EnergyStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.energyStorage, SPACE_TIME_EVAPORATOR_BLOCK_ENTITY);
         FluidStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.fluidStorage, SPACE_TIME_EVAPORATOR_BLOCK_ENTITY);
+
+        EnergyStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.energyStorage, SPACE_TIME_AMALGAMATOR_BLOCK_ENTITY);
+        FluidStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.fluidStorage, SPACE_TIME_AMALGAMATOR_BLOCK_ENTITY);
     }
 }

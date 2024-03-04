@@ -115,6 +115,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.QUANTITY_UPGRADE);
                         entries.add(ModBlocks.UNHOLY_SILENCER);
                         entries.add(ModBlocks.SPACE_TIME_EVAPORATOR);
+                        entries.add(ModBlocks.SPACE_TIME_AMALGAMATOR);
 
                         /* Foci */
                         entries.add(ModItems.CELESTITE_COAL_FOCUS);

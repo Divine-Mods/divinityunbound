@@ -92,6 +92,9 @@ public class ModBlocks {
     public static final Block SPACE_TIME_EVAPORATOR = registerBlock("space_time_evaporator",
             new SpaceTimeEvaporatorBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
 
+    public static final Block SPACE_TIME_AMALGAMATOR = registerBlock("space_time_amalgamator",
+            new SpaceTimeAmalgamatorBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
+
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
