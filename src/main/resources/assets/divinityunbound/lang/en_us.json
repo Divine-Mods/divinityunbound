@@ -28,6 +28,8 @@
   "item.divinityunbound.wand_of_capturing": "Wand of Capturing",
   "item.divinityunbound.wand_of_respiration": "Wand of Respiration",
   "item.divinityunbound.wand_of_teleportation": "Wand of Teleportation",
+  "item.divinityunbound.wand_of_the_archer": "Wand of The Archer",
+  "item.divinityunbound.wand_of_celebration": "Wand of Celebration",
 
   "item.divinityunbound.celestite_pickaxe": "Celestite Pickaxe",
   "item.divinityunbound.celestite_axe": "Celestite Axe",
@@ -103,6 +105,8 @@
   "tooltip.divinityunbound.divine_wand_of_flight": "Provides flight for 1 minute on use",
   "tooltip.divinityunbound.wand_of_respiration": "Gives water breathing!",
   "tooltip.divinityunbound.wand_of_teleportation": "Teleports to saved coordinates",
+  "tooltip.divinityunbound.wand_of_the_archer": "Shoots spectral arrows. Can be enchanted",
+  "tooltip.divinityunbound.wand_of_celebration": "Shoots duration 3 fireworks",
 
   "itemgroup.celestite": "DivinityUnbound"
 }

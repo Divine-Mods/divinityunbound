@@ -32,8 +32,8 @@ public class WandOfRespirationItem extends Item {
                 user.addStatusEffect(new StatusEffectInstance(new StatusEffectInstance(StatusEffects.DOLPHINS_GRACE,
                         6000, 1,
                         false, false, true)));
-//                user.getStackInHand(hand).damage(1, user,
-//                        playerEntity -> playerEntity.sendToolBreakStatus(playerEntity.getActiveHand()));
+                user.getStackInHand(hand).damage(1, user,
+                        playerEntity -> playerEntity.sendToolBreakStatus(playerEntity.getActiveHand()));
             }
         }
 

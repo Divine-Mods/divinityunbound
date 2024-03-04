@@ -65,6 +65,11 @@ drastically speeds up the block below it.
 Space Siphon pulls in items within a radius around it and 
 pushes them to the inventory below. 
 
+Unholy Silencer - Attacks mobs within a radius around it. Utilizes sword in inventory to calculate damage. 
+(Does take into account sword enchantments, e.g. Looting, Sharpness, etc)
+
+Space Time Evaporator - Evaporates space time on to coal, causing it to recrystalize and form space fuel. Produces energy.
+
 ### Block Upgrades
 
 There are currently speed and quantity upgrades available 
@@ -73,13 +78,15 @@ to enhance the block they are placed around.
 You are able to place upgrades in the 8 blocks (on the same Y level) 
 surrounding the block you are upgrading.
 
-| x                        | Speed Upgrade | Quantity Upgrade |
+|                          | Speed Upgrade | Quantity Upgrade |
 |--------------------------|---------------|------------------|
 | Chronos Time Accumulator | Y             | Y                |
 | Divine Replicator        | Y             | Y                |
 | Generation Station       | Y             | Y                |
 | Mystic Chronograph       | N             | N                |
 | Space Siphon             | Y             | N                |
+| Unholy Silencer          | Y             | N                |
+| Space Time Evaporator    | N             | N                |
 
 ---
 
@@ -104,6 +111,10 @@ right click on a different block to change the saved position.
 
 Divine Wand of Flight provides 1 minute of creative flight on 
 use.
+
+Wand of The Archer shoots spectral arrows and can be enchanted with bow enchantments.
+
+Wand of the Celebration shoots firework rockets (duration 3).
 
 ---
 
@@ -132,4 +143,6 @@ Full sets of armor have different full set bonuses!
 - [ ] Particles for Space Siphon
 - [ ] Particles for Divine Replicator
 - [ ] Particles for Mystic Chronograph
+- [ ] Particles for Unholy Silencer
+- [ ] Particles for Space Time Evaporator
 - [ ] Animated Models for blocks

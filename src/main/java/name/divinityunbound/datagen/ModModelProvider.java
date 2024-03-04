@@ -53,11 +53,6 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.CELESTITE_NUGGET, Models.GENERATED);
         itemModelGenerator.register(ModItems.RAW_CELESTITE, Models.GENERATED);
         //itemModelGenerator.register(ModItems.MAGIC_CELESTITE_DETECTOR, Models.GENERATED);
-        itemModelGenerator.register(ModItems.UNHOLY_WAND, Models.GENERATED);
-        itemModelGenerator.register(ModItems.DIVINE_WAND_OF_FLIGHT, Models.GENERATED);
-        itemModelGenerator.register(ModItems.WAND_OF_CAPTURING, Models.GENERATED);
-        itemModelGenerator.register(ModItems.WAND_OF_RESPIRATION, Models.GENERATED);
-        itemModelGenerator.register(ModItems.WAND_OF_TELEPORTATION, Models.GENERATED);
         itemModelGenerator.register(ModItems.CELESTIUM_DUST, Models.GENERATED);
         itemModelGenerator.register(ModItems.GRAIN_OF_TIME, Models.GENERATED);
         itemModelGenerator.register(ModItems.CHRONOS_CLOCK, Models.GENERATED);
@@ -74,6 +69,15 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.MOB_CORE, Models.GENERATED);
 
         itemModelGenerator.register(ModFluids.SPACE_TIME_BUCKET, Models.GENERATED);
+
+        /* Wands */
+        itemModelGenerator.register(ModItems.UNHOLY_WAND, Models.GENERATED);
+        itemModelGenerator.register(ModItems.DIVINE_WAND_OF_FLIGHT, Models.GENERATED);
+        itemModelGenerator.register(ModItems.WAND_OF_CAPTURING, Models.GENERATED);
+        itemModelGenerator.register(ModItems.WAND_OF_RESPIRATION, Models.GENERATED);
+        itemModelGenerator.register(ModItems.WAND_OF_TELEPORTATION, Models.GENERATED);
+        itemModelGenerator.register(ModItems.WAND_OF_THE_ARCHER, Models.GENERATED);
+        itemModelGenerator.register(ModItems.WAND_OF_CELEBRATION, Models.GENERATED);
 
         /* Tools */
         itemModelGenerator.register(ModItems.CELESTITE_PICKAXE, Models.HANDHELD);

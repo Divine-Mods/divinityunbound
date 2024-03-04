@@ -35,6 +35,7 @@ public class WandOfTeleportationItem extends Item {
         Direction facing = context.getSide();
         World worldIn = context.getWorld();
         ItemStack stack = context.getStack();
+        Hand hand = context.getHand();
         if(player.isSneaking()) {
             stack.removeSubNbt("blockpos");
             NbtCompound nbt = new NbtCompound();
@@ -44,19 +45,19 @@ public class WandOfTeleportationItem extends Item {
 //                    pos.getX() + ", " + pos.getY() + ", " + pos.getZ()));
         }
         else {
-            teleport(stack, player, worldIn);
+            teleport(stack, player, worldIn, hand);
         }
         return ActionResult.SUCCESS;
     }
 
-    private void teleport(ItemStack stack, PlayerEntity player, World world) {
+    private void teleport(ItemStack stack, PlayerEntity player, World world, Hand hand) {
         if (stack.getNbt() != null) {
             if (stack.getNbt().contains("blockpos")) {
                 int[] pos = stack.getNbt().getIntArray("blockpos");
                 player.teleport(pos[0] + 0.5, pos[1] + 1, pos[2] + 0.5, true);
                 playUseSound(world, player.getBlockPos());
-//                player.getStackInHand(hand).damage(1, player,
-//                        playerEntity -> playerEntity.sendToolBreakStatus(playerEntity.getActiveHand()));
+                player.getStackInHand(hand).damage(1, player,
+                        playerEntity -> playerEntity.sendToolBreakStatus(playerEntity.getActiveHand()));
             }
         }
     }
@@ -70,7 +71,7 @@ public class WandOfTeleportationItem extends Item {
                 player.sendMessage(Text.literal("Cleared saved block position!"));
             }
             else {
-                teleport(stack, player, world);
+                teleport(stack, player, world, hand);
             }
         }
 

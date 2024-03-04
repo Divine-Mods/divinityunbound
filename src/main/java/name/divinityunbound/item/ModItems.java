@@ -46,10 +46,16 @@ public class ModItems {
             new WandOfCapturingItem(new FabricItemSettings().maxCount(1)));
 
     public static final Item WAND_OF_RESPIRATION = registerItem("wand_of_respiration",
-            new WandOfRespirationItem(new FabricItemSettings().maxCount(1)));
+            new WandOfRespirationItem(new FabricItemSettings().maxCount(16)));
 
     public static final Item WAND_OF_TELEPORTATION = registerItem("wand_of_teleportation",
-            new WandOfTeleportationItem(new FabricItemSettings().maxCount(1)));
+            new WandOfTeleportationItem(new FabricItemSettings().maxDamage(128)));
+
+    public static final Item WAND_OF_THE_ARCHER = registerItem("wand_of_the_archer",
+            new WandOfTheArcherItem(new FabricItemSettings().maxDamage(384)));
+
+    public static final Item WAND_OF_CELEBRATION = registerItem("wand_of_celebration",
+            new WandOfCelebrationItem(new FabricItemSettings().maxDamage(128)));
 
     /* Tools */
 

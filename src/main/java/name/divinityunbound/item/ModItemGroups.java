@@ -51,6 +51,8 @@ public class ModItemGroups {
                         entries.add(ModItems.WAND_OF_CAPTURING);
                         entries.add(ModItems.WAND_OF_RESPIRATION);
                         entries.add(ModItems.WAND_OF_TELEPORTATION);
+                        entries.add(ModItems.WAND_OF_THE_ARCHER);
+                        entries.add(ModItems.WAND_OF_CELEBRATION);
 
                         /* Tools */
                         entries.add(ModItems.CELESTITE_PICKAXE);

@@ -1,6 +1,7 @@
 package name.divinityunbound.datagen;
 
 import name.divinityunbound.block.ModBlocks;
+import name.divinityunbound.fluid.ModFluids;
 import name.divinityunbound.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
@@ -87,6 +88,11 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 //        offerShovelRecipe(exporter, RecipeCategory.TOOLS, ModItems.SPACE_TIME_SHOVEL, ModItems.SPACE_TIME_INGOT);
 //        offerSwordRecipe(exporter, RecipeCategory.TOOLS, ModItems.SPACE_TIME_SWORD, ModItems.SPACE_TIME_INGOT);
 //        offerHoeRecipe(exporter, RecipeCategory.TOOLS, ModItems.SPACE_TIME_HOE, ModItems.SPACE_TIME_INGOT);
+
+        // TODO: Add recipes for:
+        // Unholy Silencer
+        // Space Time Evaporator
+        // Liquid Space Time
 
         // TODO: Make some helper methods to clean up these Json Builders
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.CELESTITE, 1)
@@ -253,6 +259,34 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(ModItems.SPACE_FORGED_INGOT), conditionsFromItem(ModItems.SPACE_FORGED_INGOT))
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.WAND_OF_TELEPORTATION)));
 
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.WAND_OF_THE_ARCHER, 1)
+                .pattern(" BA")
+                .pattern(" TB")
+                .pattern("S  ")
+                .input('S', Items.STICK)
+                .input('A', Items.ARROW)
+                .input('B', Items.BOW)
+                .input('T', ModItems.SPACE_FORGED_INGOT)
+                .criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
+                .criterion(hasItem(Items.BOW), conditionsFromItem(Items.BOW))
+                .criterion(hasItem(Items.ARROW), conditionsFromItem(Items.ARROW))
+                .criterion(hasItem(ModItems.SPACE_FORGED_INGOT), conditionsFromItem(ModItems.SPACE_FORGED_INGOT))
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.WAND_OF_THE_ARCHER)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.WAND_OF_CELEBRATION, 1)
+                .pattern(" GP")
+                .pattern(" TG")
+                .pattern("S  ")
+                .input('S', Items.STICK)
+                .input('G', Items.GUNPOWDER)
+                .input('P', Items.PAPER)
+                .input('T', ModItems.SPACE_FORGED_INGOT)
+                .criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
+                .criterion(hasItem(Items.GUNPOWDER), conditionsFromItem(Items.GUNPOWDER))
+                .criterion(hasItem(Items.PAPER), conditionsFromItem(Items.PAPER))
+                .criterion(hasItem(ModItems.SPACE_FORGED_INGOT), conditionsFromItem(ModItems.SPACE_FORGED_INGOT))
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.WAND_OF_CELEBRATION)));
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.MYSTIC_CHRONOGRAPH, 1)
                 .pattern("STS")
                 .pattern("TCT")
@@ -308,6 +342,36 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(ModItems.TIME_FORGED_INGOT), conditionsFromItem(ModItems.TIME_FORGED_INGOT))
                 .criterion(hasItem(ModItems.SPACE_FORGED_INGOT), conditionsFromItem(ModItems.SPACE_FORGED_INGOT))
                 .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.SPACE_SIPHON)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.UNHOLY_SILENCER, 1)
+                .pattern("UDU")
+                .pattern("WMW")
+                .pattern("UIU")
+                .input('W', Items.WITHER_SKELETON_SKULL)
+                .input('D', Items.DIAMOND_SWORD)
+                .input('I', Items.IRON_BLOCK)
+                .input('M', ModItems.MOB_CORE)
+                .input('U', ModItems.UNHOLY_INGOT)
+                .criterion(hasItem(Items.WITHER_SKELETON_SKULL), conditionsFromItem(Items.WITHER_SKELETON_SKULL))
+                .criterion(hasItem(Items.DIAMOND_SWORD), conditionsFromItem(Items.DIAMOND_SWORD))
+                .criterion(hasItem(Items.IRON_BLOCK), conditionsFromItem(Items.IRON_BLOCK))
+                .criterion(hasItem(ModItems.MOB_CORE), conditionsFromItem(ModItems.MOB_CORE))
+                .criterion(hasItem(ModItems.UNHOLY_INGOT), conditionsFromItem(ModItems.UNHOLY_INGOT))
+                .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.UNHOLY_SILENCER)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.SPACE_TIME_EVAPORATOR, 1)
+                .pattern("SNS")
+                .pattern(" B ")
+                .pattern("SIS")
+                .input('N', Items.NETHER_STAR)
+                .input('B', ModFluids.SPACE_TIME_BUCKET)
+                .input('S', ModItems.SPACE_TIME_INGOT)
+                .input('I', ModItems.SPACE_FORGED_INGOT)
+                .criterion(hasItem(Items.NETHER_STAR), conditionsFromItem(Items.NETHER_STAR))
+                .criterion(hasItem(ModFluids.SPACE_TIME_BUCKET), conditionsFromItem(ModFluids.SPACE_TIME_BUCKET))
+                .criterion(hasItem(ModItems.SPACE_TIME_INGOT), conditionsFromItem(ModItems.SPACE_TIME_INGOT))
+                .criterion(hasItem(ModItems.SPACE_FORGED_INGOT), conditionsFromItem(ModItems.SPACE_FORGED_INGOT))
+                .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.SPACE_TIME_EVAPORATOR)));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.MOB_CORE, 1)
                 .pattern("UUU")
