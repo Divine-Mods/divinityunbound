@@ -33,6 +33,10 @@ public class ModScreenHandlers {
             Registry.register(Registries.SCREEN_HANDLER, new Identifier(DivinityUnbound.MOD_ID, "space_time_amalgamator"),
                     new ExtendedScreenHandlerType<>(SpaceTimeAmalgamatorScreenHandler::new));
 
+    public static final ScreenHandlerType<WormholeTransporterScreenHandler> WORMHOLE_TRANSPORTER_SCREEN_HANDLER =
+            Registry.register(Registries.SCREEN_HANDLER, new Identifier(DivinityUnbound.MOD_ID, "wormhole_transporter"),
+                    new ExtendedScreenHandlerType<>(WormholeTransporterScreenHandler::new));
+
     public static void registerScreenHandlers() {
         DivinityUnbound.LOGGER.info("Registering Screen Handlers for " + DivinityUnbound.MOD_ID);
     }

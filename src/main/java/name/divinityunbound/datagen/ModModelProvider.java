@@ -52,6 +52,7 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.DIVINE_REPLICATOR);
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.SPACE_TIME_EVAPORATOR);
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.SPACE_TIME_AMALGAMATOR);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.WORMHOLE_TRANSPORTER);
     }
 
     @Override
@@ -74,6 +75,8 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.SPEED_CORE, Models.GENERATED);
         itemModelGenerator.register(ModItems.QUANTITY_CORE, Models.GENERATED);
         itemModelGenerator.register(ModItems.MOB_CORE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.IMPORT_CARD, Models.GENERATED);
+        itemModelGenerator.register(ModItems.EXPORT_CARD, Models.GENERATED);
 
         itemModelGenerator.register(ModFluids.SPACE_TIME_BUCKET, Models.GENERATED);
 

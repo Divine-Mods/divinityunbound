@@ -3,6 +3,8 @@
 ---
 ## v0.0.4
 - Added directional block states
+- Added Import and Export Cards
+- Added Wormhole Transporter
 
 ---
 

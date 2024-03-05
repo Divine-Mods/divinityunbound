@@ -41,6 +41,8 @@ public class ModItemGroups {
                         entries.add(ModItems.SPEED_CORE);
                         entries.add(ModItems.QUANTITY_CORE);
                         entries.add(ModItems.MOB_CORE);
+                        entries.add(ModItems.IMPORT_CARD);
+                        entries.add(ModItems.EXPORT_CARD);
 
                         entries.add(ModFluids.SPACE_TIME_BUCKET);
 
@@ -124,6 +126,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.UNHOLY_SILENCER);
                         entries.add(ModBlocks.SPACE_TIME_EVAPORATOR);
                         entries.add(ModBlocks.SPACE_TIME_AMALGAMATOR);
+                        entries.add(ModBlocks.WORMHOLE_TRANSPORTER);
 
                         /* Foci */
                         entries.add(ModItems.CELESTITE_COAL_FOCUS);

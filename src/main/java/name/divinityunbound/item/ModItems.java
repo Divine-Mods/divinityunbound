@@ -32,6 +32,8 @@ public class ModItems {
     public static final Item QUANTITY_CORE = registerItem("quantity_core", new Item(new FabricItemSettings()));
     public static final Item SPEED_CORE = registerItem("speed_core", new Item(new FabricItemSettings()));
     public static final Item MOB_CORE = registerItem("mob_core", new Item(new FabricItemSettings()));
+    public static final Item IMPORT_CARD = registerItem("import_card", new IOCardItem(new FabricItemSettings()));
+    public static final Item EXPORT_CARD = registerItem("export_card", new IOCardItem(new FabricItemSettings()));
 
     /* Wands */
 //    public static final Item MAGIC_CELESTITE_DETECTOR = registerItem("magic_celestite_detector",

@@ -16,6 +16,8 @@
   "item.divinityunbound.speed_core": "Speed Core",
   "item.divinityunbound.quantity_core": "Quantity Core",
   "item.divinityunbound.mob_core": "Mob Core",
+  "item.divinityunbound.import_card": "Import Card",
+  "item.divinityunbound.export_card": "Export Card",
 
   "block.divinityunbound.celestite_block": "Block of Celestite",
   "block.divinityunbound.raw_celestite_block": "Block of Raw Celestite",
@@ -92,6 +94,7 @@
   "block.divinityunbound.unholy_silencer": "Unholy Silencer",
   "block.divinityunbound.space_time_evaporator": "Space Time Evaporator",
   "block.divinityunbound.space_time_amalgamator": "Space Time Amalgamator",
+  "block.divinityunbound.wormhole_transporter": "Wormhole Transporter",
 
   "item.divinityunbound.celestite_coal_focus": "Celestite Coal Focus",
   "item.divinityunbound.celestite_iron_focus": "Celestite Iron Focus",
@@ -108,6 +111,8 @@
   "divinityunbound.tooltip.liquid.amount.with.capacity": "%s / %s mB",
   "divinityunbound.tooltip.liquid.amount": "%s mB",
 
+  "tooltip.divinityunbound.io_card_line_1": "Shift+Right Click in air to clear",
+  "tooltip.divinityunbound.io_card_line_2": "Right Click on block to save",
   "tooltip.divinityunbound.wand_of_capturing": "Captures Mobs!",
   "tooltip.divinityunbound.unholy_wand": "Pulls ores from underground to the surface",
   "tooltip.divinityunbound.divine_wand_of_flight": "Provides flight for 1 minute on use",

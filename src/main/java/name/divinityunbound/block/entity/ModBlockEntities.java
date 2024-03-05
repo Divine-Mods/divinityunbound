@@ -51,6 +51,11 @@ public class ModBlockEntities {
                     FabricBlockEntityTypeBuilder.create(SpaceTimeAmalgamatorBlockEntity::new,
                             ModBlocks.SPACE_TIME_AMALGAMATOR).build());
 
+    public static final BlockEntityType<WormholeTransporterBlockEntity> WORMHOLE_TRANSPORTER_BLOCK_ENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(DivinityUnbound.MOD_ID, "wormhole_transporter_be"),
+                    FabricBlockEntityTypeBuilder.create(WormholeTransporterBlockEntity::new,
+                            ModBlocks.WORMHOLE_TRANSPORTER).build());
+
     public static void registerBlockEntities() {
         DivinityUnbound.LOGGER.info("Registering Block Entities for " + DivinityUnbound.MOD_ID);
 
@@ -59,5 +64,8 @@ public class ModBlockEntities {
 
         EnergyStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.energyStorage, SPACE_TIME_AMALGAMATOR_BLOCK_ENTITY);
         FluidStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.fluidStorage, SPACE_TIME_AMALGAMATOR_BLOCK_ENTITY);
+
+        EnergyStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.energyStorage, WORMHOLE_TRANSPORTER_BLOCK_ENTITY);
+        FluidStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.fluidStorage, WORMHOLE_TRANSPORTER_BLOCK_ENTITY);
     }
 }

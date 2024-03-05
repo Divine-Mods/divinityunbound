@@ -139,6 +139,30 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(ModBlocks.CELESTITE_INFUSED_STONE), conditionsFromItem(ModBlocks.CELESTITE_INFUSED_STONE))
                 .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.GOLDEN_CELESTITE_INFUSED_STONE)));
 
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.IMPORT_CARD, 3)
+                .pattern("CCC")
+                .pattern("CUC")
+                .pattern("CBC")
+                .input('C', Items.CLAY)
+                .input('B', Items.BLUE_DYE)
+                .input('U', ModItems.UNHOLY_DUST)
+                .criterion(hasItem(Items.CLAY), conditionsFromItem(Items.CLAY))
+                .criterion(hasItem(Items.BLUE_DYE), conditionsFromItem(Items.BLUE_DYE))
+                .criterion(hasItem(ModItems.UNHOLY_DUST), conditionsFromItem(ModItems.UNHOLY_DUST))
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.IMPORT_CARD)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.EXPORT_CARD, 3)
+                .pattern("CCC")
+                .pattern("CUC")
+                .pattern("COC")
+                .input('C', Items.CLAY)
+                .input('O', Items.ORANGE_DYE)
+                .input('U', ModItems.UNHOLY_DUST)
+                .criterion(hasItem(Items.CLAY), conditionsFromItem(Items.CLAY))
+                .criterion(hasItem(Items.ORANGE_DYE), conditionsFromItem(Items.ORANGE_DYE))
+                .criterion(hasItem(ModItems.UNHOLY_DUST), conditionsFromItem(ModItems.UNHOLY_DUST))
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.EXPORT_CARD)));
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.CHRONOS_CLOCK, 1)
                 .pattern(" C ")
                 .pattern("BGB")
