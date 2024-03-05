@@ -26,7 +26,7 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 public class SpaceTimeEvaporatorBlock extends BlockWithEntity implements BlockEntityProvider {
-    //public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
+    public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
     private static final VoxelShape SHAPE = Block.createCuboidShape(0, 0, 0, 16, 28, 16);
     protected final Random random = Random.create();
     public static final MapCodec<SpaceTimeEvaporatorBlock> CODEC = SpaceTimeEvaporatorBlock.createCodec(SpaceTimeEvaporatorBlock::new);
@@ -39,16 +39,16 @@ public class SpaceTimeEvaporatorBlock extends BlockWithEntity implements BlockEn
         return SHAPE;
     }
 
-//    @Nullable
-//    @Override
-//    public BlockState getPlacementState(ItemPlacementContext ctx) {
-//        return this.getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing().getOpposite());
-//    }
-//
-//    @Override
-//    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-//        builder.add(FACING);
-//    }
+    @Nullable
+    @Override
+    public BlockState getPlacementState(ItemPlacementContext ctx) {
+        return this.getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing().getOpposite());
+    }
+
+    @Override
+    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+        builder.add(FACING);
+    }
 
     @Override
     public BlockRenderType getRenderType(BlockState state) {

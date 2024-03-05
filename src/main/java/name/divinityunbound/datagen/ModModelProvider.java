@@ -36,16 +36,22 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.WILDERSUNG_LEAVES);
         blockStateModelGenerator.registerTintableCross(ModBlocks.WILDERSUNG_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
 
-        blockStateModelGenerator.registerSimpleState(ModBlocks.GENERATION_STATION);
-        blockStateModelGenerator.registerSimpleState(ModBlocks.MYSTIC_CHRONOGRAPH);
-        blockStateModelGenerator.registerSimpleState(ModBlocks.DIVINE_REPLICATOR);
+        //blockStateModelGenerator.registerSimpleState(ModBlocks.GENERATION_STATION);
+        //blockStateModelGenerator.registerSimpleState(ModBlocks.MYSTIC_CHRONOGRAPH);
+        //blockStateModelGenerator.registerSimpleState(ModBlocks.DIVINE_REPLICATOR);
         blockStateModelGenerator.registerSimpleState(ModBlocks.SPEED_UPGRADE);
         blockStateModelGenerator.registerSimpleState(ModBlocks.QUANTITY_UPGRADE);
         //blockStateModelGenerator.registerSimpleState(ModBlocks.SPACE_SIPHON);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHRONOS_TIME_ACCUMULATOR);
         blockStateModelGenerator.registerSimpleState(ModBlocks.UNHOLY_SILENCER);
         //blockStateModelGenerator.registerSimpleState(ModBlocks.SPACE_TIME_EVAPORATOR);
-        blockStateModelGenerator.registerSimpleState(ModBlocks.SPACE_TIME_AMALGAMATOR);
+        //blockStateModelGenerator.registerSimpleState(ModBlocks.SPACE_TIME_AMALGAMATOR);
+
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.GENERATION_STATION);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.MYSTIC_CHRONOGRAPH);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.DIVINE_REPLICATOR);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.SPACE_TIME_EVAPORATOR);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.SPACE_TIME_AMALGAMATOR);
     }
 
     @Override

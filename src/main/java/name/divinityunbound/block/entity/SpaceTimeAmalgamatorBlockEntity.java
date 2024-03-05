@@ -88,7 +88,7 @@ public class SpaceTimeAmalgamatorBlockEntity extends BlockEntity implements Exte
         };
     }
 
-    public final SimpleEnergyStorage energyStorage = new SimpleEnergyStorage(64000, Integer.MAX_VALUE, Integer.MAX_VALUE) {
+    public final SimpleEnergyStorage energyStorage = new SimpleEnergyStorage(5000000, Integer.MAX_VALUE, Integer.MAX_VALUE) {
         @Override
         protected void onFinalCommit() {
             markDirty();
@@ -204,7 +204,7 @@ public class SpaceTimeAmalgamatorBlockEntity extends BlockEntity implements Exte
 
     private void extractEnergy() {
         try(Transaction transaction = Transaction.openOuter()) {
-            this.energyStorage.extract(48L, transaction);
+            this.energyStorage.extract(250000L, transaction);
             transaction.commit();
         }
     }

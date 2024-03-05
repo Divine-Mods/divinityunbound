@@ -91,7 +91,7 @@ public class SpaceTimeEvaporatorBlockEntity extends BlockEntity implements Exten
         };
     }
 
-    public final SimpleEnergyStorage energyStorage = new SimpleEnergyStorage(100000000, Integer.MAX_VALUE, Integer.MAX_VALUE) {
+    public final SimpleEnergyStorage energyStorage = new SimpleEnergyStorage(1000000000, Integer.MAX_VALUE, Integer.MAX_VALUE) {
         @Override
         protected void onFinalCommit() {
             markDirty();
@@ -235,13 +235,13 @@ public class SpaceTimeEvaporatorBlockEntity extends BlockEntity implements Exten
 
     private void produceEnergy() {
         try(Transaction transaction = Transaction.openOuter()) {
-            if (this.energyStorage.getCapacity() - this.energyStorage.getAmount() <= 1000000) {
+            if (this.energyStorage.getCapacity() - this.energyStorage.getAmount() <= 80000000) {
                 this.energyStorage.insert(
                         this.energyStorage.getCapacity() - this.energyStorage.getAmount(),
                         transaction);
             }
             else {
-                this.energyStorage.insert(1000000, transaction);
+                this.energyStorage.insert(80000000, transaction);
             }
             transaction.commit();
         }
