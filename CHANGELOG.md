@@ -7,7 +7,9 @@
 - Added Wand of Celebration
 - Added Wand of Fire Bending
 - Added Wand Binding
+- Added Space Time Tools
 - Added Space Time Amalgamator (Creates Liquid Space Time)
+- Added Space Time Amalgamator model
 - Added missing crafting recipes for Unholy Silencer and Space Time Evaporator
 
 ---

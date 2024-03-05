@@ -75,6 +75,12 @@ public class ModItemGroups {
                         entries.add(ModItems.SPACE_FORGED_SWORD);
                         entries.add(ModItems.SPACE_FORGED_HOE);
 
+                        entries.add(ModItems.SPACE_TIME_PICKAXE);
+                        entries.add(ModItems.SPACE_TIME_AXE);
+                        entries.add(ModItems.SPACE_TIME_SHOVEL);
+                        entries.add(ModItems.SPACE_TIME_SWORD);
+                        entries.add(ModItems.SPACE_TIME_HOE);
+
                         /* Armor */
                         entries.add(ModItems.CELESTITE_HELMET);
                         entries.add(ModItems.CELESTITE_CHESTPLATE);

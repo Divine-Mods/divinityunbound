@@ -42,12 +42,42 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.SPACE_FORGED_AXE)
                 .add(ModItems.SPACE_FORGED_SWORD)
                 .add(ModItems.SPACE_FORGED_SHOVEL)
-                .add(ModItems.SPACE_FORGED_HOE);
+                .add(ModItems.SPACE_FORGED_HOE)
+                .add(ModItems.SPACE_TIME_PICKAXE)
+                .add(ModItems.SPACE_TIME_AXE)
+                .add(ModItems.SPACE_TIME_SWORD)
+                .add(ModItems.SPACE_TIME_SHOVEL)
+                .add(ModItems.SPACE_TIME_HOE);
+
+        getOrCreateTagBuilder(ItemTags.PICKAXES)
+                .add(ModItems.CELESTITE_PICKAXE)
+                .add(ModItems.TIME_FORGED_PICKAXE)
+                .add(ModItems.SPACE_FORGED_PICKAXE)
+                .add(ModItems.SPACE_TIME_PICKAXE);
 
         getOrCreateTagBuilder(ItemTags.SWORDS)
                 .add(ModItems.CELESTITE_SWORD)
                 .add(ModItems.TIME_FORGED_SWORD)
-                .add(ModItems.SPACE_FORGED_SWORD);
+                .add(ModItems.SPACE_FORGED_SWORD)
+                .add(ModItems.SPACE_TIME_SWORD);
+
+        getOrCreateTagBuilder(ItemTags.AXES)
+                .add(ModItems.CELESTITE_AXE)
+                .add(ModItems.TIME_FORGED_AXE)
+                .add(ModItems.SPACE_FORGED_AXE)
+                .add(ModItems.SPACE_TIME_AXE);
+
+        getOrCreateTagBuilder(ItemTags.SHOVELS)
+                .add(ModItems.CELESTITE_SHOVEL)
+                .add(ModItems.TIME_FORGED_SHOVEL)
+                .add(ModItems.SPACE_FORGED_SHOVEL)
+                .add(ModItems.SPACE_TIME_SHOVEL);
+
+        getOrCreateTagBuilder(ItemTags.HOES)
+                .add(ModItems.CELESTITE_HOE)
+                .add(ModItems.TIME_FORGED_HOE)
+                .add(ModItems.SPACE_FORGED_HOE)
+                .add(ModItems.SPACE_TIME_HOE);
 
         getOrCreateTagBuilder(ItemTags.TOOLS)
                 .add(ModItems.CELESTITE_PICKAXE)
@@ -64,7 +94,12 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.SPACE_FORGED_AXE)
                 .add(ModItems.SPACE_FORGED_SWORD)
                 .add(ModItems.SPACE_FORGED_SHOVEL)
-                .add(ModItems.SPACE_FORGED_HOE);
+                .add(ModItems.SPACE_FORGED_HOE)
+                .add(ModItems.SPACE_TIME_PICKAXE)
+                .add(ModItems.SPACE_TIME_AXE)
+                .add(ModItems.SPACE_TIME_SWORD)
+                .add(ModItems.SPACE_TIME_SHOVEL)
+                .add(ModItems.SPACE_TIME_HOE);
 
         getOrCreateTagBuilder(ItemTags.LOGS_THAT_BURN)
                 .add(ModBlocks.WILDERSUNG_LOG.asItem())

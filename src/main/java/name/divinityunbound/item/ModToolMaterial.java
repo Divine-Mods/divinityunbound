@@ -9,7 +9,7 @@ public enum ModToolMaterial implements ToolMaterial {
     CELESTITE(2, 600, 7.0f, 2.5f, 10, () -> Ingredient.ofItems(ModItems.CELESTITE)),
     TIME_FORGED(3, 1000, 8.0f, 3.0f, 15, () -> Ingredient.ofItems(ModItems.TIME_FORGED_INGOT)),
     SPACE_FORGED(3, 1800, 9.5f, 3.5f, 20, () -> Ingredient.ofItems(ModItems.SPACE_FORGED_INGOT)),
-    SPACE_TIME_FORGED(4, 2500, 12f, 5.0f, 40, () -> Ingredient.ofItems(ModItems.SPACE_TIME_INGOT));
+    SPACE_TIME(4, 2500, 12f, 5.0f, 40, () -> Ingredient.ofItems(ModItems.SPACE_TIME_INGOT));
 
     private final int miningLevel;
     private final int itemDurability;

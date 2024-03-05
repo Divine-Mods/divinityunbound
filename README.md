@@ -71,7 +71,7 @@ Unholy Silencer - Attacks mobs within a radius around it. Utilizes sword in inve
 Space Time Evaporator - Evaporates space time on to coal, causing it to recrystalize and form space fuel. Produces energy.
 
 Space Time Amalgamator - Combines Celestium Dust, Unholy Dust, and Space Dust to create 
-Liquid Space Time.
+Liquid Space Time. Needs power.
 
 ### Block Upgrades
 
@@ -137,6 +137,9 @@ Full sets of armor have different full set bonuses!
 - [ ] Range Upgrade
 - [ ] Efficiency Upgrade
 - [ ] Mystic Chronograph supporting upgrades
+- [ ] Space Time Amalgamator supporting upgrades
+- [ ] Space Time Evaporator supporting upgrades
+- [X] Space Time Tools
 - [ ] Space Time Armor
 - [ ] Paxels
 - [ ] Food items

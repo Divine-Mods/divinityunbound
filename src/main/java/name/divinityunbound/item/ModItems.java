@@ -2,7 +2,6 @@ package name.divinityunbound.item;
 
 import com.mojang.serialization.Lifecycle;
 import name.divinityunbound.DivinityUnbound;
-import name.divinityunbound.block.ModBlocks;
 import name.divinityunbound.item.custom.*;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
@@ -97,6 +96,16 @@ public class ModItems {
             new SwordItem(ModToolMaterial.SPACE_FORGED, 3, -2.2F, new FabricItemSettings().maxCount(1)));
     public static final Item SPACE_FORGED_HOE = registerItem("space_forged_hoe",
             new HoeItem(ModToolMaterial.SPACE_FORGED, -4, 0.0F, new FabricItemSettings().maxCount(1)));
+    public static final Item SPACE_TIME_PICKAXE = registerItem("space_time_pickaxe",
+            new PickaxeItem(ModToolMaterial.SPACE_TIME, 1, -2.8F, new FabricItemSettings()));
+    public static final Item SPACE_TIME_AXE = registerItem("space_time_axe",
+            new AxeItem(ModToolMaterial.SPACE_TIME, 5.0F, -2.8F, new FabricItemSettings()));
+    public static final Item SPACE_TIME_SHOVEL = registerItem("space_time_shovel",
+            new ShovelItem(ModToolMaterial.SPACE_TIME, 1.5F, -3.0F, new FabricItemSettings()));
+    public static final Item SPACE_TIME_SWORD = registerItem("space_time_sword",
+            new SwordItem(ModToolMaterial.SPACE_TIME, 3, -2.2F, new FabricItemSettings()));
+    public static final Item SPACE_TIME_HOE = registerItem("space_time_hoe",
+            new HoeItem(ModToolMaterial.SPACE_TIME, -4, 0.0F, new FabricItemSettings()));
 
 
     /* Armor */
