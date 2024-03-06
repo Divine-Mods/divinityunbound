@@ -31,7 +31,7 @@ public class IOCardItem extends Item {
                 PlayerEntity player = context.getPlayer();
                 ItemStack itemStack = context.getStack();
                 BlockPos pos = context.getBlockPos();
-
+            if(player.isSneaking()) {
                 if (itemStack.getSubNbt("blockpos") == null) {
                     ItemStack newItemStack = new ItemStack(itemStack.getItem());
 
@@ -41,16 +41,14 @@ public class IOCardItem extends Item {
 
                     itemStack.decrement(1);
                     player.giveItemStack(newItemStack);
-                }
-                else {
+                } else {
                     itemStack.removeSubNbt("blockpos");
                     NbtCompound nbt = new NbtCompound();
                     nbt.putIntArray("blockpos", Arrays.asList(pos.getX(), pos.getY(), pos.getZ()));
                     itemStack.setNbt(nbt);
                 }
-
-                return ActionResult.SUCCESS;
-
+            }
+            return ActionResult.SUCCESS;
         }
         return ActionResult.FAIL;
     }

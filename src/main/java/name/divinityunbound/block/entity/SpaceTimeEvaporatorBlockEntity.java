@@ -218,7 +218,7 @@ public class SpaceTimeEvaporatorBlockEntity extends BlockEntity implements Exten
                     (FluidConstants.BUCKET / 81), transaction);
             transaction.commit();
 
-            this.setStack(fluidItemSlot, new ItemStack(Items.BUCKET));
+            //this.setStack(fluidItemSlot, new ItemStack(Items.BUCKET));
         }
     }
 

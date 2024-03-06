@@ -5,9 +5,12 @@ import name.divinityunbound.block.custom.WormholeTransporterBlock;
 import name.divinityunbound.fluid.ModFluids;
 import name.divinityunbound.item.ModItems;
 import name.divinityunbound.screen.WormholeTransporterScreenHandler;
+import name.divinityunbound.util.FluidStorageUtil;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidConstants;
+import net.fabricmc.fabric.api.transfer.v1.fluid.FluidStorage;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
+import net.fabricmc.fabric.api.transfer.v1.storage.Storage;
 import net.fabricmc.fabric.api.transfer.v1.storage.base.SingleVariantStorage;
 import net.fabricmc.fabric.api.transfer.v1.transaction.Transaction;
 import net.minecraft.block.Block;
@@ -19,9 +22,11 @@ import net.minecraft.block.entity.ChestBlockEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.fluid.Fluid;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.SidedInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
@@ -47,6 +52,8 @@ import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInst
 import software.bernie.geckolib.core.animation.*;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.RenderUtils;
+import team.reborn.energy.api.EnergyStorage;
+import team.reborn.energy.api.EnergyStorageUtil;
 import team.reborn.energy.api.base.SimpleEnergyStorage;
 
 import java.util.Iterator;
@@ -67,7 +74,7 @@ public class WormholeTransporterBlockEntity extends BlockEntity implements Exten
     private int upgradeCheck = 0;
     public WormholeTransporterBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.WORMHOLE_TRANSPORTER_BLOCK_ENTITY, pos, state);
-        localDir = state.get(WormholeTransporterBlock.FACING);
+        localDir = state.get(WormholeTransporterBlock.FACING).getOpposite();
     }
 
     public final SimpleEnergyStorage energyStorage = new SimpleEnergyStorage(5000000, Integer.MAX_VALUE, Integer.MAX_VALUE) {
@@ -144,52 +151,173 @@ public class WormholeTransporterBlockEntity extends BlockEntity implements Exten
 
         if (hasItemInInputSlot()) {
             BlockPos neighbor = pos.offset(localDir);
+            Inventory neighborInv = getInventoryAt(world, neighbor.getX(), neighbor.getY(), neighbor.getZ());
+            EnergyStorage neighborEnergyStorage = findEnergyStorage(world, pos);
+            Storage<FluidVariant> neighborFluidStorage = findFluidStorage(world, pos);
 
             if (isImportMode()) {
-                Inventory neighborInv = getInventoryAt(world, neighbor.getX(), neighbor.getY(), neighbor.getZ());
 
-                int[] savedPos = this.getStack(CARD_SLOT).getNbt().getIntArray("blockpos");
+                if (ioCardHasBlockPos()) {
+                    int[] savedPos = this.getStack(CARD_SLOT).getNbt().getIntArray("blockpos");
 
-                if (world.getBlockState(new BlockPos(savedPos[0], savedPos[1], savedPos[2]))
-                        .getBlock().equals(ModBlocks.WORMHOLE_TRANSPORTER)) {
+                    if (world.getBlockState(new BlockPos(savedPos[0], savedPos[1], savedPos[2]))
+                            .getBlock().equals(ModBlocks.WORMHOLE_TRANSPORTER)) {
+                        WormholeTransporterBlockEntity wormhole = ((WormholeTransporterBlockEntity) world
+                                .getBlockEntity(new BlockPos(savedPos[0], savedPos[1], savedPos[2])));
+                        // Import Items from Linked Wormhole
+                        attemptExtractInvToInternalInv(wormhole);
+                        // Import Energy from Linked Wormhole
+                        pushEnergyToAdjacentStorage(wormhole.energyStorage, this.energyStorage);
+                        // Import Fluid from Linked Wormhole
+                        pushFluidToAdjacentStorage(wormhole.fluidStorage, this.fluidStorage);
+                    }
+                }
 
-                    attemptExtractInvToInternalInv(((WormholeTransporterBlockEntity)world
-                            .getBlockEntity(new BlockPos(savedPos[0], savedPos[1], savedPos[2]))));
+                if (neighborInv != null && !this.getStack(ITEM_SLOT).isEmpty()) { // Import Items to Neighbor Inv
+                    attemptExtractionToExternalInv(neighborInv, this.getStack(ITEM_SLOT));
+                }
 
+                if (neighborEnergyStorage != null) { // Import Energy into Neighbor Energy Storage
+                    pushEnergyToAdjacentStorage(this.energyStorage, neighborEnergyStorage);
+                }
+
+                if (neighborFluidStorage != null) { // Import Fluid into Neighbor Fluid Storage
+                    pushFluidToAdjacentStorage(this.fluidStorage, neighborFluidStorage);
                 }
             }
             else {  // Export Mode
-                int[] savedPos = this.getStack(CARD_SLOT).getNbt().getIntArray("blockpos");
-//                Inventory exportToInv = getInventoryAt(world, savedPos[0], savedPos[1], savedPos[2]);
-//
-//                if (exportToInv != null) {
-//                    attemptExtractionToExternalInv(exportToInv, this.getStack(ITEM_SLOT));
-//                }
+                if (neighborInv != null) { // Import Items from Neighbor Inv
+                    attemptExtractionToInternalInv(neighborInv);
+                }
+
+                if (neighborEnergyStorage != null) { // Import Energy from Neighbor Energy Storage
+                    pushEnergyToAdjacentStorage(neighborEnergyStorage, this.energyStorage);
+                }
+
+                if (neighborFluidStorage != null) { // Import Fluid from Neighbor Fluid Storage
+                    pushFluidToAdjacentStorage(neighborFluidStorage, this.fluidStorage);
+                }
+
+                if (ioCardHasBlockPos()) {
+                    // Export to wormhole inv
+                    int[] savedPos = this.getStack(CARD_SLOT).getNbt().getIntArray("blockpos");
+                    if (world.getBlockState(new BlockPos(savedPos[0], savedPos[1], savedPos[2]))
+                            .getBlock().equals(ModBlocks.WORMHOLE_TRANSPORTER)) {
+                        WormholeTransporterBlockEntity wormhole = ((WormholeTransporterBlockEntity) world
+                                .getBlockEntity(new BlockPos(savedPos[0], savedPos[1], savedPos[2])));
+                        // Export Items to Linked wormhole
+                        attemptExtractInvToExternalInv(wormhole);
+                        // Export Energy to Linked Wormhole
+                        pushEnergyToAdjacentStorage(this.energyStorage, wormhole.energyStorage);
+                        // Export Fluid to Linked Wormhole
+                        pushFluidToAdjacentStorage(this.fluidStorage, wormhole.fluidStorage);
+                    }
+                }
             }
 
             markDirty(world, pos, state);
         }
     }
 
-    private void attemptExtractInvToInternalInv(WormholeTransporterBlockEntity blockEntity) {
-            ItemStack checkedStack = blockEntity.getStack(ITEM_SLOT);
-            if (this.getStack(ITEM_SLOT).isEmpty()) {
-                this.setStack(ITEM_SLOT, checkedStack.copy());
-                blockEntity.removeStack(ITEM_SLOT);
-            } else if (this.getStack(ITEM_SLOT).getItem() == checkedStack.getItem()) {
-                // check to see if the items can combine
-                if (checkedStack.isStackable()) {
-                    int originalCount = blockEntity.getStack(ITEM_SLOT).getCount();
+    private EnergyStorage findEnergyStorage(World world, BlockPos pos) {
+        return EnergyStorage.SIDED.find(world, pos.offset(localDir), localDir);
+    }
 
-                    for (int c = 1; c <= originalCount; c++) {
-                        if (this.getStack(ITEM_SLOT).getCount() < this.getStack(ITEM_SLOT).getMaxCount()) {
-                            // add to checked stack
-                            this.getStack(ITEM_SLOT).setCount(this.getStack(ITEM_SLOT).getCount() + 1);
-                            blockEntity.getStack(ITEM_SLOT).setCount(blockEntity.getStack(ITEM_SLOT).getCount() - 1);
+    private void pushEnergyToAdjacentStorage(EnergyStorage source, EnergyStorage target) {
+        long amountMoved = EnergyStorageUtil.move(
+                source, // from source
+                target, // into target
+                Integer.MAX_VALUE, // no limit on the amount
+                null // create a new transaction for this operation
+        );
+    }
+
+    private void pushFluidToAdjacentStorage(Storage<FluidVariant> source, Storage<FluidVariant> target) {
+        target.iterator().next().getResource();
+        long amountMoved = FluidStorageUtil.move(
+                source,
+                target,
+                source.iterator().next().getResource(),
+                Integer.MAX_VALUE,
+                null);
+    }
+
+    private Storage<FluidVariant> findFluidStorage(World world, BlockPos pos) {
+        return FluidStorage.SIDED.find(world, pos.offset(localDir), localDir);
+    }
+
+    private boolean ioCardHasBlockPos() {
+        return this.getStack(CARD_SLOT).getNbt() != null && this.getStack(CARD_SLOT).getNbt().contains("blockpos");
+    }
+
+    private void attemptExtractionToInternalInv(Inventory neighbor) {
+        for (int i = 0; i < neighbor.size(); i++) {
+                ItemStack checkedStack = neighbor.getStack(i);
+
+                if (this.getStack(ITEM_SLOT).isEmpty()) {
+                    this.setStack(ITEM_SLOT, checkedStack.copy());
+                    neighbor.removeStack(i);
+                    break;
+
+                } else if (this.getStack(ITEM_SLOT).getItem() == checkedStack.getItem()) {
+                    // check to see if the items can combine
+
+                    if (this.getStack(ITEM_SLOT).isStackable()) {
+                        int originalCount = checkedStack.getCount();
+
+                        for (int c = 1; c <= originalCount; c++) {
+                            if (this.getStack(ITEM_SLOT).getCount() < this.getStack(ITEM_SLOT).getMaxCount()) {
+                                // add to checked stack
+                                this.getStack(ITEM_SLOT).setCount(this.getStack(ITEM_SLOT).getCount() + 1);
+                                checkedStack.setCount(checkedStack.getCount() - 1);
+                            }
                         }
                     }
                 }
+
+        }
+    }
+
+    private void attemptExtractInvToInternalInv(WormholeTransporterBlockEntity blockEntity) {
+        ItemStack checkedStack = blockEntity.getStack(ITEM_SLOT);
+        if (this.getStack(ITEM_SLOT).isEmpty()) {
+            this.setStack(ITEM_SLOT, checkedStack.copy());
+            blockEntity.removeStack(ITEM_SLOT);
+        } else if (this.getStack(ITEM_SLOT).getItem() == checkedStack.getItem()) {
+            // check to see if the items can combine
+            if (checkedStack.isStackable()) {
+                int originalCount = blockEntity.getStack(ITEM_SLOT).getCount();
+
+                for (int c = 1; c <= originalCount; c++) {
+                    if (this.getStack(ITEM_SLOT).getCount() < this.getStack(ITEM_SLOT).getMaxCount()) {
+                        // add to checked stack
+                        this.getStack(ITEM_SLOT).setCount(this.getStack(ITEM_SLOT).getCount() + 1);
+                        blockEntity.getStack(ITEM_SLOT).setCount(blockEntity.getStack(ITEM_SLOT).getCount() - 1);
+                    }
+                }
             }
+        }
+    }
+
+    private void attemptExtractInvToExternalInv(WormholeTransporterBlockEntity blockEntity) {
+        ItemStack checkedStack = blockEntity.getStack(ITEM_SLOT);
+        if (checkedStack.isEmpty()) {
+            blockEntity.setStack(ITEM_SLOT, checkedStack.copy());
+            this.removeStack(ITEM_SLOT);
+        } else if (this.getStack(ITEM_SLOT).getItem() == checkedStack.getItem()) {
+            // check to see if the items can combine
+            if (checkedStack.isStackable()) {
+                int originalCount = this.getStack(ITEM_SLOT).getCount();
+
+                for (int c = 1; c <= originalCount; c++) {
+                    if (blockEntity.getStack(ITEM_SLOT).getCount() < blockEntity.getStack(ITEM_SLOT).getMaxCount()) {
+                        // add to checked stack
+                        blockEntity.getStack(ITEM_SLOT).setCount(blockEntity.getStack(ITEM_SLOT).getCount() + 1);
+                        this.getStack(ITEM_SLOT).setCount(this.getStack(ITEM_SLOT).getCount() - 1);
+                    }
+                }
+            }
+        }
     }
 
     private boolean isImportMode() {
@@ -235,8 +363,7 @@ public class WormholeTransporterBlockEntity extends BlockEntity implements Exten
     private boolean hasItemInInputSlot() {
         return !this.getStack(CARD_SLOT).isEmpty()
                 && (this.getStack(CARD_SLOT).getItem().equals(ModItems.IMPORT_CARD)
-                || this.getStack(CARD_SLOT).getItem().equals(ModItems.EXPORT_CARD))
-                && this.getStack(CARD_SLOT).getNbt() != null && this.getStack(CARD_SLOT).getNbt().contains("blockpos");
+                || this.getStack(CARD_SLOT).getItem().equals(ModItems.EXPORT_CARD));
     }
 
     @Nullable
