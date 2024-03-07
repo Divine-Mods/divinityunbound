@@ -135,6 +135,8 @@ public class ModItemGroups {
                         entries.add(ModBlocks.SPACE_TIME_AMALGAMATOR);
                         entries.add(ModBlocks.WORMHOLE_TRANSPORTER);
 
+                        entries.add(ModBlocks.SPACE_TIME_FURNACE);
+
                         /* Foci */
                         entries.add(ModItems.CELESTITE_COAL_FOCUS);
                         entries.add(ModItems.CELESTITE_IRON_FOCUS);

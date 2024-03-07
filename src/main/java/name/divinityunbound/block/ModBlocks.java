@@ -103,9 +103,6 @@ public class ModBlocks {
                             .dropsLike(DIVINE_TORCH)
                             .pistonBehavior(PistonBehavior.DESTROY)));
 
-
-
-
     public static final Block MYSTIC_CHRONOGRAPH = registerBlock("mystic_chronograph",
             new MysticChronographBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
     public static final Block DIVINE_REPLICATOR = registerBlock("divine_replicator",
@@ -127,6 +124,9 @@ public class ModBlocks {
 
     public static final Block WORMHOLE_TRANSPORTER = registerBlock("wormhole_transporter",
             new WormholeTransporterBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
+
+    public static final Block SPACE_TIME_FURNACE = registerBlock("space_time_furnace",
+            new SpaceTimeFurnaceBlock(FabricBlockSettings.copyOf(Blocks.STONE)));
 
 
     private static Block registerBlock(String name, Block block) {

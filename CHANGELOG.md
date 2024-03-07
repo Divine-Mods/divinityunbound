@@ -6,6 +6,7 @@
 - Added Time Forged Paxel
 - Added Space Forged Paxel
 - Added Space Time Paxel
+- Added Space Time Furnace
 
 ---
 ## v0.0.4

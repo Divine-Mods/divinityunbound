@@ -4,6 +4,7 @@ import name.divinityunbound.DivinityUnbound;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.resource.featuretoggle.FeatureFlags;
 import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.util.Identifier;
 
@@ -36,6 +37,10 @@ public class ModScreenHandlers {
     public static final ScreenHandlerType<WormholeTransporterScreenHandler> WORMHOLE_TRANSPORTER_SCREEN_HANDLER =
             Registry.register(Registries.SCREEN_HANDLER, new Identifier(DivinityUnbound.MOD_ID, "wormhole_transporter"),
                     new ExtendedScreenHandlerType<>(WormholeTransporterScreenHandler::new));
+
+    public static final ScreenHandlerType<SpaceTimeFurnaceScreenHandler> SPACE_TIME_FURNACE_SCREEN_HANDLER =
+            Registry.register(Registries.SCREEN_HANDLER, new Identifier(DivinityUnbound.MOD_ID, "space_time_furnace"),
+                    new ScreenHandlerType<>(SpaceTimeFurnaceScreenHandler::new, FeatureFlags.VANILLA_FEATURES));
 
     public static void registerScreenHandlers() {
         DivinityUnbound.LOGGER.info("Registering Screen Handlers for " + DivinityUnbound.MOD_ID);
