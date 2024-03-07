@@ -216,11 +216,11 @@ public class DivineReplicatorBlockEntity extends BlockEntity implements Extended
 
     @Override
     public boolean canInsert(int slot, ItemStack stack, Direction direction) {
-        return slot == FUEL_SLOT && direction == Direction.UP;
+        return slot == FUEL_SLOT;
     }
 
     @Override
     public boolean canExtract(int slot, ItemStack stack, Direction direction) {
-        return slot == WAND_SLOT && direction == Direction.DOWN;
+        return slot == WAND_SLOT;
     }
 }

@@ -5,9 +5,12 @@ import name.divinityunbound.block.entity.ModBlockEntities;
 import name.divinityunbound.block.entity.client.SpaceSiphonBlockRenderer;
 import name.divinityunbound.block.entity.client.SpaceTimeEvaporatorBlockRenderer;
 import name.divinityunbound.fluid.ModFluids;
+import name.divinityunbound.particle.ModParticles;
+import name.divinityunbound.particle.PurpleFlameParticle;
 import name.divinityunbound.screen.*;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
 import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
@@ -21,6 +24,9 @@ public class DivinityUnboundClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.WILDERSUNG_SAPLING, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.FROZEN_TIME_GLASS, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SPACE_TIME_AMALGAMATOR, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.WORMHOLE_TRANSPORTER, RenderLayer.getCutout());
+
+        ParticleFactoryRegistry.getInstance().register(ModParticles.PURPLE_FLAME_PARTICLE, PurpleFlameParticle.Factory::new);
 
         HandledScreens.register(ModScreenHandlers.GENERATION_STATION_SCREEN_HANDLER, GenerationStationScreen::new);
         HandledScreens.register(ModScreenHandlers.CHRONOS_TIME_ACCUMULATOR_SCREEN_HANDLER, ChronosTimeAccumulatorScreen::new);

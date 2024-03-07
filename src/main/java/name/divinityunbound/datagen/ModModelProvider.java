@@ -28,6 +28,9 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.GOLDEN_CELESTITE_INFUSED_STONE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.FROZEN_TIME_GLASS);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.SAND_OF_TIME);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.FROZEN_TIME_LAMP);
+        blockStateModelGenerator.registerSimpleState(ModBlocks.DIVINE_TORCH);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.WALL_DIVINE_TORCH);
 
         blockStateModelGenerator.registerLog(ModBlocks.WILDERSUNG_LOG).log(ModBlocks.WILDERSUNG_LOG).wood(ModBlocks.WILDERSUNG_WOOD);
         blockStateModelGenerator.registerLog(ModBlocks.STRIPPED_WILDERSUNG_LOG).log(ModBlocks.STRIPPED_WILDERSUNG_LOG).wood(ModBlocks.STRIPPED_WILDERSUNG_WOOD);

@@ -90,7 +90,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerHoeRecipe(exporter, RecipeCategory.TOOLS, ModItems.SPACE_TIME_HOE, ModItems.SPACE_TIME_INGOT);
 
         // TODO: Add recipes for:
-        // Space Time Amalgamator
 
         // TODO: Make some helper methods to clean up these Json Builders
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.CELESTITE, 1)
@@ -138,6 +137,25 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(Items.GOLD_INGOT), conditionsFromItem(Items.GOLD_INGOT))
                 .criterion(hasItem(ModBlocks.CELESTITE_INFUSED_STONE), conditionsFromItem(ModBlocks.CELESTITE_INFUSED_STONE))
                 .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.GOLDEN_CELESTITE_INFUSED_STONE)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.DIVINE_TORCH, 4)
+                .pattern("C")
+                .pattern("S")
+                .input('S', Items.STICK)
+                .input('C', ModItems.CELESTIUM_DUST)
+                .criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
+                .criterion(hasItem(ModItems.CELESTIUM_DUST), conditionsFromItem(ModItems.CELESTIUM_DUST))
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.DIVINE_TORCH)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.FROZEN_TIME_LAMP, 1)
+                .pattern(" F ")
+                .pattern("FGF")
+                .pattern(" F ")
+                .input('G', Items.GLOWSTONE_DUST)
+                .input('F', ModBlocks.FROZEN_TIME_GLASS)
+                .criterion(hasItem(Items.GLOWSTONE_DUST), conditionsFromItem(Items.GLOWSTONE_DUST))
+                .criterion(hasItem(ModBlocks.FROZEN_TIME_GLASS), conditionsFromItem(ModBlocks.FROZEN_TIME_GLASS))
+                .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.FROZEN_TIME_LAMP)));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.IMPORT_CARD, 3)
                 .pattern("CCC")
@@ -404,6 +422,22 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(ModItems.MOB_CORE), conditionsFromItem(ModItems.MOB_CORE))
                 .criterion(hasItem(ModItems.UNHOLY_INGOT), conditionsFromItem(ModItems.UNHOLY_INGOT))
                 .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.UNHOLY_SILENCER)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.WORMHOLE_TRANSPORTER, 2)
+                .pattern("CS ")
+                .pattern("COE")
+                .pattern("CT ")
+                .input('C', Blocks.CRYING_OBSIDIAN)
+                .input('O', Blocks.OBSIDIAN)
+                .input('E', Items.ENDER_PEARL)
+                .input('S', ModItems.SPACE_FORGED_INGOT)
+                .input('T', ModItems.TIME_FORGED_INGOT)
+                .criterion(hasItem(Blocks.CRYING_OBSIDIAN), conditionsFromItem(Blocks.CRYING_OBSIDIAN))
+                .criterion(hasItem(Blocks.OBSIDIAN), conditionsFromItem(Blocks.OBSIDIAN))
+                .criterion(hasItem(Items.ENDER_PEARL), conditionsFromItem(Items.ENDER_PEARL))
+                .criterion(hasItem(ModItems.SPACE_FORGED_INGOT), conditionsFromItem(ModItems.SPACE_FORGED_INGOT))
+                .criterion(hasItem(ModItems.TIME_FORGED_INGOT), conditionsFromItem(ModItems.TIME_FORGED_INGOT))
+                .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.WORMHOLE_TRANSPORTER)));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.SPACE_TIME_EVAPORATOR, 1)
                 .pattern("SNS")

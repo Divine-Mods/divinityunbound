@@ -43,6 +43,7 @@ public class ModItemGroups {
                         entries.add(ModItems.MOB_CORE);
                         entries.add(ModItems.IMPORT_CARD);
                         entries.add(ModItems.EXPORT_CARD);
+                        entries.add(ModItems.DIVINE_TORCH);
 
                         entries.add(ModFluids.SPACE_TIME_BUCKET);
 
@@ -113,6 +114,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.CELESTITE_INFUSED_STONE);
                         entries.add(ModBlocks.GOLDEN_CELESTITE_INFUSED_STONE);
                         entries.add(ModBlocks.FROZEN_TIME_GLASS);
+                        entries.add(ModBlocks.FROZEN_TIME_LAMP);
                         entries.add(ModBlocks.SAND_OF_TIME);
 
                         /* Block Entities */

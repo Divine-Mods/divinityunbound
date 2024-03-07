@@ -3,15 +3,20 @@ package name.divinityunbound.block;
 import com.mojang.serialization.MapCodec;
 import name.divinityunbound.DivinityUnbound;
 import name.divinityunbound.block.custom.*;
+import name.divinityunbound.particle.ModParticles;
 import name.divinityunbound.world.tree.ModSaplingGenerators;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
+import net.minecraft.block.enums.Instrument;
+import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 
@@ -75,6 +80,31 @@ public class ModBlocks {
     public static final Block QUANTITY_UPGRADE = registerBlock("quantity_upgrade",
             new QuantityUpgradeBlock(FabricBlockSettings.copyOf(Blocks.END_STONE_BRICKS).nonOpaque()));
 
+    public static final Block FROZEN_TIME_LAMP = registerBlock("frozen_time_lamp",
+            new Block(AbstractBlock.Settings.create()
+                    .mapColor(MapColor.PALE_PURPLE)
+                    .instrument(Instrument.PLING)
+                    .strength(0.3f).sounds(BlockSoundGroup.GLASS)
+                    .luminance(state -> 15).solidBlock(Blocks::never)));
+
+    public static final Block DIVINE_TORCH = registerBlockWithoutBlockItem("divine_torch",
+            (Block)new TorchBlock(ModParticles.PURPLE_FLAME_PARTICLE,
+                    AbstractBlock.Settings.create()
+                            .noCollision().breakInstantly()
+                            .luminance(state -> 15)
+                            .sounds(BlockSoundGroup.WOOD)
+                            .pistonBehavior(PistonBehavior.DESTROY)));
+    public static final Block WALL_DIVINE_TORCH = registerBlockWithoutBlockItem("wall_divine_torch",
+            (Block)new WallTorchBlock(ModParticles.PURPLE_FLAME_PARTICLE,
+                    AbstractBlock.Settings.create()
+                            .noCollision().breakInstantly()
+                            .luminance(state -> 15)
+                            .sounds(BlockSoundGroup.WOOD)
+                            .dropsLike(DIVINE_TORCH)
+                            .pistonBehavior(PistonBehavior.DESTROY)));
+
+
+
 
     public static final Block MYSTIC_CHRONOGRAPH = registerBlock("mystic_chronograph",
             new MysticChronographBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
@@ -107,6 +137,10 @@ public class ModBlocks {
     private static Item registerBlockItem(String name, Block block) {
         return Registry.register(Registries.ITEM, new Identifier(DivinityUnbound.MOD_ID, name),
                 new BlockItem(block, new FabricItemSettings()));
+    }
+
+    private static Block registerBlockWithoutBlockItem(String name, Block block) {
+        return Registry.register(Registries.BLOCK, new Identifier(DivinityUnbound.MOD_ID, name), block);
     }
 
     public static void registerModBlocks() {

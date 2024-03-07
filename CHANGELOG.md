@@ -5,6 +5,9 @@
 - Added directional block states
 - Added Import and Export Cards
 - Added Wormhole Transporter
+- Added Frozen Time Lamp
+- Added Divine Torches
+- Added Custom Purple Flame particle
 
 ---
 

@@ -4,8 +4,11 @@ import name.divinityunbound.block.ModBlocks;
 import name.divinityunbound.util.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.minecraft.block.Blocks;
+import net.minecraft.data.server.tag.ValueLookupTagProvider;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.registry.tag.TagKey;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -31,6 +34,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.CELESTITE_INFUSED_STONE)
                 .add(ModBlocks.GOLDEN_CELESTITE_INFUSED_STONE)
                 .add(ModBlocks.FROZEN_TIME_GLASS)
+                .add(ModBlocks.FROZEN_TIME_LAMP)
                 .add(ModBlocks.CHRONOS_TIME_ACCUMULATOR)
                 .add(ModBlocks.GENERATION_STATION)
                 .add(ModBlocks.MYSTIC_CHRONOGRAPH)
@@ -81,5 +85,11 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.WILDERSUNG_WOOD)
                 .add(ModBlocks.STRIPPED_WILDERSUNG_LOG)
                 .add(ModBlocks.STRIPPED_WILDERSUNG_WOOD);
+
+//        getOrCreateTagBuilder(BlockTags.WALL_POST_OVERRIDE)
+//        .add(ModBlocks.DIVINE_TORCH).addTag(BlockTags.SIGNS);
+//        getOrCreateTagBuilder(BlockTags.WALL_POST_OVERRIDE).addTag(BlockTags.SIGNS)
+//        .add(ModBlocks.DIVINE_TORCH);
+        //.addTag((TagKey)BlockTags.BANNERS)).addTag((TagKey)BlockTags.PRESSURE_PLATES);
     }
 }

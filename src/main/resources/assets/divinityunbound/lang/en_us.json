@@ -18,6 +18,7 @@
   "item.divinityunbound.mob_core": "Mob Core",
   "item.divinityunbound.import_card": "Import Card",
   "item.divinityunbound.export_card": "Export Card",
+  "block.divinityunbound.divine_torch": "Divine Torch",
 
   "block.divinityunbound.celestite_block": "Block of Celestite",
   "block.divinityunbound.raw_celestite_block": "Block of Raw Celestite",
@@ -80,6 +81,7 @@
   "block.divinityunbound.celestite_infused_stone": "Celestite Infused Stone",
   "block.divinityunbound.golden_celestite_infused_stone": "Golden Celestite Infused Stone",
   "block.divinityunbound.frozen_time_glass": "Frozen Time Glass",
+  "block.divinityunbound.frozen_time_lamp": "Frozen Time Lamp",
   "block.divinityunbound.sand_of_time": "Sand of Time",
   "block.divinityunbound.wildersung_leaves": "Wildersung Leaves",
   "block.divinityunbound.wildersung_sapling": "Wildersung Sapling",

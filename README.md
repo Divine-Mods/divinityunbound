@@ -2,6 +2,16 @@
 
 ---
 
+## Mod Description
+
+Divinity Unbound is a magic mod that adds new armor, weapons, and tools forged from magical materials. 
+Utility blocks and items are also crafted from magical materials; some of these utility blocks include ways to summon 
+particular types of mobs or magically grab all the items floating in an area and automatically deposit in a below inventory. 
+If magical utility items are your preference, maybe you want to get back to your base quicker with the Wand of Teleportation 
+or maybe you want to shoot magical arrows with the Wand of The Archer.
+
+---
+
 ## Getting Started
 
 Venture into the world of minecraft and search for the elusive magic ore Celestite to get started.
@@ -73,6 +83,30 @@ Space Time Evaporator - Evaporates space time on to coal, causing it to recrysta
 Space Time Amalgamator - Combines Celestium Dust, Unholy Dust, and Space Dust to create 
 Liquid Space Time. Needs power.
 
+Wormhole Transporter - Creates a localized wormhole that is linked to another transporter. Can move Items, Liquids, and Energy.
+Use an Import or Export card to link to another wormhole.
+
+### Wormhole Transporter
+
+Simple example using the Wormhole Transporter:
+You have 2 chests that you want to move items between across some distance.
+
+- Place a Wormhole Transporter on each chest.
+- Take an Import Card and Shift+Right Click **on the Wormhole Transporter you want to take from** to save the coordinates to the card.
+- Place the Import Card with the saved coords **into the Wormhole Transporter you want to move items to.**
+- Place a **blank Export Card into the Wormhole Transporter you want to take from** to start extracting items.
+
+Items are now being extracted into the first Wormhole Transporter with the blank Export Card, then they are automatically pulled into the
+Wormhole Transporter with the linked Import Card, and finally the Transporter with the linked Import Card is pushing into the chest it is placed on.
+
+You can achieve the same goal by using a linked Export Card and a blank Import Card instead. 
+
+**You only need 1 linked card within the system**
+
+A linked Export Card will _pull_ from the neighboring block and _push_ to the linked Wormhole Transporter.
+
+A linked Import Card will _push_ from the neighboring block and _pull_ from the linked Wormhole Transporter.
+
 ### Block Upgrades
 
 There are currently speed and quantity upgrades available 
@@ -91,6 +125,7 @@ surrounding the block you are upgrading.
 | Unholy Silencer          | Y             | N                |
 | Space Time Evaporator    | N             | N                |
 | Space Time Amalgamator   | N             | N                |
+| Wormhole Transporter     | N             | N                |
 
 ---
 

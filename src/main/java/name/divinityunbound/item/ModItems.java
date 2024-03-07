@@ -2,15 +2,18 @@ package name.divinityunbound.item;
 
 import com.mojang.serialization.Lifecycle;
 import name.divinityunbound.DivinityUnbound;
+import name.divinityunbound.block.ModBlocks;
 import name.divinityunbound.item.custom.*;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.minecraft.block.Blocks;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.*;
 import net.minecraft.registry.*;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.Direction;
 
 public class ModItems {
 
@@ -34,6 +37,11 @@ public class ModItems {
     public static final Item MOB_CORE = registerItem("mob_core", new Item(new FabricItemSettings()));
     public static final Item IMPORT_CARD = registerItem("import_card", new IOCardItem(new FabricItemSettings()));
     public static final Item EXPORT_CARD = registerItem("export_card", new IOCardItem(new FabricItemSettings()));
+
+    public static final Item DIVINE_TORCH = Items.register(
+            new VerticallyAttachableBlockItem(ModBlocks.DIVINE_TORCH,
+                    ModBlocks.WALL_DIVINE_TORCH,
+                    new FabricItemSettings(), Direction.DOWN));
 
     /* Wands */
 //    public static final Item MAGIC_CELESTITE_DETECTOR = registerItem("magic_celestite_detector",

@@ -223,11 +223,11 @@ public class GenerationStationBlockEntity extends BlockEntity implements Extende
 
     @Override
     public boolean canInsert(int slot, ItemStack stack, Direction direction) {
-        return (slot == INPUT_SLOT || slot == FUEL_SLOT) && direction == Direction.UP;
+        return slot == INPUT_SLOT || slot == FUEL_SLOT;
     }
 
     @Override
     public boolean canExtract(int slot, ItemStack stack, Direction direction) {
-        return slot == OUTPUT_SLOT && direction == Direction.DOWN;
+        return slot == OUTPUT_SLOT;
     }
 }

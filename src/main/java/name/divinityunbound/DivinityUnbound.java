@@ -6,6 +6,7 @@ import name.divinityunbound.entity.effect.ModStatusEffect;
 import name.divinityunbound.fluid.ModFluids;
 import name.divinityunbound.item.ModItemGroups;
 import name.divinityunbound.item.ModItems;
+import name.divinityunbound.particle.ModParticles;
 import name.divinityunbound.recipe.ModRecipes;
 import name.divinityunbound.screen.ModScreenHandlers;
 import name.divinityunbound.world.gen.ModWorldGeneration;
@@ -31,6 +32,7 @@ public class DivinityUnbound implements ModInitializer {
 		ModBlockEntities.registerBlockEntities();
 		ModScreenHandlers.registerScreenHandlers();
 		ModStatusEffect.registerStatusEffects();
+		ModParticles.registerParticles();
 
 		ModRecipes.registerRecipes();
 
