@@ -14,17 +14,19 @@ import net.minecraft.screen.slot.Slot;
 
 public class WormholeTransporterScreenHandler extends ScreenHandler {
     private final Inventory inventory;
+    private final PropertyDelegate propertyDelegate;
     public final WormholeTransporterBlockEntity blockEntity;
 
     public WormholeTransporterScreenHandler(int syncId, PlayerInventory inventory, PacketByteBuf buf) {
-        this(syncId, inventory, inventory.player.getWorld().getBlockEntity(buf.readBlockPos()));
+        this(syncId, inventory, inventory.player.getWorld().getBlockEntity(buf.readBlockPos()), new ArrayPropertyDelegate(3));
     }
 
     public WormholeTransporterScreenHandler(int syncId, PlayerInventory playerInventory,
-                                            BlockEntity blockEntity) {
+                                            BlockEntity blockEntity, PropertyDelegate arrayPropertyDelegate) {
         super(ModScreenHandlers.WORMHOLE_TRANSPORTER_SCREEN_HANDLER, syncId);
         checkSize(((Inventory) blockEntity), 2);
         this.inventory = (Inventory)blockEntity;
+        this.propertyDelegate = arrayPropertyDelegate;
         this.blockEntity = ((WormholeTransporterBlockEntity) blockEntity);
 
         // Card Slot
@@ -34,6 +36,18 @@ public class WormholeTransporterScreenHandler extends ScreenHandler {
 
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);
+
+        addProperties(arrayPropertyDelegate);
+    }
+
+
+
+    public void setPropertyDelegate(int index, int value) {
+        this.propertyDelegate.set(index, value);
+    }
+
+    public boolean getPropertyDelegate(int index) {
+        return this.propertyDelegate.get(index) == 0 ? false : true;
     }
 
     @Override

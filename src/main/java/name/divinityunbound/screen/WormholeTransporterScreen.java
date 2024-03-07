@@ -1,19 +1,29 @@
 package name.divinityunbound.screen;
 
+import com.mojang.authlib.properties.Property;
 import com.mojang.blaze3d.systems.RenderSystem;
 import name.divinityunbound.DivinityUnbound;
+import name.divinityunbound.block.entity.WormholeTransporterBlockEntity;
+import name.divinityunbound.networking.DivinityUnboundNetworkingConstants;
 import name.divinityunbound.screen.renderer.EnergyInfoArea;
 import name.divinityunbound.screen.renderer.FluidStackRenderer;
 import name.divinityunbound.util.MouseUtil;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.screen.v1.Screens;
+import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidConstants;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
+import net.minecraft.client.gui.widget.CyclingButtonWidget;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.client.render.GameRenderer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.network.PacketByteBuf;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPos;
 
 import java.util.Optional;
 
@@ -23,8 +33,22 @@ public class WormholeTransporterScreen extends HandledScreen<WormholeTransporter
     private EnergyInfoArea energyInfoArea;
     private FluidStackRenderer fluidStackRenderer;
 
+    private CyclingButtonWidget<Boolean> itemButton;
+    private boolean itemsActive;
+    private boolean energyActive;
+    private boolean fluidActive;
+
+    //private WormholeTransporterBlockEntity wormholeTransporter;
+
     public WormholeTransporterScreen(WormholeTransporterScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
+        //this.wormholeTransporter = handler.blockEntity;
+//        BlockPos pos = handler.blockEntity.getPos();
+//        this.wormholeTransporter = (WormholeTransporterBlockEntity)handler.blockEntity.getWorld().getBlockEntity(pos);
+//        PlayerEntity player = this.wormholeTransporter.getWorld().getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), 5, false);
+//        if (player != null) {
+//            player.sendMessage(Text.literal("Wormhole transporter: " + this.wormholeTransporter.getPos().toString()));
+//        }
     }
 
     @Override
@@ -32,8 +56,21 @@ public class WormholeTransporterScreen extends HandledScreen<WormholeTransporter
         super.init();
         titleY = 1000;
         playerInventoryTitleY = 1000;
+        int x = (width - backgroundWidth) / 2;
+        int y = (height - backgroundHeight) / 2;
+//        this.itemButton = this.addDrawableChild(CyclingButtonWidget.onOffBuilder(
+//                handler.getPropertyDelegate(0))
+//                .omitKeyText()
+//                .build(x + 8, y + 10, 40, 20,
+//                        Text.translatable("divinityunbound.wormhole_transporter.item_mode.conditional"),
+//                        (button, conditional) -> {
+//
+//                        }
+//                    ));
+//        this.itemButton.active = true;
         assignEnergyInfoArea();
         assignFluidStackRenderer();
+
     }
 
     private void assignEnergyInfoArea() {
@@ -42,7 +79,7 @@ public class WormholeTransporterScreen extends HandledScreen<WormholeTransporter
     }
 
     private void assignFluidStackRenderer() {
-        fluidStackRenderer = new FluidStackRenderer((FluidConstants.BUCKET / 81) * 64, true, 16, 39);
+        fluidStackRenderer = new FluidStackRenderer((FluidConstants.BUCKET / 81) * 128, true, 16, 39);
     }
 
     private void renderEnergyAreaTooltips(DrawContext context, int pMouseX, int pMouseY, int x, int y) {
@@ -80,7 +117,7 @@ public class WormholeTransporterScreen extends HandledScreen<WormholeTransporter
 
         energyInfoArea.draw(context);
         fluidStackRenderer.drawFluid(context, handler.blockEntity.fluidStorage, x + 129, y + 24, 16, 39,
-                (FluidConstants.BUCKET / 81) * 64);
+                (FluidConstants.BUCKET / 81) * 128);
     }
 
     @Override

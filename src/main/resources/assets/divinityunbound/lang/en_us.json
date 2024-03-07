@@ -122,5 +122,13 @@
   "tooltip.divinityunbound.wand_of_celebration": "Shoots duration 3 fireworks",
   "tooltip.divinityunbound.wand_of_fire_bending": "Summons temporary lava and gives fire resistance",
 
+  "divinityunbound.wormhole_transporter.item_mode.conditional": "Extract Item",
+  "divinityunbound.wormhole_transporter.item_mode.unconditional": "No Item",
+  "divinityunbound.wormhole_transporter.energy_mode.conditional": "",
+  "divinityunbound.wormhole_transporter.energy_mode.unconditional": "",
+  "divinityunbound.wormhole_transporter.fluid_mode.conditional": "",
+  "divinityunbound.wormhole_transporter.fluid_mode.unconditional": "",
+  "divinityunbound.wormhole_transporter.type": "Type",
+
   "itemgroup.celestite": "DivinityUnbound"
 }

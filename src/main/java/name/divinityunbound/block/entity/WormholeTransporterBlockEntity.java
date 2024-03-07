@@ -5,12 +5,12 @@ import name.divinityunbound.block.custom.WormholeTransporterBlock;
 import name.divinityunbound.fluid.ModFluids;
 import name.divinityunbound.item.ModItems;
 import name.divinityunbound.screen.WormholeTransporterScreenHandler;
-import name.divinityunbound.util.FluidStorageUtil;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidConstants;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidStorage;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
 import net.fabricmc.fabric.api.transfer.v1.storage.Storage;
+import net.fabricmc.fabric.api.transfer.v1.storage.StorageUtil;
 import net.fabricmc.fabric.api.transfer.v1.storage.base.SingleVariantStorage;
 import net.fabricmc.fabric.api.transfer.v1.transaction.Transaction;
 import net.minecraft.block.Block;
@@ -22,11 +22,9 @@ import net.minecraft.block.entity.ChestBlockEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.fluid.Fluid;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.SidedInventory;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
@@ -37,7 +35,6 @@ import net.minecraft.predicate.entity.EntityPredicates;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
@@ -59,7 +56,8 @@ import team.reborn.energy.api.base.SimpleEnergyStorage;
 import java.util.Iterator;
 import java.util.List;
 
-public class WormholeTransporterBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory, ImplementedInventory, SidedInventory, GeoBlockEntity {
+public class WormholeTransporterBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory,
+        ImplementedInventory, SidedInventory, GeoBlockEntity {
     private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
     private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(2, ItemStack.EMPTY);
     private static final int CARD_SLOT = 0;
@@ -72,9 +70,51 @@ public class WormholeTransporterBlockEntity extends BlockEntity implements Exten
     private int progress = 0;
     private int maxProgress = 72;
     private int upgradeCheck = 0;
+
+    private int itemsActive = 0;
+    private int energyActive = 0;
+    private int fluidActive = 0;
+
+    protected final PropertyDelegate propertyDelegate;
     public WormholeTransporterBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.WORMHOLE_TRANSPORTER_BLOCK_ENTITY, pos, state);
         localDir = state.get(WormholeTransporterBlock.FACING).getOpposite();
+        this.propertyDelegate = new PropertyDelegate() {
+            @Override
+            public int get(int index) {
+                return switch (index) {
+                    case 0 -> WormholeTransporterBlockEntity.this.itemsActive;
+                    case 1 -> WormholeTransporterBlockEntity.this.energyActive;
+                    case 2 -> WormholeTransporterBlockEntity.this.fluidActive;
+                    default -> 0;
+                };
+            }
+
+            @Override
+            public void set(int index, int value) {
+                switch (index) {
+                    case 0 -> WormholeTransporterBlockEntity.this.itemsActive = value;
+                    case 1 -> WormholeTransporterBlockEntity.this.energyActive = value;
+                    case 2 -> WormholeTransporterBlockEntity.this.fluidActive = value;
+                };
+            }
+
+            @Override
+            public int size() {
+                return 3;
+            }
+        };
+
+//        ServerPlayNetworking.registerGlobalReceiver(DivinityUnboundNetworkingConstants.WORMHOLE_TRANSPORTER_SYNC_ID,
+//                ((server, player, handler, buf, responseSender) -> {
+//                    int temp = buf.readInt();
+//                    server.execute(() -> {
+//                        this.itemsActive = temp;
+//                        itemsActive = temp;
+//                        propertyDelegate.set(0, temp);
+//                        this.propertyDelegate.set(0, temp);
+//                    });
+//                }));
     }
 
     public final SimpleEnergyStorage energyStorage = new SimpleEnergyStorage(5000000, Integer.MAX_VALUE, Integer.MAX_VALUE) {
@@ -111,20 +151,26 @@ public class WormholeTransporterBlockEntity extends BlockEntity implements Exten
     protected void writeNbt(NbtCompound nbt) {
         super.writeNbt(nbt);
         Inventories.writeNbt(nbt, inventory);
-        nbt.putInt("wormhole_transporter.progress", progress);
-        nbt.putLong(("wormhole_transporter.energy"), energyStorage.amount);
-        nbt.put("wormhole_transporter.variant", fluidStorage.variant.toNbt());
-        nbt.putLong("wormhole_transporter.fluid_amount", fluidStorage.amount);
+        nbt.putInt("wormhole_transporter.progress", this.progress);
+        nbt.putLong(("wormhole_transporter.energy"), this.energyStorage.amount);
+        nbt.put("wormhole_transporter.variant", this.fluidStorage.variant.toNbt());
+        nbt.putLong("wormhole_transporter.fluid_amount", this.fluidStorage.amount);
+        nbt.putInt("wormhole_transporter.itemsActive", this.itemsActive);
+        nbt.putInt("wormhole_transporter.energyActive", this.energyActive);
+        nbt.putInt("wormhole_transporter.fluidActive", this.fluidActive);
     }
 
     @Override
     public void readNbt(NbtCompound nbt) {
         super.readNbt(nbt);
         Inventories.readNbt(nbt, inventory);
-        progress = nbt.getInt("wormhole_transporter.progress");
-        energyStorage.amount = nbt.getLong("wormhole_transporter.energy");
-        fluidStorage.variant = FluidVariant.fromNbt((NbtCompound) nbt.get("wormhole_transporter.variant"));
-        fluidStorage.amount = nbt.getLong("wormhole_transporter.fluid_amount");
+        this.progress = nbt.getInt("wormhole_transporter.progress");
+        this.energyStorage.amount = nbt.getLong("wormhole_transporter.energy");
+        this.fluidStorage.variant = FluidVariant.fromNbt((NbtCompound) nbt.get("wormhole_transporter.variant"));
+        this.fluidStorage.amount = nbt.getLong("wormhole_transporter.fluid_amount");
+        this.itemsActive = nbt.getInt("wormhole_transporter.itemsActive");
+        this.energyActive = nbt.getInt("wormhole_transporter.energyActive");
+        this.fluidActive = nbt.getInt("wormhole_transporter.fluidActive");
     }
 
     @Override
@@ -140,7 +186,9 @@ public class WormholeTransporterBlockEntity extends BlockEntity implements Exten
     @Nullable
     @Override
     public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
-        return new WormholeTransporterScreenHandler(syncId, playerInventory, this);
+        WormholeTransporterScreenHandler sh = new WormholeTransporterScreenHandler(syncId, playerInventory, this, this.propertyDelegate);
+
+        return sh;
     }
 
     public void tick(World world, BlockPos pos, BlockState state) {
@@ -154,7 +202,15 @@ public class WormholeTransporterBlockEntity extends BlockEntity implements Exten
             Inventory neighborInv = getInventoryAt(world, neighbor.getX(), neighbor.getY(), neighbor.getZ());
             EnergyStorage neighborEnergyStorage = findEnergyStorage(world, pos);
             Storage<FluidVariant> neighborFluidStorage = findFluidStorage(world, pos);
-
+//            PlayerEntity player = world.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), 5, false);
+//            if (player != null) {
+//            player.sendMessage(
+//                        Text.literal("Items active: " + this.itemsActive + " " + itemsActive + " " + getItemsActive())
+//                );
+//                player.sendMessage(
+//                        Text.literal("Items active: " + this.propertyDelegate.get(0) + " " + propertyDelegate.get(0) + " " + getItemsActive())
+//                );
+//            }
             if (isImportMode()) {
 
                 if (ioCardHasBlockPos()) {
@@ -233,13 +289,7 @@ public class WormholeTransporterBlockEntity extends BlockEntity implements Exten
     }
 
     private void pushFluidToAdjacentStorage(Storage<FluidVariant> source, Storage<FluidVariant> target) {
-        target.iterator().next().getResource();
-        long amountMoved = FluidStorageUtil.move(
-                source,
-                target,
-                source.iterator().next().getResource(),
-                Integer.MAX_VALUE,
-                null);
+        StorageUtil.move(source, target, variant -> true, Integer.MAX_VALUE, null);
     }
 
     private Storage<FluidVariant> findFluidStorage(World world, BlockPos pos) {
@@ -252,8 +302,12 @@ public class WormholeTransporterBlockEntity extends BlockEntity implements Exten
 
     private void attemptExtractionToInternalInv(Inventory neighbor) {
         for (int i = 0; i < neighbor.size(); i++) {
+            if (this.canExtractFromInv(neighbor, this.getStack(ITEM_SLOT), i, localDir)) {
                 ItemStack checkedStack = neighbor.getStack(i);
 
+                if (checkedStack.isEmpty()) {
+                    continue;
+                }
                 if (this.getStack(ITEM_SLOT).isEmpty()) {
                     this.setStack(ITEM_SLOT, checkedStack.copy());
                     neighbor.removeStack(i);
@@ -274,7 +328,7 @@ public class WormholeTransporterBlockEntity extends BlockEntity implements Exten
                         }
                     }
                 }
-
+            }
         }
     }
 
@@ -476,6 +530,10 @@ public class WormholeTransporterBlockEntity extends BlockEntity implements Exten
         }
     }
 
+    private static boolean canExtractFromInv(Inventory inventory, ItemStack stack, int slot, @Nullable Direction side) {
+        return !(inventory instanceof SidedInventory) || ((SidedInventory)inventory).canExtract(slot, stack, side);
+    }
+
     @Override
     public boolean canInsert(int slot, ItemStack stack, @Nullable Direction side) {
         return slot == ITEM_SLOT;
@@ -555,4 +613,32 @@ public class WormholeTransporterBlockEntity extends BlockEntity implements Exten
     public double getTick(Object blockEntity) {
         return RenderUtils.getCurrentTick();
     }
+
+    public boolean getItemsActive() {
+        return this.itemsActive == 0 ? false : true;
+    }
+
+//    public boolean isEnergyActive() {
+//        return this.energyActive;
+//    }
+//
+//    public boolean isFluidsActive() {
+//        return this.fluidActive;
+//    }
+
+    public void setItemsActive() {
+        this.itemsActive++;
+    }
+
+    public void resetItemActive() {
+        this.itemsActive = 0;
+    }
+
+//    public void setEnergyActiveActive(boolean energyActive) {
+//        this.energyActive = energyActive;
+//    }
+//
+//    public void setFluidActive(boolean fluidActive) {
+//        this.fluidActive = fluidActive;
+//    }
 }

@@ -88,7 +88,7 @@ public class SpaceTimeAmalgamatorBlockEntity extends BlockEntity implements Exte
         };
     }
 
-    public final SimpleEnergyStorage energyStorage = new SimpleEnergyStorage(5000000, Integer.MAX_VALUE, Integer.MAX_VALUE) {
+    public final SimpleEnergyStorage energyStorage = new SimpleEnergyStorage(5000000, Integer.MAX_VALUE, 250000) {
         @Override
         protected void onFinalCommit() {
             markDirty();
@@ -112,6 +112,7 @@ public class SpaceTimeAmalgamatorBlockEntity extends BlockEntity implements Exte
             markDirty();
             getWorld().updateListeners(pos, getCachedState(), getCachedState(), 3);
         }
+
     };
     @Override
     public DefaultedList<ItemStack> getItems() {
@@ -166,7 +167,7 @@ public class SpaceTimeAmalgamatorBlockEntity extends BlockEntity implements Exte
             markDirty(world, pos, state);
 
             if (hasCraftingFinished()) {
-                craftItem();
+                //craftItem();
                 produceFluid();
                 resetProgress();
             }
@@ -330,7 +331,7 @@ public class SpaceTimeAmalgamatorBlockEntity extends BlockEntity implements Exte
 
     @Override
     public boolean canExtract(int slot, ItemStack stack, Direction side) {
-        return true;
+        return false;
 //        Direction localDir = this.getWorld().getBlockState(this.pos).get(SpaceTimeAmalgamatorBlock.FACING);
 //
 //        if(side == Direction.UP) {
