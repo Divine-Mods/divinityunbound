@@ -89,6 +89,15 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerSwordRecipe(exporter, RecipeCategory.TOOLS, ModItems.SPACE_TIME_SWORD, ModItems.SPACE_TIME_INGOT);
         offerHoeRecipe(exporter, RecipeCategory.TOOLS, ModItems.SPACE_TIME_HOE, ModItems.SPACE_TIME_INGOT);
 
+        offerPaxelRecipe(exporter, RecipeCategory.TOOLS, ModItems.CELESTITE_PAXEL,
+                ModItems.CELESTITE_PICKAXE, ModItems.CELESTITE_AXE, ModItems.CELESTITE_SHOVEL);
+        offerPaxelRecipe(exporter, RecipeCategory.TOOLS, ModItems.TIME_FORGED_PAXEL,
+                ModItems.TIME_FORGED_PICKAXE, ModItems.TIME_FORGED_AXE, ModItems.TIME_FORGED_SHOVEL);
+        offerPaxelRecipe(exporter, RecipeCategory.TOOLS, ModItems.SPACE_FORGED_PAXEL,
+                ModItems.SPACE_FORGED_PICKAXE, ModItems.SPACE_FORGED_AXE, ModItems.SPACE_FORGED_SHOVEL);
+        offerPaxelRecipe(exporter, RecipeCategory.TOOLS, ModItems.SPACE_TIME_PAXEL,
+                ModItems.SPACE_TIME_PICKAXE, ModItems.SPACE_TIME_AXE, ModItems.SPACE_TIME_SHOVEL);
+
         // TODO: Add recipes for:
 
         // TODO: Make some helper methods to clean up these Json Builders
@@ -710,6 +719,26 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .pattern(" S")
                 .criterion(RecipeProvider.hasItem(input),
                         (AdvancementCriterion)RecipeProvider.conditionsFromItem(input))
+                .offerTo(exporter);
+    }
+
+    public static void offerPaxelRecipe(RecipeExporter exporter, RecipeCategory category,
+                                          ItemConvertible output, ItemConvertible pickaxe,
+                                          ItemConvertible axe, ItemConvertible shovel) {
+        ShapedRecipeJsonBuilder.create(category, output, 1)
+                .input(Character.valueOf('P'), pickaxe)
+                .input(Character.valueOf('A'), axe)
+                .input(Character.valueOf('S'), shovel)
+                .input(Character.valueOf('#'), Items.STICK)
+                .pattern("PAS")
+                .pattern(" # ")
+                .pattern(" # ")
+                .criterion(RecipeProvider.hasItem(pickaxe),
+                        (AdvancementCriterion)RecipeProvider.conditionsFromItem(pickaxe))
+                .criterion(RecipeProvider.hasItem(axe),
+                        (AdvancementCriterion)RecipeProvider.conditionsFromItem(axe))
+                .criterion(RecipeProvider.hasItem(shovel),
+                        (AdvancementCriterion)RecipeProvider.conditionsFromItem(shovel))
                 .offerTo(exporter);
     }
 }

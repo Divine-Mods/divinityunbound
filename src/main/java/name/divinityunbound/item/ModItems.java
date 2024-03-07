@@ -118,6 +118,18 @@ public class ModItems {
             new HoeItem(ModToolMaterial.SPACE_TIME, -4, 0.0F, new FabricItemSettings()));
 
 
+    public static final Item CELESTITE_PAXEL = registerItem("celestite_paxel",
+            new PaxelItem(1, -2.8F, ModToolMaterial.CELESTITE, new FabricItemSettings()));
+
+    public static final Item TIME_FORGED_PAXEL = registerItem("time_forged_paxel",
+            new PaxelItem(1, -2.8F, ModToolMaterial.TIME_FORGED, new FabricItemSettings()));
+
+    public static final Item SPACE_FORGED_PAXEL = registerItem("space_forged_paxel",
+            new PaxelItem(1, -2.8F, ModToolMaterial.SPACE_FORGED, new FabricItemSettings()));
+
+    public static final Item SPACE_TIME_PAXEL = registerItem("space_time_paxel",
+            new PaxelItem(1, -2.8F, ModToolMaterial.SPACE_TIME, new FabricItemSettings()));
+
     /* Armor */
     public static final Item CELESTITE_HELMET = registerItem("celestite_helmet",
             new ArmorItem(ModArmorMaterials.CELESTITE, ArmorItem.Type.HELMET, new FabricItemSettings().maxCount(1)));

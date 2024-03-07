@@ -1,6 +1,13 @@
 # Changelog
 
 ---
+## v0.0.5
+- Added Celestite Paxel
+- Added Time Forged Paxel
+- Added Space Forged Paxel
+- Added Space Time Paxel
+
+---
 ## v0.0.4
 - Added directional block states
 - Added Import and Export Cards

@@ -23,6 +23,11 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.CELESTITE_ORE)
                 .add(ModBlocks.DEEPSLATE_CELESTITE_ORE);
 
+        getOrCreateTagBuilder(ModTags.Blocks.PAXEL_MINABLE)
+                .forceAddTag(BlockTags.PICKAXE_MINEABLE)
+                .forceAddTag(BlockTags.AXE_MINEABLE)
+                .forceAddTag(BlockTags.SHOVEL_MINEABLE);
+
         getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE)
                 .add(ModBlocks.SAND_OF_TIME);
 

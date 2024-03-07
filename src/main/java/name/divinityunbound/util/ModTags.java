@@ -11,6 +11,9 @@ public class ModTags {
     public static class Blocks {
         public static final TagKey<Block> MAGIC_ORE_DETECTOR_DETECTABLE_BLOCKS =
                 createTag("magic_ore_detector_detectable_blocks");
+
+        public static final TagKey<Block> PAXEL_MINABLE =
+                createTag("paxel_minable_blocks");
         private static TagKey<Block> createTag(String name) {
             return TagKey.of(RegistryKeys.BLOCK, new Identifier((DivinityUnbound.MOD_ID), name));
         }

@@ -119,6 +119,11 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.SPACE_TIME_SWORD, Models.HANDHELD);
         itemModelGenerator.register(ModItems.SPACE_TIME_HOE, Models.HANDHELD);
 
+        itemModelGenerator.register(ModItems.CELESTITE_PAXEL, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.TIME_FORGED_PAXEL, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.SPACE_FORGED_PAXEL, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.SPACE_TIME_PAXEL, Models.HANDHELD);
+
         /* Armor */
         itemModelGenerator.registerArmor((ArmorItem) ModItems.CELESTITE_HELMET);
         itemModelGenerator.registerArmor((ArmorItem) ModItems.CELESTITE_CHESTPLATE);

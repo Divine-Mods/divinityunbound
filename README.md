@@ -164,6 +164,8 @@ Wand of Fire Bending summons temporary lava in a plus pattern and provides Fire 
 Materials:
 Celestite, Time Forged Ingots, Space Forged Ingots, Space Time Ingots
 
+Full sets of tools and armor for each material type. There are also Paxels!
+
 Full sets of armor have different full set bonuses!
 
 ---
@@ -176,7 +178,7 @@ Full sets of armor have different full set bonuses!
 - [ ] Space Time Evaporator supporting upgrades
 - [X] Space Time Tools
 - [ ] Space Time Armor
-- [ ] Paxels
+- [X] Paxels
 - [ ] Food items
 - [ ] More Wands
 - [X] Space Time Fluid

@@ -53,7 +53,11 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.CELESTITE_PICKAXE)
                 .add(ModItems.TIME_FORGED_PICKAXE)
                 .add(ModItems.SPACE_FORGED_PICKAXE)
-                .add(ModItems.SPACE_TIME_PICKAXE);
+                .add(ModItems.SPACE_TIME_PICKAXE)
+                .add(ModItems.CELESTITE_PAXEL)
+                .add(ModItems.TIME_FORGED_PAXEL)
+                .add(ModItems.SPACE_FORGED_PAXEL)
+                .add(ModItems.SPACE_TIME_PAXEL);
 
         getOrCreateTagBuilder(ItemTags.SWORDS)
                 .add(ModItems.CELESTITE_SWORD)
@@ -65,13 +69,21 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.CELESTITE_AXE)
                 .add(ModItems.TIME_FORGED_AXE)
                 .add(ModItems.SPACE_FORGED_AXE)
-                .add(ModItems.SPACE_TIME_AXE);
+                .add(ModItems.SPACE_TIME_AXE)
+                .add(ModItems.CELESTITE_PAXEL)
+                .add(ModItems.TIME_FORGED_PAXEL)
+                .add(ModItems.SPACE_FORGED_PAXEL)
+                .add(ModItems.SPACE_TIME_PAXEL);
 
         getOrCreateTagBuilder(ItemTags.SHOVELS)
                 .add(ModItems.CELESTITE_SHOVEL)
                 .add(ModItems.TIME_FORGED_SHOVEL)
                 .add(ModItems.SPACE_FORGED_SHOVEL)
-                .add(ModItems.SPACE_TIME_SHOVEL);
+                .add(ModItems.SPACE_TIME_SHOVEL)
+                .add(ModItems.CELESTITE_PAXEL)
+                .add(ModItems.TIME_FORGED_PAXEL)
+                .add(ModItems.SPACE_FORGED_PAXEL)
+                .add(ModItems.SPACE_TIME_PAXEL);
 
         getOrCreateTagBuilder(ItemTags.HOES)
                 .add(ModItems.CELESTITE_HOE)

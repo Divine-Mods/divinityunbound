@@ -84,6 +84,11 @@ public class ModItemGroups {
                         entries.add(ModItems.SPACE_TIME_SWORD);
                         entries.add(ModItems.SPACE_TIME_HOE);
 
+                        entries.add(ModItems.CELESTITE_PAXEL);
+                        entries.add(ModItems.TIME_FORGED_PAXEL);
+                        entries.add(ModItems.SPACE_FORGED_PAXEL);
+                        entries.add(ModItems.SPACE_TIME_PAXEL);
+
                         /* Armor */
                         entries.add(ModItems.CELESTITE_HELMET);
                         entries.add(ModItems.CELESTITE_CHESTPLATE);
