@@ -135,6 +135,8 @@ public class ModItemGroups {
                         entries.add(ModBlocks.SPACE_TIME_AMALGAMATOR);
                         entries.add(ModBlocks.WORMHOLE_TRANSPORTER);
                         entries.add(ModBlocks.ITEM_TRASHCAN);
+                        entries.add(ModBlocks.FLUID_TRASHCAN);
+                        entries.add(ModBlocks.ENERGY_TRASHCAN);
 
                         entries.add(ModBlocks.SPACE_TIME_FURNACE);
 

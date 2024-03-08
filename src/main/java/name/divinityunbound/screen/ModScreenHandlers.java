@@ -42,6 +42,14 @@ public class ModScreenHandlers {
             Registry.register(Registries.SCREEN_HANDLER, new Identifier(DivinityUnbound.MOD_ID, "item_trashcan"),
                     new ExtendedScreenHandlerType<>(ItemTrashcanScreenHandler::new));
 
+    public static final ScreenHandlerType<FluidTrashcanScreenHandler> FLUID_TRASHCAN_SCREEN_HANDLER =
+            Registry.register(Registries.SCREEN_HANDLER, new Identifier(DivinityUnbound.MOD_ID, "fluid_trashcan"),
+                    new ExtendedScreenHandlerType<>(FluidTrashcanScreenHandler::new));
+
+    public static final ScreenHandlerType<EnergyTrashcanScreenHandler> ENERGY_TRASHCAN_SCREEN_HANDLER =
+            Registry.register(Registries.SCREEN_HANDLER, new Identifier(DivinityUnbound.MOD_ID, "energy_trashcan"),
+                    new ExtendedScreenHandlerType<>(EnergyTrashcanScreenHandler::new));
+
     public static final ScreenHandlerType<SpaceTimeFurnaceScreenHandler> SPACE_TIME_FURNACE_SCREEN_HANDLER =
             Registry.register(Registries.SCREEN_HANDLER, new Identifier(DivinityUnbound.MOD_ID, "space_time_furnace"),
                     new ScreenHandlerType<>(SpaceTimeFurnaceScreenHandler::new, FeatureFlags.VANILLA_FEATURES));

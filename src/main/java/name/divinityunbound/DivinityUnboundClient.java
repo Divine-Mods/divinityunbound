@@ -25,6 +25,9 @@ public class DivinityUnboundClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.FROZEN_TIME_GLASS, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SPACE_TIME_AMALGAMATOR, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.WORMHOLE_TRANSPORTER, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.ITEM_TRASHCAN, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.FLUID_TRASHCAN, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.ENERGY_TRASHCAN, RenderLayer.getCutout());
 
         ParticleFactoryRegistry.getInstance().register(ModParticles.PURPLE_FLAME_PARTICLE, PurpleFlameParticle.Factory::new);
 
@@ -36,6 +39,8 @@ public class DivinityUnboundClient implements ClientModInitializer {
         HandledScreens.register(ModScreenHandlers.SPACE_TIME_AMALGAMATOR_SCREEN_HANDLER, SpaceTimeAmalgamatorScreen::new);
         HandledScreens.register(ModScreenHandlers.WORMHOLE_TRANSPORTER_SCREEN_HANDLER, WormholeTransporterScreen::new);
         HandledScreens.register(ModScreenHandlers.ITEM_TRASHCAN_SCREEN_HANDLER, ItemTrashcanScreen::new);
+        HandledScreens.register(ModScreenHandlers.FLUID_TRASHCAN_SCREEN_HANDLER, FluidTrashcanScreen::new);
+        HandledScreens.register(ModScreenHandlers.ENERGY_TRASHCAN_SCREEN_HANDLER, EnergyTrashcanScreen::new);
         HandledScreens.register(ModScreenHandlers.SPACE_TIME_FURNACE_SCREEN_HANDLER, SpaceTimeFurnaceScreen::new);
 
         BlockEntityRendererFactories.register(ModBlockEntities.SPACE_SIPHON_BLOCK_ENTITY, SpaceSiphonBlockRenderer::new);

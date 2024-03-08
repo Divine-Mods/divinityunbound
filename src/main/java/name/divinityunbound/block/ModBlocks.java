@@ -129,7 +129,13 @@ public class ModBlocks {
             new SpaceTimeFurnaceBlock(FabricBlockSettings.copyOf(Blocks.STONE)));
 
     public static final Block ITEM_TRASHCAN = registerBlock("item_trashcan",
-            new ItemTrashcanBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
+            new ItemTrashcanBlock(FabricBlockSettings.copyOf(Blocks.GREEN_TERRACOTTA).nonOpaque()));
+
+    public static final Block FLUID_TRASHCAN = registerBlock("fluid_trashcan",
+            new FluidTrashcanBlock(FabricBlockSettings.copyOf(Blocks.GREEN_TERRACOTTA).nonOpaque()));
+
+    public static final Block ENERGY_TRASHCAN = registerBlock("energy_trashcan",
+            new EnergyTrashcanBlock(FabricBlockSettings.copyOf(Blocks.GREEN_TERRACOTTA).nonOpaque()));
 
 
     private static Block registerBlock(String name, Block block) {

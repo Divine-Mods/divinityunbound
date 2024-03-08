@@ -61,6 +61,17 @@ public class ModBlockEntities {
                     FabricBlockEntityTypeBuilder.create(ItemTrashcanBlockEntity::new,
                             ModBlocks.ITEM_TRASHCAN).build());
 
+    public static final BlockEntityType<FluidTrashcanBlockEntity> FLUID_TRASHCAN_BLOCK_ENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(DivinityUnbound.MOD_ID, "fluid_trashcan_be"),
+                    FabricBlockEntityTypeBuilder.create(FluidTrashcanBlockEntity::new,
+                            ModBlocks.FLUID_TRASHCAN).build());
+
+    public static final BlockEntityType<EnergyTrashcanBlockEntity> ENERGY_TRASHCAN_BLOCK_ENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(DivinityUnbound.MOD_ID, "energy_trashcan_be"),
+                    FabricBlockEntityTypeBuilder.create(EnergyTrashcanBlockEntity::new,
+                            ModBlocks.ENERGY_TRASHCAN).build());
+
+
     public static final BlockEntityType<SpaceTimeFurnaceBlockEntity> SPACE_TIME_FURNACE_BLOCK_ENTITY =
             Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(DivinityUnbound.MOD_ID, "space_time_furnace_be"),
                     FabricBlockEntityTypeBuilder.create(SpaceTimeFurnaceBlockEntity::new,
@@ -77,5 +88,8 @@ public class ModBlockEntities {
 
         EnergyStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.energyStorage, WORMHOLE_TRANSPORTER_BLOCK_ENTITY);
         FluidStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.fluidStorage, WORMHOLE_TRANSPORTER_BLOCK_ENTITY);
+
+        FluidStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.fluidStorage, FLUID_TRASHCAN_BLOCK_ENTITY);
+        EnergyStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.energyStorage, ENERGY_TRASHCAN_BLOCK_ENTITY);
     }
 }

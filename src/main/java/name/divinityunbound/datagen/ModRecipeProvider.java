@@ -227,6 +227,30 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(Items.LAVA_BUCKET), conditionsFromItem(Items.LAVA_BUCKET))
                 .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.ITEM_TRASHCAN)));
 
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.FLUID_TRASHCAN, 1)
+                .pattern("BBB")
+                .pattern("ULU")
+                .pattern("BUB")
+                .input('U', Blocks.BLUE_TERRACOTTA)
+                .input('B', Blocks.BLACK_TERRACOTTA)
+                .input('L', Items.LAVA_BUCKET)
+                .criterion(hasItem(Blocks.BLUE_TERRACOTTA), conditionsFromItem(Blocks.BLUE_TERRACOTTA))
+                .criterion(hasItem(Blocks.BLACK_TERRACOTTA), conditionsFromItem(Blocks.BLACK_TERRACOTTA))
+                .criterion(hasItem(Items.LAVA_BUCKET), conditionsFromItem(Items.LAVA_BUCKET))
+                .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.FLUID_TRASHCAN)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.ENERGY_TRASHCAN, 1)
+                .pattern("BBB")
+                .pattern("RLR")
+                .pattern("BRB")
+                .input('R', Blocks.RED_TERRACOTTA)
+                .input('B', Blocks.BLACK_TERRACOTTA)
+                .input('L', Items.LAVA_BUCKET)
+                .criterion(hasItem(Blocks.RED_TERRACOTTA), conditionsFromItem(Blocks.RED_TERRACOTTA))
+                .criterion(hasItem(Blocks.BLACK_TERRACOTTA), conditionsFromItem(Blocks.BLACK_TERRACOTTA))
+                .criterion(hasItem(Items.LAVA_BUCKET), conditionsFromItem(Items.LAVA_BUCKET))
+                .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.ENERGY_TRASHCAN)));
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.TIME_FORGED_INGOT, 1)
                 .pattern("DUD")
                 .pattern("UCU")

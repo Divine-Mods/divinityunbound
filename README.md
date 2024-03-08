@@ -86,6 +86,12 @@ Liquid Space Time. Needs power.
 Wormhole Transporter - Creates a localized wormhole that is linked to another transporter. Can move Items, Liquids, and Energy.
 Use an Import or Export card to link to another wormhole.
 
+Item Trashcan - Voids any item inserted into it
+
+Fluid Trashcan - Voids any fluid inserted into it
+
+Energy Trashcan - Voids any energy inserted into it
+
 ### Wormhole Transporter
 
 Simple example using the Wormhole Transporter:

@@ -218,7 +218,7 @@ public class SpaceTimeEvaporatorBlockEntity extends BlockEntity implements Exten
                     (FluidConstants.BUCKET / 81), transaction);
             transaction.commit();
 
-            //this.setStack(fluidItemSlot, new ItemStack(Items.BUCKET));
+            this.setStack(fluidItemSlot, new ItemStack(Items.BUCKET));
         }
     }
 
@@ -371,7 +371,7 @@ public class SpaceTimeEvaporatorBlockEntity extends BlockEntity implements Exten
 
     @Override
     public boolean canInsert(int slot, ItemStack stack, @Nullable Direction side) {
-        return true;
+        return slot == INPUT_SLOT;
 //        Direction localDir = this.getWorld().getBlockState(pos).get(SpaceTimeEvaporatorBlock.FACING);
 //
 //        if(side == Direction.DOWN) {
@@ -400,7 +400,7 @@ public class SpaceTimeEvaporatorBlockEntity extends BlockEntity implements Exten
 
     @Override
     public boolean canExtract(int slot, ItemStack stack, Direction side) {
-        return true;
+        return slot == OUTPUT_SLOT;
 //        Direction localDir = this.getWorld().getBlockState(this.pos).get(SpaceTimeEvaporatorBlock.FACING);
 //
 //        if(side == Direction.UP) {

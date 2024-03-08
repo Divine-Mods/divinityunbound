@@ -6,6 +6,9 @@
 - Added Space Time Furnace
 - Added Chronos Time Accumulator/Grain of Time to REI
 - Added Item Trashcan
+- Added Fluid Trashcan
+- Added Energy Trashcan
+- Moved Wildersung tree generation to Cherry Grove
 
 ---
 ## v0.0.4

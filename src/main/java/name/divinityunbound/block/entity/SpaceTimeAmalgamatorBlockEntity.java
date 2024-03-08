@@ -167,7 +167,7 @@ public class SpaceTimeAmalgamatorBlockEntity extends BlockEntity implements Exte
             markDirty(world, pos, state);
 
             if (hasCraftingFinished()) {
-                //craftItem();
+                craftItem();
                 produceFluid();
                 resetProgress();
             }
