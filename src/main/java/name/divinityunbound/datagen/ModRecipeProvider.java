@@ -99,6 +99,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 ModItems.SPACE_TIME_PICKAXE, ModItems.SPACE_TIME_AXE, ModItems.SPACE_TIME_SHOVEL);
 
         // TODO: Add recipes for:
+        // Space Time Furnace
 
         // TODO: Make some helper methods to clean up these Json Builders
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.CELESTITE, 1)
@@ -213,6 +214,18 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(ModBlocks.GOLDEN_CELESTITE_INFUSED_STONE), conditionsFromItem(ModBlocks.GOLDEN_CELESTITE_INFUSED_STONE))
                 .criterion(hasItem(ModItems.CHRONOS_CLOCK), conditionsFromItem(ModItems.CHRONOS_CLOCK))
                 .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.CHRONOS_TIME_ACCUMULATOR)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.ITEM_TRASHCAN, 1)
+                .pattern("BBB")
+                .pattern("GLG")
+                .pattern("BGB")
+                .input('G', Blocks.GREEN_TERRACOTTA)
+                .input('B', Blocks.BLACK_TERRACOTTA)
+                .input('L', Items.LAVA_BUCKET)
+                .criterion(hasItem(Blocks.GREEN_TERRACOTTA), conditionsFromItem(Blocks.GREEN_TERRACOTTA))
+                .criterion(hasItem(Blocks.BLACK_TERRACOTTA), conditionsFromItem(Blocks.BLACK_TERRACOTTA))
+                .criterion(hasItem(Items.LAVA_BUCKET), conditionsFromItem(Items.LAVA_BUCKET))
+                .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.ITEM_TRASHCAN)));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.TIME_FORGED_INGOT, 1)
                 .pattern("DUD")

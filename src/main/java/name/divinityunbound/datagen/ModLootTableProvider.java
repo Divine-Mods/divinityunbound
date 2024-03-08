@@ -56,6 +56,9 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.SPACE_TIME_EVAPORATOR);
         addDrop(ModBlocks.SPACE_TIME_AMALGAMATOR);
         addDrop(ModBlocks.WORMHOLE_TRANSPORTER);
+        addDrop(ModBlocks.ITEM_TRASHCAN);
+
+        addDrop(ModBlocks.SPACE_TIME_FURNACE);
     }
 
     public LootTable.Builder copperLikeOreDrops(Block drop, Item item) {

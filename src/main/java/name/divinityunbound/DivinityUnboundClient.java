@@ -35,6 +35,7 @@ public class DivinityUnboundClient implements ClientModInitializer {
         HandledScreens.register(ModScreenHandlers.SPACE_TIME_EVAPORATOR_SCREEN_HANDLER, SpaceTimeEvaporatorScreen::new);
         HandledScreens.register(ModScreenHandlers.SPACE_TIME_AMALGAMATOR_SCREEN_HANDLER, SpaceTimeAmalgamatorScreen::new);
         HandledScreens.register(ModScreenHandlers.WORMHOLE_TRANSPORTER_SCREEN_HANDLER, WormholeTransporterScreen::new);
+        HandledScreens.register(ModScreenHandlers.ITEM_TRASHCAN_SCREEN_HANDLER, ItemTrashcanScreen::new);
         HandledScreens.register(ModScreenHandlers.SPACE_TIME_FURNACE_SCREEN_HANDLER, SpaceTimeFurnaceScreen::new);
 
         BlockEntityRendererFactories.register(ModBlockEntities.SPACE_SIPHON_BLOCK_ENTITY, SpaceSiphonBlockRenderer::new);

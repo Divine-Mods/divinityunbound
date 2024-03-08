@@ -128,6 +128,9 @@ public class ModBlocks {
     public static final Block SPACE_TIME_FURNACE = registerBlock("space_time_furnace",
             new SpaceTimeFurnaceBlock(FabricBlockSettings.copyOf(Blocks.STONE)));
 
+    public static final Block ITEM_TRASHCAN = registerBlock("item_trashcan",
+            new ItemTrashcanBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
+
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);

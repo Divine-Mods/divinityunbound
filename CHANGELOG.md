@@ -5,6 +5,7 @@
 - Added Celestite, Time Forged, Space Forged, and Space Time Paxels
 - Added Space Time Furnace
 - Added Chronos Time Accumulator/Grain of Time to REI
+- Added Item Trashcan
 
 ---
 ## v0.0.4

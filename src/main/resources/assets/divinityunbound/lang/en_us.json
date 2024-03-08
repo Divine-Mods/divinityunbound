@@ -102,6 +102,9 @@
   "block.divinityunbound.space_time_evaporator": "Space Time Evaporator",
   "block.divinityunbound.space_time_amalgamator": "Space Time Amalgamator",
   "block.divinityunbound.wormhole_transporter": "Wormhole Transporter",
+  "block.divinityunbound.item_trashcan": "Item Trashcan",
+  "block.divinityunbound.fluid_trashcan": "Fluid Trashcan",
+  "block.divinityunbound.energy_trashcan": "Energy Trashcan",
   "block.divinityunbound.space_time_furnace": "Space Time Furnace",
 
   "item.divinityunbound.celestite_coal_focus": "Celestite Coal Focus",

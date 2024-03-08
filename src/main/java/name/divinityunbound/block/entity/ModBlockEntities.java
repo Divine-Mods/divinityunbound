@@ -56,6 +56,11 @@ public class ModBlockEntities {
                     FabricBlockEntityTypeBuilder.create(WormholeTransporterBlockEntity::new,
                             ModBlocks.WORMHOLE_TRANSPORTER).build());
 
+    public static final BlockEntityType<ItemTrashcanBlockEntity> ITEM_TRASHCAN_BLOCK_ENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(DivinityUnbound.MOD_ID, "item_trashcan_be"),
+                    FabricBlockEntityTypeBuilder.create(ItemTrashcanBlockEntity::new,
+                            ModBlocks.ITEM_TRASHCAN).build());
+
     public static final BlockEntityType<SpaceTimeFurnaceBlockEntity> SPACE_TIME_FURNACE_BLOCK_ENTITY =
             Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(DivinityUnbound.MOD_ID, "space_time_furnace_be"),
                     FabricBlockEntityTypeBuilder.create(SpaceTimeFurnaceBlockEntity::new,
