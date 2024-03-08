@@ -11,5 +11,10 @@ public class ModRecipes {
                 GenerationStationRecipe.Serializer.INSTANCE);
         Registry.register(Registries.RECIPE_TYPE, new Identifier(DivinityUnbound.MOD_ID, GenerationStationRecipe.Type.ID),
                 GenerationStationRecipe.Type.INSTANCE);
+
+        Registry.register(Registries.RECIPE_SERIALIZER, new Identifier(DivinityUnbound.MOD_ID, ChronosTimeAccumulatorRecipe.Serializer.ID),
+                ChronosTimeAccumulatorRecipe.Serializer.INSTANCE);
+        Registry.register(Registries.RECIPE_TYPE, new Identifier(DivinityUnbound.MOD_ID, ChronosTimeAccumulatorRecipe.Type.ID),
+                ChronosTimeAccumulatorRecipe.Type.INSTANCE);
     }
 }

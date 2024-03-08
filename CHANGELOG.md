@@ -2,11 +2,9 @@
 
 ---
 ## v0.0.5
-- Added Celestite Paxel
-- Added Time Forged Paxel
-- Added Space Forged Paxel
-- Added Space Time Paxel
+- Added Celestite, Time Forged, Space Forged, and Space Time Paxels
 - Added Space Time Furnace
+- Added Chronos Time Accumulator/Grain of Time to REI
 
 ---
 ## v0.0.4

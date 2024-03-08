@@ -1,0 +1,12 @@
+{
+  "type": "divinityunbound:chronos_time_accumulator",
+  "ingredients": [
+    {
+      "item": "divinityunbound:grain_of_time"
+    }
+  ],
+  "output": {
+    "item": "divinityunbound:grain_of_time",
+    "count": 1
+  }
+}

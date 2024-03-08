@@ -71,6 +71,7 @@ public class SpaceTimeFurnaceBlock extends AbstractFurnaceBlock {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return validateTicker(world, type, ModBlockEntities.SPACE_TIME_FURNACE_BLOCK_ENTITY);
+        return validateTicker(type, ModBlockEntities.SPACE_TIME_FURNACE_BLOCK_ENTITY,
+                (world1, pos, state1, blockEntity) -> blockEntity.tick(world1, pos, state1, blockEntity));
     }
 }
