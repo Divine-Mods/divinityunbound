@@ -1,5 +1,6 @@
 {
   "item.divinityunbound.raw_celestite": "Raw Celestite",
+  "item.divinityunbound.raw_experience": "Raw Experience",
   "item.divinityunbound.celestite": "Celestite",
   "item.divinityunbound.celestite_nugget": "Celestite Nugget",
   "item.divinityunbound.celestium_dust": "Celestium Dust",
@@ -25,6 +26,8 @@
 
   "block.divinityunbound.celestite_ore": "Celestite Ore",
   "block.divinityunbound.deepslate_celestite_ore": "Deepslate Celestite Ore",
+  "block.divinityunbound.experience_ore": "Experience Ore",
+  "block.divinityunbound.deepslate_experience_ore": "Deepslate Experience Ore",
 
   "item.divinityunbound.wand_binding": "Wand Binding",
   "item.divinityunbound.unholy_wand": "Unholy Wand",

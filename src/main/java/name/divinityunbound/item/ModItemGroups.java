@@ -20,12 +20,15 @@ public class ModItemGroups {
                         entries.add(ModItems.CELESTITE);
                         entries.add(ModItems.CELESTITE_NUGGET);
                         entries.add(ModItems.RAW_CELESTITE);
+                        entries.add(ModItems.RAW_EXPERIENCE);
 
                         entries.add(ModBlocks.CELESTITE_BLOCK);
                         entries.add(ModBlocks.RAW_CELESTITE_BLOCK);
 
                         entries.add(ModBlocks.CELESTITE_ORE);
                         entries.add(ModBlocks.DEEPSLATE_CELESTITE_ORE);
+                        entries.add(ModBlocks.EXPERIENCE_ORE);
+                        entries.add(ModBlocks.DEEPSLATE_EXPERIENCE_ORE);
 
                         entries.add(ModItems.CELESTIUM_DUST);
                         entries.add(ModItems.GRAIN_OF_TIME);

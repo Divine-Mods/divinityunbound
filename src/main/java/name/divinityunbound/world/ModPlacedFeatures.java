@@ -19,12 +19,17 @@ import java.util.List;
 
 public class ModPlacedFeatures {
     public static final RegistryKey<PlacedFeature> CELESTITE_ORE_PLACED_KEY = registerKey("celestite_ore_placed");
+    public static final RegistryKey<PlacedFeature> EXPERIENCE_ORE_PLACED_KEY = registerKey("experience_ore_placed");
     public static final RegistryKey<PlacedFeature> WILDERSUNG_PLACED_KEY = registerKey("wildersung_placed");
 
     public static void boostrap(Registerable<PlacedFeature> context) {
         var configuredFeatureRegistryEntryLookup = context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
 
         register(context, CELESTITE_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.CELESTITE_ORE_KEY),
+                ModOrePlacement.modifiersWithCount(12, // Veins per Chunk
+                        HeightRangePlacementModifier.uniform(YOffset.fixed(-80), YOffset.fixed(80))));
+
+        register(context, EXPERIENCE_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.EXPERIENCE_ORE_KEY),
                 ModOrePlacement.modifiersWithCount(12, // Veins per Chunk
                         HeightRangePlacementModifier.uniform(YOffset.fixed(-80), YOffset.fixed(80))));
 

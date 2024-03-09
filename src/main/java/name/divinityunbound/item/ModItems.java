@@ -19,6 +19,7 @@ public class ModItems {
 
     /* Items */
     public static final Item RAW_CELESTITE = registerItem("raw_celestite", new Item(new FabricItemSettings()));
+    public static final Item RAW_EXPERIENCE = registerItem("raw_experience", new Item(new FabricItemSettings()));
     public static final Item CELESTITE = registerItem("celestite", new Item(new FabricItemSettings()));
     public static final Item CELESTITE_NUGGET = registerItem("celestite_nugget", new Item(new FabricItemSettings()));
     public static final Item CELESTIUM_DUST = registerItem("celestium_dust", new Item(new FabricItemSettings()));

@@ -25,6 +25,8 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.RAW_CELESTITE_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CELESTITE_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DEEPSLATE_CELESTITE_ORE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.EXPERIENCE_ORE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DEEPSLATE_EXPERIENCE_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CELESTITE_INFUSED_STONE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.GOLDEN_CELESTITE_INFUSED_STONE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.FROZEN_TIME_GLASS);
@@ -69,6 +71,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.CELESTITE, Models.GENERATED);
         itemModelGenerator.register(ModItems.CELESTITE_NUGGET, Models.GENERATED);
         itemModelGenerator.register(ModItems.RAW_CELESTITE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.RAW_EXPERIENCE, Models.GENERATED);
         //itemModelGenerator.register(ModItems.MAGIC_CELESTITE_DETECTOR, Models.GENERATED);
         itemModelGenerator.register(ModItems.CELESTIUM_DUST, Models.GENERATED);
         itemModelGenerator.register(ModItems.GRAIN_OF_TIME, Models.GENERATED);

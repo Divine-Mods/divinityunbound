@@ -32,6 +32,11 @@ public class ModBlocks {
             new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), FabricBlockSettings.copyOf(Blocks.STONE).strength(2f)));
     public static final Block DEEPSLATE_CELESTITE_ORE = registerBlock("deepslate_celestite_ore",
             new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), FabricBlockSettings.copyOf(Blocks.DEEPSLATE).strength(4f)));
+
+    public static final Block EXPERIENCE_ORE = registerBlock("experience_ore",
+            new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), FabricBlockSettings.copyOf(Blocks.STONE).strength(2f)));
+    public static final Block DEEPSLATE_EXPERIENCE_ORE = registerBlock("deepslate_experience_ore",
+            new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), FabricBlockSettings.copyOf(Blocks.DEEPSLATE).strength(4f)));
 //    public static final Block NETHER_CELESTITE_ORE = registerBlock("nether_celestite_ore",
 //            new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), FabricBlockSettings.copyOf(Blocks.NETHERRACK).strength(1.5f)));
 //    public static final Block END_STONE_CELESTITE_ORE = registerBlock("end_stone_celestite_ore",

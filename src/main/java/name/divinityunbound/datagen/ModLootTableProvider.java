@@ -35,6 +35,10 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.CELESTITE_ORE, copperLikeOreDrops(ModBlocks.CELESTITE_ORE, ModItems.RAW_CELESTITE));
         addDrop(ModBlocks.DEEPSLATE_CELESTITE_ORE, copperLikeOreDrops(ModBlocks.DEEPSLATE_CELESTITE_ORE, ModItems.RAW_CELESTITE));
 
+        addDrop(ModBlocks.EXPERIENCE_ORE, copperLikeOreDrops(ModBlocks.EXPERIENCE_ORE, ModItems.RAW_EXPERIENCE));
+        addDrop(ModBlocks.DEEPSLATE_EXPERIENCE_ORE, copperLikeOreDrops(ModBlocks.DEEPSLATE_EXPERIENCE_ORE, ModItems.RAW_EXPERIENCE));
+
+
         addDrop(ModBlocks.WILDERSUNG_LOG);
         addDrop(ModBlocks.WILDERSUNG_PLANKS);
         addDrop(ModBlocks.CELESTITE_INFUSED_WILDERSUNG_PLANKS);

@@ -3,6 +3,9 @@
 ---
 ## v0.0.6
 - Added Divinity Unbound guide book (WIP)
+- Added Experience Ore and Deepslate Experience Ore
+- Added Raw Experience
+- Redid textures for Celestite Ore and Deepslate Celestite Ore
 
 ---
 ## v0.0.5

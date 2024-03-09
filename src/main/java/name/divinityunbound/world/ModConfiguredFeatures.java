@@ -22,6 +22,7 @@ import java.util.List;
 
 public class ModConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> CELESTITE_ORE_KEY = registerKey("celestite_ore");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> EXPERIENCE_ORE_KEY = registerKey("experience_ore");
 
     public static final RegistryKey<ConfiguredFeature<?, ?>> WILDERSUNG_KEY = registerKey("wildersung");
 
@@ -31,11 +32,15 @@ public class ModConfiguredFeatures {
         RuleTest netherReplacables = new TagMatchRuleTest(BlockTags.BASE_STONE_NETHER);
         RuleTest endReplacables = new BlockMatchRuleTest(Blocks.END_STONE);
 
-        List<OreFeatureConfig.Target> overworldRubyOres =
+        List<OreFeatureConfig.Target> overworldCelestiteOres =
                 List.of(OreFeatureConfig.createTarget(stoneReplacables, ModBlocks.CELESTITE_ORE.getDefaultState()),
                         OreFeatureConfig.createTarget(deepslateReplacables, ModBlocks.DEEPSLATE_CELESTITE_ORE.getDefaultState()));
+        List<OreFeatureConfig.Target> overworldExperienceOres =
+                List.of(OreFeatureConfig.createTarget(stoneReplacables, ModBlocks.EXPERIENCE_ORE.getDefaultState()),
+                        OreFeatureConfig.createTarget(deepslateReplacables, ModBlocks.DEEPSLATE_EXPERIENCE_ORE.getDefaultState()));
 
-        register(context, CELESTITE_ORE_KEY, Feature.ORE, new OreFeatureConfig(overworldRubyOres, 12));
+        register(context, CELESTITE_ORE_KEY, Feature.ORE, new OreFeatureConfig(overworldCelestiteOres, 12));
+        register(context, EXPERIENCE_ORE_KEY, Feature.ORE, new OreFeatureConfig(overworldExperienceOres, 12));
 
         register(context, WILDERSUNG_KEY, Feature.TREE, new TreeFeatureConfig.Builder(
                 BlockStateProvider.of(ModBlocks.WILDERSUNG_LOG),

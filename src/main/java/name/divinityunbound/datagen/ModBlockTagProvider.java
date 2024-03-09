@@ -21,7 +21,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
     protected void configure(RegistryWrapper.WrapperLookup arg) {
         getOrCreateTagBuilder(ModTags.Blocks.MAGIC_ORE_DETECTOR_DETECTABLE_BLOCKS)
                 .add(ModBlocks.CELESTITE_ORE)
-                .add(ModBlocks.DEEPSLATE_CELESTITE_ORE);
+                .add(ModBlocks.DEEPSLATE_CELESTITE_ORE)
+                .add(ModBlocks.EXPERIENCE_ORE)
+                .add(ModBlocks.DEEPSLATE_EXPERIENCE_ORE);
 
         getOrCreateTagBuilder(ModTags.Blocks.PAXEL_MINABLE)
                 .forceAddTag(BlockTags.PICKAXE_MINEABLE)
@@ -36,6 +38,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.RAW_CELESTITE_BLOCK)
                 .add(ModBlocks.CELESTITE_ORE)
                 .add(ModBlocks.DEEPSLATE_CELESTITE_ORE)
+                .add(ModBlocks.EXPERIENCE_ORE)
+                .add(ModBlocks.DEEPSLATE_EXPERIENCE_ORE)
                 .add(ModBlocks.CELESTITE_INFUSED_STONE)
                 .add(ModBlocks.GOLDEN_CELESTITE_INFUSED_STONE)
                 .add(ModBlocks.FROZEN_TIME_GLASS)
@@ -61,6 +65,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.RAW_CELESTITE_BLOCK)
                 .add(ModBlocks.CELESTITE_ORE)
                 .add(ModBlocks.DEEPSLATE_CELESTITE_ORE)
+                .add(ModBlocks.EXPERIENCE_ORE)
+                .add(ModBlocks.DEEPSLATE_EXPERIENCE_ORE)
                 .add(ModBlocks.CELESTITE_INFUSED_STONE)
                 .add(ModBlocks.GOLDEN_CELESTITE_INFUSED_STONE)
                 .add(ModBlocks.SAND_OF_TIME)
