@@ -1,0 +1,19 @@
+{
+  "name": "divinityunbound.entry.space_dust",
+  "icon": "divinityunbound:space_dust",
+  "category": "divinityunbound:basics",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "divinityunbound.page.space_dust0"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": {
+        "item": "divinityunbound:space_dust"
+      },
+      "link_recipe": "true",
+      "text": "divinityunbound.page.space_dust1"
+    }
+  ]
+}

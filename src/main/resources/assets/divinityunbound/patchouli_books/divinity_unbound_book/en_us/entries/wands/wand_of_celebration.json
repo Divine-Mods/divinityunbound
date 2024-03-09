@@ -1,0 +1,15 @@
+{
+  "name": "divinityunbound.entry.wand_of_celebration",
+  "icon": "divinityunbound:wand_of_celebration",
+  "category": "divinityunbound:wands",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "divinityunbound.page.wand_of_celebration0"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "divinityunbound:wand_of_celebration"
+    }
+  ]
+}

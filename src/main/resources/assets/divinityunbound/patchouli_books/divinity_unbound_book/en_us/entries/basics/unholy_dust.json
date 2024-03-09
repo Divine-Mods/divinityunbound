@@ -1,0 +1,19 @@
+{
+  "name": "divinityunbound.entry.unholy_dust",
+  "icon": "divinityunbound:unholy_dust",
+  "category": "divinityunbound:basics",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "divinityunbound.page.unholy_dust0"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": {
+        "item": "divinityunbound:unholy_dust"
+      },
+      "link_recipe": "true",
+      "text": "divinityunbound.page.unholy_dust1"
+    }
+  ]
+}

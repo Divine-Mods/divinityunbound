@@ -169,9 +169,47 @@
   "divinityunbound.page.grain_of_time0": "A $(item)Grain of Time$(0) is actual time that has been distilled into grains by the $(item)Chronos Time Accumulator$(0).$(p)Having access to time in a physical form unlocks power and magic beyond your wildest dreams.",
   "divinityunbound.page.grain_of_time1": "A $(item)Grain of Time$(0) can be crafted into $(item)Sand of Time$(0) or be converted into more powerful forms of magic like $(item)Celestium Dust$(0), $(item)Unholy Dust$(0), or $(item)Space Dust$(0).",
 
+  "divinityunbound.entry.celestium_dust": "Celestium Dust",
+  "divinityunbound.page.celestium_dust0": "$(item)Celestium Dust$(0) ",
+  "divinityunbound.page.celestium_dust1": "$(item)Celestium Dust$(0) ",
+
+  "divinityunbound.entry.unholy_dust": "Unholy Dust",
+  "divinityunbound.page.unholy_dust0": "$(item)Unholy Dust$(0) ",
+  "divinityunbound.page.unholy_dust1": "$(item)Unholy Dust$(0) ",
+
+  "divinityunbound.entry.space_dust": "Space Dust",
+  "divinityunbound.page.space_dust0": "$(item)Space Dust$(0) ",
+  "divinityunbound.page.space_dust1": "$(item)Space Dust$(0) ",
+
   "divinityunbound.entry.chronos_time_accumulator": "Chronos Time Accumulator",
   "divinityunbound.page.chronos_time_accumulator0": "Now that you've managed to create a $(item)Chronos Clock$(0) you believe you can use it plus some $(item)Celestite Infused Stone$(0) and some $(item)Golden Celestite Infused Stone$(0) to start harnessing the power of time!",
 
 
-  "itemgroup.celestite": "DivinityUnbound"
+  "divinityunbound.entry.unholy_wand": "Unholy Wand",
+  "divinityunbound.page.unholy_wand0": "The $(item)Unholy Wand$(0) utilizes the power imbued in the $(item)Wand Binding$(0) and $(item)Chronos Clock$(0) to force all the ores below a 3x3 area to the surface.",
+
+  "divinityunbound.entry.divine_wand_of_flight": "Divine Wand of Flight",
+  "divinityunbound.page.divine_wand_of_flight0": "The $(item)Divine Wand of Flight$(0) is able to harness the power of full flight, albeit temporarily, due to the unique combination of an $(item)Elytra$(0) and the powerful $(item)Space Forged Ingot$(0).",
+
+  "divinityunbound.entry.wand_of_respiration": "Wand of Respiration",
+  "divinityunbound.page.wand_of_respiration0": "The $(item)Wand of Respiration$(0) lets you gain control of the sea with the $(thing)Respiration$(0) and $(thing)Dolphin's Grace$(0) it provides.",
+
+  "divinityunbound.entry.wand_of_teleportation": "Wand of Teleporation",
+  "divinityunbound.page.wand_of_teleportation0": "The $(item)Wand of Teleportation$(0) allows you to feel like an Enderman and travel in style (teleportation!).$(p)Shift+Right Click on a block to save the coordinates to the wand, Right Click in air or on a block to be teleported to your saved coordinates.",
+
+  "divinityunbound.entry.wand_of_the_archer": "Wand of The Archer",
+  "divinityunbound.page.wand_of_the_archer0": "The $(item)Wand of Archer$(0) calls on the power of Apollo and allows you to summon spectral arrows that shoot directly from the wand.",
+
+  "divinityunbound.entry.wand_of_celebration": "Wand of The Celebration",
+  "divinityunbound.page.wand_of_celebration0": "The $(item)Wand of Celebration$(0) is something Dionysus would cook up to have fun at parties. Be the life of the party by shooting off duration 3 rockets with this wand.$(p)Can be used on a block to shoot fireworks up or in air for use with an Elytra.",
+
+  "divinityunbound.entry.wand_of_fire_bending": "Wand of Fire Bending",
+  "divinityunbound.page.wand_of_fire_bending0": "The $(item)Wand of Fire Bending$(0) is inspired by the sorcery some of Hades' minions use.$(p)It lets you temporarily summon lava directly from the Nether either on the block or mob you used the wand on.",
+  "divinityunbound.page.wand_of_fire_bending1": "This wand can be particularly nasty to go against in combat as it gives the user $(thing)Fire Resistance$(0) so they are immune to damage from the lava they just summoned.",
+
+  "divinityunbound.entry.wand_of_capturing": "Wand of Capturing",
+  "divinityunbound.page.wand_of_capturing0": "The $(item)Wand of Capturing$(0) is one that has puzzled mages in magical academia for ages. Their best guess after millennia of research is that the captured entity is brought to a pocket dimension within the wand.",
+  "divinityunbound.page.wand_of_capturing1": "Right click on a mob with the wand to capture it, right click on a block to release it. The wand will inform you what mob is captured in the pocket dimension in it's tooltip.",
+
+  "itemgroup.celestite": "Divinity Unbound"
 }

@@ -1,0 +1,15 @@
+{
+  "name": "divinityunbound.entry.divine_wand_of_flight",
+  "icon": "divinityunbound:divine_wand_of_flight",
+  "category": "divinityunbound:wands",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "divinityunbound.page.divine_wand_of_flight0"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "divinityunbound:divine_wand_of_flight"
+    }
+  ]
+}

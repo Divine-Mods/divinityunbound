@@ -1,0 +1,16 @@
+{
+  "name": "divinityunbound.entry.wand_of_fire_bending",
+  "icon": "divinityunbound:wand_of_fire_bending",
+  "category": "divinityunbound:wands",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "divinityunbound.page.wand_of_fire_bending0"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "divinityunbound:wand_of_fire_bending",
+      "text": "divinityunbound.page.wand_of_fire_bending1"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "divinityunbound.entry.wand_of_teleportation",
+  "icon": "divinityunbound:wand_of_teleportation",
+  "category": "divinityunbound:wands",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "divinityunbound.page.wand_of_teleportation0"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "divinityunbound:wand_of_teleportation"
+    }
+  ]
+}

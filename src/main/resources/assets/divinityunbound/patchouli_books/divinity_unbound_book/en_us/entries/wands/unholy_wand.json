@@ -1,0 +1,15 @@
+{
+  "name": "divinityunbound.entry.unholy_wand",
+  "icon": "divinityunbound:unholy_wand",
+  "category": "divinityunbound:wands",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "divinityunbound.page.unholy_wand0"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "divinityunbound:unholy_wand"
+    }
+  ]
+}

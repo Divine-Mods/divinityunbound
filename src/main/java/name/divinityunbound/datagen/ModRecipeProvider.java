@@ -324,7 +324,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
                 .criterion(hasItem(Items.GOLD_BLOCK), conditionsFromItem(Items.GOLD_BLOCK))
                 .criterion(hasItem(Items.ELYTRA), conditionsFromItem(Items.ELYTRA))
-                .criterion(hasItem(ModItems.TIME_FORGED_INGOT), conditionsFromItem(ModItems.TIME_FORGED_INGOT))
+                .criterion(hasItem(ModItems.SPACE_FORGED_INGOT), conditionsFromItem(ModItems.SPACE_FORGED_INGOT))
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.DIVINE_WAND_OF_FLIGHT)));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.WAND_OF_RESPIRATION, 1)
