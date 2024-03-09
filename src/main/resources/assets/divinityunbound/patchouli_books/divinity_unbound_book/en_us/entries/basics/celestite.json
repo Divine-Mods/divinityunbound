@@ -1,0 +1,16 @@
+{
+  "name": "divinityunbound.entry.celestite",
+  "icon": "divinityunbound:celestite",
+  "category": "divinityunbound:basics",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "divinityunbound.page.celestite0"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "divinityunbound:celestite_nuggets_from_celestite",
+      "recipe2": "divinityunbound:celestite_block"
+    }
+  ]
+}

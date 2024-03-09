@@ -1,0 +1,15 @@
+{
+  "name": "divinityunbound.entry.chronos_clock",
+  "icon": "divinityunbound:chronos_clock",
+  "category": "divinityunbound:basics",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "divinityunbound.page.chronos_clock0"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "divinityunbound:chronos_clock"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "name": "item.divinityunbound.divinity_unbound_book",
+  "landing_text": "divinityunbound.landing",
+  "model": "divinityunbound:divinity_unbound_book",
+  "book_texture": "patchouli:textures/gui/book_cyan.png",
+  "version": 1,
+  "creative_tab": "divinityunbound:celestite",
+  "i18n": "true",
+  "use_resource_pack": true,
+  "macros": {
+    "$(item)": "$(1)",
+    "$(thing)": "$(4)"
+  }
+}

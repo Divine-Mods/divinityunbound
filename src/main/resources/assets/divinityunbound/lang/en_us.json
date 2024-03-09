@@ -143,5 +143,35 @@
   "divinityunbound.wormhole_transporter.fluid_mode.unconditional": "",
   "divinityunbound.wormhole_transporter.type": "Type",
 
+  "item.divinityunbound.divinity_unbound_book": "Divinity Unbound Book",
+  "divinityunbound.landing": "Welcome to Divinity Unbound!",
+  "divinityunbound.category.basics": "Basics",
+  "divinityunbound.category.functional_blocks": "Functional Blocks",
+  "divinityunbound.category.decorative_blocks": "Decorative Blocks",
+  "divinityunbound.category.wands": "Wands",
+
+  "divinityunbound.entry.raw_celestite": "Raw Celestite",
+  "divinityunbound.page.raw_celestite0": "$(item)Raw Celestite$(0) is found in small veins across the overworld. It then can be smelted and turned into $(item)Celestite$(0).",
+
+  "divinityunbound.entry.celestite": "Celestite",
+  "divinityunbound.page.celestite0": "$(item)Celestite$(0) is a powerful magical metal that can be smelted from $(item)Raw Celestite$(0).$(p)Now that you've acquired some $(item)Celestite$(0) you can start to delve into the world of Divinity Unbound.",
+
+  "divinityunbound.entry.chronos_clock": "Chronos Clock",
+  "divinityunbound.page.chronos_clock0": "You believe you've figured it out! At least the start of it anyways. You've figured out that you can make a $(item)Chronos Clock$(0) with some of the $(item)Celestite$(0) you've been able to collect and smelt.$(p)It is a little expensive to invest that much $(item)Celestite$(0) but it'll be worth it so you can begin your magical journey.",
+
+  "divinityunbound.entry.celestite_infused_stone": "Celestite Infused Stone",
+  "divinityunbound.page.celestite_infused_stone0": "$(item)Celestite Infused Stone$(0) seems to emanate some sort of magical energy when $(item)Stone$(0) is infused with $(item)Celestite$(0).$(p)You think there might be something more to this.",
+
+  "divinityunbound.entry.golden_celestite_infused_stone": "Golden Celestite Infused Stone",
+  "divinityunbound.page.golden_celestite_infused_stone0": "$(item)Gold$(0) has always had some sort of magical properties. You start to wonder what would happen if you were to combine it with the already powerful $(item)Celestite Infused Stone$(0).",
+
+  "divinityunbound.entry.grain_of_time": "Grain of Time",
+  "divinityunbound.page.grain_of_time0": "A $(item)Grain of Time$(0) is actual time that has been distilled into grains by the $(item)Chronos Time Accumulator$(0).$(p)Having access to time in a physical form unlocks power and magic beyond your wildest dreams.",
+  "divinityunbound.page.grain_of_time1": "A $(item)Grain of Time$(0) can be crafted into $(item)Sand of Time$(0) or be converted into more powerful forms of magic like $(item)Celestium Dust$(0), $(item)Unholy Dust$(0), or $(item)Space Dust$(0).",
+
+  "divinityunbound.entry.chronos_time_accumulator": "Chronos Time Accumulator",
+  "divinityunbound.page.chronos_time_accumulator0": "Now that you've managed to create a $(item)Chronos Clock$(0) you believe you can use it plus some $(item)Celestite Infused Stone$(0) and some $(item)Golden Celestite Infused Stone$(0) to start harnessing the power of time!",
+
+
   "itemgroup.celestite": "DivinityUnbound"
 }

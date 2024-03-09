@@ -1,0 +1,15 @@
+{
+  "name": "divinityunbound.entry.chronos_time_accumulator",
+  "icon": "divinityunbound:chronos_time_accumulator",
+  "category": "divinityunbound:basics",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "divinityunbound.page.chronos_time_accumulator0"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe2": "divinityunbound:chronos_time_accumulator"
+    }
+  ]
+}

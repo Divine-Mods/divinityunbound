@@ -1,0 +1,15 @@
+{
+  "name": "divinityunbound.entry.raw_celestite",
+  "icon": "divinityunbound:raw_celestite",
+  "category": "divinityunbound:basics",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "divinityunbound.page.raw_celestite0"
+    },
+    {
+      "type": "patchouli:smelting",
+      "recipe": "divinityunbound:celestite_from_smelting_raw_celestite"
+    }
+  ]
+}

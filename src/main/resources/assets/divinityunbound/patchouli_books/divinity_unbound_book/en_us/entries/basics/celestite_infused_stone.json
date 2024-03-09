@@ -1,0 +1,15 @@
+{
+  "name": "divinityunbound.entry.celestite_infused_stone",
+  "icon": "divinityunbound:celestite_infused_stone",
+  "category": "divinityunbound:basics",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "divinityunbound.page.celestite_infused_stone0"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "divinityunbound:celestite_infused_stone"
+    }
+  ]
+}

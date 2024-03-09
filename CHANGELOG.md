@@ -1,6 +1,10 @@
 # Changelog
 
 ---
+## v0.0.6
+- Added Divinity Unbound guide book (WIP)
+
+---
 ## v0.0.5
 - Added Celestite, Time Forged, Space Forged, and Space Time Paxels
 - Added Space Time Furnace
