@@ -1,0 +1,12 @@
+{
+  "type": "patchouli:shapeless_book_recipe",
+  "ingredients": [
+    {
+      "item": "divinityunbound:celestite"
+    },
+    {
+      "item": "minecraft:book"
+    }
+  ],
+  "book": "divinityunbound:divinity_unbound_book"
+}

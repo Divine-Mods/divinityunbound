@@ -26,7 +26,7 @@ public enum ModArmorMaterials implements ArmorMaterial {
             SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 4f, 0.3f,
             () -> Ingredient.ofItems(ModItems.SPACE_TIME_INGOT)),
 
-    EXPERIENCE_FORGED("experience_forged", 15, new int[] { 4, 9, 7, 4}, 20,
+    EXPERIENCE("experience", 15, new int[] { 1, 6, 4, 1}, 20,
     SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 0f, 0.0f,
             () -> Ingredient.ofItems(ModItems.EXPERIENCE_INGOT));
 

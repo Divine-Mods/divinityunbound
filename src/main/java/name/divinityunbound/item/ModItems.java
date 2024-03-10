@@ -160,6 +160,15 @@ public class ModItems {
     public static final Item SPACE_FORGED_BOOTS = registerItem("space_forged_boots",
             new ArmorItem(ModArmorMaterials.SPACE_FORGED, ArmorItem.Type.BOOTS, new FabricItemSettings().maxCount(1)));
 
+    public static final Item EXPERIENCE_HELMET = registerItem("experience_helmet",
+            new ArmorItem(ModArmorMaterials.EXPERIENCE, ArmorItem.Type.HELMET, new FabricItemSettings().maxCount(1)));
+    public static final Item EXPERIENCE_CHESTPLATE = registerItem("experience_chestplate",
+            new ModArmorItem(ModArmorMaterials.EXPERIENCE, ArmorItem.Type.CHESTPLATE, new FabricItemSettings().maxCount(1)));
+    public static final Item EXPERIENCE_LEGGINGS = registerItem("experience_leggings",
+            new ArmorItem(ModArmorMaterials.EXPERIENCE, ArmorItem.Type.LEGGINGS, new FabricItemSettings().maxCount(1)));
+    public static final Item EXPERIENCE_BOOTS = registerItem("experience_boots",
+            new ArmorItem(ModArmorMaterials.EXPERIENCE, ArmorItem.Type.BOOTS, new FabricItemSettings().maxCount(1)));
+
 
     /* Foci */
     // TODO: Add foci for lapis, redstone, and maybe a few building blocks

@@ -109,6 +109,11 @@ public class ModItemGroups {
                         entries.add(ModItems.SPACE_FORGED_LEGGINGS);
                         entries.add(ModItems.SPACE_FORGED_BOOTS);
 
+                        entries.add(ModItems.EXPERIENCE_HELMET);
+                        entries.add(ModItems.EXPERIENCE_CHESTPLATE);
+                        entries.add(ModItems.EXPERIENCE_LEGGINGS);
+                        entries.add(ModItems.EXPERIENCE_BOOTS);
+
                         /* Wood */
                         entries.add(ModBlocks.WILDERSUNG_LOG);
                         entries.add(ModBlocks.WILDERSUNG_WOOD);

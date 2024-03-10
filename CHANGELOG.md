@@ -5,6 +5,9 @@
 - Added Divinity Unbound guide book (WIP)
 - Added Experience Ore and Deepslate Experience Ore
 - Added Raw Experience
+- Added Experience Ingots
+- Added Experience Boost status effect (3x exp)
+- Added Experience Armor (with full armor effect)
 - Redid textures for Celestite Ore and Deepslate Celestite Ore
 
 ---

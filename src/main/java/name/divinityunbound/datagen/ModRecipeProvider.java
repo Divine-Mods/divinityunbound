@@ -70,6 +70,11 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 //        offerLeggingsRecipe(exporter, RecipeCategory.COMBAT, ModItems.SPACE_TIME_LEGGINGS, ModItems.SPACE_TIME_INGOT);
 //        offerBootsRecipe(exporter, RecipeCategory.COMBAT, ModItems.SPACE_TIME_BOOTS, ModItems.SPACE_TIME_INGOT);
 
+        offerHelmetRecipe(exporter, RecipeCategory.COMBAT, ModItems.EXPERIENCE_HELMET, ModItems.EXPERIENCE_INGOT);
+        offerChestplateRecipe(exporter, RecipeCategory.COMBAT, ModItems.EXPERIENCE_CHESTPLATE, ModItems.EXPERIENCE_INGOT);
+        offerLeggingsRecipe(exporter, RecipeCategory.COMBAT, ModItems.EXPERIENCE_LEGGINGS, ModItems.EXPERIENCE_INGOT);
+        offerBootsRecipe(exporter, RecipeCategory.COMBAT, ModItems.EXPERIENCE_BOOTS, ModItems.EXPERIENCE_INGOT);
+
         offerPickaxeRecipe(exporter, RecipeCategory.TOOLS, ModItems.CELESTITE_PICKAXE, ModItems.CELESTITE);
         offerAxeRecipe(exporter, RecipeCategory.TOOLS, ModItems.CELESTITE_AXE, ModItems.CELESTITE);
         offerShovelRecipe(exporter, RecipeCategory.TOOLS, ModItems.CELESTITE_SHOVEL, ModItems.CELESTITE);
