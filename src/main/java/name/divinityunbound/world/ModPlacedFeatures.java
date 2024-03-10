@@ -26,11 +26,11 @@ public class ModPlacedFeatures {
         var configuredFeatureRegistryEntryLookup = context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
 
         register(context, CELESTITE_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.CELESTITE_ORE_KEY),
-                ModOrePlacement.modifiersWithCount(6, // Veins per Chunk
+                ModOrePlacement.modifiersWithCount(8, // Veins per Chunk
                         HeightRangePlacementModifier.uniform(YOffset.fixed(-80), YOffset.fixed(80))));
 
         register(context, EXPERIENCE_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.EXPERIENCE_ORE_KEY),
-                ModOrePlacement.modifiersWithCount(2, // Veins per Chunk
+                ModOrePlacement.modifiersWithCount(4, // Veins per Chunk
                         HeightRangePlacementModifier.uniform(YOffset.fixed(-80), YOffset.fixed(80))));
 
         register(context, WILDERSUNG_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.WILDERSUNG_KEY),
