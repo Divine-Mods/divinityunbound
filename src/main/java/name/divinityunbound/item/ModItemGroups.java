@@ -38,6 +38,7 @@ public class ModItemGroups {
                         entries.add(ModItems.WILDERSUNG_STRING);
                         entries.add(ModItems.TIME_FORGED_INGOT);
                         entries.add(ModItems.UNHOLY_INGOT);
+                        entries.add(ModItems.EXPERIENCE_INGOT);
                         entries.add(ModItems.SPACE_FORGED_INGOT);
                         entries.add(ModItems.SPACE_FUEL);
                         entries.add(ModItems.SPACE_TIME_INGOT);

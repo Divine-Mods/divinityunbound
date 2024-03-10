@@ -81,6 +81,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.WILDERSUNG_STRING, Models.GENERATED);
         itemModelGenerator.register(ModItems.TIME_FORGED_INGOT, Models.GENERATED);
         itemModelGenerator.register(ModItems.UNHOLY_INGOT, Models.GENERATED);
+        itemModelGenerator.register(ModItems.EXPERIENCE_INGOT, Models.GENERATED);
         itemModelGenerator.register(ModItems.SPACE_FORGED_INGOT, Models.GENERATED);
         itemModelGenerator.register(ModItems.SPACE_FUEL, Models.GENERATED);
         itemModelGenerator.register(ModItems.SPACE_TIME_INGOT, Models.GENERATED);

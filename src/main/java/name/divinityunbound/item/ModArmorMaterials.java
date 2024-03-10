@@ -24,7 +24,11 @@ public enum ModArmorMaterials implements ArmorMaterial {
 
     SPACE_TIME_FORGED("space_time_forged", 40, new int[] { 4, 9, 7, 4}, 40,
             SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 4f, 0.3f,
-            () -> Ingredient.ofItems(ModItems.SPACE_TIME_INGOT));
+            () -> Ingredient.ofItems(ModItems.SPACE_TIME_INGOT)),
+
+    EXPERIENCE_FORGED("experience_forged", 15, new int[] { 4, 9, 7, 4}, 20,
+    SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 0f, 0.0f,
+            () -> Ingredient.ofItems(ModItems.EXPERIENCE_INGOT));
 
     // TODO: Add space time forged armor
     private final String name;

@@ -31,6 +31,7 @@ public class ModItems {
     public static final Item TIME_FORGED_INGOT = registerItem("time_forged_ingot", new Item(new FabricItemSettings()));
     public static final Item UNHOLY_INGOT = registerItem("unholy_ingot", new Item(new FabricItemSettings()));
     public static final Item SPACE_FORGED_INGOT = registerItem("space_forged_ingot", new Item(new FabricItemSettings()));
+    public static final Item EXPERIENCE_INGOT = registerItem("experience_ingot", new Item(new FabricItemSettings()));
     public static final Item SPACE_FUEL = registerItem("space_fuel", new Item(new FabricItemSettings()));
     public static final Item SPACE_TIME_INGOT = registerItem("space_time_ingot", new Item(new FabricItemSettings()));
     public static final Item QUANTITY_CORE = registerItem("quantity_core", new Item(new FabricItemSettings()));
@@ -175,18 +176,23 @@ public class ModItems {
 
     private static void addItemsToIngredientItemGroup(FabricItemGroupEntries entries) {
         entries.add(RAW_CELESTITE);
+        entries.add(RAW_EXPERIENCE);
         entries.add(CELESTITE);
         entries.add(CELESTITE_NUGGET);
         entries.add(CELESTIUM_DUST);
         entries.add(GRAIN_OF_TIME);
         entries.add(CHRONOS_CLOCK);
         entries.add(UNHOLY_DUST);
+        entries.add(SPACE_DUST);
         entries.add(WILDERSUNG_STRING);
         entries.add(TIME_FORGED_INGOT);
+        entries.add(SPACE_FORGED_INGOT);
         entries.add(UNHOLY_INGOT);
+        entries.add(EXPERIENCE_INGOT);
         entries.add(SPEED_CORE);
         entries.add(QUANTITY_CORE);
         entries.add(MOB_CORE);
+        entries.add(WAND_BINDING);
     }
 
     public static RegistryEntry.Reference overrideItem(String itemName, Item item) {

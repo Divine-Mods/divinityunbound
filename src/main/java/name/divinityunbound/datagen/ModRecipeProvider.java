@@ -23,6 +23,9 @@ import java.util.List;
 public class ModRecipeProvider extends FabricRecipeProvider {
     private static List<ItemConvertible> CELESTITE_SMELTABLES = List.of(ModItems.RAW_CELESTITE,
             ModBlocks.CELESTITE_ORE, ModBlocks.DEEPSLATE_CELESTITE_ORE);
+
+    private static List<ItemConvertible> EXPERIECE_SMELTABLES = List.of(ModItems.RAW_EXPERIENCE,
+            ModBlocks.EXPERIENCE_ORE, ModBlocks.DEEPSLATE_EXPERIENCE_ORE);
     public ModRecipeProvider(FabricDataOutput output) {
         super(output);
     }
@@ -31,6 +34,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     public void generate(RecipeExporter exporter) {
         offerSmelting(exporter, CELESTITE_SMELTABLES, RecipeCategory.MISC, ModItems.CELESTITE, 0.7f, 200, "celestite");
         offerBlasting(exporter, CELESTITE_SMELTABLES, RecipeCategory.MISC, ModItems.CELESTITE, 0.7f, 100, "celestite");
+        offerSmelting(exporter, EXPERIECE_SMELTABLES, RecipeCategory.MISC, ModItems.EXPERIENCE_INGOT, 0.7f, 200, "celestite");
+        offerBlasting(exporter, EXPERIECE_SMELTABLES, RecipeCategory.MISC, ModItems.EXPERIENCE_INGOT, 0.7f, 100, "celestite");
         offerSmelting(exporter, Arrays.asList(ModItems.UNHOLY_DUST), RecipeCategory.MISC, ModItems.UNHOLY_INGOT, 0.7f, 200, "celestite");
         offerBlasting(exporter, Arrays.asList(ModItems.UNHOLY_DUST), RecipeCategory.MISC, ModItems.UNHOLY_INGOT, 0.7f, 100, "celestite");
         offerSmelting(exporter, Arrays.asList(ModBlocks.SAND_OF_TIME), RecipeCategory.MISC, ModBlocks.FROZEN_TIME_GLASS, 0.7f, 200, "celestite");

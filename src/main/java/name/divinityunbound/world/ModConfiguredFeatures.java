@@ -39,8 +39,8 @@ public class ModConfiguredFeatures {
                 List.of(OreFeatureConfig.createTarget(stoneReplacables, ModBlocks.EXPERIENCE_ORE.getDefaultState()),
                         OreFeatureConfig.createTarget(deepslateReplacables, ModBlocks.DEEPSLATE_EXPERIENCE_ORE.getDefaultState()));
 
-        register(context, CELESTITE_ORE_KEY, Feature.ORE, new OreFeatureConfig(overworldCelestiteOres, 12));
-        register(context, EXPERIENCE_ORE_KEY, Feature.ORE, new OreFeatureConfig(overworldExperienceOres, 12));
+        register(context, CELESTITE_ORE_KEY, Feature.ORE, new OreFeatureConfig(overworldCelestiteOres, 4));
+        register(context, EXPERIENCE_ORE_KEY, Feature.ORE, new OreFeatureConfig(overworldExperienceOres, 1));
 
         register(context, WILDERSUNG_KEY, Feature.TREE, new TreeFeatureConfig.Builder(
                 BlockStateProvider.of(ModBlocks.WILDERSUNG_LOG),

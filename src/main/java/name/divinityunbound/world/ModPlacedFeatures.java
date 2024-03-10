@@ -26,15 +26,15 @@ public class ModPlacedFeatures {
         var configuredFeatureRegistryEntryLookup = context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
 
         register(context, CELESTITE_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.CELESTITE_ORE_KEY),
-                ModOrePlacement.modifiersWithCount(12, // Veins per Chunk
+                ModOrePlacement.modifiersWithCount(6, // Veins per Chunk
                         HeightRangePlacementModifier.uniform(YOffset.fixed(-80), YOffset.fixed(80))));
 
         register(context, EXPERIENCE_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.EXPERIENCE_ORE_KEY),
-                ModOrePlacement.modifiersWithCount(12, // Veins per Chunk
+                ModOrePlacement.modifiersWithCount(2, // Veins per Chunk
                         HeightRangePlacementModifier.uniform(YOffset.fixed(-80), YOffset.fixed(80))));
 
         register(context, WILDERSUNG_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.WILDERSUNG_KEY),
-                VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(1, 1.0f, 1),
+                VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(1, 1.0f, 0),
                         ModBlocks.WILDERSUNG_SAPLING));
     }
 

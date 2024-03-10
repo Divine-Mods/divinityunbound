@@ -12,6 +12,9 @@ import net.minecraft.util.Identifier;
 public class ModStatusEffect {
     public static final StatusEffect FLIGHT_EFFECT = Registry.register(Registries.STATUS_EFFECT,
             new Identifier(DivinityUnbound.MOD_ID, "flight"), new FlightStatusEffect());
+
+    public static final StatusEffect EXPERIENCE_BOOST_EFFECT = Registry.register(Registries.STATUS_EFFECT,
+            new Identifier(DivinityUnbound.MOD_ID, "experience_boost"), new ExperienceBoostEffect());
     public static void registerStatusEffects() {
         DivinityUnbound.LOGGER.info("Registering Status Effects for " + DivinityUnbound.MOD_ID);
     }
