@@ -155,6 +155,8 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.registerArmor((ArmorItem) ModItems.EXPERIENCE_LEGGINGS);
         itemModelGenerator.registerArmor((ArmorItem) ModItems.EXPERIENCE_BOOTS);
 
+        itemModelGenerator.registerArmor((ArmorItem) ModItems.HERMES_BOOTS);
+
         /* Foci */
         itemModelGenerator.register(ModItems.CELESTITE_COAL_FOCUS, Models.GENERATED);
         itemModelGenerator.register(ModItems.CELESTITE_IRON_FOCUS, Models.GENERATED);

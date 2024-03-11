@@ -169,6 +169,9 @@ public class ModItems {
     public static final Item EXPERIENCE_BOOTS = registerItem("experience_boots",
             new ArmorItem(ModArmorMaterials.EXPERIENCE, ArmorItem.Type.BOOTS, new FabricItemSettings().maxCount(1)));
 
+    public static final Item HERMES_BOOTS = registerItem("hermes_boots",
+            new HermesBootsArmorItem(ModArmorMaterials.HERMES, ArmorItem.Type.BOOTS, new FabricItemSettings().maxCount(1)));
+
 
     /* Foci */
     // TODO: Add foci for lapis, redstone, and maybe a few building blocks

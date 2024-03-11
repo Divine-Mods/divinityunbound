@@ -15,6 +15,9 @@ public class ModStatusEffect {
 
     public static final StatusEffect EXPERIENCE_BOOST_EFFECT = Registry.register(Registries.STATUS_EFFECT,
             new Identifier(DivinityUnbound.MOD_ID, "experience_boost"), new ExperienceBoostEffect());
+
+    public static final StatusEffect HERMES_EFFECT = Registry.register(Registries.STATUS_EFFECT,
+            new Identifier(DivinityUnbound.MOD_ID, "hermes"), new HermesEffect());
     public static void registerStatusEffects() {
         DivinityUnbound.LOGGER.info("Registering Status Effects for " + DivinityUnbound.MOD_ID);
     }

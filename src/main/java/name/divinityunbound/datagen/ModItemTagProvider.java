@@ -22,7 +22,8 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.CELESTITE_HELMET, ModItems.CELESTITE_CHESTPLATE, ModItems.CELESTITE_LEGGINGS, ModItems.CELESTITE_BOOTS)
                 .add(ModItems.TIME_FORGED_HELMET, ModItems.TIME_FORGED_CHESTPLATE, ModItems.TIME_FORGED_LEGGINGS, ModItems.TIME_FORGED_BOOTS)
                 .add(ModItems.SPACE_FORGED_HELMET, ModItems.SPACE_FORGED_CHESTPLATE, ModItems.SPACE_FORGED_LEGGINGS, ModItems.SPACE_FORGED_BOOTS)
-                .add(ModItems.EXPERIENCE_HELMET, ModItems.EXPERIENCE_CHESTPLATE, ModItems.EXPERIENCE_LEGGINGS, ModItems.EXPERIENCE_BOOTS);
+                .add(ModItems.EXPERIENCE_HELMET, ModItems.EXPERIENCE_CHESTPLATE, ModItems.EXPERIENCE_LEGGINGS, ModItems.EXPERIENCE_BOOTS)
+                .add(ModItems.HERMES_BOOTS);
 
         getOrCreateTagBuilder(ItemTags.PLANKS)
                 .add(ModBlocks.WILDERSUNG_PLANKS.asItem())

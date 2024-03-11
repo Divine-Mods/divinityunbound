@@ -28,6 +28,10 @@ public enum ModArmorMaterials implements ArmorMaterial {
 
     EXPERIENCE("experience", 15, new int[] { 1, 6, 4, 1}, 20,
     SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 0f, 0.0f,
+            () -> Ingredient.ofItems(ModItems.EXPERIENCE_INGOT)),
+
+    HERMES("hermes", 15, new int[] { 0, 0, 0, 1}, 20,
+    SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 1f, 0.0f,
             () -> Ingredient.ofItems(ModItems.EXPERIENCE_INGOT));
 
     // TODO: Add space time forged armor

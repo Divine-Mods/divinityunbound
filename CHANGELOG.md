@@ -1,6 +1,11 @@
 # Changelog
 
 ---
+## v0.0.7
+- Added Hermes status effect
+- Added Hermes Boots (2.5 step height, speed 3, and no fall damage)
+
+---
 ## v0.0.6
 - Added Divinity Unbound guide book (WIP, Basics and Wands added)
 - Added Experience Ore and Deepslate Experience Ore

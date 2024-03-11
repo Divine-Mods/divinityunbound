@@ -114,6 +114,8 @@ public class ModItemGroups {
                         entries.add(ModItems.EXPERIENCE_LEGGINGS);
                         entries.add(ModItems.EXPERIENCE_BOOTS);
 
+                        entries.add(ModItems.HERMES_BOOTS);
+
                         /* Wood */
                         entries.add(ModBlocks.WILDERSUNG_LOG);
                         entries.add(ModBlocks.WILDERSUNG_WOOD);
