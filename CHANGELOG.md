@@ -4,6 +4,12 @@
 ## v0.0.7
 - Added Hermes status effect
 - Added Hermes Boots (2.5 step height, speed 3, and no fall damage)
+- Added Bane of Passives Enchantment (additional damage towards passive mobs, stacks with Sharpness)
+- Added Celestial Glass and Dark Celestial Glass
+  - Both types of glass allow Players to pass through but not mobs
+  - You can freely walk through Celestial glass, hold Shift to stand on it
+  - Hold Shift to walk through Dark Celestial Glass
+  - Dark Celestial Glass does not allow light to pass through, great for mob farms!
 
 ---
 ## v0.0.6

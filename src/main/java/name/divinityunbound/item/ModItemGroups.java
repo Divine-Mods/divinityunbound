@@ -132,6 +132,8 @@ public class ModItemGroups {
                         entries.add(ModBlocks.FROZEN_TIME_GLASS);
                         entries.add(ModBlocks.FROZEN_TIME_LAMP);
                         entries.add(ModBlocks.SAND_OF_TIME);
+                        entries.add(ModBlocks.CELESTIAL_GLASS);
+                        entries.add(ModBlocks.DARK_CELESTIAL_GLASS);
 
                         /* Block Entities */
                         entries.add(ModBlocks.GENERATION_STATION);

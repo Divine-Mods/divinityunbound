@@ -2,6 +2,7 @@ package name.divinityunbound.item.custom;
 
 import name.divinityunbound.entity.effect.ModStatusEffect;
 import name.divinityunbound.item.ModItems;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttribute;
@@ -14,9 +15,12 @@ import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.UUID;
 
 public class HermesBootsArmorItem extends ArmorItem {
@@ -44,5 +48,14 @@ public class HermesBootsArmorItem extends ArmorItem {
         ItemStack boots = player.getInventory().getArmorStack(0);
 
         return !boots.isEmpty() && boots.getItem().equals(ModItems.HERMES_BOOTS);
+    }
+
+    @Override
+    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+        tooltip.add(Text.translatable("tooltip.divinityunbound.hermes_boots1"));
+        tooltip.add(Text.translatable("tooltip.divinityunbound.hermes_boots2"));
+        tooltip.add(Text.translatable("tooltip.divinityunbound.hermes_boots3"));
+
+        super.appendTooltip(stack, world, tooltip, context);
     }
 }

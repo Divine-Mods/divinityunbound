@@ -98,6 +98,8 @@
   "block.divinityunbound.golden_celestite_infused_stone": "Golden Celestite Infused Stone",
   "block.divinityunbound.frozen_time_glass": "Frozen Time Glass",
   "block.divinityunbound.frozen_time_lamp": "Frozen Time Lamp",
+  "block.divinityunbound.celestial_glass": "Celestial Glass",
+  "block.divinityunbound.dark_celestial_glass": "Dark Celestial Glass",
   "block.divinityunbound.sand_of_time": "Sand of Time",
   "block.divinityunbound.wildersung_leaves": "Wildersung Leaves",
   "block.divinityunbound.wildersung_sapling": "Wildersung Sapling",
@@ -130,6 +132,12 @@
 
   "effect.divinityunbound.flight": "Flight",
   "effect.divinityunbound.experience_boost": "Experience Boost",
+  "effect.divinityunbound.hermes": "Hermes' Blessing",
+
+  "enchantment.divinityunbound.bane_of_passives": "Bane of Passives",
+  "divinityunbound.bane_of_passives": "Attacks deal extra damage to passive mobs",
+  "enchantment.divinityunbound.prosperity": "Prosperity",
+  "divinityunbound.prosperity": "Chance to multiply Fortune Drops",
 
   "block.divinityunbound.space_time": "Liquid Space Time",
 
@@ -146,6 +154,13 @@
   "tooltip.divinityunbound.wand_of_the_archer": "Shoots spectral arrows. Can be enchanted",
   "tooltip.divinityunbound.wand_of_celebration": "Shoots duration 3 fireworks",
   "tooltip.divinityunbound.wand_of_fire_bending": "Summons temporary lava and gives fire resistance",
+  "tooltip.divinityunbound.hermes_boots1": "Step Height 2.5",
+  "tooltip.divinityunbound.hermes_boots2": "Speed III",
+  "tooltip.divinityunbound.hermes_boots3": "No Fall Damage",
+  "tooltip.divinityunbound.celestial_glass1": "Players can phase through, Mobs cannot.",
+  "tooltip.divinityunbound.celestial_glass2": "Hold Shift to stand on.",
+  "tooltip.divinityunbound.dark_celestial_glass1": "Players can phase through, Mobs cannot.",
+  "tooltip.divinityunbound.dark_celestial_glass2": "Acts like Tinted Glass. Hold Shift to stand on.",
 
   "divinityunbound.wormhole_transporter.item_mode.conditional": "Extract Item",
   "divinityunbound.wormhole_transporter.item_mode.unconditional": "No Item",

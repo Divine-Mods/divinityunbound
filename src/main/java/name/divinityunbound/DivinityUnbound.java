@@ -2,6 +2,7 @@ package name.divinityunbound;
 
 import name.divinityunbound.block.ModBlocks;
 import name.divinityunbound.block.entity.ModBlockEntities;
+import name.divinityunbound.enchantment.ModEnchantments;
 import name.divinityunbound.entity.effect.ModStatusEffect;
 import name.divinityunbound.fluid.ModFluids;
 import name.divinityunbound.item.ModItemGroups;
@@ -28,6 +29,7 @@ public class DivinityUnbound implements ModInitializer {
 		ModBlocks.registerModBlocks();
 		ModWorldGeneration.generateModWorldGen();
 		ModFluids.registerFluids();
+		ModEnchantments.registerModEnchantments();
 
 		ModBlockEntities.registerBlockEntities();
 		ModScreenHandlers.registerScreenHandlers();

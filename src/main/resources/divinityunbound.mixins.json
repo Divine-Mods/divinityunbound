@@ -6,7 +6,8 @@
     "ExampleMixin",
     "ExperienceGainMixin",
     "EntityStepHeightMixin",
-    "ServerPlayerEntityMixin"
+    "ServerPlayerEntityMixin",
+    "ApplyBonusLootFunctionMixin"
   ],
   "injectors": {
     "defaultRequire": 1

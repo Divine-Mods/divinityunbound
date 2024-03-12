@@ -23,11 +23,15 @@ public class DivinityUnboundClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.WILDERSUNG_LEAVES, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.WILDERSUNG_SAPLING, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.FROZEN_TIME_GLASS, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SPACE_TIME_AMALGAMATOR, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.WORMHOLE_TRANSPORTER, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.ITEM_TRASHCAN, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.FLUID_TRASHCAN, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.ENERGY_TRASHCAN, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.CELESTIAL_GLASS, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.DARK_CELESTIAL_GLASS, RenderLayer.getTranslucent());
+
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SPACE_TIME_AMALGAMATOR, RenderLayer.getCutoutMipped());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.WORMHOLE_TRANSPORTER, RenderLayer.getCutoutMipped());
+
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.ITEM_TRASHCAN, RenderLayer.getCutoutMipped());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.FLUID_TRASHCAN, RenderLayer.getCutoutMipped());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.ENERGY_TRASHCAN, RenderLayer.getCutoutMipped());
 
         ParticleFactoryRegistry.getInstance().register(ModParticles.PURPLE_FLAME_PARTICLE, PurpleFlameParticle.Factory::new);
 

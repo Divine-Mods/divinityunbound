@@ -108,6 +108,20 @@ public class ModBlocks {
                             .dropsLike(DIVINE_TORCH)
                             .pistonBehavior(PistonBehavior.DESTROY)));
 
+    public static final Block CELESTIAL_GLASS = registerBlock("celestial_glass",
+            new CelestialGlassBlock(FabricBlockSettings.copyOf(Blocks.GLASS).nonOpaque()
+                    .allowsSpawning(Blocks::never)
+                    .solidBlock(Blocks::never)
+                    .suffocates(Blocks::never)
+                    .blockVision(Blocks::never), false));
+
+    public static final Block DARK_CELESTIAL_GLASS = registerBlock("dark_celestial_glass",
+            new DarkCelestialGlassBlock(FabricBlockSettings.copyOf(Blocks.GLASS).nonOpaque()
+                    .allowsSpawning(Blocks::never)
+                    .solidBlock(Blocks::never)
+                    .suffocates(Blocks::never)
+                    .blockVision(Blocks::never), false));
+
     public static final Block MYSTIC_CHRONOGRAPH = registerBlock("mystic_chronograph",
             new MysticChronographBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
     public static final Block DIVINE_REPLICATOR = registerBlock("divine_replicator",

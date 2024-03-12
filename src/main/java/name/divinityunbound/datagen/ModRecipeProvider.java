@@ -70,6 +70,18 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 //        offerLeggingsRecipe(exporter, RecipeCategory.COMBAT, ModItems.SPACE_TIME_LEGGINGS, ModItems.SPACE_TIME_INGOT);
 //        offerBootsRecipe(exporter, RecipeCategory.COMBAT, ModItems.SPACE_TIME_BOOTS, ModItems.SPACE_TIME_INGOT);
 
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.HERMES_BOOTS, 1)
+                .pattern("F F")
+                .pattern("E E")
+                .pattern("T T")
+                .input('F', Items.FEATHER)
+                .input('E', ModItems.EXPERIENCE_INGOT)
+                .input('T', ModItems.TIME_FORGED_INGOT)
+                .criterion(hasItem(Items.FEATHER), conditionsFromItem(Items.FEATHER))
+                .criterion(hasItem(ModItems.EXPERIENCE_INGOT), conditionsFromItem(ModItems.EXPERIENCE_INGOT))
+                .criterion(hasItem(ModItems.TIME_FORGED_INGOT), conditionsFromItem(ModItems.TIME_FORGED_INGOT))
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.HERMES_BOOTS)));
+
         offerHelmetRecipe(exporter, RecipeCategory.COMBAT, ModItems.EXPERIENCE_HELMET, ModItems.EXPERIENCE_INGOT);
         offerChestplateRecipe(exporter, RecipeCategory.COMBAT, ModItems.EXPERIENCE_CHESTPLATE, ModItems.EXPERIENCE_INGOT);
         offerLeggingsRecipe(exporter, RecipeCategory.COMBAT, ModItems.EXPERIENCE_LEGGINGS, ModItems.EXPERIENCE_INGOT);
@@ -176,6 +188,28 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(Items.GLOWSTONE_DUST), conditionsFromItem(Items.GLOWSTONE_DUST))
                 .criterion(hasItem(ModBlocks.FROZEN_TIME_GLASS), conditionsFromItem(ModBlocks.FROZEN_TIME_GLASS))
                 .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.FROZEN_TIME_LAMP)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.CELESTIAL_GLASS, 4)
+                .pattern(" C ")
+                .pattern("EFE")
+                .pattern(" C ")
+                .input('E', Items.ENDER_PEARL)
+                .input('F', ModBlocks.FROZEN_TIME_GLASS)
+                .input('C', ModItems.CELESTIUM_DUST)
+                .criterion(hasItem(Items.ENDER_PEARL), conditionsFromItem(Items.ENDER_PEARL))
+                .criterion(hasItem(ModItems.CELESTIUM_DUST), conditionsFromItem(ModItems.CELESTIUM_DUST))
+                .criterion(hasItem(ModBlocks.FROZEN_TIME_GLASS), conditionsFromItem(ModBlocks.FROZEN_TIME_GLASS))
+                .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.CELESTIAL_GLASS)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.DARK_CELESTIAL_GLASS, 2)
+                .pattern(" A ")
+                .pattern("ACA")
+                .pattern(" A ")
+                .input('A', Items.AMETHYST_SHARD)
+                .input('C', ModBlocks.CELESTIAL_GLASS)
+                .criterion(hasItem(Items.AMETHYST_SHARD), conditionsFromItem(Items.AMETHYST_SHARD))
+                .criterion(hasItem(ModBlocks.CELESTIAL_GLASS), conditionsFromItem(ModBlocks.CELESTIAL_GLASS))
+                .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.DARK_CELESTIAL_GLASS)));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.IMPORT_CARD, 3)
                 .pattern("CCC")
