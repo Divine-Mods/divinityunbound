@@ -54,7 +54,7 @@ public class SpaceTimeEvaporatorScreen extends HandledScreen<SpaceTimeEvaporator
 
     private void renderFluidTooltip(DrawContext context, int mouseX, int mouseY, int x, int y, int offsetX, int offsetY, FluidStackRenderer renderer) {
         if(isMouseAboveArea(mouseX, mouseY, x, y, offsetX, offsetY, renderer)) {
-            context.drawTooltip(Screens.getTextRenderer(this), renderer.getTooltip(handler.blockEntity.fluidStorage, TooltipContext.Default.BASIC),
+            context.drawTooltip(Screens.getTextRenderer(this), renderer.getTooltip(handler.blockEntity.internalFluidStorage, TooltipContext.Default.BASIC),
                     Optional.empty(), mouseX - x, mouseY - y);
         }
     }
@@ -81,7 +81,7 @@ public class SpaceTimeEvaporatorScreen extends HandledScreen<SpaceTimeEvaporator
         renderProgressArrow(context, x, y);
 
         energyInfoArea.draw(context);
-        fluidStackRenderer.drawFluid(context, handler.blockEntity.fluidStorage, x + 26, y + 11, 16, 39,
+        fluidStackRenderer.drawFluid(context, handler.blockEntity.internalFluidStorage, x + 26, y + 11, 16, 39,
                 (FluidConstants.BUCKET / 81) * 64);
     }
 

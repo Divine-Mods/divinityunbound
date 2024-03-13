@@ -133,7 +133,7 @@ public class WormholeTransporterBlockEntity extends BlockEntity implements Exten
 
         @Override
         protected long getCapacity(FluidVariant variant) {
-            return (FluidConstants.BUCKET / 81) * 128; // 1 Bucket = 81000 Droplets = 1000mB || *128 ==> 128,000mB = 128 Buckets
+            return (FluidConstants.BUCKET / 81) * 32;
         }
 
         @Override
@@ -280,16 +280,22 @@ public class WormholeTransporterBlockEntity extends BlockEntity implements Exten
     }
 
     private void pushEnergyToAdjacentStorage(EnergyStorage source, EnergyStorage target) {
-        long amountMoved = EnergyStorageUtil.move(
-                source, // from source
-                target, // into target
-                Integer.MAX_VALUE, // no limit on the amount
-                null // create a new transaction for this operation
-        );
+        try(Transaction transaction = Transaction.openOuter()) {
+            long amountMoved = EnergyStorageUtil.move(
+                    source, // from source
+                    target, // into target
+                    Integer.MAX_VALUE, // no limit on the amount
+                    transaction // create a new transaction for this operation
+            );
+            transaction.commit();
+        }
     }
 
     private void pushFluidToAdjacentStorage(Storage<FluidVariant> source, Storage<FluidVariant> target) {
-        StorageUtil.move(source, target, variant -> true, Integer.MAX_VALUE, null);
+        try(Transaction transaction = Transaction.openOuter()) {
+            StorageUtil.move(source, target, variant -> true, Integer.MAX_VALUE, transaction);
+            transaction.commit();
+        }
     }
 
     private Storage<FluidVariant> findFluidStorage(World world, BlockPos pos) {
@@ -618,7 +624,7 @@ public class WormholeTransporterBlockEntity extends BlockEntity implements Exten
         return this.itemsActive == 0 ? false : true;
     }
 
-//    public boolean isEnergyActive() {
+    //    public boolean isEnergyActive() {
 //        return this.energyActive;
 //    }
 //

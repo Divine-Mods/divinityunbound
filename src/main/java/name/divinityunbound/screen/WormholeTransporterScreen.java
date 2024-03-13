@@ -32,6 +32,7 @@ public class WormholeTransporterScreen extends HandledScreen<WormholeTransporter
             new Identifier(DivinityUnbound.MOD_ID, "textures/gui/wormhole_transporter_gui.png");
     private EnergyInfoArea energyInfoArea;
     private FluidStackRenderer fluidStackRenderer;
+    private long fluidCapacity;
 
     private CyclingButtonWidget<Boolean> itemButton;
     private boolean itemsActive;
@@ -68,6 +69,7 @@ public class WormholeTransporterScreen extends HandledScreen<WormholeTransporter
 //                        }
 //                    ));
 //        this.itemButton.active = true;
+        this.fluidCapacity = handler.blockEntity.fluidStorage.getCapacity();
         assignEnergyInfoArea();
         assignFluidStackRenderer();
 
@@ -79,7 +81,7 @@ public class WormholeTransporterScreen extends HandledScreen<WormholeTransporter
     }
 
     private void assignFluidStackRenderer() {
-        fluidStackRenderer = new FluidStackRenderer((FluidConstants.BUCKET / 81) * 128, true, 16, 39);
+        fluidStackRenderer = new FluidStackRenderer(this.fluidCapacity, true, 16, 39);
     }
 
     private void renderEnergyAreaTooltips(DrawContext context, int pMouseX, int pMouseY, int x, int y) {
@@ -117,7 +119,7 @@ public class WormholeTransporterScreen extends HandledScreen<WormholeTransporter
 
         energyInfoArea.draw(context);
         fluidStackRenderer.drawFluid(context, handler.blockEntity.fluidStorage, x + 129, y + 24, 16, 39,
-                (FluidConstants.BUCKET / 81) * 128);
+                this.fluidCapacity);
     }
 
     @Override

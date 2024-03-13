@@ -71,6 +71,11 @@ public class ModBlockEntities {
                     FabricBlockEntityTypeBuilder.create(EnergyTrashcanBlockEntity::new,
                             ModBlocks.ENERGY_TRASHCAN).build());
 
+    public static final BlockEntityType<HallowedFluidTankBlockEntity> HALLOWED_FLUID_TANK_BLOCK_ENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(DivinityUnbound.MOD_ID, "hallowed_fluid_tank_be"),
+                    FabricBlockEntityTypeBuilder.create(HallowedFluidTankBlockEntity::new,
+                            ModBlocks.HALLOWED_FLUID_TANK).build());
+
 
     public static final BlockEntityType<SpaceTimeFurnaceBlockEntity> SPACE_TIME_FURNACE_BLOCK_ENTITY =
             Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(DivinityUnbound.MOD_ID, "space_time_furnace_be"),
@@ -91,5 +96,7 @@ public class ModBlockEntities {
 
         FluidStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.fluidStorage, FLUID_TRASHCAN_BLOCK_ENTITY);
         EnergyStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.energyStorage, ENERGY_TRASHCAN_BLOCK_ENTITY);
+
+        FluidStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.fluidStorage, HALLOWED_FLUID_TANK_BLOCK_ENTITY);
     }
 }

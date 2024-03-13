@@ -17,13 +17,12 @@ import net.minecraft.util.Identifier;
 
 import java.util.Optional;
 
-public class SpaceTimeAmalgamatorScreen extends HandledScreen<SpaceTimeAmalgamatorScreenHandler> {
-    private static final Identifier TEXTURE =
-            new Identifier(DivinityUnbound.MOD_ID, "textures/gui/space_time_amalgamator_gui.png");
-    private EnergyInfoArea energyInfoArea;
+public class HallowedFluidTankScreen extends HandledScreen<HallowedFluidTankScreenHandler> {
+    private static final Identifier TEXTURE = new Identifier((DivinityUnbound.MOD_ID), "textures/gui/hallowed_fluid_tank_gui.png");
     private FluidStackRenderer fluidStackRenderer;
+    private long fluidCapacity;
 
-    public SpaceTimeAmalgamatorScreen(SpaceTimeAmalgamatorScreenHandler handler, PlayerInventory inventory, Text title) {
+    public HallowedFluidTankScreen(HallowedFluidTankScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
     }
 
@@ -32,29 +31,17 @@ public class SpaceTimeAmalgamatorScreen extends HandledScreen<SpaceTimeAmalgamat
         super.init();
         titleY = 1000;
         playerInventoryTitleY = 1000;
-        assignEnergyInfoArea();
+        this.fluidCapacity = handler.blockEntity.fluidStorage.getCapacity();
         assignFluidStackRenderer();
     }
 
-    private void assignEnergyInfoArea() {
-        energyInfoArea = new EnergyInfoArea(((width - backgroundWidth) / 2) + 156,
-                ((height - backgroundHeight) / 2 ) + 11, handler.blockEntity.energyStorage);
-    }
-
     private void assignFluidStackRenderer() {
-        fluidStackRenderer = new FluidStackRenderer((FluidConstants.BUCKET / 81) * 64, true, 16, 39);
-    }
-
-    private void renderEnergyAreaTooltips(DrawContext context, int pMouseX, int pMouseY, int x, int y) {
-        if(isMouseAboveArea(pMouseX, pMouseY, x, y, 156, 11, 8, 64)) {
-            context.drawTooltip(Screens.getTextRenderer(this), energyInfoArea.getTooltips(),
-                    Optional.empty(), pMouseX - x, pMouseY - y);
-        }
+        fluidStackRenderer = new FluidStackRenderer(this.fluidCapacity, true, 16, 39);
     }
 
     private void renderFluidTooltip(DrawContext context, int mouseX, int mouseY, int x, int y, int offsetX, int offsetY, FluidStackRenderer renderer) {
         if(isMouseAboveArea(mouseX, mouseY, x, y, offsetX, offsetY, renderer)) {
-            context.drawTooltip(Screens.getTextRenderer(this), renderer.getTooltip(handler.blockEntity.internalFluidStorage, TooltipContext.Default.BASIC),
+            context.drawTooltip(Screens.getTextRenderer(this), renderer.getTooltip(handler.blockEntity.fluidStorage, TooltipContext.Default.BASIC),
                     Optional.empty(), mouseX - x, mouseY - y);
         }
     }
@@ -64,8 +51,7 @@ public class SpaceTimeAmalgamatorScreen extends HandledScreen<SpaceTimeAmalgamat
         int x = (width - backgroundWidth) / 2;
         int y = (height - backgroundHeight) / 2;
 
-        renderEnergyAreaTooltips(context, mouseX, mouseY, x, y);
-        renderFluidTooltip(context, mouseX, mouseY, x, y, 129, 24, fluidStackRenderer);
+        renderFluidTooltip(context, mouseX, mouseY, x, y, 80, 20, fluidStackRenderer);
     }
 
     @Override
@@ -78,19 +64,9 @@ public class SpaceTimeAmalgamatorScreen extends HandledScreen<SpaceTimeAmalgamat
 
         context.drawTexture(TEXTURE, x, y, 0, 0, backgroundWidth, backgroundHeight);
 
-        renderProgressArrow(context, x, y);
-
-        energyInfoArea.draw(context);
-        fluidStackRenderer.drawFluid(context, handler.blockEntity.internalFluidStorage, x + 129, y + 24, 16, 39,
-                (FluidConstants.BUCKET / 81) * 64);
+        fluidStackRenderer.drawFluid(context, handler.blockEntity.fluidStorage, x + 80, y + 20, 16, 39,
+                this.fluidCapacity);
     }
-
-    private void renderProgressArrow(DrawContext context, int x, int y) {
-        if(handler.isCrafting()) {
-            context.drawTexture(TEXTURE, x + 76, y + 38, 176, 0, handler.getScaledProgress(), 8);
-        }
-    }
-
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
         renderBackground(context, mouseX, mouseY, delta);
@@ -100,11 +76,5 @@ public class SpaceTimeAmalgamatorScreen extends HandledScreen<SpaceTimeAmalgamat
 
     private boolean isMouseAboveArea(int pMouseX, int pMouseY, int x, int y, int offsetX, int offsetY, FluidStackRenderer renderer) {
         return MouseUtil.isMouseOver(pMouseX, pMouseY, x + offsetX, y + offsetY, renderer.getWidth(), renderer.getHeight());
-    }
-
-
-
-    private boolean isMouseAboveArea(int pMouseX, int pMouseY, int x, int y, int offsetX, int offsetY, int width, int height) {
-        return MouseUtil.isMouseOver(pMouseX, pMouseY, x + offsetX, y + offsetY, width, height);
     }
 }

@@ -9,6 +9,8 @@ import name.divinityunbound.screen.SpaceTimeEvaporatorScreenHandler;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidConstants;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
+import net.fabricmc.fabric.api.transfer.v1.storage.Storage;
+import net.fabricmc.fabric.api.transfer.v1.storage.base.FilteringStorage;
 import net.fabricmc.fabric.api.transfer.v1.storage.base.SingleVariantStorage;
 import net.fabricmc.fabric.api.transfer.v1.transaction.Transaction;
 import net.minecraft.block.BlockState;
@@ -99,23 +101,30 @@ public class SpaceTimeEvaporatorBlockEntity extends BlockEntity implements Exten
         }
     };
 
-    public final SingleVariantStorage<FluidVariant> fluidStorage = new SingleVariantStorage<FluidVariant>() {
-        @Override
-        protected FluidVariant getBlankVariant() {
-            return FluidVariant.blank();
-        }
-
-        @Override
-        protected long getCapacity(FluidVariant variant) {
-            return (FluidConstants.BUCKET / 81) * 64; // 1 Bucket = 81000 Droplets = 1000mB || *64 ==> 64,000mB = 64 Buckets
-        }
-
-        @Override
-        protected void onFinalCommit() {
-            markDirty();
-            getWorld().updateListeners(pos, getCachedState(), getCachedState(), 3);
-        }
-    };
+    private SingleVariantStorage<FluidVariant> createTank(FluidVariant allowedVariant) {
+        return new SingleVariantStorage<>() {
+            @Override
+            protected FluidVariant getBlankVariant() {
+                return FluidVariant.blank();
+            }
+            @Override
+            protected long getCapacity(FluidVariant variant) {
+                return (FluidConstants.BUCKET / 81) * 64;
+            }
+            @Override
+            protected boolean canInsert(FluidVariant variant) {
+                // Only allow the specified variant.
+                return variant.equals(allowedVariant);
+            }
+            @Override
+            protected void onFinalCommit() {
+                markDirty();
+                getWorld().updateListeners(pos, getCachedState(), getCachedState(), 3);
+            }
+        };
+    }
+    public final SingleVariantStorage<FluidVariant> internalFluidStorage = createTank(FluidVariant.of(ModFluids.STILL_SPACE_TIME));
+    public final Storage<FluidVariant> fluidStorage = FilteringStorage.insertOnlyOf(internalFluidStorage);
     @Override
     public DefaultedList<ItemStack> getItems() {
         return inventory;
@@ -127,8 +136,8 @@ public class SpaceTimeEvaporatorBlockEntity extends BlockEntity implements Exten
         Inventories.writeNbt(nbt, inventory);
         nbt.putInt("space_time_evaporator.progress", progress);
         nbt.putLong(("space_time_evaporator.energy"), energyStorage.amount);
-        nbt.put("space_time_evaporator.variant", fluidStorage.variant.toNbt());
-        nbt.putLong("space_time_evaporator.fluid_amount", fluidStorage.amount);
+        nbt.put("space_time_evaporator.variant", internalFluidStorage.variant.toNbt());
+        nbt.putLong("space_time_evaporator.fluid_amount", internalFluidStorage.amount);
     }
 
     @Override
@@ -137,8 +146,8 @@ public class SpaceTimeEvaporatorBlockEntity extends BlockEntity implements Exten
         Inventories.readNbt(nbt, inventory);
         progress = nbt.getInt("space_time_evaporator.progress");
         energyStorage.amount = nbt.getLong("space_time_evaporator.energy");
-        fluidStorage.variant = FluidVariant.fromNbt((NbtCompound) nbt.get("space_time_evaporator.variant"));
-        fluidStorage.amount = nbt.getLong("space_time_evaporator.fluid_amount");
+        internalFluidStorage.variant = FluidVariant.fromNbt((NbtCompound) nbt.get("space_time_evaporator.variant"));
+        internalFluidStorage.amount = nbt.getLong("space_time_evaporator.fluid_amount");
     }
 
     @Override
@@ -201,7 +210,7 @@ public class SpaceTimeEvaporatorBlockEntity extends BlockEntity implements Exten
 
     private void extractFluid() {
         try(Transaction transaction = Transaction.openOuter()) {
-            this.fluidStorage.extract(FluidVariant.of(ModFluids.STILL_SPACE_TIME), 500, transaction);
+            this.internalFluidStorage.extract(FluidVariant.of(ModFluids.STILL_SPACE_TIME), 500, transaction);
             transaction.commit();
         }
     }
@@ -214,7 +223,7 @@ public class SpaceTimeEvaporatorBlockEntity extends BlockEntity implements Exten
 
     private void transferItemFluidToTank(int fluidItemSlot) {
         try(Transaction transaction = Transaction.openOuter()) {
-            this.fluidStorage.insert(FluidVariant.of(ModFluids.STILL_SPACE_TIME),
+            this.internalFluidStorage.insert(FluidVariant.of(ModFluids.STILL_SPACE_TIME),
                     (FluidConstants.BUCKET / 81), transaction);
             transaction.commit();
 
@@ -292,7 +301,7 @@ public class SpaceTimeEvaporatorBlockEntity extends BlockEntity implements Exten
     }
 
     private boolean hasEnoughFluidToCraft() {
-        return this.fluidStorage.amount >= 500; // mB amount!
+        return this.internalFluidStorage.amount >= 500; // mB amount!
     }
 
     private boolean hasItemInInputSlot() {

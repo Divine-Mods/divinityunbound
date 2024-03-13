@@ -150,6 +150,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.ITEM_TRASHCAN);
                         entries.add(ModBlocks.FLUID_TRASHCAN);
                         entries.add(ModBlocks.ENERGY_TRASHCAN);
+                        entries.add(ModBlocks.HALLOWED_FLUID_TANK);
 
                         entries.add(ModBlocks.SPACE_TIME_FURNACE);
 

@@ -1,14 +1,20 @@
 # Changelog
 
 ---
+## v0.1.0
+- Updates to several block GUIs to make specific inputs and outputs more clear 
+- Added Hallowed Fluid Tank
+- Fixed import/export fluid bug with Space Time Evaporator and Amalgamator
+
+---
 ## v0.0.7
 - Added Hermes status effect
 - Added Hermes Boots (2.5 step height, speed 3, and no fall damage)
+- Added Prosperity Enchantment (chance to multiply Fortune drops)
 - Added Bane of Passives Enchantment (additional damage towards passive mobs, stacks with Sharpness)
 - Added Celestial Glass and Dark Celestial Glass
   - Both types of glass allow Players to pass through but not mobs
-  - You can freely walk through Celestial glass, hold Shift to stand on it
-  - Hold Shift to walk through Dark Celestial Glass
+  - You can freely walk through Celestial and Dark Celestial glass, hold Shift to stand on it
   - Dark Celestial Glass does not allow light to pass through, great for mob farms!
 
 ---

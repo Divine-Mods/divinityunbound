@@ -12,8 +12,6 @@ import net.minecraft.block.enums.Instrument;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.Items;
-import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
@@ -155,6 +153,9 @@ public class ModBlocks {
 
     public static final Block ENERGY_TRASHCAN = registerBlock("energy_trashcan",
             new EnergyTrashcanBlock(FabricBlockSettings.copyOf(Blocks.GREEN_TERRACOTTA).nonOpaque()));
+
+    public static final Block HALLOWED_FLUID_TANK = registerBlock("hallowed_fluid_tank",
+            new HallowedFluidTankBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
 
 
     private static Block registerBlock(String name, Block block) {
