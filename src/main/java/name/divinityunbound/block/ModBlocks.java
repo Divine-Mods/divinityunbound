@@ -83,6 +83,9 @@ public class ModBlocks {
     public static final Block QUANTITY_UPGRADE = registerBlock("quantity_upgrade",
             new QuantityUpgradeBlock(FabricBlockSettings.copyOf(Blocks.END_STONE_BRICKS).nonOpaque()));
 
+    public static final Block KNOWLEDGE_EXTRACTOR = registerBlock("knowledge_extractor",
+            new KnowledgeExtractorBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
+
     public static final Block FROZEN_TIME_LAMP = registerBlock("frozen_time_lamp",
             new Block(AbstractBlock.Settings.create()
                     .mapColor(MapColor.PALE_PURPLE)
@@ -156,6 +159,9 @@ public class ModBlocks {
 
     public static final Block HALLOWED_FLUID_TANK = registerBlock("hallowed_fluid_tank",
             new HallowedFluidTankBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
+
+    public static final Block ITEM_SINGULARITY_STORAGE = registerBlock("item_singularity_storage",
+            new ItemSingularityStorageBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
 
 
     private static Block registerBlock(String name, Block block) {

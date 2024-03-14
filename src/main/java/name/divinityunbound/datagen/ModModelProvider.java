@@ -65,6 +65,8 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.FLUID_TRASHCAN);
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.ENERGY_TRASHCAN);
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.HALLOWED_FLUID_TANK);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.ITEM_SINGULARITY_STORAGE);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.KNOWLEDGE_EXTRACTOR);
 
         blockStateModelGenerator.registerCooker(ModBlocks.SPACE_TIME_FURNACE, TexturedModel.ORIENTABLE);
     }

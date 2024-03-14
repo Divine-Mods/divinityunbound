@@ -59,6 +59,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.FLUID_TRASHCAN)
                 .add(ModBlocks.ENERGY_TRASHCAN)
                 .add(ModBlocks.HALLOWED_FLUID_TANK)
+                .add(ModBlocks.ITEM_SINGULARITY_STORAGE)
+                .add(ModBlocks.KNOWLEDGE_EXTRACTOR)
                 .add(ModBlocks.SPACE_TIME_FURNACE);
 
         getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
@@ -82,8 +84,10 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.WORMHOLE_TRANSPORTER)
                 .add(ModBlocks.ITEM_TRASHCAN)
                 .add(ModBlocks.FLUID_TRASHCAN)
+                .add(ModBlocks.ENERGY_TRASHCAN)
                 .add(ModBlocks.HALLOWED_FLUID_TANK)
-                .add(ModBlocks.ENERGY_TRASHCAN);
+                .add(ModBlocks.KNOWLEDGE_EXTRACTOR)
+                .add(ModBlocks.ITEM_SINGULARITY_STORAGE);
 
         getOrCreateTagBuilder(BlockTags.NEEDS_DIAMOND_TOOL)
                 .add(ModBlocks.SPACE_TIME_EVAPORATOR)

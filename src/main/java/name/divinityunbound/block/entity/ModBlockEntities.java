@@ -4,6 +4,7 @@ import name.divinityunbound.DivinityUnbound;
 import name.divinityunbound.block.ModBlocks;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidStorage;
+import net.fabricmc.fabric.api.transfer.v1.item.ItemStorage;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -76,6 +77,16 @@ public class ModBlockEntities {
                     FabricBlockEntityTypeBuilder.create(HallowedFluidTankBlockEntity::new,
                             ModBlocks.HALLOWED_FLUID_TANK).build());
 
+    public static final BlockEntityType<ItemSingularityStorageBlockEntity> ITEM_SINGULARITY_STORAGE_BLOCK_ENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(DivinityUnbound.MOD_ID, "item_singularity_storage_be"),
+                    FabricBlockEntityTypeBuilder.create(ItemSingularityStorageBlockEntity::new,
+                            ModBlocks.ITEM_SINGULARITY_STORAGE).build());
+
+    public static final BlockEntityType<KnowledgeExtractorBlockEntity> KNOWLEDGE_EXTRACTOR_BLOCK_ENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(DivinityUnbound.MOD_ID, "knowledge_extractor_storage_be"),
+                    FabricBlockEntityTypeBuilder.create(KnowledgeExtractorBlockEntity::new,
+                            ModBlocks.KNOWLEDGE_EXTRACTOR).build());
+
 
     public static final BlockEntityType<SpaceTimeFurnaceBlockEntity> SPACE_TIME_FURNACE_BLOCK_ENTITY =
             Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(DivinityUnbound.MOD_ID, "space_time_furnace_be"),
@@ -98,5 +109,7 @@ public class ModBlockEntities {
         EnergyStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.energyStorage, ENERGY_TRASHCAN_BLOCK_ENTITY);
 
         FluidStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.fluidStorage, HALLOWED_FLUID_TANK_BLOCK_ENTITY);
+
+        ItemStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.inventoryWrapper, ITEM_SINGULARITY_STORAGE_BLOCK_ENTITY);
     }
 }

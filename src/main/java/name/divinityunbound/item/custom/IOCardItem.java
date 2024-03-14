@@ -1,5 +1,6 @@
 package name.divinityunbound.item.custom;
 
+import name.divinityunbound.block.ModBlocks;
 import name.divinityunbound.item.ModItems;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
@@ -33,14 +34,17 @@ public class IOCardItem extends Item {
                 BlockPos pos = context.getBlockPos();
             if(player.isSneaking()) {
                 if (itemStack.getSubNbt("blockpos") == null) {
-                    ItemStack newItemStack = new ItemStack(itemStack.getItem());
+                    if(player.getWorld().getBlockState(pos)
+                            .getBlock().equals(ModBlocks.WORMHOLE_TRANSPORTER)) {
+                        ItemStack newItemStack = new ItemStack(itemStack.getItem());
 
-                    NbtCompound nbt = new NbtCompound();
-                    nbt.putIntArray("blockpos", Arrays.asList(pos.getX(), pos.getY(), pos.getZ()));
-                    newItemStack.setNbt(nbt);
+                        NbtCompound nbt = new NbtCompound();
+                        nbt.putIntArray("blockpos", Arrays.asList(pos.getX(), pos.getY(), pos.getZ()));
+                        newItemStack.setNbt(nbt);
 
-                    itemStack.decrement(1);
-                    player.giveItemStack(newItemStack);
+                        itemStack.decrement(1);
+                        player.giveItemStack(newItemStack);
+                    }
                 } else {
                     itemStack.removeSubNbt("blockpos");
                     NbtCompound nbt = new NbtCompound();

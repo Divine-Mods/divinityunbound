@@ -54,6 +54,14 @@ public class ModScreenHandlers {
             Registry.register(Registries.SCREEN_HANDLER, new Identifier(DivinityUnbound.MOD_ID, "hallowed_fluid_tank"),
                     new ExtendedScreenHandlerType<>(HallowedFluidTankScreenHandler::new));
 
+    public static final ScreenHandlerType<ItemSingularityStorageScreenHandler> ITEM_SINGULARITY_STORAGE_SCREEN_HANDLER =
+            Registry.register(Registries.SCREEN_HANDLER, new Identifier(DivinityUnbound.MOD_ID, "item_singularity_storage"),
+                    new ExtendedScreenHandlerType<>(ItemSingularityStorageScreenHandler::new));
+
+    public static final ScreenHandlerType<KnowledgeExtractorScreenHandler> KNOWLEDGE_EXTRACTOR_SCREEN_HANDLER =
+            Registry.register(Registries.SCREEN_HANDLER, new Identifier(DivinityUnbound.MOD_ID, "knowledge_extractor"),
+                    new ExtendedScreenHandlerType<>(KnowledgeExtractorScreenHandler::new));
+
     public static final ScreenHandlerType<SpaceTimeFurnaceScreenHandler> SPACE_TIME_FURNACE_SCREEN_HANDLER =
             Registry.register(Registries.SCREEN_HANDLER, new Identifier(DivinityUnbound.MOD_ID, "space_time_furnace"),
                     new ScreenHandlerType<>(SpaceTimeFurnaceScreenHandler::new, FeatureFlags.VANILLA_FEATURES));
