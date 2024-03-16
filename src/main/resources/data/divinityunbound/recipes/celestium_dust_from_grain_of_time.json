@@ -1,0 +1,16 @@
+{
+  "type": "divinityunbound:in_world_crafting",
+  "ingredients": [
+    {
+      "item": "divinityunbound:grain_of_time"
+    },
+    {
+      "item": "divinityunbound:golden_celestite_infused_stone"
+    }
+  ],
+  "output": {
+    "item": "divinityunbound:celestium_dust",
+    "count": 1
+  },
+  "dimension": "overworld"
+}

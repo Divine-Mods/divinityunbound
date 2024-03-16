@@ -1,0 +1,16 @@
+{
+  "type": "divinityunbound:in_world_crafting",
+  "ingredients": [
+    {
+      "item": "divinityunbound:grain_of_time"
+    },
+    {
+      "item": "minecraft:bedrock"
+    }
+  ],
+  "output": {
+    "item": "divinityunbound:unholy_dust",
+    "count": 1
+  },
+  "dimension": "the_nether"
+}

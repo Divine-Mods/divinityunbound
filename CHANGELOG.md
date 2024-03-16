@@ -4,6 +4,7 @@
 ## v0.1.0
 - Added Hallowed Fluid Tank
 - Added Knowledge Extractor (can store XP)
+- Added REI custom recipes for Celestium, Unholy, and Space dust
 - Updates to several block GUIs to make specific inputs and outputs more clear
 - Fixed import/export fluid bug with Space Time Evaporator and Amalgamator
 - Bug Fixes (IOCard can now only save coords of Wormhole Transporter blocks)

@@ -9,17 +9,21 @@ import me.shedaniel.rei.api.common.util.EntryStacks;
 import name.divinityunbound.block.ModBlocks;
 import name.divinityunbound.recipe.ChronosTimeAccumulatorRecipe;
 import name.divinityunbound.recipe.GenerationStationRecipe;
+import name.divinityunbound.recipe.InWorldRecipe;
 import name.divinityunbound.screen.ChronosTimeAccumulatorScreen;
 import name.divinityunbound.screen.GenerationStationScreen;
+import net.minecraft.block.Blocks;
 
 public class DivinityModREIClientPlugin implements REIClientPlugin {
     @Override
     public void registerCategories(CategoryRegistry registry) {
         registry.add(new GenerationStationCategory());
         registry.add(new ChronosTimeAccumulatorCategory());
+        registry.add(new InWorldCategory());
 
         registry.addWorkstations(GenerationStationCategory.GENERATION_STATION, EntryStacks.of(ModBlocks.GENERATION_STATION));
         registry.addWorkstations(ChronosTimeAccumulatorCategory.CHRONOS_TIME_ACCUMULATOR, EntryStacks.of(ModBlocks.CHRONOS_TIME_ACCUMULATOR));
+        registry.addWorkstations(InWorldCategory.IN_WORLD_CRAFTING, EntryStacks.of(Blocks.GRASS_BLOCK));
     }
 
     @Override
@@ -28,6 +32,8 @@ public class DivinityModREIClientPlugin implements REIClientPlugin {
                 GenerationStationDisplay::new);
         registry.registerRecipeFiller(ChronosTimeAccumulatorRecipe.class, ChronosTimeAccumulatorRecipe.Type.INSTANCE,
                 ChronosTimeAccumulatorDisplay::new);
+        registry.registerRecipeFiller(InWorldRecipe.class, InWorldRecipe.Type.INSTANCE,
+                InWorldDisplay::new);
     }
 
     @Override
