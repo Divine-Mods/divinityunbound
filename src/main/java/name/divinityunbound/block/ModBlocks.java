@@ -110,18 +110,28 @@ public class ModBlocks {
                             .pistonBehavior(PistonBehavior.DESTROY)));
 
     public static final Block CELESTIAL_GLASS = registerBlock("celestial_glass",
-            new CelestialGlassBlock(FabricBlockSettings.copyOf(Blocks.GLASS).nonOpaque()
+            new CelestialGlassBlock(FabricBlockSettings.copyOf(Blocks.GLASS)
+                    .nonOpaque()
                     .allowsSpawning(Blocks::never)
                     .solidBlock(Blocks::never)
                     .suffocates(Blocks::never)
                     .blockVision(Blocks::never), false));
 
     public static final Block DARK_CELESTIAL_GLASS = registerBlock("dark_celestial_glass",
-            new DarkCelestialGlassBlock(FabricBlockSettings.copyOf(Blocks.GLASS).nonOpaque()
+            new DarkCelestialGlassBlock(FabricBlockSettings.copyOf(Blocks.GLASS)
+                    .nonOpaque()
                     .allowsSpawning(Blocks::never)
                     .solidBlock(Blocks::never)
                     .suffocates(Blocks::never)
                     .blockVision(Blocks::never), false));
+
+    public static final Block MINI_GLASS = registerBlock("mini_glass",
+            new MiniGlassBlock(FabricBlockSettings.copyOf(Blocks.GLASS)
+                    .nonOpaque()
+                    .allowsSpawning(Blocks::never)
+                    .solidBlock(Blocks::never)
+                    .suffocates(Blocks::never)
+                    .blockVision(Blocks::never)));
 
     public static final Block MYSTIC_CHRONOGRAPH = registerBlock("mystic_chronograph",
             new MysticChronographBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));

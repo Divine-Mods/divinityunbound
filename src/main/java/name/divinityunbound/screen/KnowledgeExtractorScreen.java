@@ -18,8 +18,8 @@ public class KnowledgeExtractorScreen extends HandledScreen<KnowledgeExtractorSc
     @Override
     protected void init() {
         super.init();
-        titleY = 1000;
-        playerInventoryTitleY = 1000;
+        //titleY = 1000;
+        //playerInventoryTitleY = 1000;
     }
 
     @Override
@@ -44,9 +44,9 @@ public class KnowledgeExtractorScreen extends HandledScreen<KnowledgeExtractorSc
         int y = (height - backgroundHeight) / 2;
 
         context.drawCenteredTextWithShadow(textRenderer, Text.literal("Levels: " + Integer.toString(handler.getStoredExperienceLevel())),
-                x + 87, y + 40, 0xffffff);
+                x + 87, y + 25, 0xffffff);
 
         context.drawCenteredTextWithShadow(textRenderer, Text.literal("Total XP: " + Integer.toString(handler.getStoredTotalExperience())),
-                x + 87, y + 60, 0xffffff);
+                x + 87, y + 45, 0xffffff);
     }
 }

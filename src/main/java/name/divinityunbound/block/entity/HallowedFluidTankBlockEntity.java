@@ -89,7 +89,7 @@ public class HallowedFluidTankBlockEntity extends BlockEntity implements Extende
 
         @Override
         protected long getCapacity(FluidVariant variant) {
-            return (FluidConstants.BUCKET / 81) * 256;
+            return (FluidConstants.BUCKET / 81) * 512;
         }
 
         @Override

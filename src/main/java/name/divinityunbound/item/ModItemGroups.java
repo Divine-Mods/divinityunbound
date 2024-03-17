@@ -48,6 +48,7 @@ public class ModItemGroups {
                         entries.add(ModItems.IMPORT_CARD);
                         entries.add(ModItems.EXPORT_CARD);
                         entries.add(ModItems.DIVINE_TORCH);
+                        entries.add(ModItems.GOLD_BAND);
 
                         entries.add(ModFluids.SPACE_TIME_BUCKET);
 
@@ -134,6 +135,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.SAND_OF_TIME);
                         entries.add(ModBlocks.CELESTIAL_GLASS);
                         entries.add(ModBlocks.DARK_CELESTIAL_GLASS);
+                        entries.add(ModBlocks.MINI_GLASS);
 
                         /* Block Entities */
                         entries.add(ModBlocks.GENERATION_STATION);
@@ -151,9 +153,10 @@ public class ModItemGroups {
                         entries.add(ModBlocks.FLUID_TRASHCAN);
                         entries.add(ModBlocks.ENERGY_TRASHCAN);
                         entries.add(ModBlocks.HALLOWED_FLUID_TANK);
+                        entries.add(ModBlocks.KNOWLEDGE_EXTRACTOR);
                         //entries.add(ModBlocks.ITEM_SINGULARITY_STORAGE);
 
-                        entries.add(ModBlocks.SPACE_TIME_FURNACE);
+                        //entries.add(ModBlocks.SPACE_TIME_FURNACE);
 
                         /* Foci */
                         entries.add(ModItems.CELESTITE_COAL_FOCUS);

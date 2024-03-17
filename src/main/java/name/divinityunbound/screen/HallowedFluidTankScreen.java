@@ -29,8 +29,8 @@ public class HallowedFluidTankScreen extends HandledScreen<HallowedFluidTankScre
     @Override
     protected void init() {
         super.init();
-        titleY = 1000;
-        playerInventoryTitleY = 1000;
+        //titleY = 1000;
+        //playerInventoryTitleY = 1000;
         this.fluidCapacity = handler.blockEntity.fluidStorage.getCapacity();
         assignFluidStackRenderer();
     }

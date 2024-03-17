@@ -61,6 +61,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.HALLOWED_FLUID_TANK)
                 .add(ModBlocks.ITEM_SINGULARITY_STORAGE)
                 .add(ModBlocks.KNOWLEDGE_EXTRACTOR)
+                .add(ModBlocks.MINI_GLASS)
                 .add(ModBlocks.SPACE_TIME_FURNACE);
 
         getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)

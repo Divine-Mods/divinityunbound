@@ -37,6 +37,7 @@ public class ModItems {
     public static final Item QUANTITY_CORE = registerItem("quantity_core", new Item(new FabricItemSettings()));
     public static final Item SPEED_CORE = registerItem("speed_core", new Item(new FabricItemSettings()));
     public static final Item MOB_CORE = registerItem("mob_core", new Item(new FabricItemSettings()));
+    public static final Item GOLD_BAND = registerItem("gold_band", new Item(new FabricItemSettings()));
     public static final Item IMPORT_CARD = registerItem("import_card", new IOCardItem(new FabricItemSettings()));
     public static final Item EXPORT_CARD = registerItem("export_card", new IOCardItem(new FabricItemSettings()));
 

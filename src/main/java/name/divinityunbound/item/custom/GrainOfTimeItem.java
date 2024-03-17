@@ -33,7 +33,7 @@ public class GrainOfTimeItem extends Item {
 
             if (world.getDimensionKey() == DimensionTypes.OVERWORLD) {
                 if (blockState.getBlock().equals(ModBlocks.GOLDEN_CELESTITE_INFUSED_STONE)
-                        && blockPos.getY() > 300) {
+                        && blockPos.getY() > 125) {
                     ItemStack item = new ItemStack(ModItems.CELESTIUM_DUST);
 
                     this.playUseSound(world, blockPos);

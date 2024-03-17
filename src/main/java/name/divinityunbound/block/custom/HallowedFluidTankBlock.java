@@ -3,12 +3,16 @@ package name.divinityunbound.block.custom;
 import com.mojang.serialization.MapCodec;
 import name.divinityunbound.block.entity.HallowedFluidTankBlockEntity;
 import name.divinityunbound.block.entity.ModBlockEntities;
+import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
+import net.fabricmc.fabric.api.transfer.v1.item.ItemVariant;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.fluid.Fluid;
+import net.minecraft.fluid.Fluids;
+import net.minecraft.item.*;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.DirectionProperty;
@@ -23,6 +27,8 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.function.Function;
 
 public class HallowedFluidTankBlock extends BlockWithEntity implements BlockEntityProvider {
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
@@ -80,6 +86,11 @@ public class HallowedFluidTankBlock extends BlockWithEntity implements BlockEnti
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (!world.isClient) {
+//            ItemStack stackInHand = player.getStackInHand(hand);
+//            if (stackInHand.getItem() instanceof BucketItem && !stackInHand.equals(Items.BUCKET)) {
+//
+//            }
+
             NamedScreenHandlerFactory screenHandlerFactory = ((HallowedFluidTankBlockEntity) world.getBlockEntity(pos));
 
             if (screenHandlerFactory != null) {

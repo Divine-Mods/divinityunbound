@@ -295,6 +295,52 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(Items.LAVA_BUCKET), conditionsFromItem(Items.LAVA_BUCKET))
                 .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.ENERGY_TRASHCAN)));
 
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.KNOWLEDGE_EXTRACTOR, 1)
+                .pattern("SBS")
+                .pattern("G G")
+                .pattern("WGW")
+                .input('S', Blocks.BOOKSHELF)
+                .input('G', Blocks.GLASS)
+                .input('W', Blocks.OAK_PLANKS)
+                .input('B', Items.BOOK)
+                .criterion(hasItem(Blocks.BOOKSHELF), conditionsFromItem(Blocks.BOOKSHELF))
+                .criterion(hasItem(Blocks.GLASS), conditionsFromItem(Blocks.GLASS))
+                .criterion(hasItem(Blocks.OAK_PLANKS), conditionsFromItem(Blocks.OAK_PLANKS))
+                .criterion(hasItem(Items.BOOK), conditionsFromItem(Items.BOOK))
+                .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.KNOWLEDGE_EXTRACTOR)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.HALLOWED_FLUID_TANK, 1)
+                .pattern("GBG")
+                .pattern("BMB")
+                .pattern("GBG")
+                .input('B', Blocks.POLISHED_BLACKSTONE)
+                .input('M', ModBlocks.MINI_GLASS)
+                .input('G', ModItems.GOLD_BAND)
+                .criterion(hasItem(Blocks.POLISHED_BLACKSTONE), conditionsFromItem(Blocks.POLISHED_BLACKSTONE))
+                .criterion(hasItem(ModBlocks.MINI_GLASS), conditionsFromItem(ModBlocks.MINI_GLASS))
+                .criterion(hasItem(ModItems.GOLD_BAND), conditionsFromItem(ModItems.GOLD_BAND))
+                .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.HALLOWED_FLUID_TANK)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.MINI_GLASS, 4)
+                .pattern("GGG")
+                .pattern("GTG")
+                .pattern("GGG")
+                .input('T', ModBlocks.FROZEN_TIME_GLASS)
+                .input('G', Items.GLASS)
+                .criterion(hasItem(ModBlocks.FROZEN_TIME_GLASS), conditionsFromItem(ModBlocks.FROZEN_TIME_GLASS))
+                .criterion(hasItem(Items.GLASS), conditionsFromItem(Items.GLASS))
+                .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.MINI_GLASS)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.GOLD_BAND, 4)
+                .pattern(" G ")
+                .pattern("GCG")
+                .pattern(" G ")
+                .input('C', ModItems.CELESTITE)
+                .input('G', Items.GOLD_INGOT)
+                .criterion(hasItem(ModItems.CELESTITE), conditionsFromItem(ModItems.CELESTITE))
+                .criterion(hasItem(Items.GLASS), conditionsFromItem(Items.GLASS))
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.GOLD_BAND)));
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.TIME_FORGED_INGOT, 1)
                 .pattern("DUD")
                 .pattern("UCU")
