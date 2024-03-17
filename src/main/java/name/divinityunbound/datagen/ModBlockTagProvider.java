@@ -103,6 +103,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.WILDERSUNG_PLANKS)
                 .add(ModBlocks.CELESTITE_INFUSED_WILDERSUNG_PLANKS);
 
+        getOrCreateTagBuilder(BlockTags.WOOL)
+                .add(ModBlocks.WILDERSUNG_SILK);
+
         getOrCreateTagBuilder(BlockTags.LEAVES)
                 .add(ModBlocks.WILDERSUNG_LEAVES);
 

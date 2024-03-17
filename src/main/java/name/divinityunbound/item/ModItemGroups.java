@@ -136,6 +136,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.CELESTIAL_GLASS);
                         entries.add(ModBlocks.DARK_CELESTIAL_GLASS);
                         entries.add(ModBlocks.MINI_GLASS);
+                        entries.add(ModBlocks.WILDERSUNG_SILK);
 
                         /* Block Entities */
                         entries.add(ModBlocks.GENERATION_STATION);

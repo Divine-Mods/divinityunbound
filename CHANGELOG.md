@@ -6,6 +6,7 @@
 - Added Knowledge Extractor (can store XP, use a redstone signal to get xp back out)
 - Added Gold band item
 - Added Mini Glass
+- Added Wildersung Silk
 - Moved required level for Celestium dust down from 300 to 125
 - Added REI custom recipes for Celestium, Unholy, and Space dust
 - Updates to several block GUIs to make specific inputs and outputs more clear

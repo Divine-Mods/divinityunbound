@@ -49,6 +49,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerShapelessRecipe(exporter, ModBlocks.WILDERSUNG_PLANKS, ModBlocks.STRIPPED_WILDERSUNG_WOOD, "celestite",4);
         offer2x2CompactingRecipe(exporter, RecipeCategory.MISC, ModItems.WILDERSUNG_STRING, ModBlocks.WILDERSUNG_LEAVES);
         offer2x2CompactingRecipe(exporter, RecipeCategory.MISC, ModBlocks.SAND_OF_TIME, ModItems.GRAIN_OF_TIME);
+        offer2x2CompactingRecipe(exporter, RecipeCategory.MISC, ModBlocks.WILDERSUNG_SILK, ModItems.WILDERSUNG_STRING);
 
         offerHelmetRecipe(exporter, RecipeCategory.COMBAT, ModItems.CELESTITE_HELMET, ModItems.CELESTITE);
         offerChestplateRecipe(exporter, RecipeCategory.COMBAT, ModItems.CELESTITE_CHESTPLATE, ModItems.CELESTITE);

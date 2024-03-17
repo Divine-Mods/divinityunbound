@@ -75,6 +75,9 @@ public class ModBlocks {
     public static final Block WILDERSUNG_SAPLING = registerBlock("wildersung_sapling",
             new SaplingBlock(ModSaplingGenerators.WILDERSUNG, FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
 
+    public static final Block WILDERSUNG_SILK = registerBlock("wildersung_silk",
+            new Block(FabricBlockSettings.copyOf(Blocks.PINK_WOOL)));
+
     public static final Block GENERATION_STATION = registerBlock("generation_station",
             new GenerationStationBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
 

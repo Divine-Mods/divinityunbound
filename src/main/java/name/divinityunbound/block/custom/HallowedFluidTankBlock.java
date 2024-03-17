@@ -3,8 +3,14 @@ package name.divinityunbound.block.custom;
 import com.mojang.serialization.MapCodec;
 import name.divinityunbound.block.entity.HallowedFluidTankBlockEntity;
 import name.divinityunbound.block.entity.ModBlockEntities;
+import name.divinityunbound.fluid.ModFluids;
+import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.fabricmc.fabric.api.transfer.v1.context.ContainerItemContext;
+import net.fabricmc.fabric.api.transfer.v1.fluid.FluidStorage;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
 import net.fabricmc.fabric.api.transfer.v1.item.ItemVariant;
+import net.fabricmc.fabric.api.transfer.v1.storage.Storage;
+import net.fabricmc.fabric.api.transfer.v1.transaction.Transaction;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
@@ -20,6 +26,7 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.ItemScatterer;
+import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
@@ -86,15 +93,52 @@ public class HallowedFluidTankBlock extends BlockWithEntity implements BlockEnti
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (!world.isClient) {
-//            ItemStack stackInHand = player.getStackInHand(hand);
-//            if (stackInHand.getItem() instanceof BucketItem && !stackInHand.equals(Items.BUCKET)) {
-//
-//            }
+            ItemStack stackInHand = player.getStackInHand(hand);
+            if (stackInHand.getItem() instanceof BucketItem && !stackInHand.equals(Items.BUCKET)) {
+                HallowedFluidTankBlockEntity be = ((HallowedFluidTankBlockEntity) world.getBlockEntity(pos));
+                if (be != null) {
+                    Storage<FluidVariant> bucketStorage = ContainerItemContext.withConstant(stackInHand).find(FluidStorage.ITEM);
 
-            NamedScreenHandlerFactory screenHandlerFactory = ((HallowedFluidTankBlockEntity) world.getBlockEntity(pos));
+                    ItemStack itemStack2 = new ItemStack(Items.BUCKET, 1);
+                    try(Transaction transaction = Transaction.openOuter()) {
+                        long amountTransferred = be.fluidStorage.insert(bucketStorage.iterator().next().getResource(),
+                                1000, transaction);
+                        if (amountTransferred > 0) {
+                            ItemStack itemStack3 = ItemUsage.exchangeStack(stackInHand, player, itemStack2);
+                            transaction.commit();
 
-            if (screenHandlerFactory != null) {
-                player.openHandledScreen(screenHandlerFactory);
+                            return ActionResult.SUCCESS;
+                        }
+                    }
+                }
+                return ActionResult.FAIL;
+            }
+            // TODO: Fix using empty bucket on tank to extract
+            else if (stackInHand.getItem() instanceof BucketItem && stackInHand.equals(Items.BUCKET)) {
+                HallowedFluidTankBlockEntity be = ((HallowedFluidTankBlockEntity) world.getBlockEntity(pos));
+                if (be != null) {
+                    Storage<FluidVariant> bucketStorage = ContainerItemContext.withConstant(stackInHand).find(FluidStorage.ITEM);
+
+                    ItemStack itemStack2 = new ItemStack(new BucketItem(be.fluidStorage.getResource().getFluid(),
+                            new FabricItemSettings().recipeRemainder(Items.BUCKET).maxCount(1)), 1);
+                    try (Transaction transaction = Transaction.openOuter()) {
+                        long amountTransferred = be.fluidStorage.extract(be.fluidStorage.getResource(),
+                                1000, transaction);
+                        if (amountTransferred > 0) {
+                            ItemStack itemStack3 = ItemUsage.exchangeStack(stackInHand, player, itemStack2);
+                            transaction.commit();
+
+                            return ActionResult.SUCCESS;
+                        }
+                    }
+                }
+            }
+            else {
+                NamedScreenHandlerFactory screenHandlerFactory = ((HallowedFluidTankBlockEntity) world.getBlockEntity(pos));
+
+                if (screenHandlerFactory != null) {
+                    player.openHandledScreen(screenHandlerFactory);
+                }
             }
         }
 

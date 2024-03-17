@@ -34,6 +34,7 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.FROZEN_TIME_LAMP);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CELESTIAL_GLASS);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DARK_CELESTIAL_GLASS);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.WILDERSUNG_SILK);
         blockStateModelGenerator.registerSimpleState(ModBlocks.MINI_GLASS);
         blockStateModelGenerator.registerSimpleState(ModBlocks.DIVINE_TORCH);
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.WALL_DIVINE_TORCH);
