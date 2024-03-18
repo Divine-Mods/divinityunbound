@@ -109,7 +109,7 @@ public class SpaceTimeEvaporatorBlockEntity extends BlockEntity implements Exten
             }
             @Override
             protected long getCapacity(FluidVariant variant) {
-                return (FluidConstants.BUCKET / 81) * 64;
+                return FluidConstants.BUCKET * 64;
             }
             @Override
             protected boolean canInsert(FluidVariant variant) {
@@ -210,7 +210,7 @@ public class SpaceTimeEvaporatorBlockEntity extends BlockEntity implements Exten
 
     private void extractFluid() {
         try(Transaction transaction = Transaction.openOuter()) {
-            this.internalFluidStorage.extract(FluidVariant.of(ModFluids.STILL_SPACE_TIME), 500, transaction);
+            this.internalFluidStorage.extract(FluidVariant.of(ModFluids.STILL_SPACE_TIME), FluidConstants.BUCKET/2, transaction);
             transaction.commit();
         }
     }

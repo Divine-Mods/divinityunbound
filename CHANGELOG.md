@@ -8,6 +8,7 @@
 - Added Mini Glass
 - Added Wildersung Silk
 - Moved required level for Celestium dust down from 300 to 125
+- Fixed bug with fluids with Hallowed Fluid Tank, Space Time Amalgamator and Evaporator
 - Added REI custom recipes for Celestium, Unholy, and Space dust
 - Updates to several block GUIs to make specific inputs and outputs more clear
 - Fixed import/export fluid bug with Space Time Evaporator and Amalgamator

@@ -106,7 +106,7 @@ public class SpaceTimeAmalgamatorBlockEntity extends BlockEntity implements Exte
             }
             @Override
             protected long getCapacity(FluidVariant variant) {
-                return (FluidConstants.BUCKET / 81) * 64;
+                return FluidConstants.BUCKET * 64;
             }
             @Override
             protected boolean canInsert(FluidVariant variant) {
@@ -206,14 +206,14 @@ public class SpaceTimeAmalgamatorBlockEntity extends BlockEntity implements Exte
     private void produceFluid() {
         try(Transaction transaction = Transaction.openOuter()) {
             this.internalFluidStorage.insert(FluidVariant.of(ModFluids.STILL_SPACE_TIME),
-                    500, transaction);
+                    FluidConstants.BUCKET/2, transaction);
             transaction.commit();
         }
     }
 
     private void extractEnergy() {
         try(Transaction transaction = Transaction.openOuter()) {
-            this.energyStorage.extract(250000L, transaction);
+            this.energyStorage.extract(25000L, transaction);
             transaction.commit();
         }
     }

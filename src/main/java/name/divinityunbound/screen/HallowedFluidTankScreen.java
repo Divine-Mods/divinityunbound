@@ -36,7 +36,7 @@ public class HallowedFluidTankScreen extends HandledScreen<HallowedFluidTankScre
     }
 
     private void assignFluidStackRenderer() {
-        fluidStackRenderer = new FluidStackRenderer(this.fluidCapacity, true, 16, 39);
+        fluidStackRenderer = new FluidStackRenderer(this.fluidCapacity/81, true, 16, 39);
     }
 
     private void renderFluidTooltip(DrawContext context, int mouseX, int mouseY, int x, int y, int offsetX, int offsetY, FluidStackRenderer renderer) {
@@ -65,7 +65,7 @@ public class HallowedFluidTankScreen extends HandledScreen<HallowedFluidTankScre
         context.drawTexture(TEXTURE, x, y, 0, 0, backgroundWidth, backgroundHeight);
 
         fluidStackRenderer.drawFluid(context, handler.blockEntity.fluidStorage, x + 80, y + 20, 16, 39,
-                this.fluidCapacity);
+                this.fluidCapacity/81);
     }
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {

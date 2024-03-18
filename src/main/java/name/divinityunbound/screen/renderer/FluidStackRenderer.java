@@ -76,7 +76,7 @@ public class FluidStackRenderer {
         final Sprite sprite = FluidVariantRendering.getSprite(fluidStorage.variant);
         int color = FluidVariantRendering.getColor(fluidStorage.variant);
 
-        final int drawHeight = (int) Math.ceil((fluidStorage.amount / (maxCapacity * 1F) * height));
+        final int drawHeight = (int) Math.ceil((((double) fluidStorage.amount /81) / (maxCapacity * 1F) * height));
         final int iconHeight = sprite.getY();
         int offsetHeight = drawHeight;
 
@@ -109,7 +109,7 @@ public class FluidStackRenderer {
         MutableText displayName = Text.translatable("block." + Registries.FLUID.getId(fluidStorage.variant.getFluid()).toTranslationKey());
         tooltip.add(displayName);
 
-        long amount = fluidStorage.amount;
+        long amount = fluidStorage.amount/81;
         if (tooltipMode == TooltipMode.SHOW_AMOUNT_AND_CAPACITY) {
             MutableText amountString = Text.translatable("divinityunbound.tooltip.liquid.amount.with.capacity", nf.format(amount), nf.format(capacityMb));
             tooltip.add(amountString.fillStyle(Style.EMPTY.withColor(Formatting.DARK_GRAY)));

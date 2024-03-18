@@ -22,6 +22,7 @@ public class SpaceTimeAmalgamatorScreen extends HandledScreen<SpaceTimeAmalgamat
             new Identifier(DivinityUnbound.MOD_ID, "textures/gui/space_time_amalgamator_gui.png");
     private EnergyInfoArea energyInfoArea;
     private FluidStackRenderer fluidStackRenderer;
+    private long fluidCapactiy;
 
     public SpaceTimeAmalgamatorScreen(SpaceTimeAmalgamatorScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
@@ -32,6 +33,7 @@ public class SpaceTimeAmalgamatorScreen extends HandledScreen<SpaceTimeAmalgamat
         super.init();
         titleY = 1000;
         playerInventoryTitleY = 1000;
+        this.fluidCapactiy = handler.blockEntity.internalFluidStorage.getCapacity();
         assignEnergyInfoArea();
         assignFluidStackRenderer();
     }
@@ -42,7 +44,7 @@ public class SpaceTimeAmalgamatorScreen extends HandledScreen<SpaceTimeAmalgamat
     }
 
     private void assignFluidStackRenderer() {
-        fluidStackRenderer = new FluidStackRenderer((FluidConstants.BUCKET / 81) * 64, true, 16, 39);
+        fluidStackRenderer = new FluidStackRenderer(this.fluidCapactiy/81, true, 16, 39);
     }
 
     private void renderEnergyAreaTooltips(DrawContext context, int pMouseX, int pMouseY, int x, int y) {
@@ -82,7 +84,7 @@ public class SpaceTimeAmalgamatorScreen extends HandledScreen<SpaceTimeAmalgamat
 
         energyInfoArea.draw(context);
         fluidStackRenderer.drawFluid(context, handler.blockEntity.internalFluidStorage, x + 129, y + 24, 16, 39,
-                (FluidConstants.BUCKET / 81) * 64);
+                this.fluidCapactiy/81);
     }
 
     private void renderProgressArrow(DrawContext context, int x, int y) {

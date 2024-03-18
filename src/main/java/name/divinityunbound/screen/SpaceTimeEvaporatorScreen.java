@@ -22,6 +22,7 @@ public class SpaceTimeEvaporatorScreen extends HandledScreen<SpaceTimeEvaporator
             new Identifier(DivinityUnbound.MOD_ID, "textures/gui/space_time_evaporator_gui.png");
     private EnergyInfoArea energyInfoArea;
     private FluidStackRenderer fluidStackRenderer;
+    private long fluidCapacity;
 
     public SpaceTimeEvaporatorScreen(SpaceTimeEvaporatorScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
@@ -32,6 +33,7 @@ public class SpaceTimeEvaporatorScreen extends HandledScreen<SpaceTimeEvaporator
         super.init();
         titleY = 1000;
         playerInventoryTitleY = 1000;
+        this.fluidCapacity = handler.blockEntity.internalFluidStorage.getCapacity();
         assignEnergyInfoArea();
         assignFluidStackRenderer();
     }
@@ -42,7 +44,7 @@ public class SpaceTimeEvaporatorScreen extends HandledScreen<SpaceTimeEvaporator
     }
 
     private void assignFluidStackRenderer() {
-        fluidStackRenderer = new FluidStackRenderer((FluidConstants.BUCKET / 81) * 64, true, 16, 39);
+        fluidStackRenderer = new FluidStackRenderer(fluidCapacity/81, true, 16, 39);
     }
 
     private void renderEnergyAreaTooltips(DrawContext context, int pMouseX, int pMouseY, int x, int y) {
@@ -82,7 +84,7 @@ public class SpaceTimeEvaporatorScreen extends HandledScreen<SpaceTimeEvaporator
 
         energyInfoArea.draw(context);
         fluidStackRenderer.drawFluid(context, handler.blockEntity.internalFluidStorage, x + 26, y + 11, 16, 39,
-                (FluidConstants.BUCKET / 81) * 64);
+                fluidCapacity/81);
     }
 
     private void renderProgressArrow(DrawContext context, int x, int y) {

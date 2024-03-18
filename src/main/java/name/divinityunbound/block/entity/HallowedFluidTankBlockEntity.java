@@ -10,6 +10,7 @@ import net.fabricmc.fabric.api.transfer.v1.fluid.FluidConstants;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
 import net.fabricmc.fabric.api.transfer.v1.storage.base.SingleVariantStorage;
 import net.fabricmc.fabric.api.transfer.v1.transaction.Transaction;
+import net.fabricmc.fabric.api.transfer.v1.transaction.TransactionContext;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -89,7 +90,7 @@ public class HallowedFluidTankBlockEntity extends BlockEntity implements Extende
 
         @Override
         protected long getCapacity(FluidVariant variant) {
-            return (FluidConstants.BUCKET / 81) * 512;
+            return FluidConstants.BUCKET * 512;
         }
 
         @Override
@@ -97,6 +98,7 @@ public class HallowedFluidTankBlockEntity extends BlockEntity implements Extende
             markDirty();
             getWorld().updateListeners(pos, getCachedState(), getCachedState(), 3);
         }
+
     };
     @Override
     public DefaultedList<ItemStack> getItems() {

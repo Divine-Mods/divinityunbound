@@ -7,6 +7,7 @@ import name.divinityunbound.fluid.ModFluids;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.transfer.v1.context.ContainerItemContext;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidStorage;
+import net.fabricmc.fabric.api.transfer.v1.fluid.FluidStorageUtil;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
 import net.fabricmc.fabric.api.transfer.v1.item.ItemVariant;
 import net.fabricmc.fabric.api.transfer.v1.storage.Storage;
@@ -94,44 +95,10 @@ public class HallowedFluidTankBlock extends BlockWithEntity implements BlockEnti
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (!world.isClient) {
             ItemStack stackInHand = player.getStackInHand(hand);
-            if (stackInHand.getItem() instanceof BucketItem && !stackInHand.equals(Items.BUCKET)) {
+            if (stackInHand.getItem() instanceof BucketItem) {
                 HallowedFluidTankBlockEntity be = ((HallowedFluidTankBlockEntity) world.getBlockEntity(pos));
-                if (be != null) {
-                    Storage<FluidVariant> bucketStorage = ContainerItemContext.withConstant(stackInHand).find(FluidStorage.ITEM);
-
-                    ItemStack itemStack2 = new ItemStack(Items.BUCKET, 1);
-                    try(Transaction transaction = Transaction.openOuter()) {
-                        long amountTransferred = be.fluidStorage.insert(bucketStorage.iterator().next().getResource(),
-                                1000, transaction);
-                        if (amountTransferred > 0) {
-                            ItemStack itemStack3 = ItemUsage.exchangeStack(stackInHand, player, itemStack2);
-                            transaction.commit();
-
-                            return ActionResult.SUCCESS;
-                        }
-                    }
-                }
-                return ActionResult.FAIL;
-            }
-            // TODO: Fix using empty bucket on tank to extract
-            else if (stackInHand.getItem() instanceof BucketItem && stackInHand.equals(Items.BUCKET)) {
-                HallowedFluidTankBlockEntity be = ((HallowedFluidTankBlockEntity) world.getBlockEntity(pos));
-                if (be != null) {
-                    Storage<FluidVariant> bucketStorage = ContainerItemContext.withConstant(stackInHand).find(FluidStorage.ITEM);
-
-                    ItemStack itemStack2 = new ItemStack(new BucketItem(be.fluidStorage.getResource().getFluid(),
-                            new FabricItemSettings().recipeRemainder(Items.BUCKET).maxCount(1)), 1);
-                    try (Transaction transaction = Transaction.openOuter()) {
-                        long amountTransferred = be.fluidStorage.extract(be.fluidStorage.getResource(),
-                                1000, transaction);
-                        if (amountTransferred > 0) {
-                            ItemStack itemStack3 = ItemUsage.exchangeStack(stackInHand, player, itemStack2);
-                            transaction.commit();
-
-                            return ActionResult.SUCCESS;
-                        }
-                    }
-                }
+                boolean transferred = FluidStorageUtil.interactWithFluidStorage(be.fluidStorage, player, hand);
+                return transferred ? ActionResult.SUCCESS : ActionResult.FAIL;
             }
             else {
                 NamedScreenHandlerFactory screenHandlerFactory = ((HallowedFluidTankBlockEntity) world.getBlockEntity(pos));
