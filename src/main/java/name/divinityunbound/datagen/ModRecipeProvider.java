@@ -212,6 +212,18 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(ModBlocks.CELESTIAL_GLASS), conditionsFromItem(ModBlocks.CELESTIAL_GLASS))
                 .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.DARK_CELESTIAL_GLASS)));
 
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.WITHERED_GLASS, 4)
+                .pattern("GOG")
+                .pattern("OBO")
+                .pattern("GOG")
+                .input('B', Items.BLACK_DYE)
+                .input('O', Blocks.OBSIDIAN)
+                .input('G', ModBlocks.FROZEN_TIME_GLASS)
+                .criterion(hasItem(Items.BLACK_DYE), conditionsFromItem(Items.BLACK_DYE))
+                .criterion(hasItem(Blocks.OBSIDIAN), conditionsFromItem(Blocks.OBSIDIAN))
+                .criterion(hasItem(ModBlocks.FROZEN_TIME_GLASS), conditionsFromItem(ModBlocks.FROZEN_TIME_GLASS))
+                .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.WITHERED_GLASS)));
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.IMPORT_CARD, 3)
                 .pattern("CCC")
                 .pattern("CUC")

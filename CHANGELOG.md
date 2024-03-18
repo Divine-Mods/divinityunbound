@@ -4,9 +4,11 @@
 ## v0.1.0
 - Added Hallowed Fluid Tank
 - Added Knowledge Extractor (can store XP, use a redstone signal to get xp back out)
+- Added Withered Glass (witherproof and dragon proof glass)
 - Added Gold band item
 - Added Mini Glass
 - Added Wildersung Silk
+- Made Divine Replicator and Unholy Silencer redstone toggleable
 - Moved required level for Celestium dust down from 300 to 125
 - Fixed bug with fluids with Hallowed Fluid Tank, Space Time Amalgamator and Evaporator
 - Added REI custom recipes for Celestium, Unholy, and Space dust

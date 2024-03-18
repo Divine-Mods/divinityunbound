@@ -62,6 +62,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.ITEM_SINGULARITY_STORAGE)
                 .add(ModBlocks.KNOWLEDGE_EXTRACTOR)
                 .add(ModBlocks.MINI_GLASS)
+                .add(ModBlocks.WITHERED_GLASS)
                 .add(ModBlocks.SPACE_TIME_FURNACE);
 
         getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
@@ -88,6 +89,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.ENERGY_TRASHCAN)
                 .add(ModBlocks.HALLOWED_FLUID_TANK)
                 .add(ModBlocks.KNOWLEDGE_EXTRACTOR)
+                .add(ModBlocks.WITHERED_GLASS)
                 .add(ModBlocks.ITEM_SINGULARITY_STORAGE);
 
         getOrCreateTagBuilder(BlockTags.NEEDS_DIAMOND_TOOL)
@@ -108,6 +110,14 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
         getOrCreateTagBuilder(BlockTags.LEAVES)
                 .add(ModBlocks.WILDERSUNG_LEAVES);
+
+        getOrCreateTagBuilder(BlockTags.DRAGON_IMMUNE)
+                .add(ModBlocks.UNHOLY_SILENCER)
+                .add(ModBlocks.WITHERED_GLASS);
+
+        getOrCreateTagBuilder(BlockTags.WITHER_IMMUNE)
+                .add(ModBlocks.UNHOLY_SILENCER)
+                .add(ModBlocks.WITHERED_GLASS);
 
         getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN)
                 .add(ModBlocks.WILDERSUNG_LOG)

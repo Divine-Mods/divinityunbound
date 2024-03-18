@@ -123,6 +123,7 @@
   "block.divinityunbound.energy_trashcan": "Energy Trashcan",
   "block.divinityunbound.hallowed_fluid_tank": "Hallowed Fluid Tank",
   "block.divinityunbound.knowledge_extractor": "Knowledge Extractor",
+  "block.divinityunbound.withered_glass": "Withered Glass",
   "block.divinityunbound.space_time_furnace": "Space Time Furnace",
 
   "block.minecraft.empty": "Empty",
@@ -167,6 +168,7 @@
   "tooltip.divinityunbound.celestial_glass2": "Hold Shift to stand on.",
   "tooltip.divinityunbound.dark_celestial_glass1": "Players can phase through, Mobs cannot.",
   "tooltip.divinityunbound.dark_celestial_glass2": "Acts like Tinted Glass. Hold Shift to stand on.",
+  "tooltip.divinityunbound.withered_glass": "Wither, Dragon, and Explosion proof",
 
   "divinityunbound.wormhole_transporter.item_mode.conditional": "Extract Item",
   "divinityunbound.wormhole_transporter.item_mode.unconditional": "No Item",

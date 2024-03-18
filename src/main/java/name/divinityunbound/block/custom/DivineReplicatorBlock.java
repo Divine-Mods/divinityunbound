@@ -8,10 +8,13 @@ import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.item.ItemStack;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.state.StateManager;
+import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
@@ -19,6 +22,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
@@ -27,11 +31,14 @@ import org.jetbrains.annotations.Nullable;
 
 public class DivineReplicatorBlock extends BlockWithEntity implements BlockEntityProvider {
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
+    public static final BooleanProperty ENABLED = Properties.ENABLED;
     private static final VoxelShape SHAPE = Block.createCuboidShape(0, 0, 0, 16, 16, 16);
     protected final Random random = Random.create();
     public static final MapCodec<DivineReplicatorBlock> CODEC = DivineReplicatorBlock.createCodec(DivineReplicatorBlock::new);
     public DivineReplicatorBlock(Settings settings) {
         super(settings);
+        this.setDefaultState((BlockState)((BlockState)((BlockState)this.stateManager.getDefaultState()).with(FACING, Direction.NORTH)).with(ENABLED, false));
+
     }
 
     @Override
@@ -48,6 +55,7 @@ public class DivineReplicatorBlock extends BlockWithEntity implements BlockEntit
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(FACING);
+        builder.add(ENABLED);
     }
 
     @Override
@@ -64,6 +72,37 @@ public class DivineReplicatorBlock extends BlockWithEntity implements BlockEntit
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
         return new DivineReplicatorBlockEntity(pos, state);
+    }
+
+    @Override
+    public void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {
+        if (!world.isClient) {
+            this.updateEnabled(world, pos, state);
+        }
+    }
+
+    @Override
+    public void onPlaced(World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack itemStack) {
+        if (!world.isClient) {
+            this.updateEnabled(world, pos, state);
+        }
+    }
+
+    @Override
+    public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
+        if (oldState.isOf(state.getBlock())) {
+            return;
+        }
+        if (!world.isClient && world.getBlockEntity(pos) == null) {
+            this.updateEnabled(world, pos, state);
+        }
+    }
+
+    private void updateEnabled(World world, BlockPos pos, BlockState state) {
+        boolean bl = world.isReceivingRedstonePower(pos);
+        if (bl != state.get(ENABLED)) {
+            world.setBlockState(pos, (BlockState)state.with(ENABLED, bl), Block.NOTIFY_LISTENERS);
+        }
     }
 
     @Override

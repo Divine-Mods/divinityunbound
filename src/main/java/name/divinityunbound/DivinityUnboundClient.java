@@ -28,6 +28,7 @@ public class DivinityUnboundClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.KNOWLEDGE_EXTRACTOR, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.MINI_GLASS, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.DARK_CELESTIAL_GLASS, RenderLayer.getTranslucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.WITHERED_GLASS, RenderLayer.getTranslucent());
 
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SPACE_TIME_AMALGAMATOR, RenderLayer.getCutoutMipped());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.WORMHOLE_TRANSPORTER, RenderLayer.getCutoutMipped());

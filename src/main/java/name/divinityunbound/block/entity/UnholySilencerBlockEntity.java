@@ -1,6 +1,8 @@
 package name.divinityunbound.block.entity;
 
 import name.divinityunbound.block.ModBlocks;
+import name.divinityunbound.block.custom.KnowledgeExtractorBlock;
+import name.divinityunbound.block.custom.UnholySilencerBlock;
 import name.divinityunbound.item.ModItems;
 import name.divinityunbound.screen.UnholySilencerScreenHandler;
 import net.minecraft.block.BlockState;
@@ -128,9 +130,6 @@ public class UnholySilencerBlockEntity extends BlockEntity implements ExtendedSc
         if (world.isClient()) {
             return;
         }
-        if (world.isReceivingRedstonePower(pos)) {
-            return;
-        }
 
         // TODO: tweak attack cooldown and add range upgrade
 //        attackCooldown += 1 + (speedCount * 7);
@@ -139,7 +138,8 @@ public class UnholySilencerBlockEntity extends BlockEntity implements ExtendedSc
 //        }
 //        attackCooldown = 0;
         //PlayerEntity player = world.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), 4, false);
-        if (hasWeapon() && hasFuel()) {
+        if (state.get(UnholySilencerBlock.ENABLED).booleanValue()
+                && hasWeapon() && hasFuel()) {
             if (upgradeCheck >= CHECK_UPGRADE_TICKS) {
                 countUpgrades(world, pos);
                 upgradeCheck = 0;

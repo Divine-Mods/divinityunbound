@@ -136,6 +136,13 @@ public class ModBlocks {
                     .suffocates(Blocks::never)
                     .blockVision(Blocks::never)));
 
+    public static final Block WITHERED_GLASS = registerBlock("withered_glass",
+            new WitheredGlassBlock(FabricBlockSettings.copyOf(Blocks.GLASS)
+                    .mapColor(MapColor.GRAY).nonOpaque()
+                    .strength(4.5f, 3600000.0f)
+                    .allowsSpawning(Blocks::never)
+                    .blockVision(Blocks::never)));
+
     public static final Block MYSTIC_CHRONOGRAPH = registerBlock("mystic_chronograph",
             new MysticChronographBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
     public static final Block DIVINE_REPLICATOR = registerBlock("divine_replicator",

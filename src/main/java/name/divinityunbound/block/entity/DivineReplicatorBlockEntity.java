@@ -1,6 +1,8 @@
 package name.divinityunbound.block.entity;
 
 import name.divinityunbound.block.ModBlocks;
+import name.divinityunbound.block.custom.DivineReplicatorBlock;
+import name.divinityunbound.block.custom.KnowledgeExtractorBlock;
 import name.divinityunbound.item.ModItems;
 import name.divinityunbound.item.custom.WandOfCapturingItem;
 import name.divinityunbound.recipe.GenerationStationRecipe;
@@ -117,7 +119,8 @@ public class DivineReplicatorBlockEntity extends BlockEntity implements Extended
             return;
         }
 
-        if (this.hasValidWand() && this.hasFuel()) {
+        if (state.get(DivineReplicatorBlock.ENABLED).booleanValue()
+                && this.hasValidWand() && this.hasFuel()) {
             if (upgradeCheck >= CHECK_UPGRADE_TICKS) {
                 countUpgrades(world, pos);
                 upgradeCheck = 0;
