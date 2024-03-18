@@ -4,7 +4,12 @@ import me.shedaniel.math.Rectangle;
 import me.shedaniel.rei.api.client.plugins.REIClientPlugin;
 import me.shedaniel.rei.api.client.registry.category.CategoryRegistry;
 import me.shedaniel.rei.api.client.registry.display.DisplayRegistry;
+import me.shedaniel.rei.api.client.registry.entry.EntryRegistry;
 import me.shedaniel.rei.api.client.registry.screen.ScreenRegistry;
+import me.shedaniel.rei.api.common.entry.EntryIngredient;
+import me.shedaniel.rei.api.common.entry.EntryStack;
+import me.shedaniel.rei.api.common.entry.type.VanillaEntryTypes;
+import me.shedaniel.rei.api.common.util.EntryIngredients;
 import me.shedaniel.rei.api.common.util.EntryStacks;
 import name.divinityunbound.block.ModBlocks;
 import name.divinityunbound.recipe.ChronosTimeAccumulatorRecipe;
@@ -13,6 +18,8 @@ import name.divinityunbound.recipe.InWorldRecipe;
 import name.divinityunbound.screen.ChronosTimeAccumulatorScreen;
 import name.divinityunbound.screen.GenerationStationScreen;
 import net.minecraft.block.Blocks;
+import net.minecraft.item.ItemStack;
+import net.minecraft.recipe.Ingredient;
 
 public class DivinityModREIClientPlugin implements REIClientPlugin {
     @Override
@@ -43,4 +50,14 @@ public class DivinityModREIClientPlugin implements REIClientPlugin {
         registry.registerClickArea(screen -> new Rectangle(75, 30, 20, 30), ChronosTimeAccumulatorScreen.class,
                 ChronosTimeAccumulatorCategory.CHRONOS_TIME_ACCUMULATOR);
     }
+
+    @Override
+    public void registerEntries(EntryRegistry registry) {
+        REIClientPlugin.super.registerEntries(registry);
+
+        // TODO: Remember to remove this once these blocks are fully implemented
+        registry.removeEntry(EntryStacks.of(new ItemStack(ModBlocks.SPACE_TIME_FURNACE, 1)));
+        registry.removeEntry(EntryStacks.of(new ItemStack(ModBlocks.ITEM_SINGULARITY_STORAGE, 1)));
+    }
+
 }

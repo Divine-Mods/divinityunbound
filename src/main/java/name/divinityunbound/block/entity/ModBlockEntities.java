@@ -87,6 +87,10 @@ public class ModBlockEntities {
                     FabricBlockEntityTypeBuilder.create(KnowledgeExtractorBlockEntity::new,
                             ModBlocks.KNOWLEDGE_EXTRACTOR).build());
 
+    public static final BlockEntityType<CoalGeneratorBlockEntity> COAL_GENERATOR_BLOCK_ENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(DivinityUnbound.MOD_ID, "coal_generator_be"),
+                    FabricBlockEntityTypeBuilder.create(CoalGeneratorBlockEntity::new,
+                            ModBlocks.COAL_GENERATOR).build());
 
     public static final BlockEntityType<SpaceTimeFurnaceBlockEntity> SPACE_TIME_FURNACE_BLOCK_ENTITY =
             Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(DivinityUnbound.MOD_ID, "space_time_furnace_be"),
@@ -111,5 +115,8 @@ public class ModBlockEntities {
         FluidStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.fluidStorage, HALLOWED_FLUID_TANK_BLOCK_ENTITY);
 
         ItemStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.inventoryWrapper, ITEM_SINGULARITY_STORAGE_BLOCK_ENTITY);
+
+        ItemStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.inventoryWrapper, COAL_GENERATOR_BLOCK_ENTITY);
+        EnergyStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.energyStorage, COAL_GENERATOR_BLOCK_ENTITY);
     }
 }

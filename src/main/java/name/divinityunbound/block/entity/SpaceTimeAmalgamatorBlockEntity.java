@@ -90,7 +90,7 @@ public class SpaceTimeAmalgamatorBlockEntity extends BlockEntity implements Exte
         };
     }
 
-    public final SimpleEnergyStorage energyStorage = new SimpleEnergyStorage(5000000, Integer.MAX_VALUE, 250000) {
+    public final SimpleEnergyStorage energyStorage = new SimpleEnergyStorage(5000000, Integer.MAX_VALUE, 25000) {
         @Override
         protected void onFinalCommit() {
             markDirty();

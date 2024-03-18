@@ -4,6 +4,7 @@
 ## v0.1.0
 - Added Hallowed Fluid Tank
 - Added Knowledge Extractor (can store XP, use a redstone signal to get xp back out)
+- Added Coal Generator
 - Added Withered Glass (witherproof and dragon proof glass)
 - Added Gold band item
 - Added Mini Glass

@@ -63,7 +63,11 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.KNOWLEDGE_EXTRACTOR)
                 .add(ModBlocks.MINI_GLASS)
                 .add(ModBlocks.WITHERED_GLASS)
+                .add(ModBlocks.COAL_GENERATOR)
                 .add(ModBlocks.SPACE_TIME_FURNACE);
+
+        getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
+                .add(ModBlocks.COAL_GENERATOR);
 
         getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
                 .add(ModBlocks.CELESTITE_BLOCK)

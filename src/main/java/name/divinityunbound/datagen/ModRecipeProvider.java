@@ -145,6 +145,13 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(Blocks.STONE), conditionsFromItem((Blocks.STONE)))
                 .offerTo(exporter, new Identifier("celestite_infused_stone"));
 
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.WILDERSUNG_SAPLING, 1)
+                .input(ModItems.CELESTITE)
+                .input(Blocks.STONE)
+                .criterion(hasItem(ModItems.CELESTITE), conditionsFromItem((ModItems.CELESTITE)))
+                .criterion(hasItem(Blocks.STONE), conditionsFromItem((Blocks.STONE)))
+                .offerTo(exporter, new Identifier("celestite_infused_stone"));
+
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.SPACE_FUEL, 1)
                 .input(ModItems.SPACE_DUST)
                 .input(Items.COAL)
@@ -321,6 +328,20 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(Blocks.OAK_PLANKS), conditionsFromItem(Blocks.OAK_PLANKS))
                 .criterion(hasItem(Items.BOOK), conditionsFromItem(Items.BOOK))
                 .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.KNOWLEDGE_EXTRACTOR)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.COAL_GENERATOR, 1)
+                .pattern("SLS")
+                .pattern("TIT")
+                .pattern("TTT")
+                .input('S', Items.STICK)
+                .input('L', Blocks.OAK_LOG)
+                .input('T', Blocks.STONE)
+                .input('I', Items.IRON_BARS)
+                .criterion(hasItem(Blocks.OAK_LOG), conditionsFromItem(Blocks.OAK_LOG))
+                .criterion(hasItem(Blocks.STONE), conditionsFromItem(Blocks.STONE))
+                .criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
+                .criterion(hasItem(Items.IRON_BARS), conditionsFromItem(Items.IRON_BARS))
+                .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.COAL_GENERATOR)));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.HALLOWED_FLUID_TANK, 1)
                 .pattern("GBG")

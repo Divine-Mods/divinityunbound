@@ -180,6 +180,9 @@ public class ModBlocks {
     public static final Block HALLOWED_FLUID_TANK = registerBlock("hallowed_fluid_tank",
             new HallowedFluidTankBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
 
+    public static final Block COAL_GENERATOR = registerBlock("coal_generator",
+            new CoalGeneratorBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
+
     public static final Block ITEM_SINGULARITY_STORAGE = registerBlock("item_singularity_storage",
             new ItemSingularityStorageBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
 

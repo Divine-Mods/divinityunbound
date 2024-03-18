@@ -93,7 +93,7 @@ public class SpaceTimeEvaporatorBlockEntity extends BlockEntity implements Exten
         };
     }
 
-    public final SimpleEnergyStorage energyStorage = new SimpleEnergyStorage(1000000000, 80000000, Integer.MAX_VALUE) {
+    public final SimpleEnergyStorage energyStorage = new SimpleEnergyStorage(10000000, 800000, Integer.MAX_VALUE) {
         @Override
         protected void onFinalCommit() {
             markDirty();
@@ -172,10 +172,10 @@ public class SpaceTimeEvaporatorBlockEntity extends BlockEntity implements Exten
         }
         //fillUpOnEnergy();
         fillUpOnFluid();
-        EnergyStorage energyStorage = findEnergyStorage(world, pos);
-        if (energyStorage != null) {
-            pushEnergyToAdjacentStorage(energyStorage);
-        }
+//        EnergyStorage energyStorage = findEnergyStorage(world, pos);
+//        if (energyStorage != null) {
+//            pushEnergyToAdjacentStorage(energyStorage);
+//        }
 
         if (canInsertIntoOutputSlot() && hasRecipe()) {
             increaseCraftProgress();
@@ -244,13 +244,13 @@ public class SpaceTimeEvaporatorBlockEntity extends BlockEntity implements Exten
 
     private void produceEnergy() {
         try(Transaction transaction = Transaction.openOuter()) {
-            if (this.energyStorage.getCapacity() - this.energyStorage.getAmount() <= 80000000) {
+            if (this.energyStorage.getCapacity() - this.energyStorage.getAmount() <= 800000) {
                 this.energyStorage.insert(
                         this.energyStorage.getCapacity() - this.energyStorage.getAmount(),
                         transaction);
             }
             else {
-                this.energyStorage.insert(80000000, transaction);
+                this.energyStorage.insert(800000, transaction);
             }
             transaction.commit();
         }
