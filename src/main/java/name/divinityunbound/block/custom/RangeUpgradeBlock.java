@@ -9,7 +9,7 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 
 public class RangeUpgradeBlock extends Block {
-    private static final VoxelShape SHAPE = Block.createCuboidShape(6, 6, 6, 10, 10, 10);
+    private static final VoxelShape SHAPE = Block.createCuboidShape(4, 5, 6, 12, 16, 10);
 
     public RangeUpgradeBlock(Settings settings) {
         super(settings);

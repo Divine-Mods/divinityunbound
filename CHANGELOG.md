@@ -4,6 +4,7 @@
 ## v0.2.0
 - Added Arcane Floor Lamp
 - Added Mob Attractor (Redstone Toggleable)
+- Updated block models and textures for Speed and Quantity upgrades
 - Fixed crafting recipe for Wildersung Sapling
 - Changed rarity of Prosperity and Bane of Passives enchantment
 - Changed Bane of Passives from additional damage to instant kill of passive mobs
