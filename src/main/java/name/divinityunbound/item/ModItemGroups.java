@@ -44,6 +44,7 @@ public class ModItemGroups {
                         entries.add(ModItems.SPACE_TIME_INGOT);
                         entries.add(ModItems.SPEED_CORE);
                         entries.add(ModItems.QUANTITY_CORE);
+                        entries.add(ModItems.RANGE_CORE);
                         entries.add(ModItems.MOB_CORE);
                         entries.add(ModItems.IMPORT_CARD);
                         entries.add(ModItems.EXPORT_CARD);
@@ -132,6 +133,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.GOLDEN_CELESTITE_INFUSED_STONE);
                         entries.add(ModBlocks.FROZEN_TIME_GLASS);
                         entries.add(ModBlocks.FROZEN_TIME_LAMP);
+                        entries.add(ModBlocks.ARCANE_FLOOR_LAMP);
                         entries.add(ModBlocks.SAND_OF_TIME);
                         entries.add(ModBlocks.CELESTIAL_GLASS);
                         entries.add(ModBlocks.DARK_CELESTIAL_GLASS);
@@ -147,6 +149,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.SPACE_SIPHON);
                         entries.add(ModBlocks.SPEED_UPGRADE);
                         entries.add(ModBlocks.QUANTITY_UPGRADE);
+                        entries.add(ModBlocks.RANGE_UPGRADE);
                         entries.add(ModBlocks.UNHOLY_SILENCER);
                         entries.add(ModBlocks.SPACE_TIME_EVAPORATOR);
                         entries.add(ModBlocks.SPACE_TIME_AMALGAMATOR);
@@ -157,6 +160,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.HALLOWED_FLUID_TANK);
                         entries.add(ModBlocks.KNOWLEDGE_EXTRACTOR);
                         entries.add(ModBlocks.COAL_GENERATOR);
+                        entries.add(ModBlocks.MOB_ATTRACTOR);
                         //entries.add(ModBlocks.ITEM_SINGULARITY_STORAGE);
 
                         //entries.add(ModBlocks.SPACE_TIME_FURNACE);

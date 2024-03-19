@@ -92,6 +92,11 @@ public class ModBlockEntities {
                     FabricBlockEntityTypeBuilder.create(CoalGeneratorBlockEntity::new,
                             ModBlocks.COAL_GENERATOR).build());
 
+    public static final BlockEntityType<MobAttractorBlockEntity> MOB_ATTRACTOR_BLOCK_ENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(DivinityUnbound.MOD_ID, "mob_attractor_be"),
+                    FabricBlockEntityTypeBuilder.create(MobAttractorBlockEntity::new,
+                            ModBlocks.MOB_ATTRACTOR).build());
+
     public static final BlockEntityType<SpaceTimeFurnaceBlockEntity> SPACE_TIME_FURNACE_BLOCK_ENTITY =
             Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(DivinityUnbound.MOD_ID, "space_time_furnace_be"),
                     FabricBlockEntityTypeBuilder.create(SpaceTimeFurnaceBlockEntity::new,

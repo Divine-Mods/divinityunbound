@@ -85,6 +85,8 @@ public class ModBlocks {
             new SpeedUpgradeBlock(FabricBlockSettings.copyOf(Blocks.END_STONE_BRICKS).nonOpaque()));
     public static final Block QUANTITY_UPGRADE = registerBlock("quantity_upgrade",
             new QuantityUpgradeBlock(FabricBlockSettings.copyOf(Blocks.END_STONE_BRICKS).nonOpaque()));
+    public static final Block RANGE_UPGRADE = registerBlock("range_upgrade",
+            new RangeUpgradeBlock(FabricBlockSettings.copyOf(Blocks.END_STONE_BRICKS).nonOpaque()));
 
     public static final Block KNOWLEDGE_EXTRACTOR = registerBlock("knowledge_extractor",
             new KnowledgeExtractorBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
@@ -95,6 +97,17 @@ public class ModBlocks {
                     .instrument(Instrument.PLING)
                     .strength(0.3f).sounds(BlockSoundGroup.GLASS)
                     .luminance(state -> 15).solidBlock(Blocks::never)));
+
+    public static final Block ARCANE_FLOOR_LAMP = registerBlock("arcane_floor_lamp",
+            new Block(AbstractBlock.Settings.create()
+                    .mapColor(MapColor.PALE_YELLOW)
+                    .instrument(Instrument.PLING)
+                    .strength(0.3f).sounds(BlockSoundGroup.GLASS)
+                    .luminance(state -> 15)
+                    .nonOpaque()
+                    .allowsSpawning(Blocks::never)
+                    .blockVision(Blocks::never)
+                    .solidBlock(Blocks::never)));
 
     public static final Block DIVINE_TORCH = registerBlockWithoutBlockItem("divine_torch",
             (Block)new TorchBlock(ModParticles.PURPLE_FLAME_PARTICLE,
@@ -182,6 +195,9 @@ public class ModBlocks {
 
     public static final Block COAL_GENERATOR = registerBlock("coal_generator",
             new CoalGeneratorBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
+
+    public static final Block MOB_ATTRACTOR = registerBlock("mob_attractor",
+            new MobAttractorBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
 
     public static final Block ITEM_SINGULARITY_STORAGE = registerBlock("item_singularity_storage",
             new ItemSingularityStorageBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));

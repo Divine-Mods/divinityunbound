@@ -32,6 +32,7 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.FROZEN_TIME_GLASS);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.SAND_OF_TIME);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.FROZEN_TIME_LAMP);
+        blockStateModelGenerator.registerSimpleState(ModBlocks.ARCANE_FLOOR_LAMP);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CELESTIAL_GLASS);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DARK_CELESTIAL_GLASS);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.WILDERSUNG_SILK);
@@ -52,6 +53,7 @@ public class ModModelProvider extends FabricModelProvider {
         //blockStateModelGenerator.registerSimpleState(ModBlocks.DIVINE_REPLICATOR);
         blockStateModelGenerator.registerSimpleState(ModBlocks.SPEED_UPGRADE);
         blockStateModelGenerator.registerSimpleState(ModBlocks.QUANTITY_UPGRADE);
+        blockStateModelGenerator.registerSimpleState(ModBlocks.RANGE_UPGRADE);
         //blockStateModelGenerator.registerSimpleState(ModBlocks.SPACE_SIPHON);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHRONOS_TIME_ACCUMULATOR);
         blockStateModelGenerator.registerSimpleState(ModBlocks.UNHOLY_SILENCER);
@@ -71,6 +73,7 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.ITEM_SINGULARITY_STORAGE);
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.KNOWLEDGE_EXTRACTOR);
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.COAL_GENERATOR);
+        blockStateModelGenerator.registerSimpleState(ModBlocks.MOB_ATTRACTOR);
 
         blockStateModelGenerator.registerCooker(ModBlocks.SPACE_TIME_FURNACE, TexturedModel.ORIENTABLE);
     }
@@ -96,6 +99,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.SPACE_TIME_INGOT, Models.GENERATED);
         itemModelGenerator.register(ModItems.SPEED_CORE, Models.GENERATED);
         itemModelGenerator.register(ModItems.QUANTITY_CORE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.RANGE_CORE, Models.GENERATED);
         itemModelGenerator.register(ModItems.MOB_CORE, Models.GENERATED);
         itemModelGenerator.register(ModItems.IMPORT_CARD, Models.GENERATED);
         itemModelGenerator.register(ModItems.EXPORT_CARD, Models.GENERATED);

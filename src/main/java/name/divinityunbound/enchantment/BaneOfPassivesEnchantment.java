@@ -21,7 +21,8 @@ public class BaneOfPassivesEnchantment extends Enchantment {
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
         if (!user.getWorld().isClient()) {
             if (target instanceof PassiveEntity && user instanceof ServerPlayerEntity) {
-                target.damage(user.getWorld().getDamageSources().playerAttack((ServerPlayerEntity)user), (float)level * 2.5f);
+                target.kill();
+                //target.damage(user.getWorld().getDamageSources().playerAttack((ServerPlayerEntity)user), (float)level * 2.5f);
             }
         }
 
@@ -30,6 +31,6 @@ public class BaneOfPassivesEnchantment extends Enchantment {
 
     @Override
     public int getMaxLevel() {
-        return 5;
+        return 1;
     }
 }

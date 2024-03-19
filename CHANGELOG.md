@@ -1,6 +1,15 @@
 # Changelog
 
 ---
+## v0.2.0
+- Added Arcane Floor Lamp
+- Added Mob Attractor (Redstone Toggleable)
+- Fixed crafting recipe for Wildersung Sapling
+- Changed rarity of Prosperity and Bane of Passives enchantment
+- Changed Bane of Passives from additional damage to instant kill of passive mobs
+- Performance Improvements (now only 1 fake player instance instead of 1 per block, upgrade counts updated when placed instead of checking every 60 ticks)
+
+---
 ## v0.1.0
 - Added Hallowed Fluid Tank
 - Added Knowledge Extractor (can store XP, use a redstone signal to get xp back out)

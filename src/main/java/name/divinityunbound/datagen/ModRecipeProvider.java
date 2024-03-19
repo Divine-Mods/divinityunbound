@@ -146,11 +146,11 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .offerTo(exporter, new Identifier("celestite_infused_stone"));
 
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.WILDERSUNG_SAPLING, 1)
+                .input(Items.OAK_SAPLING)
                 .input(ModItems.CELESTITE)
-                .input(Blocks.STONE)
                 .criterion(hasItem(ModItems.CELESTITE), conditionsFromItem((ModItems.CELESTITE)))
-                .criterion(hasItem(Blocks.STONE), conditionsFromItem((Blocks.STONE)))
-                .offerTo(exporter, new Identifier("celestite_infused_stone"));
+                .criterion(hasItem(Items.OAK_SAPLING), conditionsFromItem((Items.OAK_SAPLING)))
+                .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.WILDERSUNG_SAPLING)));
 
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.SPACE_FUEL, 1)
                 .input(ModItems.SPACE_DUST)
@@ -196,6 +196,17 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(Items.GLOWSTONE_DUST), conditionsFromItem(Items.GLOWSTONE_DUST))
                 .criterion(hasItem(ModBlocks.FROZEN_TIME_GLASS), conditionsFromItem(ModBlocks.FROZEN_TIME_GLASS))
                 .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.FROZEN_TIME_LAMP)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.ARCANE_FLOOR_LAMP, 2)
+                .pattern("LLL")
+                .pattern("FGF")
+                .input('G', Items.GLOWSTONE_DUST)
+                .input('L', Blocks.GLASS)
+                .input('F', ModBlocks.FROZEN_TIME_GLASS)
+                .criterion(hasItem(Items.GLOWSTONE_DUST), conditionsFromItem(Items.GLOWSTONE_DUST))
+                .criterion(hasItem(Blocks.GLASS), conditionsFromItem(Blocks.GLASS))
+                .criterion(hasItem(ModBlocks.FROZEN_TIME_GLASS), conditionsFromItem(ModBlocks.FROZEN_TIME_GLASS))
+                .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.ARCANE_FLOOR_LAMP)));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.CELESTIAL_GLASS, 4)
                 .pattern(" C ")
@@ -675,6 +686,18 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(Items.LIME_DYE), conditionsFromItem(Items.LIME_DYE))
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.QUANTITY_CORE)));
 
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.RANGE_CORE, 1)
+                .pattern("UUU")
+                .pattern("TRT")
+                .pattern("UUU")
+                .input('U', ModItems.UNHOLY_INGOT)
+                .input('T', ModItems.TIME_FORGED_INGOT)
+                .input('R', Items.RED_DYE)
+                .criterion(hasItem(ModItems.UNHOLY_INGOT), conditionsFromItem(ModItems.UNHOLY_INGOT))
+                .criterion(hasItem(ModItems.TIME_FORGED_INGOT), conditionsFromItem(ModItems.TIME_FORGED_INGOT))
+                .criterion(hasItem(Items.RED_DYE), conditionsFromItem(Items.RED_DYE))
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.RANGE_CORE)));
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.SPEED_UPGRADE, 1)
                 .pattern("EEE")
                 .pattern("TST")
@@ -698,6 +721,18 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(ModItems.TIME_FORGED_INGOT), conditionsFromItem(ModItems.TIME_FORGED_INGOT))
                 .criterion(hasItem(Blocks.END_STONE_BRICKS), conditionsFromItem(Blocks.END_STONE_BRICKS))
                 .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.QUANTITY_UPGRADE)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.RANGE_UPGRADE, 1)
+                .pattern("EEE")
+                .pattern("SRS")
+                .pattern("EEE")
+                .input('R', ModItems.RANGE_CORE)
+                .input('S', ModItems.SPACE_FORGED_INGOT)
+                .input('E', Blocks.END_STONE_BRICKS)
+                .criterion(hasItem(ModItems.RANGE_CORE), conditionsFromItem(ModItems.RANGE_CORE))
+                .criterion(hasItem(ModItems.SPACE_FORGED_INGOT), conditionsFromItem(ModItems.SPACE_FORGED_INGOT))
+                .criterion(hasItem(Blocks.END_STONE_BRICKS), conditionsFromItem(Blocks.END_STONE_BRICKS))
+                .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.RANGE_UPGRADE)));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.CELESTITE_ORE, 1)
                 .pattern("SSS")

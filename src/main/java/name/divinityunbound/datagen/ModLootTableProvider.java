@@ -30,6 +30,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.FROZEN_TIME_GLASS);
         addDrop(ModBlocks.SAND_OF_TIME);
         addDrop(ModBlocks.FROZEN_TIME_LAMP);
+        addDrop(ModBlocks.ARCANE_FLOOR_LAMP);
         addDrop(ModBlocks.DIVINE_TORCH);
         addDrop(ModBlocks.CELESTIAL_GLASS);
         addDrop(ModBlocks.DARK_CELESTIAL_GLASS);
@@ -62,6 +63,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.SPACE_SIPHON);
         addDrop(ModBlocks.SPEED_UPGRADE);
         addDrop(ModBlocks.QUANTITY_UPGRADE);
+        addDrop(ModBlocks.RANGE_UPGRADE);
         addDrop(ModBlocks.UNHOLY_SILENCER);
         addDrop(ModBlocks.SPACE_TIME_EVAPORATOR);
         addDrop(ModBlocks.SPACE_TIME_AMALGAMATOR);
@@ -72,6 +74,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.HALLOWED_FLUID_TANK);
         addDrop(ModBlocks.ITEM_SINGULARITY_STORAGE);
         addDrop(ModBlocks.KNOWLEDGE_EXTRACTOR);
+        addDrop(ModBlocks.MOB_ATTRACTOR);
 
         addDrop(ModBlocks.SPACE_TIME_FURNACE);
     }

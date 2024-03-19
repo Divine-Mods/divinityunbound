@@ -4,6 +4,7 @@ import name.divinityunbound.block.ModBlocks;
 import name.divinityunbound.block.custom.KnowledgeExtractorBlock;
 import name.divinityunbound.block.custom.UnholySilencerBlock;
 import name.divinityunbound.item.ModItems;
+import name.divinityunbound.networking.DivinityUnboundFakePlayer;
 import name.divinityunbound.screen.UnholySilencerScreenHandler;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -55,8 +56,7 @@ public class UnholySilencerBlockEntity extends BlockEntity implements ExtendedSc
     protected final PropertyDelegate propertyDelegate;
 
     //private static final GameProfile GAME_PROFILE = new GameProfile(UUID.nameUUIDFromBytes("fakeplayer.unholy_silencer".getBytes()),
-    private static final GameProfile GAME_PROFILE = new GameProfile(UUID.randomUUID(),
-            "fakeplayer.unholy_silencer");
+    private static final GameProfile GAME_PROFILE = DivinityUnboundFakePlayer.GAME_PROFILE;
     private FakePlayer fakePlayer = null;
     private DamageSource damageSource = null;
     private int progress = 0;

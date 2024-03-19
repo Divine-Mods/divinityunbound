@@ -44,6 +44,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.GOLDEN_CELESTITE_INFUSED_STONE)
                 .add(ModBlocks.FROZEN_TIME_GLASS)
                 .add(ModBlocks.FROZEN_TIME_LAMP)
+                .add(ModBlocks.ARCANE_FLOOR_LAMP)
                 .add(ModBlocks.CHRONOS_TIME_ACCUMULATOR)
                 .add(ModBlocks.GENERATION_STATION)
                 .add(ModBlocks.MYSTIC_CHRONOGRAPH)
@@ -51,6 +52,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.SPACE_SIPHON)
                 .add(ModBlocks.SPEED_UPGRADE)
                 .add(ModBlocks.QUANTITY_UPGRADE)
+                .add(ModBlocks.RANGE_UPGRADE)
                 .add(ModBlocks.UNHOLY_SILENCER)
                 .add(ModBlocks.SPACE_TIME_EVAPORATOR)
                 .add(ModBlocks.SPACE_TIME_AMALGAMATOR)
@@ -64,6 +66,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.MINI_GLASS)
                 .add(ModBlocks.WITHERED_GLASS)
                 .add(ModBlocks.COAL_GENERATOR)
+                .add(ModBlocks.MOB_ATTRACTOR)
                 .add(ModBlocks.SPACE_TIME_FURNACE);
 
         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
@@ -86,6 +89,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.SPACE_SIPHON)
                 .add(ModBlocks.SPEED_UPGRADE)
                 .add(ModBlocks.QUANTITY_UPGRADE)
+                .add(ModBlocks.RANGE_UPGRADE)
                 .add(ModBlocks.UNHOLY_SILENCER)
                 .add(ModBlocks.WORMHOLE_TRANSPORTER)
                 .add(ModBlocks.ITEM_TRASHCAN)
@@ -94,6 +98,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.HALLOWED_FLUID_TANK)
                 .add(ModBlocks.KNOWLEDGE_EXTRACTOR)
                 .add(ModBlocks.WITHERED_GLASS)
+                .add(ModBlocks.MOB_ATTRACTOR)
                 .add(ModBlocks.ITEM_SINGULARITY_STORAGE);
 
         getOrCreateTagBuilder(BlockTags.NEEDS_DIAMOND_TOOL)

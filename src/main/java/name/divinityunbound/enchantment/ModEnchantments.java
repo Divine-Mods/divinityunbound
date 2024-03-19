@@ -11,9 +11,9 @@ import net.minecraft.util.Identifier;
 public class ModEnchantments {
 
     public static Enchantment BANE_OF_PASSIVES = register("bane_of_passives",
-            new BaneOfPassivesEnchantment(Enchantment.Rarity.UNCOMMON, EnchantmentTarget.WEAPON, EquipmentSlot.MAINHAND));
+            new BaneOfPassivesEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.WEAPON, EquipmentSlot.MAINHAND));
     public static Enchantment PROSPERITY = register("prosperity",
-            new ProsperityEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.DIGGER, EquipmentSlot.MAINHAND));
+            new ProsperityEnchantment(Enchantment.Rarity.VERY_RARE, EnchantmentTarget.DIGGER, EquipmentSlot.MAINHAND));
 
     private static Enchantment register(String name, Enchantment enchantment) {
         return Registry.register(Registries.ENCHANTMENT, new Identifier(DivinityUnbound.MOD_ID, name), enchantment);

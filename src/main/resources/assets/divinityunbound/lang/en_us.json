@@ -17,6 +17,7 @@
   "item.divinityunbound.space_time_ingot": "Space Time Ingot",
   "item.divinityunbound.speed_core": "Speed Core",
   "item.divinityunbound.quantity_core": "Quantity Core",
+  "item.divinityunbound.range_core": "Range Core",
   "item.divinityunbound.mob_core": "Mob Core",
   "item.divinityunbound.import_card": "Import Card",
   "item.divinityunbound.export_card": "Export Card",
@@ -112,6 +113,7 @@
   "block.divinityunbound.chronos_time_accumulator": "Chronos Time Accumulator",
   "block.divinityunbound.speed_upgrade": "Speed Upgrade",
   "block.divinityunbound.quantity_upgrade": "Quantity Upgrade",
+  "block.divinityunbound.range_upgrade": "Range Upgrade",
   "block.divinityunbound.divine_replicator": "Divine Replicator",
   "block.divinityunbound.space_siphon": "Space Siphon",
   "block.divinityunbound.unholy_silencer": "Unholy Silencer",
@@ -125,6 +127,7 @@
   "block.divinityunbound.knowledge_extractor": "Knowledge Extractor",
   "block.divinityunbound.withered_glass": "Withered Glass",
   "block.divinityunbound.coal_generator": "Coal Generator",
+  "block.divinityunbound.arcane_floor_lamp": "Arcane Floor Lamp",
   "block.divinityunbound.space_time_furnace": "Space Time Furnace",
 
   "block.minecraft.empty": "Empty",
@@ -143,7 +146,7 @@
   "effect.divinityunbound.hermes": "Hermes' Blessing",
 
   "enchantment.divinityunbound.bane_of_passives": "Bane of Passives",
-  "divinityunbound.bane_of_passives": "Attacks deal extra damage to passive mobs",
+  "divinityunbound.bane_of_passives": "Instantly kills passive mobs",
   "enchantment.divinityunbound.prosperity": "Prosperity",
   "divinityunbound.prosperity": "Chance to multiply Fortune Drops",
 

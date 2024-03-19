@@ -62,21 +62,33 @@ then I would be able to make some Space Forged Ingots too.
 
 ## Blocks
 
-Chronos Time Accumulator magically distills Grains of Time.
+#### Mob Utility Blocks
 
 Divine Replicator summons copies of a mob that has been captured 
-by a Wand of Capturing.
+by a Wand of Capturing. Redstone Toggleable.
+
+Space Siphon pulls in items within a radius around it and
+pushes them to the inventory below. Redstone Toggleable.
+
+Unholy Silencer - Attacks mobs within a radius around it. Utilizes sword in inventory to calculate damage. Redstone Toggleable.
+(Does take into account sword enchantments, e.g. Looting, Sharpness, etc)
+
+Knowledge Extractor - Extracts xp from player when standing on. Use a redstone signal to dispense stored xp.
+
+Celestial Glass - Allows players to walk through but mobs cannot. Hold shift to stand on.
+
+Dark Celestial Glass - Allows players to walk through but mobs cannot. Hold shift to stand on. **Does not allow light to pass through.**
+
+Withered Glass - Wither, Dragon, and Explosion proof glass.
+
+#### Magical Blocks
+
+Chronos Time Accumulator magically distills Grains of Time.
 
 Generation Station generates resources depending on the foci placed within.
 
 Mystic Chronograph creates a localized time space bubble and can 
 drastically speeds up the block below it.
-
-Space Siphon pulls in items within a radius around it and 
-pushes them to the inventory below. 
-
-Unholy Silencer - Attacks mobs within a radius around it. Utilizes sword in inventory to calculate damage. 
-(Does take into account sword enchantments, e.g. Looting, Sharpness, etc)
 
 Space Time Evaporator - Evaporates space time on to coal, causing it to recrystalize and form space fuel. Produces energy.
 
@@ -85,6 +97,8 @@ Liquid Space Time. Needs power.
 
 Wormhole Transporter - Creates a localized wormhole that is linked to another transporter. Can move Items, Liquids, and Energy.
 Use an Import or Export card to link to another wormhole.
+
+Coal Generator - Basic generator that takes coal to create power.
 
 Item Trashcan - Voids any item inserted into it
 
@@ -162,6 +176,27 @@ Wand of The Archer shoots spectral arrows and can be enchanted with bow enchantm
 Wand of the Celebration shoots firework rockets (duration 3).
 
 Wand of Fire Bending summons temporary lava in a plus pattern and provides Fire Resistance. Can be used on mobs and blocks.
+
+---
+
+### Enchantments
+
+Bane of Passives - Instantly kills passive mobs.
+
+Prosperity - Provides additional chance of rolling fortune drops.
+
+> Prosperity I gives a 33% (1⁄3) chance to multiply drops by 2 (averaging 33% (1⁄3) increase),
+Prosperity II gives a chance to multiply drops by 2 or 3 (25% (1⁄4) chance each, averaging 75% (3⁄4) increase), 
+and Prosperity III gives a chance to multiply drops by 2, 3, or 4 (20% (1⁄5) chance each, averaging 120% (11⁄5) increase).
+> Prosperity III gives 2.2x (21⁄5) drops on average.
+
+#### Example runs Fortune III vs Fortune III + Prosperity III
+
+| Runs                               | 1  | 2  | 3  | 4  | 5  |
+|------------------------------------|----|----|----|----|----|
+| Fortune III                        | 26 | 18 | 18 | 19 | 24 |
+| Fortune III<br/>and Prosperity III | 43 | 29 | 38 | 37 | 55 |
+
 
 ---
 
