@@ -198,6 +198,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.FROZEN_TIME_LAMP)));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.ARCANE_FLOOR_LAMP, 2)
+                .pattern("   ")
                 .pattern("LLL")
                 .pattern("FGF")
                 .input('G', Items.GLOWSTONE_DUST)
@@ -557,6 +558,20 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(Items.CHORUS_FRUIT), conditionsFromItem(Items.CHORUS_FRUIT))
                 .criterion(hasItem(ModItems.TIME_FORGED_INGOT), conditionsFromItem(ModItems.TIME_FORGED_INGOT))
                 .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.DIVINE_REPLICATOR)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.MOB_ATTRACTOR, 1)
+                .pattern("RMR")
+                .pattern("SGS")
+                .pattern("RSR")
+                .input('G', Blocks.GRASS_BLOCK)
+                .input('R', Items.RED_DYE)
+                .input('S', ModItems.SPACE_FORGED_INGOT)
+                .input('M', ModItems.MOB_CORE)
+                .criterion(hasItem(ModItems.MOB_CORE), conditionsFromItem(ModItems.MOB_CORE))
+                .criterion(hasItem(Blocks.GRASS_BLOCK), conditionsFromItem(Blocks.GRASS_BLOCK))
+                .criterion(hasItem(Items.RED_DYE), conditionsFromItem(Items.RED_DYE))
+                .criterion(hasItem(ModItems.SPACE_FORGED_INGOT), conditionsFromItem(ModItems.SPACE_FORGED_INGOT))
+                .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.MOB_ATTRACTOR)));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.GENERATION_STATION, 1)
                 .pattern("TFT")

@@ -81,6 +81,8 @@ Dark Celestial Glass - Allows players to walk through but mobs cannot. Hold shif
 
 Withered Glass - Wither, Dragon, and Explosion proof glass.
 
+Mob Attractor - Pulls mobs towards itself. Redstone Toggleable.
+
 #### Magical Blocks
 
 Chronos Time Accumulator magically distills Grains of Time.
@@ -135,17 +137,18 @@ to enhance the block they are placed around.
 You are able to place upgrades in the 8 blocks (on the same Y level) 
 surrounding the block you are upgrading.
 
-|                          | Speed Upgrade | Quantity Upgrade |
-|--------------------------|---------------|------------------|
-| Chronos Time Accumulator | Y             | Y                |
-| Divine Replicator        | Y             | Y                |
-| Generation Station       | Y             | Y                |
-| Mystic Chronograph       | N             | N                |
-| Space Siphon             | Y             | N                |
-| Unholy Silencer          | Y             | N                |
-| Space Time Evaporator    | N             | N                |
-| Space Time Amalgamator   | N             | N                |
-| Wormhole Transporter     | N             | N                |
+|                          | Speed Upgrade | Quantity Upgrade | Range Upgrade |
+|--------------------------|---------------|------------------|---------------|
+| Chronos Time Accumulator | Y             | Y                | N             |
+| Divine Replicator        | Y             | Y                | N             |
+| Generation Station       | Y             | Y                | N             |
+| Mystic Chronograph       | N             | N                | N             |
+| Space Siphon             | Y             | N                | Y             |
+| Unholy Silencer          | Y             | N                | N             |
+| Space Time Evaporator    | N             | N                | N             |
+| Space Time Amalgamator   | N             | N                | N             |
+| Wormhole Transporter     | N             | N                | N             |
+| Mob Attractor            | Y             | N                | Y             |
 
 ---
 

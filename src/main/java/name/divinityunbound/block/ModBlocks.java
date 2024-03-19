@@ -99,7 +99,7 @@ public class ModBlocks {
                     .luminance(state -> 15).solidBlock(Blocks::never)));
 
     public static final Block ARCANE_FLOOR_LAMP = registerBlock("arcane_floor_lamp",
-            new Block(AbstractBlock.Settings.create()
+            new ArcaneFloorLampBlock(AbstractBlock.Settings.create()
                     .mapColor(MapColor.PALE_YELLOW)
                     .instrument(Instrument.PLING)
                     .strength(0.3f).sounds(BlockSoundGroup.GLASS)
