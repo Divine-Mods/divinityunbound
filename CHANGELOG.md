@@ -11,6 +11,7 @@
 - Added cooldowns to the following wands: Flight, Teleportation, Healing, Greater Healing
 - Updated block models and textures for Speed and Quantity upgrades
 - Fixed crafting recipe for Wildersung Sapling
+- Added y-level info to REI crafting recipe for Celestium, Unholy, and Space Dust
 - Changed rarity of Prosperity and Bane of Passives enchantment
 - Changed Bane of Passives from additional damage to instant kill of passive mobs
 - Performance Improvements (now only 1 fake player instance instead of 1 per block, upgrade counts updated when placed instead of checking every 60 ticks)

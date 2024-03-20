@@ -547,6 +547,34 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(ModItems.WAND_BINDING), conditionsFromItem(ModItems.WAND_BINDING))
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.WAND_OF_MAGNETIZATION)));
 
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.WAND_OF_HEALING, 1)
+                .pattern(" PG")
+                .pattern(" WP")
+                .pattern("S  ")
+                .input('G', Items.GOLDEN_APPLE)
+                .input('P', Items.PINK_DYE)
+                .input('S', Items.STICK)
+                .input('W', ModItems.WAND_BINDING)
+                .criterion(hasItem(Items.GOLDEN_APPLE), conditionsFromItem(Items.GOLDEN_APPLE))
+                .criterion(hasItem(Items.PINK_DYE), conditionsFromItem(Items.PINK_DYE))
+                .criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
+                .criterion(hasItem(ModItems.WAND_BINDING), conditionsFromItem(ModItems.WAND_BINDING))
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.WAND_OF_HEALING)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.GREATER_WAND_OF_HEALING, 1)
+                .pattern(" PG")
+                .pattern(" WP")
+                .pattern("S  ")
+                .input('G', Items.ENCHANTED_GOLDEN_APPLE)
+                .input('P', Items.PINK_DYE)
+                .input('S', Items.STICK)
+                .input('W', ModItems.WAND_BINDING)
+                .criterion(hasItem(Items.GOLDEN_APPLE), conditionsFromItem(Items.ENCHANTED_GOLDEN_APPLE))
+                .criterion(hasItem(Items.PINK_DYE), conditionsFromItem(Items.PINK_DYE))
+                .criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
+                .criterion(hasItem(ModItems.WAND_BINDING), conditionsFromItem(ModItems.WAND_BINDING))
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.GREATER_WAND_OF_HEALING)));
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.MYSTIC_CHRONOGRAPH, 1)
                 .pattern("STS")
                 .pattern("TCT")
