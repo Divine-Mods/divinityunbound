@@ -1,14 +1,19 @@
 package name.divinityunbound.block.custom;
 
 import com.mojang.serialization.MapCodec;
+import name.divinityunbound.block.ModBlockConstants;
+import name.divinityunbound.block.ModBlocks;
 import name.divinityunbound.block.entity.GenerationStationBlockEntity;
 import name.divinityunbound.block.entity.ModBlockEntities;
+import name.divinityunbound.block.entity.SpaceSiphonBlockEntity;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.state.StateManager;
@@ -67,6 +72,38 @@ public class GenerationStationBlock extends BlockWithEntity implements BlockEnti
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
         return new GenerationStationBlockEntity(pos, state);
+    }
+
+    @Override
+    public void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {
+        if (!world.isClient) {
+            this.updateUpgrades(world, pos);
+        }
+    }
+
+    @Override
+    public void onPlaced(World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack itemStack) {
+        if (!world.isClient) {
+            this.updateUpgrades(world, pos);
+        }
+    }
+
+    private void updateUpgrades(World world, BlockPos pos) {
+        BlockEntity be = world.getBlockEntity(pos);
+        if (be instanceof GenerationStationBlockEntity) {
+            ((GenerationStationBlockEntity)be).resetUpgrades();
+            Iterator it = ModBlockConstants.UPGRADE_PROVIDER_OFFSETS.iterator();
+            while (it.hasNext()) {
+                BlockPos blockPosOffset = (BlockPos) it.next();
+                BlockPos calcPos = new BlockPos(pos.getX() + blockPosOffset.getX(),
+                        pos.getY() + blockPosOffset.getY(), pos.getZ() + blockPosOffset.getZ());
+                if (world.getBlockState(calcPos).getBlock().equals(ModBlocks.SPEED_UPGRADE)) {
+                    ((GenerationStationBlockEntity)be).increaseSpeed();
+                } else if (world.getBlockState(calcPos).getBlock().equals(ModBlocks.QUANTITY_UPGRADE)) {
+                    ((GenerationStationBlockEntity)be).increaseQuantity();
+                }
+            }
+        }
     }
 
     @Override

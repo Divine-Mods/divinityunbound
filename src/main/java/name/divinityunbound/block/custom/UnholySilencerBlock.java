@@ -1,8 +1,11 @@
 package name.divinityunbound.block.custom;
 
 import com.mojang.serialization.MapCodec;
+import name.divinityunbound.block.ModBlockConstants;
+import name.divinityunbound.block.ModBlocks;
 import name.divinityunbound.block.entity.GenerationStationBlockEntity;
 import name.divinityunbound.block.entity.ModBlockEntities;
+import name.divinityunbound.block.entity.SpaceSiphonBlockEntity;
 import name.divinityunbound.block.entity.UnholySilencerBlockEntity;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
@@ -24,6 +27,8 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Iterator;
 
 public class UnholySilencerBlock extends BlockWithEntity implements BlockEntityProvider {
     protected final Random random = Random.create();
@@ -56,6 +61,7 @@ public class UnholySilencerBlock extends BlockWithEntity implements BlockEntityP
     public void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {
         if (!world.isClient) {
             this.updateEnabled(world, pos, state);
+            this.updateUpgrades(world, pos);
         }
     }
 
@@ -63,6 +69,7 @@ public class UnholySilencerBlock extends BlockWithEntity implements BlockEntityP
     public void onPlaced(World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack itemStack) {
         if (!world.isClient) {
             this.updateEnabled(world, pos, state);
+            this.updateUpgrades(world, pos);
         }
     }
 
@@ -73,6 +80,22 @@ public class UnholySilencerBlock extends BlockWithEntity implements BlockEntityP
         }
         if (!world.isClient && world.getBlockEntity(pos) == null) {
             this.updateEnabled(world, pos, state);
+        }
+    }
+
+    private void updateUpgrades(World world, BlockPos pos) {
+        BlockEntity be = world.getBlockEntity(pos);
+        if (be instanceof UnholySilencerBlockEntity) {
+            ((UnholySilencerBlockEntity)be).resetUpgrades();
+            Iterator it = ModBlockConstants.UPGRADE_PROVIDER_OFFSETS.iterator();
+            while (it.hasNext()) {
+                BlockPos blockPosOffset = (BlockPos) it.next();
+                BlockPos calcPos = new BlockPos(pos.getX() + blockPosOffset.getX(),
+                        pos.getY() + blockPosOffset.getY(), pos.getZ() + blockPosOffset.getZ());
+                if (world.getBlockState(calcPos).getBlock().equals(ModBlocks.SPEED_UPGRADE)) {
+                    ((UnholySilencerBlockEntity)be).increaseSpeed();
+                }
+            }
         }
     }
 

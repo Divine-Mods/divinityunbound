@@ -46,12 +46,7 @@ public class UnholySilencerBlockEntity extends BlockEntity implements ExtendedSc
     private static final int SWORD_SLOT = 0;
     private static final int FUEL_SLOT = 1;
     private static final int DEFAULT_RANGE = 6;
-
-    private static final int CHECK_UPGRADE_TICKS = 20;
-
     private int speedCount = 0;
-    private int quantityCount = 0;
-    private int rangeCount = 0;
 
     protected final PropertyDelegate propertyDelegate;
 
@@ -62,7 +57,6 @@ public class UnholySilencerBlockEntity extends BlockEntity implements ExtendedSc
     private int progress = 0;
     private int maxProgress = 72;
     private int attackCooldown = 0;
-    private int upgradeCheck = 0;
 
     public UnholySilencerBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.UNHOLY_SILENCER_BLOCK_ENTITY, pos, state);
@@ -140,11 +134,6 @@ public class UnholySilencerBlockEntity extends BlockEntity implements ExtendedSc
         //PlayerEntity player = world.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), 4, false);
         if (state.get(UnholySilencerBlock.ENABLED).booleanValue()
                 && hasWeapon() && hasFuel()) {
-            if (upgradeCheck >= CHECK_UPGRADE_TICKS) {
-                countUpgrades(world, pos);
-                upgradeCheck = 0;
-            }
-            upgradeCheck++;
             for (int i = 0; i <= speedCount; i++) {
                 increaseCraftProgress();
 
@@ -217,21 +206,12 @@ public class UnholySilencerBlockEntity extends BlockEntity implements ExtendedSc
         return Math.abs(pos.getX()) == 1 || Math.abs(pos.getZ()) == 1;
     }).map(BlockPos::toImmutable).toList();
 
-    public void countUpgrades(World world, BlockPos pos) {
+    public void resetUpgrades() {
         this.speedCount = 0;
-        this.quantityCount = 0;
-        Iterator it = UPGRADE_PROVIDER_OFFSETS.iterator();
-        while(it.hasNext()) {
-            BlockPos blockPosOffset = (BlockPos)it.next();
-            BlockPos calcPos = new BlockPos(pos.getX() + blockPosOffset.getX(),
-                    pos.getY() + blockPosOffset.getY(), pos.getZ() + blockPosOffset.getZ());
-            if(world.getBlockState(calcPos).getBlock().equals(ModBlocks.SPEED_UPGRADE)) {
-                this.speedCount++;
-            }
-            else if(world.getBlockState(calcPos).getBlock().equals(ModBlocks.QUANTITY_UPGRADE)) {
-                this.quantityCount++;
-            }
-        }
+    }
+
+    public void increaseSpeed() {
+        this.speedCount++;
     }
 
     private boolean hasCraftingFinished() {

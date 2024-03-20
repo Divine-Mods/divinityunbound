@@ -3,13 +3,18 @@ package name.divinityunbound.block.custom;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import name.divinityunbound.block.ModBlockConstants;
+import name.divinityunbound.block.ModBlocks;
 import name.divinityunbound.block.entity.ChronosTimeAccumulatorBlockEntity;
 import name.divinityunbound.block.entity.ModBlockEntities;
+import name.divinityunbound.block.entity.SpaceSiphonBlockEntity;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.particle.DefaultParticleType;
 import net.minecraft.particle.ParticleType;
 import net.minecraft.particle.ParticleTypes;
@@ -23,6 +28,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Iterator;
 
 public class ChronosTimeAccumulatorBlock extends BlockWithEntity implements BlockEntityProvider {
     public static final MapCodec<ChronosTimeAccumulatorBlock> CODEC = ChronosTimeAccumulatorBlock.createCodec(ChronosTimeAccumulatorBlock::new);
@@ -46,6 +53,38 @@ public class ChronosTimeAccumulatorBlock extends BlockWithEntity implements Bloc
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
         return new ChronosTimeAccumulatorBlockEntity(pos, state);
+    }
+
+    @Override
+    public void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {
+        if (!world.isClient) {
+            this.updateUpgrades(world, pos);
+        }
+    }
+
+    @Override
+    public void onPlaced(World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack itemStack) {
+        if (!world.isClient) {
+            this.updateUpgrades(world, pos);
+        }
+    }
+
+    private void updateUpgrades(World world, BlockPos pos) {
+        BlockEntity be = world.getBlockEntity(pos);
+        if (be instanceof ChronosTimeAccumulatorBlockEntity) {
+            ((ChronosTimeAccumulatorBlockEntity)be).resetUpgrades();
+            Iterator it = ModBlockConstants.UPGRADE_PROVIDER_OFFSETS.iterator();
+            while (it.hasNext()) {
+                BlockPos blockPosOffset = (BlockPos) it.next();
+                BlockPos calcPos = new BlockPos(pos.getX() + blockPosOffset.getX(),
+                        pos.getY() + blockPosOffset.getY(), pos.getZ() + blockPosOffset.getZ());
+                if (world.getBlockState(calcPos).getBlock().equals(ModBlocks.SPEED_UPGRADE)) {
+                    ((ChronosTimeAccumulatorBlockEntity)be).increaseSpeed();
+                } else if (world.getBlockState(calcPos).getBlock().equals(ModBlocks.QUANTITY_UPGRADE)) {
+                    ((ChronosTimeAccumulatorBlockEntity)be).increaseQuantity();
+                }
+            }
+        }
     }
 
     @Override
