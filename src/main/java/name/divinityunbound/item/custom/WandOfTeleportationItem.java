@@ -71,6 +71,9 @@ public class WandOfTeleportationItem extends Item {
                 player.sendMessage(Text.literal("Cleared saved block position!"));
             }
             else {
+                if (!player.getAbilities().creativeMode) {
+                    player.getItemCooldownManager().set(this, 6000);
+                }
                 teleport(stack, player, world, hand);
             }
         }

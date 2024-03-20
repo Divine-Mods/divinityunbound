@@ -79,6 +79,12 @@ public class ModItems {
     public static final Item WAND_OF_MAGNETIZATION = registerItem("wand_of_magnetization",
             new WandOfMagnetizationItem(new FabricItemSettings()));
 
+    public static final Item WAND_OF_HEALING = registerItem("wand_of_healing",
+            new WandOfHealingItem(new FabricItemSettings().maxDamage(8)));
+
+    public static final Item GREATER_WAND_OF_HEALING = registerItem("greater_wand_of_healing",
+            new GreaterWandOfHealingItem(new FabricItemSettings().maxDamage(8)));
+
     /* Tools */
 
     public static final Item CELESTITE_PICKAXE = registerItem("celestite_pickaxe",

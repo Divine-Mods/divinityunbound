@@ -118,6 +118,8 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.WAND_OF_CELEBRATION, Models.GENERATED);
         itemModelGenerator.register(ModItems.WAND_OF_FIRE_BENDING, Models.GENERATED);
         itemModelGenerator.register(ModItems.WAND_OF_MAGNETIZATION, Models.GENERATED);
+        itemModelGenerator.register(ModItems.WAND_OF_HEALING, Models.GENERATED);
+        itemModelGenerator.register(ModItems.GREATER_WAND_OF_HEALING, Models.GENERATED);
 
         /* Tools */
         itemModelGenerator.register(ModItems.CELESTITE_PICKAXE, Models.HANDHELD);

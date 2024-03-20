@@ -12,5 +12,6 @@
     "item": "divinityunbound:space_dust",
     "count": 1
   },
-  "dimension": "the_end"
+  "dimension": "the_end",
+  "ylevel": "any"
 }

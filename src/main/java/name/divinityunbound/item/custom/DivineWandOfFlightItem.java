@@ -32,6 +32,7 @@ public class DivineWandOfFlightItem extends Item {
         if (!world.isClient) {
             boolean hasPlayerEffect = user.hasStatusEffect(ModStatusEffect.FLIGHT_EFFECT);
             if (!hasPlayerEffect) {
+                user.getItemCooldownManager().set(this, 2400);
                 user.addStatusEffect(new StatusEffectInstance(new StatusEffectInstance(ModStatusEffect.FLIGHT_EFFECT,
                         1200, 0,
                         false, false, true)));

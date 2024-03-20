@@ -14,15 +14,18 @@ import java.util.Collections;
 import java.util.List;
 
 public class InWorldDisplay extends BasicDisplay {
-    public InWorldDisplay(List<EntryIngredient> inputs, List<EntryIngredient> outputs, String dimension) {
+    public InWorldDisplay(List<EntryIngredient> inputs, List<EntryIngredient> outputs, String dimension, String ylevel) {
         super(inputs, outputs);
         this.dimension = dimension;
+        this.ylevel = ylevel;
     }
 
     private final String dimension;
+    private final String ylevel;
     public InWorldDisplay(RecipeEntry<InWorldRecipe> recipe) {
         super(getInputList(recipe.value()), List.of(EntryIngredient.of(EntryStacks.of(recipe.value().getResult(null)))));
         this.dimension = "dimension:" + recipe.value().getDimension().asString();
+        this.ylevel = "y-level:" + recipe.value().getYlevel().asString();
     }
 
     private static List<EntryIngredient> getInputList(InWorldRecipe recipe) {
@@ -35,6 +38,9 @@ public class InWorldDisplay extends BasicDisplay {
 
     public String getDimension() {
         return this.dimension;
+    }
+    public String getYlevel() {
+        return this.ylevel;
     }
 
     @Override

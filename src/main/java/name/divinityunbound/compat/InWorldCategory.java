@@ -63,6 +63,15 @@ public class InWorldCategory implements DisplayCategory<BasicDisplay> {
                         ((InWorldDisplay)display).getDimension()
                 )));
 
+        widgets.add(Widgets.createRecipeBase(new Rectangle(
+                startPoint.x + 8, startPoint.y + 60,
+                75, 18)));
+
+        widgets.add(Widgets.createLabel(new Point(startPoint.x + 45, startPoint.y + 65),
+                Text.literal(
+                        ((InWorldDisplay)display).getYlevel()
+                )));
+
         return widgets;
     }
 

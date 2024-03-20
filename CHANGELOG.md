@@ -4,8 +4,11 @@
 ## v0.2.0
 - Added Arcane Floor Lamp
 - Added Wand of Magnetization
+- Added Wand of Healing
+- Added Greater Wand of Healing
 - Added Mob Attractor (Redstone Toggleable)
 - Added Range Upgrade
+- Added cooldowns to the following wands: Flight, Teleportation, Healing, Greater Healing
 - Updated block models and textures for Speed and Quantity upgrades
 - Fixed crafting recipe for Wildersung Sapling
 - Changed rarity of Prosperity and Bane of Passives enchantment

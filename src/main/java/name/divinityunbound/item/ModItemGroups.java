@@ -65,6 +65,8 @@ public class ModItemGroups {
                         entries.add(ModItems.WAND_OF_CELEBRATION);
                         entries.add(ModItems.WAND_OF_FIRE_BENDING);
                         entries.add(ModItems.WAND_OF_MAGNETIZATION);
+                        entries.add(ModItems.WAND_OF_HEALING);
+                        entries.add(ModItems.GREATER_WAND_OF_HEALING);
 
                         /* Tools */
                         entries.add(ModItems.CELESTITE_PICKAXE);

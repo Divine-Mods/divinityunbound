@@ -12,5 +12,6 @@
     "item": "divinityunbound:celestium_dust",
     "count": 1
   },
-  "dimension": "overworld"
+  "dimension": "overworld",
+  "ylevel": ">125"
 }

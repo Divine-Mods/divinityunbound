@@ -24,11 +24,13 @@ public class InWorldRecipe implements Recipe<SimpleInventory> {
     private final List<Ingredient> recipeItems;
 
     private final DimensionCategory dimension;
+    private final YlevelCategory ylevel;
 
-    public InWorldRecipe(List<Ingredient> ingredients, ItemStack itemStack, DimensionCategory dimension) {
+    public InWorldRecipe(List<Ingredient> ingredients, ItemStack itemStack, DimensionCategory dimension, YlevelCategory ylevel) {
         this.output = itemStack;
         this.recipeItems = ingredients;
         this.dimension = dimension;
+        this.ylevel = ylevel;
     }
     @Override
     public boolean matches(SimpleInventory inventory, World world) {
@@ -74,6 +76,9 @@ public class InWorldRecipe implements Recipe<SimpleInventory> {
     public DimensionCategory getDimension() {
         return dimension;
     }
+    public YlevelCategory getYlevel() {
+        return ylevel;
+    }
 
     public static class Type implements  RecipeType<InWorldRecipe> {
         public static final Type INSTANCE = new Type();
@@ -103,6 +108,28 @@ public class InWorldRecipe implements Recipe<SimpleInventory> {
         }
     }
 
+    public enum YlevelCategory implements StringIdentifiable
+    {
+        ANY("any"),
+        HIGHER(">125");
+
+        public static final Codec<YlevelCategory> CODEC;
+        private final String id;
+
+        private YlevelCategory(String id) {
+            this.id = id;
+        }
+
+        @Override
+        public String asString() {
+            return this.id;
+        }
+
+        static {
+            CODEC = StringIdentifiable.createCodec(YlevelCategory::values);
+        }
+    }
+
     public static class Serializer implements  RecipeSerializer<InWorldRecipe> {
         public static final Serializer INSTANCE = new Serializer();
         public static final String ID = "in_world_crafting";
@@ -110,7 +137,8 @@ public class InWorldRecipe implements Recipe<SimpleInventory> {
         public static final Codec<InWorldRecipe> CODEC = RecordCodecBuilder.create(in -> in.group(
                 validateAmount(Ingredient.DISALLOW_EMPTY_CODEC, 9).fieldOf("ingredients").forGetter(InWorldRecipe::getIngredients),
                 ItemStack.RECIPE_RESULT_CODEC.fieldOf("output").forGetter(r -> r.output),
-                DimensionCategory.CODEC.fieldOf("dimension").forGetter(InWorldRecipe::getDimension)
+                DimensionCategory.CODEC.fieldOf("dimension").forGetter(InWorldRecipe::getDimension),
+                YlevelCategory.CODEC.fieldOf("ylevel").forGetter(InWorldRecipe::getYlevel)
         ).apply(in, InWorldRecipe::new));
 
         private static Codec<List<Ingredient>> validateAmount(Codec<Ingredient> delegate, int max) {
@@ -134,8 +162,9 @@ public class InWorldRecipe implements Recipe<SimpleInventory> {
 
             ItemStack output = buf.readItemStack();
             DimensionCategory dimensionCategory = buf.readEnumConstant(DimensionCategory.class);
+            YlevelCategory ylevelCategory = buf.readEnumConstant(YlevelCategory.class);
 
-            return new InWorldRecipe(inputs, output, dimensionCategory);
+            return new InWorldRecipe(inputs, output, dimensionCategory, ylevelCategory);
         }
 
         @Override
