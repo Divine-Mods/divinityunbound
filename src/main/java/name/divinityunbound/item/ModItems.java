@@ -76,6 +76,9 @@ public class ModItems {
     public static final Item WAND_OF_FIRE_BENDING = registerItem("wand_of_fire_bending",
             new WandOfFireBendingItem(Fluids.LAVA,new FabricItemSettings().maxDamage(128)));
 
+    public static final Item WAND_OF_MAGNETIZATION = registerItem("wand_of_magnetization",
+            new WandOfMagnetizationItem(new FabricItemSettings()));
+
     /* Tools */
 
     public static final Item CELESTITE_PICKAXE = registerItem("celestite_pickaxe",

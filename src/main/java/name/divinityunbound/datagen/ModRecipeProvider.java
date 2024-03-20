@@ -533,6 +533,20 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(ModItems.WAND_BINDING), conditionsFromItem(ModItems.WAND_BINDING))
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.WAND_OF_FIRE_BENDING)));
 
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.WAND_OF_MAGNETIZATION, 1)
+                .pattern(" RI")
+                .pattern("BWR")
+                .pattern("IB ")
+                .input('I', Items.IRON_INGOT)
+                .input('R', Items.RED_DYE)
+                .input('B', Items.BLUE_DYE)
+                .input('W', ModItems.WAND_BINDING)
+                .criterion(hasItem(Items.IRON_INGOT), conditionsFromItem(Items.IRON_INGOT))
+                .criterion(hasItem(Items.RED_DYE), conditionsFromItem(Items.RED_DYE))
+                .criterion(hasItem(Items.BLUE_DYE), conditionsFromItem(Items.BLUE_DYE))
+                .criterion(hasItem(ModItems.WAND_BINDING), conditionsFromItem(ModItems.WAND_BINDING))
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.WAND_OF_MAGNETIZATION)));
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.MYSTIC_CHRONOGRAPH, 1)
                 .pattern("STS")
                 .pattern("TCT")

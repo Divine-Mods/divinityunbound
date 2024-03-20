@@ -64,6 +64,7 @@ public class ModItemGroups {
                         entries.add(ModItems.WAND_OF_THE_ARCHER);
                         entries.add(ModItems.WAND_OF_CELEBRATION);
                         entries.add(ModItems.WAND_OF_FIRE_BENDING);
+                        entries.add(ModItems.WAND_OF_MAGNETIZATION);
 
                         /* Tools */
                         entries.add(ModItems.CELESTITE_PICKAXE);

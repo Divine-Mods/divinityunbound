@@ -3,7 +3,9 @@
 ---
 ## v0.2.0
 - Added Arcane Floor Lamp
+- Added Wand of Magnetization
 - Added Mob Attractor (Redstone Toggleable)
+- Added Range Upgrade
 - Updated block models and textures for Speed and Quantity upgrades
 - Fixed crafting recipe for Wildersung Sapling
 - Changed rarity of Prosperity and Bane of Passives enchantment

@@ -41,6 +41,7 @@
   "item.divinityunbound.wand_of_the_archer": "Wand of The Archer",
   "item.divinityunbound.wand_of_celebration": "Wand of Celebration",
   "item.divinityunbound.wand_of_fire_bending": "Wand of Fire Bending",
+  "item.divinityunbound.wand_of_magnetization": "Wand of Magnetization",
 
   "item.divinityunbound.celestite_pickaxe": "Celestite Pickaxe",
   "item.divinityunbound.celestite_axe": "Celestite Axe",
@@ -166,6 +167,7 @@
   "tooltip.divinityunbound.wand_of_the_archer": "Shoots spectral arrows. Can be enchanted",
   "tooltip.divinityunbound.wand_of_celebration": "Shoots duration 3 fireworks",
   "tooltip.divinityunbound.wand_of_fire_bending": "Summons temporary lava and gives fire resistance",
+  "tooltip.divinityunbound.wand_of_magnetization": "When active, pulls nearby items to you",
   "tooltip.divinityunbound.hermes_boots1": "Step Height 2.5",
   "tooltip.divinityunbound.hermes_boots2": "Speed III",
   "tooltip.divinityunbound.hermes_boots3": "No Fall Damage",
