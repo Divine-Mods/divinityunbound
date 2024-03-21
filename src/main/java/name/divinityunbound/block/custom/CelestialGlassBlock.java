@@ -3,6 +3,7 @@ package name.divinityunbound.block.custom;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
 import net.minecraft.client.item.TooltipContext;
+import net.minecraft.entity.passive.VillagerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
@@ -33,6 +34,7 @@ public class CelestialGlassBlock extends TransparentBlock {
     public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return (context instanceof EntityShapeContext
                 && ((EntityShapeContext)context).getEntity() instanceof PlayerEntity
+                && !(((EntityShapeContext)context).getEntity() instanceof VillagerEntity)
                 && !((EntityShapeContext)context).getEntity().isSneaking())
                 == collidePlayers ? state.getOutlineShape(world, pos) : VoxelShapes.empty();
     }

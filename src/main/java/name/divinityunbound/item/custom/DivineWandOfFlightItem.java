@@ -1,9 +1,6 @@
 package name.divinityunbound.item.custom;
 
 import dev.architectury.event.events.common.TickEvent;
-import io.github.ladysnake.pal.AbilitySource;
-import io.github.ladysnake.pal.Pal;
-import io.github.ladysnake.pal.VanillaAbilities;
 import name.divinityunbound.DivinityUnbound;
 import name.divinityunbound.entity.effect.ModStatusEffect;
 import net.minecraft.client.item.TooltipContext;
@@ -26,7 +23,7 @@ public class DivineWandOfFlightItem extends Item {
         super(settings);
     }
 
-    public static final AbilitySource FLIGHT_CHARM = Pal.getAbilitySource(DivinityUnbound.MOD_ID, "divine_wand_of_flight");  // works like an identifier
+    //public static final AbilitySource FLIGHT_CHARM = Pal.getAbilitySource(DivinityUnbound.MOD_ID, "divine_wand_of_flight");  // works like an identifier
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         if (!world.isClient) {

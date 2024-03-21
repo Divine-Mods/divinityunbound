@@ -187,6 +187,9 @@
   "divinityunbound.wormhole_transporter.fluid_mode.unconditional": "",
   "divinityunbound.wormhole_transporter.type": "Type",
 
+  "divinityunbound.divine_replicator.exact_match": "Exact",
+  "divinityunbound.divine_replicator.similar": "Similar",
+
   "item.divinityunbound.divinity_unbound_book": "Divinity Unbound Book",
   "divinityunbound.landing": "Welcome to Divinity Unbound!",
   "divinityunbound.category.basics": "Basics",

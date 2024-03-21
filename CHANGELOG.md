@@ -1,6 +1,15 @@
 # Changelog
 
 ---
+## v0.2.1
+- Added the ability to disable mob ai from spawned mobs with the Divine Replicator
+- Fixed bug, Wand of Capturing now works on Villagers
+- Fixed bug, Wand of Capturing now works in creative mode
+- Fixed bug, Divine Replicator can now spawn Villagers
+- Fixed bug that allowed infinite flight with Divine Wand of Flight
+- Fixed bug that allowed Villagers to walk through Celestial and Dark Celestial Glass
+
+---
 ## v0.2.0
 - Added Arcane Floor Lamp
 - Added Wand of Magnetization

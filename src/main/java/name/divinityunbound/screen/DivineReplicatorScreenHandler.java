@@ -25,7 +25,7 @@ public class DivineReplicatorScreenHandler extends ScreenHandler {
 
     public DivineReplicatorScreenHandler(int syncId, PlayerInventory playerInventory, BlockEntity blockEntity, PropertyDelegate arrayPropertyDelegate) {
         super(ModScreenHandlers.DIVINE_REPLICATOR_SCREEN_HANDLER, syncId);
-        checkSize((Inventory) blockEntity, 2);
+        checkSize((Inventory) blockEntity, 3);
         this.inventory = (Inventory) blockEntity;
         inventory.onOpen(playerInventory.player);
         this.propertyDelegate = arrayPropertyDelegate;
@@ -33,6 +33,7 @@ public class DivineReplicatorScreenHandler extends ScreenHandler {
 
         this.addSlot(new Slot(inventory, 0, 80, 11));
         this.addSlot(new Slot(inventory, 1, 80, 59));
+        this.addSlot(new Slot(inventory, 2, 8, 59));
 
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);

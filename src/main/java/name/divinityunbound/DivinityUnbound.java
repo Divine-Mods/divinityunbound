@@ -7,6 +7,7 @@ import name.divinityunbound.entity.effect.ModStatusEffect;
 import name.divinityunbound.fluid.ModFluids;
 import name.divinityunbound.item.ModItemGroups;
 import name.divinityunbound.item.ModItems;
+import name.divinityunbound.networking.ModMessages;
 import name.divinityunbound.particle.ModParticles;
 import name.divinityunbound.recipe.ModRecipes;
 import name.divinityunbound.screen.ModScreenHandlers;
@@ -37,6 +38,8 @@ public class DivinityUnbound implements ModInitializer {
 		ModParticles.registerParticles();
 
 		ModRecipes.registerRecipes();
+
+		ModMessages.registerC2SPackets();
 
 		StrippableBlockRegistry.register(ModBlocks.WILDERSUNG_LOG, ModBlocks.STRIPPED_WILDERSUNG_LOG);
 		StrippableBlockRegistry.register(ModBlocks.WILDERSUNG_WOOD, ModBlocks.STRIPPED_WILDERSUNG_WOOD);

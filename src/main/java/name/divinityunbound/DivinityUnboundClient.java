@@ -5,6 +5,7 @@ import name.divinityunbound.block.entity.ModBlockEntities;
 import name.divinityunbound.block.entity.client.SpaceSiphonBlockRenderer;
 import name.divinityunbound.block.entity.client.SpaceTimeEvaporatorBlockRenderer;
 import name.divinityunbound.fluid.ModFluids;
+import name.divinityunbound.networking.ModMessages;
 import name.divinityunbound.particle.ModParticles;
 import name.divinityunbound.particle.PurpleFlameParticle;
 import name.divinityunbound.screen.*;
@@ -38,6 +39,8 @@ public class DivinityUnboundClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.ITEM_TRASHCAN, RenderLayer.getCutoutMipped());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.FLUID_TRASHCAN, RenderLayer.getCutoutMipped());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.ENERGY_TRASHCAN, RenderLayer.getCutoutMipped());
+
+        ModMessages.registerS2CPackets();
 
         ParticleFactoryRegistry.getInstance().register(ModParticles.PURPLE_FLAME_PARTICLE, PurpleFlameParticle.Factory::new);
 

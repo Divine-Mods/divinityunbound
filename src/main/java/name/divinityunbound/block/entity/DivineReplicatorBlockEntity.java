@@ -13,6 +13,8 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
@@ -20,6 +22,7 @@ import net.minecraft.inventory.SidedInventory;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.recipe.RecipeEntry;
@@ -36,11 +39,13 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 public class DivineReplicatorBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory, ImplementedInventory, SidedInventory {
-    private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(2, ItemStack.EMPTY);
+    private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(3, ItemStack.EMPTY);
     private static final int WAND_SLOT = 1;
     private static final int FUEL_SLOT = 0;
+    private static final int NO_AI_SLOT = 2;
 
     private int speedCount = 0;
     private int quantityCount = 0;
@@ -48,6 +53,7 @@ public class DivineReplicatorBlockEntity extends BlockEntity implements Extended
     protected final PropertyDelegate propertyDelegate;
     private int progress = 0;
     private int maxProgress = 72;
+    private SPAWN_TYPE spawnType = SPAWN_TYPE.EXACT_MATCH;
 
     public DivineReplicatorBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.DIVINE_REPLICATOR_BLOCK_ENTITY, pos, state);
@@ -147,14 +153,29 @@ public class DivineReplicatorBlockEntity extends BlockEntity implements Extended
     private void spawnMob(World world, BlockPos pos) {
         ItemStack item = this.getStack(WAND_SLOT);
         if (item.getNbt() != null) {
-            EntityType type = EntityType.fromNbt(item.getNbt()).orElse(null);
-                Entity entity = type.create(world);
-            if (entity != null) {
-                entity.refreshPositionAndAngles(pos.getX() + 0.5,
-                        pos.getY() + 1, pos.getZ() + 0.5,
-                        world.getRandom().nextFloat() * 360.0F, 0.0F);
-                boolean spawned = world.spawnEntity(entity);
+            if (item.getNbt().contains("entity")) {
+                //EntityType type = EntityType.fromNbt(item.getNbt()).orElse(null);
+                //    Entity entity = type.create(world);
+                Entity entity = EntityType.getEntityFromNbt(item.getSubNbt("entity"), world).get();
+                entity.setUuid(UUID.randomUUID());
+//                if (this.getSpawnType().equals(SPAWN_TYPE.SIMILAR)) {
+//                    entity = EntityType.get(
+//                            String.valueOf(item.getSubNbt("entity").get("id")))
+//                            .orElse(entity.getType()).create(world);
+//                }
 
+                if (entity instanceof LivingEntity) {
+                    if (this.getStack(NO_AI_SLOT).getItem().equals(Items.DRAGON_HEAD)) {
+                        ((MobEntity)entity).setAiDisabled(true);
+                    }
+                    // ((MobEntity)entity).setSilent(true);
+
+                    entity.refreshPositionAndAngles(pos.getX() + 0.5,
+                            pos.getY() + 1, pos.getZ() + 0.5,
+                            world.getRandom().nextFloat() * 360.0F, 0.0F);
+                    boolean spawned = world.spawnEntity(entity);
+
+                }
             }
         }
     }
@@ -213,5 +234,18 @@ public class DivineReplicatorBlockEntity extends BlockEntity implements Extended
     @Override
     public boolean canExtract(int slot, ItemStack stack, Direction direction) {
         return slot == WAND_SLOT;
+    }
+
+    public void setSpawnType(SPAWN_TYPE spawnType) {
+        this.spawnType = spawnType;
+    }
+
+    public SPAWN_TYPE getSpawnType() {
+        return this.spawnType;
+    }
+
+    public static enum SPAWN_TYPE {
+        EXACT_MATCH,
+        SIMILAR
     }
 }
