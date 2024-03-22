@@ -8,6 +8,7 @@ import name.divinityunbound.item.custom.WandOfCapturingItem;
 import name.divinityunbound.recipe.GenerationStationRecipe;
 import name.divinityunbound.screen.DivineReplicatorScreenHandler;
 import name.divinityunbound.screen.GenerationStationScreenHandler;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -29,6 +30,7 @@ import net.minecraft.recipe.RecipeEntry;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
@@ -40,6 +42,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+
+import static name.divinityunbound.networking.ModMessages.DR_SPAWN_TYPE;
 
 public class DivineReplicatorBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory, ImplementedInventory, SidedInventory {
     private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(3, ItemStack.EMPTY);
@@ -57,6 +61,13 @@ public class DivineReplicatorBlockEntity extends BlockEntity implements Extended
 
     public DivineReplicatorBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.DIVINE_REPLICATOR_BLOCK_ENTITY, pos, state);
+//        ServerPlayNetworking.registerGlobalReceiver(DR_SPAWN_TYPE,
+//                (server, player, handler, buf, responseSender) -> {
+//                    DivineReplicatorBlockEntity.SPAWN_TYPE spawnType = buf.readEnumConstant(DivineReplicatorBlockEntity.SPAWN_TYPE.class);
+//                    BlockPos position = buf.readBlockPos();
+//                    ServerWorld world = player.getServerWorld();
+//                    this.setSpawnType(spawnType);
+//                });
         this.propertyDelegate = new PropertyDelegate() {
             @Override
             public int get(int index) {
@@ -158,11 +169,11 @@ public class DivineReplicatorBlockEntity extends BlockEntity implements Extended
                 //    Entity entity = type.create(world);
                 Entity entity = EntityType.getEntityFromNbt(item.getSubNbt("entity"), world).get();
                 entity.setUuid(UUID.randomUUID());
-//                if (this.getSpawnType().equals(SPAWN_TYPE.SIMILAR)) {
-//                    entity = EntityType.get(
-//                            String.valueOf(item.getSubNbt("entity").get("id")))
-//                            .orElse(entity.getType()).create(world);
-//                }
+                if (this.getSpawnType().equals(SPAWN_TYPE.SIMILAR)) {
+                    entity = EntityType.get(
+                            String.valueOf(item.getSubNbt("entity").get("id")))
+                            .orElse(entity.getType()).create(world);
+                }
 
                 if (entity instanceof LivingEntity) {
                     if (this.getStack(NO_AI_SLOT).getItem().equals(Items.DRAGON_HEAD)) {

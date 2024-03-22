@@ -1,6 +1,14 @@
 # Changelog
 
 ---
+## v0.3.0
+- Added Celestium, Unholy, and Space Dust blocks
+- Can now convert Sand of Time directly into Celestium, Unholy, and Space Dust blocks
+- Added Unholy Grass Block (randomly spawns mobs when below 8 light level)
+- Added a button in the Divine Replicator to toggle between Exact and Similar spawns
+- Fixed bug that was preventing Unholy Silencer from receiving unholy dust
+
+---
 ## v0.2.1
 - Added the ability to disable mob ai from spawned mobs with the Divine Replicator
 - Fixed bug, Wand of Capturing now works on Villagers

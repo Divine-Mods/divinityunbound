@@ -38,8 +38,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerBlasting(exporter, EXPERIECE_SMELTABLES, RecipeCategory.MISC, ModItems.EXPERIENCE_INGOT, 0.7f, 100, "celestite");
         offerSmelting(exporter, Arrays.asList(ModItems.UNHOLY_DUST), RecipeCategory.MISC, ModItems.UNHOLY_INGOT, 0.7f, 200, "celestite");
         offerBlasting(exporter, Arrays.asList(ModItems.UNHOLY_DUST), RecipeCategory.MISC, ModItems.UNHOLY_INGOT, 0.7f, 100, "celestite");
-        offerSmelting(exporter, Arrays.asList(ModBlocks.SAND_OF_TIME), RecipeCategory.MISC, ModBlocks.FROZEN_TIME_GLASS, 0.7f, 200, "celestite");
-        offerBlasting(exporter, Arrays.asList(ModBlocks.SAND_OF_TIME), RecipeCategory.MISC, ModBlocks.FROZEN_TIME_GLASS, 0.7f, 100, "celestite");
+        offerSmelting(exporter, Arrays.asList(ModItems.SAND_OF_TIME), RecipeCategory.MISC, ModBlocks.FROZEN_TIME_GLASS, 0.7f, 200, "celestite");
+        offerBlasting(exporter, Arrays.asList(ModItems.SAND_OF_TIME), RecipeCategory.MISC, ModBlocks.FROZEN_TIME_GLASS, 0.7f, 100, "celestite");
         offerReversibleCompactingRecipes(exporter, RecipeCategory.BUILDING_BLOCKS, ModItems.CELESTITE, RecipeCategory.DECORATIONS, ModBlocks.CELESTITE_BLOCK);
         offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItems.RAW_CELESTITE, RecipeCategory.BUILDING_BLOCKS, ModBlocks.RAW_CELESTITE_BLOCK);
         //offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItems.CELESTITE_NUGGET, RecipeCategory.MISC, ModItems.CELESTITE);
@@ -48,8 +48,12 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerShapelessRecipe(exporter, ModBlocks.WILDERSUNG_PLANKS, ModBlocks.STRIPPED_WILDERSUNG_LOG, "celestite",4);
         offerShapelessRecipe(exporter, ModBlocks.WILDERSUNG_PLANKS, ModBlocks.STRIPPED_WILDERSUNG_WOOD, "celestite",4);
         offer2x2CompactingRecipe(exporter, RecipeCategory.MISC, ModItems.WILDERSUNG_STRING, ModBlocks.WILDERSUNG_LEAVES);
-        offer2x2CompactingRecipe(exporter, RecipeCategory.MISC, ModBlocks.SAND_OF_TIME, ModItems.GRAIN_OF_TIME);
+        //offer2x2CompactingRecipe(exporter, RecipeCategory.MISC, ModBlocks.SAND_OF_TIME, ModItems.GRAIN_OF_TIME);
         offer2x2CompactingRecipe(exporter, RecipeCategory.MISC, ModBlocks.WILDERSUNG_SILK, ModItems.WILDERSUNG_STRING);
+        offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItems.GRAIN_OF_TIME, RecipeCategory.BUILDING_BLOCKS, ModItems.SAND_OF_TIME);
+        offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItems.CELESTIUM_DUST, RecipeCategory.BUILDING_BLOCKS, ModBlocks.CELESTIUM_DUST_BLOCK);
+        offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItems.UNHOLY_DUST, RecipeCategory.BUILDING_BLOCKS, ModBlocks.UNHOLY_DUST_BLOCK);
+        offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItems.SPACE_DUST, RecipeCategory.BUILDING_BLOCKS, ModBlocks.SPACE_DUST_BLOCK);
 
         offerHelmetRecipe(exporter, RecipeCategory.COMBAT, ModItems.CELESTITE_HELMET, ModItems.CELESTITE);
         offerChestplateRecipe(exporter, RecipeCategory.COMBAT, ModItems.CELESTITE_CHESTPLATE, ModItems.CELESTITE);

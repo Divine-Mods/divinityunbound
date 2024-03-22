@@ -20,10 +20,11 @@ public class DivineReplicatorScreen extends HandledScreen<DivineReplicatorScreen
     private static final Identifier TEXTURE = new Identifier((DivinityUnbound.MOD_ID), "textures/gui/divine_replicator_gui.png");
     private final DivineReplicatorBlockEntity blockEntity;
     private CyclingButtonWidget<Object> spawnTypeButton;
-    private DivineReplicatorBlockEntity.SPAWN_TYPE spawnType = DivineReplicatorBlockEntity.SPAWN_TYPE.EXACT_MATCH;
+    private DivineReplicatorBlockEntity.SPAWN_TYPE spawnType;
     public DivineReplicatorScreen(DivineReplicatorScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
         this.blockEntity = handler.blockEntity;
+        this.spawnType = this.blockEntity.getSpawnType();
     }
 
     @Override
@@ -33,17 +34,18 @@ public class DivineReplicatorScreen extends HandledScreen<DivineReplicatorScreen
         playerInventoryTitleY = 1000;
         int x = (width - backgroundWidth) / 2;
         int y = (height - backgroundHeight) / 2;
-//        this.spawnTypeButton = this.addDrawableChild(CyclingButtonWidget.builder(value -> switch ((DivineReplicatorBlockEntity.SPAWN_TYPE) value) {
-//            default -> throw new IncompatibleClassChangeError();
-//            case EXACT_MATCH -> Text.translatable("divinityunbound.divine_replicator.exact_match");
-//            case SIMILAR -> Text.translatable("divinityunbound.divine_replicator.similar");
-//        }).values(DivineReplicatorBlockEntity.SPAWN_TYPE.values())
-//                .omitKeyText().initially(this.spawnType)
-//                .build(x + 115, y + 9, 40, 20, Text.translatable("advMode.mode"), (button, mode) -> {
-//            this.spawnType = (DivineReplicatorBlockEntity.SPAWN_TYPE) mode;
-//            this.syncSettings();
-//        }));
-//        this.spawnTypeButton.active = true;
+        this.spawnTypeButton = this.addDrawableChild(CyclingButtonWidget.builder(value -> switch ((DivineReplicatorBlockEntity.SPAWN_TYPE) value) {
+            default -> throw new IncompatibleClassChangeError();
+            case EXACT_MATCH -> Text.translatable("divinityunbound.divine_replicator.exact_match");
+            case SIMILAR -> Text.translatable("divinityunbound.divine_replicator.similar");
+        }).values(DivineReplicatorBlockEntity.SPAWN_TYPE.values())
+                .omitKeyText().initially(this.spawnType)
+                .build(x + 115, y + 9, 40, 20, Text.translatable("advMode.mode"), (button, mode) -> {
+            this.spawnType = (DivineReplicatorBlockEntity.SPAWN_TYPE) mode;
+            this.blockEntity.setSpawnType((DivineReplicatorBlockEntity.SPAWN_TYPE)mode);
+            this.syncSettings();
+        }));
+        this.spawnTypeButton.active = true;
     }
 
     @Override

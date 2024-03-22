@@ -33,7 +33,7 @@ import java.util.Iterator;
 public class UnholySilencerBlock extends BlockWithEntity implements BlockEntityProvider {
     protected final Random random = Random.create();
     public static final BooleanProperty ENABLED = Properties.ENABLED;
-    public static final MapCodec<UnholySilencerBlock> CODEC = SpaceSiphonBlock.createCodec(UnholySilencerBlock::new);
+    public static final MapCodec<UnholySilencerBlock> CODEC = UnholySilencerBlock.createCodec(UnholySilencerBlock::new);
     public UnholySilencerBlock(Settings settings) {
         super(settings);
         this.setDefaultState(this.stateManager.getDefaultState().with(ENABLED, false));

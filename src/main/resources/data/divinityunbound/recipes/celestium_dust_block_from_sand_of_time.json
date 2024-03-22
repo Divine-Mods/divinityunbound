@@ -1,0 +1,17 @@
+{
+  "type": "divinityunbound:in_world_crafting",
+  "ingredients": [
+    {
+      "item": "divinityunbound:sand_of_time"
+    },
+    {
+      "item": "divinityunbound:golden_celestite_infused_stone"
+    }
+  ],
+  "output": {
+    "item": "divinityunbound:celestium_dust_block",
+    "count": 1
+  },
+  "dimension": "overworld",
+  "ylevel": ">125"
+}

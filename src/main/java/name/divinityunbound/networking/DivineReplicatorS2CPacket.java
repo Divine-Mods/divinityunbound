@@ -21,9 +21,16 @@ public class DivineReplicatorS2CPacket {
         BlockPos position = buf.readBlockPos();
         ServerWorld world = player.getServerWorld();
         //BlockEntity blockEntity = world.getBlockEntity(position);
-        BlockEntity blockEntity = world.getWorldChunk(position).getBlockEntity(position);
-        if(blockEntity instanceof DivineReplicatorBlockEntity) {
-            ((DivineReplicatorBlockEntity)blockEntity).setSpawnType(spawnType);
-        }
+        server.execute(() -> {
+            BlockEntity blockEntity = world.getWorldChunk(position).getBlockEntity(position);
+            BlockEntity blockEntity2 = world.getBlockEntity(position);
+            if(blockEntity instanceof DivineReplicatorBlockEntity) {
+                ((DivineReplicatorBlockEntity)blockEntity).setSpawnType(spawnType);
+            }
+        });
+//        BlockEntity blockEntity = world.getWorldChunk(position).getBlockEntity(position);
+//        if(blockEntity instanceof DivineReplicatorBlockEntity) {
+//            ((DivineReplicatorBlockEntity)blockEntity).setSpawnType(spawnType);
+//        }
     }
 }

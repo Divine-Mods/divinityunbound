@@ -62,13 +62,37 @@ public class ModBlocks {
     public static final Block FROZEN_TIME_GLASS = registerBlock("frozen_time_glass",
             new Block(FabricBlockSettings.copyOf(Blocks.GLASS).nonOpaque().allowsSpawning(Blocks::never).solidBlock(Blocks::never).suffocates(Blocks::never).blockVision(Blocks::never)));
 
-    public static final Block SAND_OF_TIME = registerBlock("sand_of_time",
+    public static final Block SAND_OF_TIME = registerBlockWithoutBlockItem("sand_of_time",
             new FallingBlock(FabricBlockSettings.copyOf(Blocks.SAND)) {
                 @Override
                 protected MapCodec<? extends FallingBlock> getCodec() {
                     return null;
                 }
             });
+
+    public static final Block CELESTIUM_DUST_BLOCK = registerBlock("celestium_dust_block",
+            new FallingBlock(FabricBlockSettings.copyOf(Blocks.SAND)) {
+                @Override
+                protected MapCodec<? extends FallingBlock> getCodec() {
+                    return null;
+                }
+            });
+    public static final Block UNHOLY_DUST_BLOCK = registerBlock("unholy_dust_block",
+            new FallingBlock(FabricBlockSettings.copyOf(Blocks.SAND)) {
+                @Override
+                protected MapCodec<? extends FallingBlock> getCodec() {
+                    return null;
+                }
+            });
+
+    public static final Block SPACE_DUST_BLOCK = registerBlock("space_dust_block",
+            new FallingBlock(FabricBlockSettings.copyOf(Blocks.SAND)) {
+                @Override
+                protected MapCodec<? extends FallingBlock> getCodec() {
+                    return null;
+                }
+            });
+
     public static final Block WILDERSUNG_LEAVES = registerBlock("wildersung_leaves",
             new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).strength(4f).nonOpaque()));
 
@@ -198,6 +222,9 @@ public class ModBlocks {
 
     public static final Block MOB_ATTRACTOR = registerBlock("mob_attractor",
             new MobAttractorBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
+
+    public static final Block UNHOLY_GRASS_BLOCK = registerBlock("unholy_grass_block",
+            new UnholyGrassBlock(FabricBlockSettings.copyOf(Blocks.GRASS_BLOCK)));
 
     public static final Block ITEM_SINGULARITY_STORAGE = registerBlock("item_singularity_storage",
             new ItemSingularityStorageBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));

@@ -1,0 +1,17 @@
+{
+  "type": "divinityunbound:in_world_crafting",
+  "ingredients": [
+    {
+      "item": "divinityunbound:sand_of_time"
+    },
+    {
+      "item": "minecraft:obsidian"
+    }
+  ],
+  "output": {
+    "item": "divinityunbound:space_dust_block",
+    "count": 1
+  },
+  "dimension": "the_end",
+  "ylevel": "any"
+}

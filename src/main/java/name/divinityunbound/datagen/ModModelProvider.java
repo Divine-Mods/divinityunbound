@@ -2,6 +2,7 @@ package name.divinityunbound.datagen;
 
 import com.ibm.icu.text.Normalizer2;
 import dev.architectury.platform.Mod;
+import name.divinityunbound.DivinityUnbound;
 import name.divinityunbound.block.ModBlocks;
 import name.divinityunbound.fluid.ModFluids;
 import name.divinityunbound.item.ModItems;
@@ -13,6 +14,7 @@ import net.minecraft.data.client.ItemModelGenerator;
 import net.minecraft.data.client.Models;
 import net.minecraft.data.client.TexturedModel;
 import net.minecraft.item.ArmorItem;
+import net.minecraft.util.Identifier;
 
 public class ModModelProvider extends FabricModelProvider {
     public ModModelProvider(FabricDataOutput output) {
@@ -31,6 +33,9 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.GOLDEN_CELESTITE_INFUSED_STONE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.FROZEN_TIME_GLASS);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.SAND_OF_TIME);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CELESTIUM_DUST_BLOCK);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.UNHOLY_DUST_BLOCK);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.SPACE_DUST_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.FROZEN_TIME_LAMP);
         blockStateModelGenerator.registerSimpleState(ModBlocks.ARCANE_FLOOR_LAMP);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CELESTIAL_GLASS);
@@ -39,6 +44,7 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.WITHERED_GLASS);
         blockStateModelGenerator.registerSimpleState(ModBlocks.MINI_GLASS);
         blockStateModelGenerator.registerSimpleState(ModBlocks.DIVINE_TORCH);
+        blockStateModelGenerator.registerSimpleState(ModBlocks.UNHOLY_GRASS_BLOCK);
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.WALL_DIVINE_TORCH);
 
         blockStateModelGenerator.registerLog(ModBlocks.WILDERSUNG_LOG).log(ModBlocks.WILDERSUNG_LOG).wood(ModBlocks.WILDERSUNG_WOOD);

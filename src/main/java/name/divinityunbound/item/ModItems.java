@@ -47,6 +47,7 @@ public class ModItems {
                     ModBlocks.WALL_DIVINE_TORCH,
                     new FabricItemSettings(), Direction.DOWN));
 
+    public static final Item SAND_OF_TIME = Items.register(new SandOfTimeItem(ModBlocks.SAND_OF_TIME, new FabricItemSettings()));
     /* Wands */
 //    public static final Item MAGIC_CELESTITE_DETECTOR = registerItem("magic_celestite_detector",
 //            new MagicOreDetectorItem(new FabricItemSettings().maxDamage(64)));

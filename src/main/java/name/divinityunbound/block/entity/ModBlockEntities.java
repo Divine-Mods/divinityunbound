@@ -97,6 +97,11 @@ public class ModBlockEntities {
                     FabricBlockEntityTypeBuilder.create(MobAttractorBlockEntity::new,
                             ModBlocks.MOB_ATTRACTOR).build());
 
+    public static final BlockEntityType<UnholyGrassBlockEntity> UNHOLY_GRASS_BLOCK_ENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(DivinityUnbound.MOD_ID, "unholy_grass_be"),
+                    FabricBlockEntityTypeBuilder.create(UnholyGrassBlockEntity::new,
+                            ModBlocks.UNHOLY_GRASS_BLOCK).build());
+
     public static final BlockEntityType<SpaceTimeFurnaceBlockEntity> SPACE_TIME_FURNACE_BLOCK_ENTITY =
             Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(DivinityUnbound.MOD_ID, "space_time_furnace_be"),
                     FabricBlockEntityTypeBuilder.create(SpaceTimeFurnaceBlockEntity::new,

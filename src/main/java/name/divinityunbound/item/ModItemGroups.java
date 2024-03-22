@@ -49,6 +49,7 @@ public class ModItemGroups {
                         entries.add(ModItems.IMPORT_CARD);
                         entries.add(ModItems.EXPORT_CARD);
                         entries.add(ModItems.DIVINE_TORCH);
+                        entries.add(ModItems.SAND_OF_TIME);
                         entries.add(ModItems.GOLD_BAND);
 
                         entries.add(ModFluids.SPACE_TIME_BUCKET);
@@ -137,12 +138,16 @@ public class ModItemGroups {
                         entries.add(ModBlocks.FROZEN_TIME_GLASS);
                         entries.add(ModBlocks.FROZEN_TIME_LAMP);
                         entries.add(ModBlocks.ARCANE_FLOOR_LAMP);
-                        entries.add(ModBlocks.SAND_OF_TIME);
+                        //entries.add(ModBlocks.SAND_OF_TIME);
+                        entries.add(ModBlocks.CELESTIUM_DUST_BLOCK);
+                        entries.add(ModBlocks.UNHOLY_DUST_BLOCK);
+                        entries.add(ModBlocks.SPACE_DUST_BLOCK);
                         entries.add(ModBlocks.CELESTIAL_GLASS);
                         entries.add(ModBlocks.DARK_CELESTIAL_GLASS);
                         entries.add(ModBlocks.MINI_GLASS);
                         entries.add(ModBlocks.WILDERSUNG_SILK);
                         entries.add(ModBlocks.WITHERED_GLASS);
+                        entries.add(ModBlocks.UNHOLY_GRASS_BLOCK);
 
                         /* Block Entities */
                         entries.add(ModBlocks.GENERATION_STATION);

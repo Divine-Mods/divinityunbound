@@ -31,7 +31,11 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .forceAddTag(BlockTags.SHOVEL_MINEABLE);
 
         getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE)
-                .add(ModBlocks.SAND_OF_TIME);
+                .add(ModBlocks.SAND_OF_TIME)
+                .add(ModBlocks.CELESTIUM_DUST_BLOCK)
+                .add(ModBlocks.UNHOLY_DUST_BLOCK)
+                .add(ModBlocks.SPACE_DUST_BLOCK)
+                .add(ModBlocks.UNHOLY_GRASS_BLOCK);
 
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
                 .add(ModBlocks.CELESTITE_BLOCK)
@@ -82,6 +86,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.CELESTITE_INFUSED_STONE)
                 .add(ModBlocks.GOLDEN_CELESTITE_INFUSED_STONE)
                 .add(ModBlocks.SAND_OF_TIME)
+                .add(ModBlocks.CELESTIUM_DUST_BLOCK)
+                .add(ModBlocks.UNHOLY_DUST_BLOCK)
+                .add(ModBlocks.SPACE_DUST_BLOCK)
                 .add(ModBlocks.CHRONOS_TIME_ACCUMULATOR)
                 .add(ModBlocks.GENERATION_STATION)
                 .add(ModBlocks.MYSTIC_CHRONOGRAPH)

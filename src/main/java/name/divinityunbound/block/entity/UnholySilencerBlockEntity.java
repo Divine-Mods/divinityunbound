@@ -95,6 +95,7 @@ public class UnholySilencerBlockEntity extends BlockEntity implements ExtendedSc
         super.writeNbt(nbt);
         Inventories.writeNbt(nbt, inventory);
         nbt.putInt("unholy_silencer.progress", progress);
+        nbt.putInt("unholy_silencer.speedCount", speedCount);
     }
 
     @Override
@@ -102,6 +103,7 @@ public class UnholySilencerBlockEntity extends BlockEntity implements ExtendedSc
         super.readNbt(nbt);
         Inventories.readNbt(nbt, inventory);
         progress = nbt.getInt("unholy_silencer.progress");
+        speedCount = nbt.getInt("unholy_silencer.speedCount");
     }
 
     @Override
@@ -224,11 +226,11 @@ public class UnholySilencerBlockEntity extends BlockEntity implements ExtendedSc
 
     @Override
     public boolean canInsert(int slot, ItemStack stack, Direction direction) {
-        return slot == SWORD_SLOT && direction == Direction.UP;
+        return slot == FUEL_SLOT;
     }
 
     @Override
     public boolean canExtract(int slot, ItemStack stack, Direction direction) {
-        return slot == SWORD_SLOT && direction == Direction.DOWN;
+        return slot == SWORD_SLOT;
     }
 }
