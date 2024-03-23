@@ -2,10 +2,11 @@
 
 ---
 ## v0.3.0
+- Added Unholy Grass Block (randomly spawns mobs when below 8 light level)
 - Added Celestium, Unholy, and Space Dust blocks
+- Added Redstone and Lapis Lazuli foci for the Generation Station
 - Can now convert Sand of Time directly into Celestium, Unholy, and Space Dust blocks
 - Added REI recipes for conversion between Sand of Time and the 3 dusts
-- Added Unholy Grass Block (randomly spawns mobs when below 8 light level)
 - Added button toggles for Wormhole Transporter to enable/disable Items, Fluids, and Energy
 - Added a button in the Divine Replicator to toggle between Exact and Similar spawns
 - Fixed bug that was preventing Unholy Silencer from receiving unholy dust

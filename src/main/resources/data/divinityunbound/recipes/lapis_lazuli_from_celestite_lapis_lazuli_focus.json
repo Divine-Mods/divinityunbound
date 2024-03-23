@@ -1,0 +1,15 @@
+{
+  "type": "divinityunbound:generation_station",
+  "ingredients": [
+    {
+      "item": "divinityunbound:celestite_lapis_lazuli_focus"
+    },
+    {
+      "item": "divinityunbound:celestium_dust"
+    }
+  ],
+  "output": {
+    "item": "minecraft:lapis_lazuli",
+    "count": 1
+  }
+}

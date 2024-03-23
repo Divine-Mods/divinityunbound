@@ -182,6 +182,8 @@ public class ModModelProvider extends FabricModelProvider {
 
         /* Foci */
         itemModelGenerator.register(ModItems.CELESTITE_COAL_FOCUS, Models.GENERATED);
+        itemModelGenerator.register(ModItems.CELESTITE_REDSTONE_FOCUS, Models.GENERATED);
+        itemModelGenerator.register(ModItems.CELESTITE_LAPIS_LAZULI_FOCUS, Models.GENERATED);
         itemModelGenerator.register(ModItems.CELESTITE_IRON_FOCUS, Models.GENERATED);
         itemModelGenerator.register(ModItems.CELESTITE_GOLD_FOCUS, Models.GENERATED);
         itemModelGenerator.register(ModItems.CELESTITE_DIAMOND_FOCUS, Models.GENERATED);

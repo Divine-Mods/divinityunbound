@@ -175,6 +175,8 @@ public class ModItemGroups {
 
                         /* Foci */
                         entries.add(ModItems.CELESTITE_COAL_FOCUS);
+                        entries.add(ModItems.CELESTITE_REDSTONE_FOCUS);
+                        entries.add(ModItems.CELESTITE_LAPIS_LAZULI_FOCUS);
                         entries.add(ModItems.CELESTITE_IRON_FOCUS);
                         entries.add(ModItems.CELESTITE_GOLD_FOCUS);
                         entries.add(ModItems.CELESTITE_DIAMOND_FOCUS);

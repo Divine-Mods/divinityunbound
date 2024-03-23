@@ -141,6 +141,8 @@
   "block.minecraft.empty": "Empty",
 
   "item.divinityunbound.celestite_coal_focus": "Celestite Coal Focus",
+  "item.divinityunbound.celestite_redstone_focus": "Celestite Redstone Focus",
+  "item.divinityunbound.celestite_lapis_lazuli_focus": "Celestite Lapis Lazuli Focus",
   "item.divinityunbound.celestite_iron_focus": "Celestite Iron Focus",
   "item.divinityunbound.celestite_gold_focus": "Celestite Gold Focus",
   "item.divinityunbound.celestite_diamond_focus": "Celestite Diamond Focus",

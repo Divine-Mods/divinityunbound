@@ -817,6 +817,30 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(ModItems.CELESTITE), conditionsFromItem(ModItems.CELESTITE))
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.CELESTITE_COAL_FOCUS)));
 
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.CELESTITE_REDSTONE_FOCUS, 1)
+                .pattern("CGC")
+                .pattern("GBG")
+                .pattern("CGC")
+                .input('G', Items.GOLD_INGOT)
+                .input('B', Items.REDSTONE_BLOCK)
+                .input('C', ModItems.CELESTITE)
+                .criterion(hasItem(Items.GOLD_INGOT), conditionsFromItem(Items.GOLD_INGOT))
+                .criterion(hasItem(Items.REDSTONE_BLOCK), conditionsFromItem(Items.REDSTONE_BLOCK))
+                .criterion(hasItem(ModItems.CELESTITE), conditionsFromItem(ModItems.CELESTITE))
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.CELESTITE_REDSTONE_FOCUS)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.CELESTITE_LAPIS_LAZULI_FOCUS, 1)
+                .pattern("CGC")
+                .pattern("GBG")
+                .pattern("CGC")
+                .input('G', Items.GOLD_INGOT)
+                .input('B', Items.LAPIS_BLOCK)
+                .input('C', ModItems.CELESTITE)
+                .criterion(hasItem(Items.GOLD_INGOT), conditionsFromItem(Items.GOLD_INGOT))
+                .criterion(hasItem(Items.LAPIS_BLOCK), conditionsFromItem(Items.LAPIS_BLOCK))
+                .criterion(hasItem(ModItems.CELESTITE), conditionsFromItem(ModItems.CELESTITE))
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.CELESTITE_LAPIS_LAZULI_FOCUS)));
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.CELESTITE_IRON_FOCUS, 1)
                 .pattern("CGC")
                 .pattern("GBG")

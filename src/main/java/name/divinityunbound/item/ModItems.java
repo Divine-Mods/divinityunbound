@@ -186,8 +186,10 @@ public class ModItems {
 
 
     /* Foci */
-    // TODO: Add foci for lapis, redstone, and maybe a few building blocks
+    // TODO: Add foci for some few building blocks
     public static final Item CELESTITE_COAL_FOCUS = registerItem("celestite_coal_focus", new Item(new FabricItemSettings().maxCount(1)));
+    public static final Item CELESTITE_REDSTONE_FOCUS = registerItem("celestite_redstone_focus", new Item(new FabricItemSettings().maxCount(1)));
+    public static final Item CELESTITE_LAPIS_LAZULI_FOCUS = registerItem("celestite_lapis_lazuli_focus", new Item(new FabricItemSettings().maxCount(1)));
     public static final Item CELESTITE_IRON_FOCUS = registerItem("celestite_iron_focus", new Item(new FabricItemSettings().maxCount(1)));
     public static final Item CELESTITE_GOLD_FOCUS = registerItem("celestite_gold_focus", new Item(new FabricItemSettings().maxCount(1)));
     public static final Item CELESTITE_DIAMOND_FOCUS = registerItem("celestite_diamond_focus", new Item(new FabricItemSettings().maxCount(1)));
