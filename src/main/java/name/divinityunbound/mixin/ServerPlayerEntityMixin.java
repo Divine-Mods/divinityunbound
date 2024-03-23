@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(ServerPlayerEntity.class)
 public abstract class ServerPlayerEntityMixin {
-    @Inject(method = "damage", at = @At(value = "HEAD"))
+    @Inject(method = "damage", at = @At(value = "HEAD"), cancellable = true)
     public void onDamage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
         boolean hasPlayerEffect = ((ServerPlayerEntity)(Object)this).hasStatusEffect(ModStatusEffect.HERMES_EFFECT);
         if (hasPlayerEffect && source.isIn(DamageTypeTags.IS_FALL)) {
