@@ -92,7 +92,7 @@ public class DivineReplicatorScreen extends HandledScreen<DivineReplicatorScreen
         PacketByteBuf buf = PacketByteBufs.create();
         buf.writeEnumConstant(this.spawnType);
         buf.writeBlockPos(this.blockEntity.getPos());
-        this.blockEntity.getWorld().getDimension();
+        //this.blockEntity.getWorld().getDimension();
         ClientPlayNetworking.send(ModMessages.DR_SPAWN_TYPE, buf);
 //        this.client.getNetworkHandler()
 //                .sendPacket(new UpdateDivineReplicatorS2CPacket(

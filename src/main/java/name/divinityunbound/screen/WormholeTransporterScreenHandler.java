@@ -30,9 +30,9 @@ public class WormholeTransporterScreenHandler extends ScreenHandler {
         this.blockEntity = ((WormholeTransporterBlockEntity) blockEntity);
 
         // Card Slot
-        this.addSlot(new Slot(inventory, 0, 40, 34));
+        this.addSlot(new Slot(inventory, 0, 75, 34));
         // Item Slot
-        this.addSlot(new Slot(inventory, 1, 85, 34));
+        this.addSlot(new Slot(inventory, 1, 102, 34));
 
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);

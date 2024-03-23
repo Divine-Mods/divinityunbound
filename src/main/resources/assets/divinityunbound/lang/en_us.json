@@ -183,13 +183,12 @@
   "tooltip.divinityunbound.dark_celestial_glass2": "Acts like Tinted Glass. Hold Shift to stand on.",
   "tooltip.divinityunbound.withered_glass": "Wither, Dragon, and Explosion proof",
 
-  "divinityunbound.wormhole_transporter.item_mode.conditional": "Extract Item",
-  "divinityunbound.wormhole_transporter.item_mode.unconditional": "No Item",
-  "divinityunbound.wormhole_transporter.energy_mode.conditional": "",
-  "divinityunbound.wormhole_transporter.energy_mode.unconditional": "",
-  "divinityunbound.wormhole_transporter.fluid_mode.conditional": "",
-  "divinityunbound.wormhole_transporter.fluid_mode.unconditional": "",
   "divinityunbound.wormhole_transporter.type": "Type",
+  "divinityunbound.wormhole_transporter.items": "Items",
+  "divinityunbound.wormhole_transporter.fluids": "Fluids",
+  "divinityunbound.wormhole_transporter.energy": "Energy",
+  "divinityunbound.mode.on": "On",
+  "divinityunbound.mode.off": "Off",
 
   "divinityunbound.divine_replicator.exact_match": "Exact",
   "divinityunbound.divine_replicator.similar": "Similar",

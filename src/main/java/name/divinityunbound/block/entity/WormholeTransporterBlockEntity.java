@@ -75,6 +75,10 @@ public class WormholeTransporterBlockEntity extends BlockEntity implements Exten
     private int energyActive = 0;
     private int fluidActive = 0;
 
+    private boolean itemsEnabled = false;
+    private boolean fluidsEnabled = false;
+    private boolean energyEnabled = false;
+
     protected final PropertyDelegate propertyDelegate;
     public WormholeTransporterBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.WORMHOLE_TRANSPORTER_BLOCK_ENTITY, pos, state);
@@ -133,7 +137,7 @@ public class WormholeTransporterBlockEntity extends BlockEntity implements Exten
 
         @Override
         protected long getCapacity(FluidVariant variant) {
-            return (FluidConstants.BUCKET / 81) * 32;
+            return FluidConstants.BUCKET * 32;
         }
 
         @Override
@@ -158,6 +162,9 @@ public class WormholeTransporterBlockEntity extends BlockEntity implements Exten
         nbt.putInt("wormhole_transporter.itemsActive", this.itemsActive);
         nbt.putInt("wormhole_transporter.energyActive", this.energyActive);
         nbt.putInt("wormhole_transporter.fluidActive", this.fluidActive);
+        nbt.putBoolean("wormhole_transporter.itemsEnabled", this.itemsEnabled);
+        nbt.putBoolean("wormhole_transporter.fluidsEnabled", this.fluidsEnabled);
+        nbt.putBoolean("wormhole_transporter.energyEnabled", this.energyEnabled);
     }
 
     @Override
@@ -168,9 +175,9 @@ public class WormholeTransporterBlockEntity extends BlockEntity implements Exten
         this.energyStorage.amount = nbt.getLong("wormhole_transporter.energy");
         this.fluidStorage.variant = FluidVariant.fromNbt((NbtCompound) nbt.get("wormhole_transporter.variant"));
         this.fluidStorage.amount = nbt.getLong("wormhole_transporter.fluid_amount");
-        this.itemsActive = nbt.getInt("wormhole_transporter.itemsActive");
-        this.energyActive = nbt.getInt("wormhole_transporter.energyActive");
-        this.fluidActive = nbt.getInt("wormhole_transporter.fluidActive");
+        this.itemsEnabled = nbt.getBoolean("wormhole_transporter.itemsActive");
+        this.fluidsEnabled = nbt.getBoolean("wormhole_transporter.fluidsEnabled");
+        this.energyEnabled = nbt.getBoolean("wormhole_transporter.energyEnabled");
     }
 
     @Override
@@ -221,36 +228,42 @@ public class WormholeTransporterBlockEntity extends BlockEntity implements Exten
                         WormholeTransporterBlockEntity wormhole = ((WormholeTransporterBlockEntity) world
                                 .getBlockEntity(new BlockPos(savedPos[0], savedPos[1], savedPos[2])));
                         // Import Items from Linked Wormhole
-                        attemptExtractInvToInternalInv(wormhole);
+                        if (this.getItemsEnabled()) {
+                            attemptExtractInvToInternalInv(wormhole);
+                        }
                         // Import Energy from Linked Wormhole
-                        pushEnergyToAdjacentStorage(wormhole.energyStorage, this.energyStorage);
+                        if (this.getEnergyEnabled()) {
+                            pushEnergyToAdjacentStorage(wormhole.energyStorage, this.energyStorage);
+                        }
                         // Import Fluid from Linked Wormhole
-                        pushFluidToAdjacentStorage(wormhole.fluidStorage, this.fluidStorage);
+                        if (this.getFluidsEnabled()) {
+                            pushFluidToAdjacentStorage(wormhole.fluidStorage, this.fluidStorage);
+                        }
                     }
                 }
 
-                if (neighborInv != null && !this.getStack(ITEM_SLOT).isEmpty()) { // Import Items to Neighbor Inv
+                if (neighborInv != null && !this.getStack(ITEM_SLOT).isEmpty() && this.getItemsEnabled()) { // Import Items to Neighbor Inv
                     attemptExtractionToExternalInv(neighborInv, this.getStack(ITEM_SLOT));
                 }
 
-                if (neighborEnergyStorage != null) { // Import Energy into Neighbor Energy Storage
+                if (neighborEnergyStorage != null && this.getEnergyEnabled()) { // Import Energy into Neighbor Energy Storage
                     pushEnergyToAdjacentStorage(this.energyStorage, neighborEnergyStorage);
                 }
 
-                if (neighborFluidStorage != null) { // Import Fluid into Neighbor Fluid Storage
+                if (neighborFluidStorage != null && this.getFluidsEnabled()) { // Import Fluid into Neighbor Fluid Storage
                     pushFluidToAdjacentStorage(this.fluidStorage, neighborFluidStorage);
                 }
             }
             else {  // Export Mode
-                if (neighborInv != null) { // Import Items from Neighbor Inv
+                if (neighborInv != null && this.getItemsEnabled()) { // Import Items from Neighbor Inv
                     attemptExtractionToInternalInv(neighborInv);
                 }
 
-                if (neighborEnergyStorage != null) { // Import Energy from Neighbor Energy Storage
+                if (neighborEnergyStorage != null && this.getEnergyEnabled()) { // Import Energy from Neighbor Energy Storage
                     pushEnergyToAdjacentStorage(neighborEnergyStorage, this.energyStorage);
                 }
 
-                if (neighborFluidStorage != null) { // Import Fluid from Neighbor Fluid Storage
+                if (neighborFluidStorage != null && this.getFluidsEnabled()) { // Import Fluid from Neighbor Fluid Storage
                     pushFluidToAdjacentStorage(neighborFluidStorage, this.fluidStorage);
                 }
 
@@ -262,11 +275,17 @@ public class WormholeTransporterBlockEntity extends BlockEntity implements Exten
                         WormholeTransporterBlockEntity wormhole = ((WormholeTransporterBlockEntity) world
                                 .getBlockEntity(new BlockPos(savedPos[0], savedPos[1], savedPos[2])));
                         // Export Items to Linked wormhole
-                        attemptExtractInvToExternalInv(wormhole);
+                        if (this.getItemsEnabled()) {
+                            attemptExtractInvToExternalInv(wormhole);
+                        }
                         // Export Energy to Linked Wormhole
-                        pushEnergyToAdjacentStorage(this.energyStorage, wormhole.energyStorage);
+                        if (this.getEnergyEnabled()) {
+                            pushEnergyToAdjacentStorage(this.energyStorage, wormhole.energyStorage);
+                        }
                         // Export Fluid to Linked Wormhole
-                        pushFluidToAdjacentStorage(this.fluidStorage, wormhole.fluidStorage);
+                        if (this.getFluidsEnabled()) {
+                            pushFluidToAdjacentStorage(this.fluidStorage, wormhole.fluidStorage);
+                        }
                     }
                 }
             }
@@ -620,31 +639,28 @@ public class WormholeTransporterBlockEntity extends BlockEntity implements Exten
         return RenderUtils.getCurrentTick();
     }
 
-    public boolean getItemsActive() {
-        return this.itemsActive == 0 ? false : true;
+    public boolean getItemsEnabled() {
+        return this.itemsEnabled;
     }
 
-    //    public boolean isEnergyActive() {
-//        return this.energyActive;
-//    }
-//
-//    public boolean isFluidsActive() {
-//        return this.fluidActive;
-//    }
-
-    public void setItemsActive() {
-        this.itemsActive++;
+    public void setItemsEnabled(boolean itemsEnabled) {
+        this.itemsEnabled = itemsEnabled;
     }
 
-    public void resetItemActive() {
-        this.itemsActive = 0;
+    public boolean getFluidsEnabled() {
+        return this.fluidsEnabled;
     }
 
-//    public void setEnergyActiveActive(boolean energyActive) {
-//        this.energyActive = energyActive;
-//    }
-//
-//    public void setFluidActive(boolean fluidActive) {
-//        this.fluidActive = fluidActive;
-//    }
+    public void setFluidsEnabled(boolean fluidsEnabled) {
+        this.fluidsEnabled = fluidsEnabled;
+    }
+
+    public boolean getEnergyEnabled() {
+        return this.energyEnabled;
+    }
+
+    public void setEnergyEnabled(boolean energyEnabled) {
+        this.energyEnabled = energyEnabled;
+    }
+
 }

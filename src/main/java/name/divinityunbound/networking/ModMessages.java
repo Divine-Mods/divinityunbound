@@ -11,6 +11,7 @@ import net.minecraft.util.Identifier;
 
 public class ModMessages {
     public static final Identifier DR_SPAWN_TYPE = new Identifier(DivinityUnbound.MOD_ID, "divine_replicator.spawn_type");
+    public static final Identifier WORMHOLE_ENABLES = new Identifier(DivinityUnbound.MOD_ID, "wormhole_transporter.enables");
 
     public static void registerS2CPackets() {
         //ClientPlayNetworking.registerGlobalReceiver(DR_SPAWN_TYPE, DivineReplicatorS2CPacket::receive);
@@ -19,5 +20,6 @@ public class ModMessages {
 
     public static void registerC2SPackets() {
         ServerPlayNetworking.registerGlobalReceiver(DR_SPAWN_TYPE, DivineReplicatorS2CPacket::receive);
+        ServerPlayNetworking.registerGlobalReceiver(WORMHOLE_ENABLES, WormholeTransporterC2SPacket::receive);
     }
 }

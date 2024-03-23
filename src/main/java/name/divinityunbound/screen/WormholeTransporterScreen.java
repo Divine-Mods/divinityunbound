@@ -5,6 +5,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import name.divinityunbound.DivinityUnbound;
 import name.divinityunbound.block.entity.WormholeTransporterBlockEntity;
 import name.divinityunbound.networking.DivinityUnboundNetworkingConstants;
+import name.divinityunbound.networking.ModMessages;
 import name.divinityunbound.screen.renderer.EnergyInfoArea;
 import name.divinityunbound.screen.renderer.FluidStackRenderer;
 import name.divinityunbound.util.MouseUtil;
@@ -33,16 +34,23 @@ public class WormholeTransporterScreen extends HandledScreen<WormholeTransporter
     private EnergyInfoArea energyInfoArea;
     private FluidStackRenderer fluidStackRenderer;
     private long fluidCapacity;
+    private WormholeTransporterBlockEntity blockEntity;
 
     private CyclingButtonWidget<Boolean> itemButton;
+    private CyclingButtonWidget<Boolean> fluidButton;
+    private CyclingButtonWidget<Boolean> energyButton;
     private boolean itemsActive;
     private boolean energyActive;
-    private boolean fluidActive;
+    private boolean fluidsActive;
 
     //private WormholeTransporterBlockEntity wormholeTransporter;
 
     public WormholeTransporterScreen(WormholeTransporterScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
+        this.blockEntity = handler.blockEntity;
+        this.itemsActive = this.blockEntity.getItemsEnabled();
+        this.fluidsActive = this.blockEntity.getFluidsEnabled();
+        this.energyActive = this.blockEntity.getEnergyEnabled();
         //this.wormholeTransporter = handler.blockEntity;
 //        BlockPos pos = handler.blockEntity.getPos();
 //        this.wormholeTransporter = (WormholeTransporterBlockEntity)handler.blockEntity.getWorld().getBlockEntity(pos);
@@ -59,20 +67,53 @@ public class WormholeTransporterScreen extends HandledScreen<WormholeTransporter
         playerInventoryTitleY = 1000;
         int x = (width - backgroundWidth) / 2;
         int y = (height - backgroundHeight) / 2;
-//        this.itemButton = this.addDrawableChild(CyclingButtonWidget.onOffBuilder(
-//                handler.getPropertyDelegate(0))
-//                .omitKeyText()
-//                .build(x + 8, y + 10, 40, 20,
-//                        Text.translatable("divinityunbound.wormhole_transporter.item_mode.conditional"),
-//                        (button, conditional) -> {
-//
-//                        }
-//                    ));
-//        this.itemButton.active = true;
-        this.fluidCapacity = handler.blockEntity.fluidStorage.getCapacity();
+
+        this.itemButton = this.addDrawableChild(CyclingButtonWidget.onOffBuilder(
+                Text.translatable("divinityunbound.mode.on"), Text.translatable("divinityunbound.mode.off"))
+                .omitKeyText().initially(this.itemsActive)
+                .build(x + 45, y + 10, 25, 16,
+                        Text.translatable("advMode.type"),
+                        (button, conditional) -> {
+                    this.itemsActive = conditional;
+                    this.blockEntity.setItemsEnabled(conditional);
+                    this.syncSettings();
+                }));
+        this.fluidButton = this.addDrawableChild(CyclingButtonWidget.onOffBuilder(
+                        Text.translatable("divinityunbound.mode.on"), Text.translatable("divinityunbound.mode.off"))
+                .omitKeyText().initially(this.fluidsActive)
+                .build(x + 45, y + 28, 25, 16,
+                        Text.translatable("advMode.type"),
+                        (button, conditional) -> {
+                            this.fluidsActive = conditional;
+                            this.blockEntity.setFluidsEnabled(conditional);
+                            this.syncSettings();
+                        }));
+        this.energyButton = this.addDrawableChild(CyclingButtonWidget.onOffBuilder(
+                        Text.translatable("divinityunbound.mode.on"), Text.translatable("divinityunbound.mode.off"))
+                .omitKeyText().initially(this.energyActive)
+                .build(x + 45, y + 46, 25, 16,
+                        Text.translatable("advMode.type"),
+                        (button, conditional) -> {
+                            this.energyActive = conditional;
+                            this.blockEntity.setEnergyEnabled(conditional);
+                            this.syncSettings();
+                        }));
+        this.itemButton.active = true;
+        this.fluidButton.active = true;
+        this.energyButton.active = true;
+        this.fluidCapacity = handler.blockEntity.fluidStorage.getCapacity() / 81;
         assignEnergyInfoArea();
         assignFluidStackRenderer();
+    }
 
+    public void syncSettings() {
+        PacketByteBuf buf = PacketByteBufs.create();
+        buf.writeBoolean(this.itemsActive);
+        buf.writeBoolean(this.fluidsActive);
+        buf.writeBoolean(this.energyActive);
+        buf.writeBlockPos(this.blockEntity.getPos());
+        //this.blockEntity.getWorld().getDimension();
+        ClientPlayNetworking.send(ModMessages.WORMHOLE_ENABLES, buf);
     }
 
     private void assignEnergyInfoArea() {
@@ -127,6 +168,14 @@ public class WormholeTransporterScreen extends HandledScreen<WormholeTransporter
         renderBackground(context, mouseX, mouseY, delta);
         super.render(context, mouseX, mouseY, delta);
         drawMouseoverTooltip(context, mouseX, mouseY);
+        int x = (width - backgroundWidth) / 2;
+        int y = (height - backgroundHeight) / 2;
+        context.drawCenteredTextWithShadow(textRenderer,
+                Text.translatable("divinityunbound.wormhole_transporter.items"), x + 24, y + 14, 0xffffff);
+        context.drawCenteredTextWithShadow(textRenderer,
+                Text.translatable("divinityunbound.wormhole_transporter.fluids"), x + 24, y + 32, 0xffffff);
+        context.drawCenteredTextWithShadow(textRenderer,
+                Text.translatable("divinityunbound.wormhole_transporter.energy"), x + 24, y + 50, 0xffffff);
     }
 
     private boolean isMouseAboveArea(int pMouseX, int pMouseY, int x, int y, int offsetX, int offsetY, FluidStackRenderer renderer) {
