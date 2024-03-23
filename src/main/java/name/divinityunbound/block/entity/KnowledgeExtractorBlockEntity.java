@@ -11,6 +11,7 @@ import net.minecraft.block.HopperBlock;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.HopperBlockEntity;
 import net.minecraft.entity.ExperienceOrbEntity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
@@ -28,6 +29,7 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
@@ -116,7 +118,17 @@ public class KnowledgeExtractorBlockEntity extends BlockEntity implements Extend
         --this.transferCooldown;
         if (!needsCooldown()) {
             setTransferCooldown(0);
-            dispenseXP(world, pos, state);
+            if (state.get(KnowledgeExtractorBlock.ENABLED).booleanValue()) {
+                dispenseXP(world, pos, state);
+            }
+            else {
+                List<ExperienceOrbEntity> xp = getExperienceInRange(world, pos);
+                xp.forEach((orb) -> {
+                    int amount = orb.getExperienceAmount();
+                    this.addExperience(amount);
+                    orb.discard();
+                });
+            }
         }
         if (playerSteppingOn != null && playerSteppingOn.getBlockPos().isWithinDistance(pos, 1.25)) {
             if (playerSteppingOn.experienceLevel > 0) {
@@ -132,6 +144,20 @@ public class KnowledgeExtractorBlockEntity extends BlockEntity implements Extend
                 playerSteppingOn = null;
             }
         }
+    }
+
+    private List<ExperienceOrbEntity> getExperienceInRange(World world, BlockPos pos) {
+        int range = 10 / 2;
+        int posx = pos.getX();
+        int posy = pos.getY();
+        int posz = pos.getZ();
+        Box box = new Box(posx - range, posy - range, posz - range,
+                posx + range, posy + range, posz + range);
+        List<ExperienceOrbEntity> xpEntities = world.getEntitiesByClass(ExperienceOrbEntity.class, box, e -> (
+                !e.isPlayer()
+        ));
+
+        return xpEntities;
     }
 
     public void dispenseXP(World world, BlockPos pos, BlockState state) {

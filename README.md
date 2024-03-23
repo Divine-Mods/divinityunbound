@@ -24,6 +24,7 @@ A Chronos Time Accumulator will magically accumulate and distill grains of time
 as real time passes. You'll have to make some celestite infused stone and some 
 golden celestite infused stone to make one but it'll be worth it.
 
+
 ---
 
 ## Next Steps
@@ -42,6 +43,8 @@ used on an indestructible block in the underworld.
 
 From here, you should be able to start dabbling into the more powerful 
 magical items if you can obtain some Time Forged Ingots.
+
+*Note: You can craft grains of time into sand of time to be able to convert 9 at a time.*
 
 ---
 
@@ -73,7 +76,9 @@ pushes them to the inventory below. Redstone Toggleable.
 Unholy Silencer - Attacks mobs within a radius around it. Utilizes sword in inventory to calculate damage. Redstone Toggleable.
 (Does take into account sword enchantments, e.g. Looting, Sharpness, etc)
 
-Knowledge Extractor - Extracts xp from player when standing on. Use a redstone signal to dispense stored xp.
+Unholy Grass Block - Randomly spawns mobs every 1-10 seconds, only spawns mobs below a light level of 8.
+
+Knowledge Extractor - Extracts xp from player when standing on. Use a redstone signal to dispense stored xp. **When the Knowledge Extractor is not receiving a redstone signal it will retrieve all experience orbs within a 5 block radius and store them.**
 
 Celestial Glass - Allows players to walk through but mobs cannot. Hold shift to stand on.
 
@@ -210,12 +215,16 @@ Celestite, Time Forged Ingots, Space Forged Ingots, Space Time Ingots
 
 Full sets of tools and armor for each material type. There are also Paxels!
 
+Paxels also have the unique ability to set a max mining speed when holding shift and mining. For example, 
+if you have efficiency V and haste II you may accidentally insta-mine 5 blocks in a line. If you hold shift when 
+mining it will cap how fast you can mine. This can be incredibly useful when building if you don't want to accidentally mine a bunch of blocks.
+
 Full sets of armor have different full set bonuses!
 
 ---
 
 #### TODO:
-- [ ] Range Upgrade
+- [X] Range Upgrade
 - [ ] Efficiency Upgrade
 - [ ] Mystic Chronograph supporting upgrades
 - [ ] Space Time Amalgamator supporting upgrades

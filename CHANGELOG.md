@@ -5,6 +5,8 @@
 - Added Unholy Grass Block (randomly spawns mobs when below 8 light level)
 - Added Celestium, Unholy, and Space Dust blocks
 - Added Redstone and Lapis Lazuli foci for the Generation Station
+- Knowledge Extractor can now collect experience in a 5 block radius around it. It will automatically collect xp orbs 
+- and store it interally when not receiving a redstone signal. (When it receives a redstone signal, it dispenses xp)
 - Can now convert Sand of Time directly into Celestium, Unholy, and Space Dust blocks
 - Added REI recipes for conversion between Sand of Time and the 3 dusts
 - Added button toggles for Wormhole Transporter to enable/disable Items, Fluids, and Energy

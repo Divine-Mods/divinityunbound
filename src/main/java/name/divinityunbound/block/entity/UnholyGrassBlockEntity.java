@@ -42,6 +42,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class UnholyGrassBlockEntity extends BlockEntity {
+    private Random random = Random.create();
     private static final Stream<RegistryEntry.Reference<EntityType<?>>> entityTypeStream = Registries.ENTITY_TYPE
             .streamEntries();
     private static final List<RegistryEntry.Reference<EntityType<?>>> entityTypes = entityTypeStream
@@ -68,27 +69,32 @@ public class UnholyGrassBlockEntity extends BlockEntity {
     @Override
     protected void writeNbt(NbtCompound nbt) {
         super.writeNbt(nbt);
+        nbt.putInt("unholy_grass_block.cooldown", cooldown);
+        nbt.putInt("unholy_grass_block.maxCooldownWait", maxCooldownWait);
     }
 
     @Override
     public void readNbt(NbtCompound nbt) {
         super.readNbt(nbt);
+        cooldown = nbt.getInt("unholy_grass_block.cooldown");
+        maxCooldownWait = nbt.getInt("unholy_grass_block.maxCooldownWait");
     }
 
     private int cooldown = 0;
+    private int maxCooldownWait = 20;
     public void tick(World world, BlockPos pos, BlockState state) {
         if (world.isClient()) {
             return;
         }
-        if (cooldown < 20) {
+        if (cooldown < maxCooldownWait) {
             cooldown++;
             return;
         }
         cooldown = 0;
-        Random rand = Random.create();
+        maxCooldownWait = random.nextBetween(20, 200);
 
-        if(world.getLightLevel(pos.up()) < 8) {
-            RegistryEntry.Reference<EntityType<?>> type = entityTypes.get(rand.nextInt(entityTypes.size()));
+        if(world.getLightLevel(pos.up()) < 8 && this.getLivingEntitiesInRange(world, pos).size() < 20) {
+            RegistryEntry.Reference<EntityType<?>> type = entityTypes.get(random.nextInt(entityTypes.size()));
             Entity entity = type.value().create(world);
 
             if (entity != null) {
@@ -103,7 +109,7 @@ public class UnholyGrassBlockEntity extends BlockEntity {
     }
 
     private List<LivingEntity> getLivingEntitiesInRange(World world, BlockPos pos) {
-        int range = 6 / 2;
+        int range = 10 / 2;
         int posx = pos.getX();
         int posy = pos.getY();
         int posz = pos.getZ();
