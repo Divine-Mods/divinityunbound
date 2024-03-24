@@ -71,6 +71,10 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.WITHERED_GLASS)
                 .add(ModBlocks.COAL_GENERATOR)
                 .add(ModBlocks.MOB_ATTRACTOR)
+                .add(ModBlocks.PROTEUS_CONTROLLER_BLOCK)
+                .add(ModBlocks.PROTEUS_CONVERTER_BLOCK)
+                .add(ModBlocks.TIME_FORGED_BLOCK)
+                .add(ModBlocks.SPACE_FORGED_BLOCK)
                 .add(ModBlocks.SPACE_TIME_FURNACE);
 
         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
@@ -106,11 +110,15 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.KNOWLEDGE_EXTRACTOR)
                 .add(ModBlocks.WITHERED_GLASS)
                 .add(ModBlocks.MOB_ATTRACTOR)
+                .add(ModBlocks.TIME_FORGED_BLOCK)
+                .add(ModBlocks.SPACE_FORGED_BLOCK)
                 .add(ModBlocks.ITEM_SINGULARITY_STORAGE);
 
         getOrCreateTagBuilder(BlockTags.NEEDS_DIAMOND_TOOL)
                 .add(ModBlocks.SPACE_TIME_EVAPORATOR)
                 .add(ModBlocks.SPACE_TIME_AMALGAMATOR)
+                .add(ModBlocks.PROTEUS_CONTROLLER_BLOCK)
+                .add(ModBlocks.PROTEUS_CONVERTER_BLOCK)
                 .add(ModBlocks.SPACE_TIME_FURNACE);
 
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)

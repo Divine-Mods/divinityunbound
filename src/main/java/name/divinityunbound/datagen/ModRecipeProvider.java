@@ -54,6 +54,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItems.CELESTIUM_DUST, RecipeCategory.BUILDING_BLOCKS, ModBlocks.CELESTIUM_DUST_BLOCK);
         offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItems.UNHOLY_DUST, RecipeCategory.BUILDING_BLOCKS, ModBlocks.UNHOLY_DUST_BLOCK);
         offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItems.SPACE_DUST, RecipeCategory.BUILDING_BLOCKS, ModBlocks.SPACE_DUST_BLOCK);
+        offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItems.TIME_FORGED_INGOT, RecipeCategory.BUILDING_BLOCKS, ModBlocks.TIME_FORGED_BLOCK);
+        offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItems.SPACE_FORGED_INGOT, RecipeCategory.BUILDING_BLOCKS, ModBlocks.SPACE_FORGED_BLOCK);
 
         offerHelmetRecipe(exporter, RecipeCategory.COMBAT, ModItems.CELESTITE_HELMET, ModItems.CELESTITE);
         offerChestplateRecipe(exporter, RecipeCategory.COMBAT, ModItems.CELESTITE_CHESTPLATE, ModItems.CELESTITE);
@@ -401,7 +403,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(ModItems.CELESTITE), conditionsFromItem(ModItems.CELESTITE))
                 .criterion(hasItem(ModItems.CELESTIUM_DUST), conditionsFromItem(ModItems.CELESTIUM_DUST))
                 .criterion(hasItem(ModItems.UNHOLY_DUST), conditionsFromItem(ModItems.UNHOLY_DUST))
-                .offerTo(exporter, new Identifier(getRecipeName(ModItems.TIME_FORGED_INGOT)));
+                .offerTo(exporter, new Identifier("craft_time_forged_ingot"));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.SPACE_FORGED_INGOT, 1)
                 .pattern("SUS")
@@ -413,7 +415,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(ModItems.CELESTITE), conditionsFromItem(ModItems.CELESTITE))
                 .criterion(hasItem(ModItems.SPACE_DUST), conditionsFromItem(ModItems.SPACE_DUST))
                 .criterion(hasItem(ModItems.UNHOLY_DUST), conditionsFromItem(ModItems.UNHOLY_DUST))
-                .offerTo(exporter, new Identifier(getRecipeName(ModItems.SPACE_FORGED_INGOT)));
+                .offerTo(exporter, new Identifier("craft_space_forged_ingot"));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.WAND_BINDING, 1)
                 .pattern("U U")

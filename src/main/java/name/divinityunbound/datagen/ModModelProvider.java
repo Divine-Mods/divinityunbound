@@ -42,6 +42,8 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DARK_CELESTIAL_GLASS);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.WILDERSUNG_SILK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.WITHERED_GLASS);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.TIME_FORGED_BLOCK);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.SPACE_FORGED_BLOCK);
         blockStateModelGenerator.registerSimpleState(ModBlocks.MINI_GLASS);
         blockStateModelGenerator.registerSimpleState(ModBlocks.DIVINE_TORCH);
         blockStateModelGenerator.registerSimpleState(ModBlocks.UNHOLY_GRASS_BLOCK);
@@ -80,6 +82,9 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.KNOWLEDGE_EXTRACTOR);
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.COAL_GENERATOR);
         blockStateModelGenerator.registerSimpleState(ModBlocks.MOB_ATTRACTOR);
+
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.PROTEUS_CONTROLLER_BLOCK);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.PROTEUS_CONVERTER_BLOCK);
 
         blockStateModelGenerator.registerCooker(ModBlocks.SPACE_TIME_FURNACE, TexturedModel.ORIENTABLE);
     }

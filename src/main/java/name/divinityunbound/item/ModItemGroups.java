@@ -148,6 +148,8 @@ public class ModItemGroups {
                         entries.add(ModBlocks.WILDERSUNG_SILK);
                         entries.add(ModBlocks.WITHERED_GLASS);
                         entries.add(ModBlocks.UNHOLY_GRASS_BLOCK);
+                        entries.add(ModBlocks.TIME_FORGED_BLOCK);
+                        entries.add(ModBlocks.SPACE_FORGED_BLOCK);
 
                         /* Block Entities */
                         entries.add(ModBlocks.GENERATION_STATION);
@@ -172,6 +174,10 @@ public class ModItemGroups {
                         //entries.add(ModBlocks.ITEM_SINGULARITY_STORAGE);
 
                         //entries.add(ModBlocks.SPACE_TIME_FURNACE);
+
+                        /* Multiblocks */
+                        entries.add(ModBlocks.PROTEUS_CONTROLLER_BLOCK);
+                        entries.add(ModBlocks.PROTEUS_CONVERTER_BLOCK);
 
                         /* Foci */
                         entries.add(ModItems.CELESTITE_COAL_FOCUS);

@@ -115,6 +115,12 @@ public class ModBlocks {
     public static final Block KNOWLEDGE_EXTRACTOR = registerBlock("knowledge_extractor",
             new KnowledgeExtractorBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
 
+    public static final Block TIME_FORGED_BLOCK = registerBlock("time_forged_block",
+            new Block(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
+
+    public static final Block SPACE_FORGED_BLOCK = registerBlock("space_forged_block",
+            new Block(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
+
     public static final Block FROZEN_TIME_LAMP = registerBlock("frozen_time_lamp",
             new Block(AbstractBlock.Settings.create()
                     .mapColor(MapColor.PALE_PURPLE)
@@ -225,6 +231,12 @@ public class ModBlocks {
 
     public static final Block UNHOLY_GRASS_BLOCK = registerBlock("unholy_grass_block",
             new UnholyGrassBlock(FabricBlockSettings.copyOf(Blocks.GRASS_BLOCK)));
+
+    public static final Block PROTEUS_CONTROLLER_BLOCK = registerBlock("proteus_controller_block",
+            new ProteusControllerBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
+
+    public static final Block PROTEUS_CONVERTER_BLOCK = registerBlock("proteus_converter_block",
+            new ProteusConverterBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
 
     public static final Block ITEM_SINGULARITY_STORAGE = registerBlock("item_singularity_storage",
             new ItemSingularityStorageBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));

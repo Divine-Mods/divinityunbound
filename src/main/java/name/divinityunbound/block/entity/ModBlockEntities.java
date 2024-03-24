@@ -102,6 +102,11 @@ public class ModBlockEntities {
                     FabricBlockEntityTypeBuilder.create(UnholyGrassBlockEntity::new,
                             ModBlocks.UNHOLY_GRASS_BLOCK).build());
 
+    public static final BlockEntityType<ProteusConverterBlockEntity> PROTEUS_CONVERTER_BLOCK_ENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(DivinityUnbound.MOD_ID, "proteus_converter_be"),
+                    FabricBlockEntityTypeBuilder.create(ProteusConverterBlockEntity::new,
+                            ModBlocks.PROTEUS_CONVERTER_BLOCK).build());
+
     public static final BlockEntityType<SpaceTimeFurnaceBlockEntity> SPACE_TIME_FURNACE_BLOCK_ENTITY =
             Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(DivinityUnbound.MOD_ID, "space_time_furnace_be"),
                     FabricBlockEntityTypeBuilder.create(SpaceTimeFurnaceBlockEntity::new,
