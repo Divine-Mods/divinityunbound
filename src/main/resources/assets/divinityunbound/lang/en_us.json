@@ -114,6 +114,8 @@
   "block.divinityunbound.wildersung_leaves": "Wildersung Leaves",
   "block.divinityunbound.wildersung_sapling": "Wildersung Sapling",
   "block.divinityunbound.wildersung_silk": "Wildersung Silk",
+  "block.divinityunbound.time_forged_block": "Time Forged Block",
+  "block.divinityunbound.space_forged_block": "Space Forged Block",
 
   "block.divinityunbound.generation_station": "Generation Station",
   "block.divinityunbound.mystic_chronograph": "Mystic Chronograph",
@@ -136,6 +138,8 @@
   "block.divinityunbound.coal_generator": "Coal Generator",
   "block.divinityunbound.arcane_floor_lamp": "Arcane Floor Lamp",
   "block.divinityunbound.mob_attractor": "Mob Attractor",
+  "block.divinityunbound.proteus_controller": "Proteus Controller",
+  "block.divinityunbound.proteus_converter": "Proteus Converter",
   "block.divinityunbound.space_time_furnace": "Space Time Furnace",
 
   "block.minecraft.empty": "Empty",

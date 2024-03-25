@@ -133,5 +133,7 @@ public class ModBlockEntities {
 
         ItemStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.inventoryWrapper, COAL_GENERATOR_BLOCK_ENTITY);
         EnergyStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.energyStorage, COAL_GENERATOR_BLOCK_ENTITY);
+
+        ItemStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.inventoryWrapper, PROTEUS_CONVERTER_BLOCK_ENTITY);
     }
 }

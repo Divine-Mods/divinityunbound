@@ -28,6 +28,8 @@ public class DivinityUnboundClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.HALLOWED_FLUID_TANK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.KNOWLEDGE_EXTRACTOR, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.COAL_GENERATOR, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.PROTEUS_CONVERTER_BLOCK, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.PROTEUS_CONTROLLER_BLOCK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.MINI_GLASS, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.DARK_CELESTIAL_GLASS, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.ARCANE_FLOOR_LAMP, RenderLayer.getTranslucent());
@@ -58,6 +60,7 @@ public class DivinityUnboundClient implements ClientModInitializer {
         //HandledScreens.register(ModScreenHandlers.ITEM_SINGULARITY_STORAGE_SCREEN_HANDLER, ItemSingularityStorageScreen::new);
         HandledScreens.register(ModScreenHandlers.KNOWLEDGE_EXTRACTOR_SCREEN_HANDLER, KnowledgeExtractorScreen::new);
         HandledScreens.register(ModScreenHandlers.COAL_GENERATOR_SCREEN_HANDLER, CoalGeneratorScreen::new);
+        HandledScreens.register(ModScreenHandlers.PROTEUS_CONVERTER_SCREEN_HANDLER, ProteusConverterScreen::new);
         HandledScreens.register(ModScreenHandlers.SPACE_TIME_FURNACE_SCREEN_HANDLER, SpaceTimeFurnaceScreen::new);
 
         BlockEntityRendererFactories.register(ModBlockEntities.SPACE_SIPHON_BLOCK_ENTITY, SpaceSiphonBlockRenderer::new);

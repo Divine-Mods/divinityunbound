@@ -2,6 +2,7 @@ package name.divinityunbound.block.custom;
 
 import com.mojang.serialization.MapCodec;
 import name.divinityunbound.block.entity.CoalGeneratorBlockEntity;
+import name.divinityunbound.block.entity.ItemSingularityStorageBlockEntity;
 import name.divinityunbound.block.entity.KnowledgeExtractorBlockEntity;
 import name.divinityunbound.block.entity.ModBlockEntities;
 import net.minecraft.block.*;
@@ -20,6 +21,7 @@ import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -115,6 +117,18 @@ public class CoalGeneratorBlock extends BlockWithEntity implements BlockEntityPr
         boolean bl = world.isReceivingRedstonePower(pos);
         if (bl != state.get(ENABLED)) {
             world.setBlockState(pos, (BlockState)state.with(ENABLED, bl), Block.NOTIFY_LISTENERS);
+        }
+    }
+
+    @Override
+    public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
+        if (state.getBlock() != newState.getBlock()) {
+            BlockEntity blockEntity = world.getBlockEntity(pos);
+            if (blockEntity instanceof CoalGeneratorBlockEntity) {
+                ItemScatterer.spawn(world, pos, ((CoalGeneratorBlockEntity) blockEntity).internalInventory);
+                world.updateComparators(pos,this);
+            }
+            super.onStateReplaced(state, world, pos, newState, moved);
         }
     }
 

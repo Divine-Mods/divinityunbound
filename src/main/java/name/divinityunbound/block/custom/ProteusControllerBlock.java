@@ -13,16 +13,23 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.predicate.block.BlockStatePredicate;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldEvents;
 import org.jetbrains.annotations.Nullable;
 
 public class ProteusControllerBlock extends Block {
     public static final MapCodec<ProteusControllerBlock> CODEC = ProteusControllerBlock.createCodec(ProteusControllerBlock::new);
+    private static final VoxelShape SHAPE = Block.createCuboidShape(4, 0, 7, 12, 16, 10);
     @Nullable
     private static BlockPattern blockPattern;
     public ProteusControllerBlock(Settings settings) {
         super(settings);
+    }
+    @Override
+    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return SHAPE;
     }
 
     @Override

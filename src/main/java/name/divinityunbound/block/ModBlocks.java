@@ -232,11 +232,11 @@ public class ModBlocks {
     public static final Block UNHOLY_GRASS_BLOCK = registerBlock("unholy_grass_block",
             new UnholyGrassBlock(FabricBlockSettings.copyOf(Blocks.GRASS_BLOCK)));
 
-    public static final Block PROTEUS_CONTROLLER_BLOCK = registerBlock("proteus_controller_block",
-            new ProteusControllerBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
+    public static final Block PROTEUS_CONTROLLER_BLOCK = registerBlock("proteus_controller",
+            new ProteusControllerBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
 
-    public static final Block PROTEUS_CONVERTER_BLOCK = registerBlock("proteus_converter_block",
-            new ProteusConverterBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
+    public static final Block PROTEUS_CONVERTER_BLOCK = registerBlock("proteus_converter",
+            new ProteusConverterBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
 
     public static final Block ITEM_SINGULARITY_STORAGE = registerBlock("item_singularity_storage",
             new ItemSingularityStorageBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
