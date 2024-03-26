@@ -1,7 +1,6 @@
 package name.divinityunbound.block.custom;
 
 import com.mojang.serialization.MapCodec;
-import name.divinityunbound.block.entity.CoalGeneratorBlockEntity;
 import name.divinityunbound.block.entity.ModBlockEntities;
 import name.divinityunbound.block.entity.ProteusConverterBlockEntity;
 import net.minecraft.block.*;
@@ -29,7 +28,7 @@ import org.jetbrains.annotations.Nullable;
 public class ProteusConverterBlock extends BlockWithEntity implements BlockEntityProvider {
     public static final MapCodec<ProteusConverterBlock> CODEC = ProteusConverterBlock.createCodec(ProteusConverterBlock::new);
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
-    private static final VoxelShape SHAPE = Block.createCuboidShape(-16, -16, -16, 32, 32, 32);
+    //private static final VoxelShape SHAPE = Block.createCuboidShape(-16, -16, -16, 32, 32, 32);
 
     public ProteusConverterBlock(Settings settings) {
         super(settings);
@@ -40,15 +39,15 @@ public class ProteusConverterBlock extends BlockWithEntity implements BlockEntit
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         return this.getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing().getOpposite());
     }
-    @Override
-    public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return SHAPE;
-    }
-
-    @Override
-    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return SHAPE;
-    }
+//    @Override
+//    public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+//        return SHAPE;
+//    }
+//
+//    @Override
+//    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+//        return SHAPE;
+//    }
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
@@ -74,7 +73,7 @@ public class ProteusConverterBlock extends BlockWithEntity implements BlockEntit
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         if (state.getBlock() != newState.getBlock()) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof CoalGeneratorBlockEntity) {
+            if (blockEntity instanceof ProteusConverterBlockEntity) {
                 ItemScatterer.spawn(world, pos, ((ProteusConverterBlockEntity) blockEntity).internalInventory);
                 world.updateComparators(pos,this);
             }

@@ -9,8 +9,11 @@ import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidConstants;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidStorage;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
+import net.fabricmc.fabric.api.transfer.v1.item.ItemStorage;
+import net.fabricmc.fabric.api.transfer.v1.item.ItemVariant;
 import net.fabricmc.fabric.api.transfer.v1.storage.Storage;
 import net.fabricmc.fabric.api.transfer.v1.storage.StorageUtil;
+import net.fabricmc.fabric.api.transfer.v1.storage.StorageView;
 import net.fabricmc.fabric.api.transfer.v1.storage.base.SingleVariantStorage;
 import net.fabricmc.fabric.api.transfer.v1.transaction.Transaction;
 import net.minecraft.block.Block;
@@ -75,14 +78,17 @@ public class WormholeTransporterBlockEntity extends BlockEntity implements Exten
     private int energyActive = 0;
     private int fluidActive = 0;
 
-    private boolean itemsEnabled = false;
-    private boolean fluidsEnabled = false;
-    private boolean energyEnabled = false;
+    private boolean itemsEnabled;
+    private boolean fluidsEnabled;
+    private boolean energyEnabled;
 
     protected final PropertyDelegate propertyDelegate;
     public WormholeTransporterBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.WORMHOLE_TRANSPORTER_BLOCK_ENTITY, pos, state);
         localDir = state.get(WormholeTransporterBlock.FACING).getOpposite();
+        itemsEnabled = false;
+        fluidsEnabled = false;
+        energyEnabled = false;
         this.propertyDelegate = new PropertyDelegate() {
             @Override
             public int get(int index) {
@@ -159,12 +165,9 @@ public class WormholeTransporterBlockEntity extends BlockEntity implements Exten
         nbt.putLong(("wormhole_transporter.energy"), this.energyStorage.amount);
         nbt.put("wormhole_transporter.variant", this.fluidStorage.variant.toNbt());
         nbt.putLong("wormhole_transporter.fluid_amount", this.fluidStorage.amount);
-        nbt.putInt("wormhole_transporter.itemsActive", this.itemsActive);
-        nbt.putInt("wormhole_transporter.energyActive", this.energyActive);
-        nbt.putInt("wormhole_transporter.fluidActive", this.fluidActive);
-        nbt.putBoolean("wormhole_transporter.itemsEnabled", this.itemsEnabled);
-        nbt.putBoolean("wormhole_transporter.fluidsEnabled", this.fluidsEnabled);
-        nbt.putBoolean("wormhole_transporter.energyEnabled", this.energyEnabled);
+        nbt.putBoolean("wormhole_transporter.itemsEnabled", itemsEnabled);
+        nbt.putBoolean("wormhole_transporter.fluidsEnabled", fluidsEnabled);
+        nbt.putBoolean("wormhole_transporter.energyEnabled", energyEnabled);
     }
 
     @Override
@@ -175,9 +178,9 @@ public class WormholeTransporterBlockEntity extends BlockEntity implements Exten
         this.energyStorage.amount = nbt.getLong("wormhole_transporter.energy");
         this.fluidStorage.variant = FluidVariant.fromNbt((NbtCompound) nbt.get("wormhole_transporter.variant"));
         this.fluidStorage.amount = nbt.getLong("wormhole_transporter.fluid_amount");
-        this.itemsEnabled = nbt.getBoolean("wormhole_transporter.itemsActive");
-        this.fluidsEnabled = nbt.getBoolean("wormhole_transporter.fluidsEnabled");
-        this.energyEnabled = nbt.getBoolean("wormhole_transporter.energyEnabled");
+        itemsEnabled = nbt.getBoolean("wormhole_transporter.itemsEnabled");
+        fluidsEnabled = nbt.getBoolean("wormhole_transporter.fluidsEnabled");
+        energyEnabled = nbt.getBoolean("wormhole_transporter.energyEnabled");
     }
 
     @Override
@@ -206,7 +209,9 @@ public class WormholeTransporterBlockEntity extends BlockEntity implements Exten
 
         if (hasItemInInputSlot()) {
             BlockPos neighbor = pos.offset(localDir);
-            Inventory neighborInv = getInventoryAt(world, neighbor.getX(), neighbor.getY(), neighbor.getZ());
+            //Inventory neighborInv = getInventoryAt(world, neighbor.getX(), neighbor.getY(), neighbor.getZ());
+            Storage<ItemVariant> neighborInv = ItemStorage.SIDED.find(world, neighbor, localDir);
+
             EnergyStorage neighborEnergyStorage = findEnergyStorage(world, pos);
             Storage<FluidVariant> neighborFluidStorage = findFluidStorage(world, pos);
 //            PlayerEntity player = world.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), 5, false);
@@ -243,7 +248,16 @@ public class WormholeTransporterBlockEntity extends BlockEntity implements Exten
                 }
 
                 if (neighborInv != null && !this.getStack(ITEM_SLOT).isEmpty() && this.getItemsEnabled()) { // Import Items to Neighbor Inv
-                    attemptExtractionToExternalInv(neighborInv, this.getStack(ITEM_SLOT));
+                    //attemptExtractionToExternalInv(neighborInv, this.getStack(ITEM_SLOT));
+                    // TODO: cleanup and move to separate method
+                    if (this.getStack(ITEM_SLOT).getCount() > 0) {
+                        try (Transaction transaction = Transaction.openOuter()) {
+                            //neighborInv.extract(neighborInv.iterator().next().getResource(), 64, transaction);
+                            int amountTransferred = (int) neighborInv.insert(ItemVariant.of(this.getStack(ITEM_SLOT)), this.getStack(ITEM_SLOT).getCount(), transaction);
+                            this.getStack(ITEM_SLOT).setCount(this.getStack(ITEM_SLOT).getCount() - amountTransferred);
+                            transaction.commit();
+                        }
+                    }
                 }
 
                 if (neighborEnergyStorage != null && this.getEnergyEnabled()) { // Import Energy into Neighbor Energy Storage
@@ -256,7 +270,31 @@ public class WormholeTransporterBlockEntity extends BlockEntity implements Exten
             }
             else {  // Export Mode
                 if (neighborInv != null && this.getItemsEnabled()) { // Import Items from Neighbor Inv
-                    attemptExtractionToInternalInv(neighborInv);
+                    //attemptExtractionToInternalInv(neighborInv);
+                    // TODO: cleanup and move to separate method
+                    try (Transaction transaction = Transaction.openOuter()) {
+                        Iterator it = neighborInv.iterator();
+                        while (it.hasNext()) {
+                            StorageView<ItemVariant> storage = (StorageView<ItemVariant>) it.next();
+                            ItemVariant itemVar = storage.getResource();
+
+                            if (!itemVar.isBlank() && this.getStack(ITEM_SLOT).isEmpty()) {
+                                int amountTransferred = (int) neighborInv.extract(itemVar, 64, transaction);
+                                if (amountTransferred > 0) {
+                                    this.setStack(ITEM_SLOT, new ItemStack(itemVar.getItem(), amountTransferred));
+                                    transaction.commit();
+                                    break;
+                                }
+                            } else if (!itemVar.isBlank() && this.getStack(ITEM_SLOT).getCount() > 0 && this.getStack(ITEM_SLOT).getItem().equals(itemVar.getItem())) {
+                                int amountTransferred = (int) neighborInv.extract(itemVar, this.getStack(ITEM_SLOT).getMaxCount() - this.getStack(ITEM_SLOT).getCount(), transaction);
+                                if (amountTransferred > 0) {
+                                    this.getStack(ITEM_SLOT).setCount(this.getStack(ITEM_SLOT).getCount() + amountTransferred);
+                                    transaction.commit();
+                                    break;
+                                }
+                            }
+                        }
+                    }
                 }
 
                 if (neighborEnergyStorage != null && this.getEnergyEnabled()) { // Import Energy from Neighbor Energy Storage
