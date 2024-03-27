@@ -2,6 +2,9 @@
 
 ---
 ## v0.3.0
+- Added Proteus Controller and Proteus Converter
+- Added multiblock structure to craft Proteus Converter
+- Proteus Converter can convert dusts automatically from grains of time (dust produced depends on dimension the converter is placed in)
 - Added Unholy Grass Block (randomly spawns mobs when below 8 light level)
 - Added Celestium, Unholy, and Space Dust blocks
 - Added Time Forged and Space Forged blocks (compact 9 ingots into 1 block)
@@ -9,11 +12,13 @@
 - Knowledge Extractor can now collect experience in a 5 block radius around it. It will automatically collect xp orbs 
 and store it interally when not receiving a redstone signal. (When it receives a redstone signal, it dispenses xp)
 - Can now convert Sand of Time directly into Celestium, Unholy, and Space Dust blocks
+- Added ability to Paxel to allow slowing mining speed down to a set cap when holding shift and mining (very useful when doing building vs general mining)
 - Added REI recipes for conversion between Sand of Time and the 3 dusts
 - Added button toggles for Wormhole Transporter to enable/disable Items, Fluids, and Energy
 - Added a button in the Divine Replicator to toggle between Exact and Similar spawns
 - Fixed bug that was preventing Unholy Silencer from receiving unholy dust
 - Fixed bug with rendering the correct fluid amount in the Wormhole Transporter
+- Fixed bug with item transfers with Wormhole Transporter
 
 ---
 ## v0.2.1

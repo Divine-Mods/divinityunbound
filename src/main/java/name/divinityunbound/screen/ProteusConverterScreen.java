@@ -28,16 +28,16 @@ public class ProteusConverterScreen extends HandledScreen<ProteusConverterScreen
         super.init();
         //titleY = 1000;
         //playerInventoryTitleY = 1000;
-        //assignEnergyInfoArea();
+        assignEnergyInfoArea();
     }
 
-//    private void assignEnergyInfoArea() {
-//        energyInfoArea = new EnergyInfoArea(((width - backgroundWidth) / 2) + 121,
-//                ((height - backgroundHeight) / 2 ) + 11, handler.blockEntity.energyStorage);
-//    }
+    private void assignEnergyInfoArea() {
+        energyInfoArea = new EnergyInfoArea(((width - backgroundWidth) / 2) + 155,
+                ((height - backgroundHeight) / 2 ) + 11, handler.blockEntity.energyStorage);
+    }
 
     private void renderEnergyAreaTooltips(DrawContext context, int pMouseX, int pMouseY, int x, int y) {
-        if(isMouseAboveArea(pMouseX, pMouseY, x, y, 121, 11, 8, 64)) {
+        if(isMouseAboveArea(pMouseX, pMouseY, x, y, 155, 11, 8, 64)) {
             context.drawTooltip(Screens.getTextRenderer(this), energyInfoArea.getTooltips(),
                     Optional.empty(), pMouseX - x, pMouseY - y);
         }
@@ -48,7 +48,7 @@ public class ProteusConverterScreen extends HandledScreen<ProteusConverterScreen
         int x = (width - backgroundWidth) / 2;
         int y = (height - backgroundHeight) / 2;
 
-        //renderEnergyAreaTooltips(context, mouseX, mouseY, x, y);
+        renderEnergyAreaTooltips(context, mouseX, mouseY, x, y);
     }
 
     @Override
@@ -63,7 +63,7 @@ public class ProteusConverterScreen extends HandledScreen<ProteusConverterScreen
 
         renderProgressArrow(context, x, y);
 
-        //energyInfoArea.draw(context);
+        energyInfoArea.draw(context);
     }
 
     private void renderProgressArrow(DrawContext context, int x, int y) {

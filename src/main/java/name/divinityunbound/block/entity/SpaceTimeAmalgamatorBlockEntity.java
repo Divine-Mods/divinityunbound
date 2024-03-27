@@ -237,7 +237,7 @@ public class SpaceTimeAmalgamatorBlockEntity extends BlockEntity implements Exte
     }
 
     private boolean hasEnoughEnergyToCraft() {
-        return this.energyStorage.amount >= 32L * this.maxProgress;
+        return this.energyStorage.amount >= 25000L;
     }
 
     private boolean hasEnoughFluidStorageToCraft() {

@@ -34,7 +34,7 @@ public class ChronosTimeAccumulatorBlockEntity extends BlockEntity implements Ex
 
     protected final PropertyDelegate propertyDelegate;
     private int progress = 0;
-    private int maxProgress = 72;
+    private int maxProgress = 288;
     public ChronosTimeAccumulatorBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.CHRONOS_TIME_ACCUMULATOR_BLOCK_ENTITY, pos, state);
         this.propertyDelegate = new PropertyDelegate() {

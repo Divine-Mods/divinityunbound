@@ -203,17 +203,35 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(ModBlocks.FROZEN_TIME_GLASS), conditionsFromItem(ModBlocks.FROZEN_TIME_GLASS))
                 .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.FROZEN_TIME_LAMP)));
 
-        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.ARCANE_FLOOR_LAMP, 2)
-                .pattern("   ")
-                .pattern("LLL")
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.ARCANE_FLOOR_LAMP, 1)
                 .pattern("FGF")
                 .input('G', Items.GLOWSTONE_DUST)
-                .input('L', Blocks.GLASS)
                 .input('F', ModBlocks.FROZEN_TIME_GLASS)
                 .criterion(hasItem(Items.GLOWSTONE_DUST), conditionsFromItem(Items.GLOWSTONE_DUST))
-                .criterion(hasItem(Blocks.GLASS), conditionsFromItem(Blocks.GLASS))
                 .criterion(hasItem(ModBlocks.FROZEN_TIME_GLASS), conditionsFromItem(ModBlocks.FROZEN_TIME_GLASS))
                 .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.ARCANE_FLOOR_LAMP)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.UNHOLY_GRASS_BLOCK, 2)
+                .pattern("UUU")
+                .pattern("UGU")
+                .pattern("UUU")
+                .input('U', ModBlocks.UNHOLY_DUST_BLOCK)
+                .input('G', Blocks.GRASS_BLOCK)
+                .criterion(hasItem(ModBlocks.UNHOLY_DUST_BLOCK), conditionsFromItem(ModBlocks.UNHOLY_DUST_BLOCK))
+                .criterion(hasItem(Blocks.GRASS_BLOCK), conditionsFromItem(Blocks.GRASS_BLOCK))
+                .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.UNHOLY_GRASS_BLOCK)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.PROTEUS_CONTROLLER_BLOCK, 1)
+                .pattern(" S ")
+                .pattern(" C ")
+                .pattern("GGG")
+                .input('G', Items.GOLD_INGOT)
+                .input('C', ModItems.CELESTITE)
+                .input('S', ModItems.SPACE_TIME_INGOT)
+                .criterion(hasItem(Items.GOLD_INGOT), conditionsFromItem(Items.GOLD_INGOT))
+                .criterion(hasItem(ModItems.CELESTITE), conditionsFromItem(ModItems.CELESTITE))
+                .criterion(hasItem(ModItems.SPACE_TIME_INGOT), conditionsFromItem(ModItems.SPACE_TIME_INGOT))
+                .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.PROTEUS_CONTROLLER_BLOCK)));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.CELESTIAL_GLASS, 4)
                 .pattern(" C ")

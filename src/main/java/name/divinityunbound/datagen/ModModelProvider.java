@@ -83,7 +83,7 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.COAL_GENERATOR);
         blockStateModelGenerator.registerSimpleState(ModBlocks.MOB_ATTRACTOR);
 
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.PROTEUS_CONTROLLER_BLOCK);
+        blockStateModelGenerator.registerSimpleState(ModBlocks.PROTEUS_CONTROLLER_BLOCK);
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.PROTEUS_CONVERTER_BLOCK);
 
         blockStateModelGenerator.registerCooker(ModBlocks.SPACE_TIME_FURNACE, TexturedModel.ORIENTABLE);

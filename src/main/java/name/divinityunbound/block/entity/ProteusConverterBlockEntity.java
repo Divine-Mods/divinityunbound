@@ -6,6 +6,7 @@ import name.divinityunbound.screen.CoalGeneratorScreenHandler;
 import name.divinityunbound.screen.ProteusConverterScreenHandler;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.fabricmc.fabric.api.transfer.v1.item.InventoryStorage;
+import net.fabricmc.fabric.api.transfer.v1.transaction.Transaction;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.Entity;
@@ -41,6 +42,7 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import net.minecraft.world.dimension.DimensionTypes;
 import org.jetbrains.annotations.Nullable;
+import team.reborn.energy.api.base.SimpleEnergyStorage;
 
 import java.util.List;
 import java.util.Optional;
@@ -51,7 +53,7 @@ public class ProteusConverterBlockEntity extends BlockEntity implements Extended
     private static final int OUTPUT_SLOT = 1;
     protected final PropertyDelegate propertyDelegate;
     private int progress = 0;
-    private int maxProgress = 144;
+    private int maxProgress = 432;
 
     public ProteusConverterBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.PROTEUS_CONVERTER_BLOCK_ENTITY, pos, state);
@@ -80,22 +82,6 @@ public class ProteusConverterBlockEntity extends BlockEntity implements Extended
         };
     }
 
-//    public final SimpleInventory internalInventory = new SimpleInventory(2) {
-//        @Override
-//        public int getMaxCountPerStack() {
-//            return 64;
-//        }
-//
-//        @Override
-//        public boolean isValid(int slot, ItemStack stack) {
-//            return true;
-//        }
-//
-//        @Override
-//        public void markDirty() {
-//            ProteusConverterBlockEntity.this.markDirty();
-//        }
-//    };
     public final ImplementedInventory internalInventory = new ImplementedInventory() {
         DefaultedList<ItemStack> inventory = DefaultedList.ofSize(2, ItemStack.EMPTY);;
         @Override
@@ -124,24 +110,37 @@ public class ProteusConverterBlockEntity extends BlockEntity implements Extended
     };
     public final InventoryStorage inventoryWrapper = InventoryStorage.of(internalInventory, Direction.UP);
 
+    public final SimpleEnergyStorage energyStorage = new SimpleEnergyStorage(500000, Integer.MAX_VALUE, 1024) {
+        @Override
+        protected void onFinalCommit() {
+            markDirty();
+            getWorld().updateListeners(pos, getCachedState(), getCachedState(), 3);
+        }
+    };
+
     @Override
     protected void writeNbt(NbtCompound nbt) {
         super.writeNbt(nbt);
         Inventories.writeNbt(nbt, internalInventory.getItems());
+        nbt.putLong(("proteus_converter.energy"), energyStorage.amount);
         //nbt.put("proteus_converter.inventory", internalInventory.toNbtList());
         nbt.putInt("proteus_converter.cooldown", cooldown);
+        nbt.putBoolean("proteus_converter.canStartCrafting", canStartCrafting);
     }
 
     @Override
     public void readNbt(NbtCompound nbt) {
         super.readNbt(nbt);
         Inventories.readNbt(nbt, internalInventory.getItems());
+        energyStorage.amount = nbt.getLong("proteus_converter.energy");
         //internalInventory.readNbtList((NbtList) nbt.get("proteus_converter.inventory"));
         cooldown = nbt.getInt("proteus_converter.cooldown");
+        canStartCrafting = nbt.getBoolean("proteus_converter.canStartCrafting");
     }
 
     private int cooldown = 0;
     private static final int DEFAULT_MAX_COOLDOWN = 20;
+    private boolean canStartCrafting = false;
     public void tick(World world, BlockPos pos, BlockState state) {
         if (world.isClient()) {
             return;
@@ -153,10 +152,16 @@ public class ProteusConverterBlockEntity extends BlockEntity implements Extended
 //        cooldown = 0;
         if (isOutputSlotEmptyOrReceivable()) {
             if (this.hasRecipe(world)) {
+                if (!canStartCrafting) {
+                    canStartCrafting = hasEnoughEnergyToCraftEntirely();
+                    if (!canStartCrafting) {return;}
+                }
                 this.increaseCraftProgress();
+                this.extractEnergy();
 
                 if (hasCraftingFinished()) {
                     this.craftItem(world);
+                    canStartCrafting = false;
                     this.resetProgress();
                 }
                 markDirty(world, pos, state);
@@ -169,6 +174,21 @@ public class ProteusConverterBlockEntity extends BlockEntity implements Extended
             this.resetProgress();
             markDirty(world, pos, state);
         }
+    }
+
+    private void extractEnergy() {
+        try(Transaction transaction = Transaction.openOuter()) {
+            this.energyStorage.extract(256L, transaction);
+            transaction.commit();
+        }
+    }
+
+    private boolean hasEnoughEnergyToCraft() {
+        return this.energyStorage.amount >= 256L;
+    }
+
+    private boolean hasEnoughEnergyToCraftEntirely() {
+        return this.energyStorage.amount >= 256L * this.maxProgress;
     }
 
     private void craftItem(World world) {
@@ -190,15 +210,15 @@ public class ProteusConverterBlockEntity extends BlockEntity implements Extended
 
     private boolean hasRecipe(World world) {
         if (world.getDimensionKey() == DimensionTypes.OVERWORLD) {
-            return hasItemInInputSlot() && canInsertAmountIntoOutputSlot(new ItemStack(ModItems.CELESTIUM_DUST, 1)) &&
+            return hasItemInInputSlot() && hasEnoughEnergyToCraft() && canInsertAmountIntoOutputSlot(new ItemStack(ModItems.CELESTIUM_DUST, 1)) &&
                     canInsertItemIntoOutputSlot(ModItems.CELESTIUM_DUST);
         }
         else if (world.getDimensionKey() == DimensionTypes.THE_NETHER) {
-            return hasItemInInputSlot() && canInsertAmountIntoOutputSlot(new ItemStack(ModItems.UNHOLY_DUST, 1)) &&
+            return hasItemInInputSlot() && hasEnoughEnergyToCraft() && canInsertAmountIntoOutputSlot(new ItemStack(ModItems.UNHOLY_DUST, 1)) &&
                     canInsertItemIntoOutputSlot(ModItems.UNHOLY_DUST);
         }
         else if (world.getDimensionKey() == DimensionTypes.THE_END) {
-            return hasItemInInputSlot() && canInsertAmountIntoOutputSlot(new ItemStack(ModItems.SPACE_DUST, 1)) &&
+            return hasItemInInputSlot() && hasEnoughEnergyToCraft() && canInsertAmountIntoOutputSlot(new ItemStack(ModItems.SPACE_DUST, 1)) &&
                     canInsertItemIntoOutputSlot(ModItems.SPACE_DUST);
         }
         return false;

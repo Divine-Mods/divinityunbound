@@ -113,6 +113,43 @@ Fluid Trashcan - Voids any fluid inserted into it
 
 Energy Trashcan - Voids any energy inserted into it
 
+### Magical Multiblocks
+
+Proteus Converter - Converts Grains of Time into the respective dusts automatically depending on what dimension it is in.
+
+To build the Proteus Converter, you will need: 
+- 8x Wildersung Logs, 4x Polished Blackstone, 4x Frozen Time Glass, 
+4x Time Forged Blocks, 4x Frozen Time Lamps, 1x Space Forged Block, 1x Proteus Controller
+
+It is a 3x3x3 multiblock structure you will have to build. From the bottom up the structure is built like so:
+
+**NOTE: THE FINAL BLOCK YOU HAVE TO PLACE IS THE PROTEUS CONTROLLER TO MAKE THE MULTIBLOCK FORM**
+```
+From a top down view:
+Bottom Layer:
+WBW
+BSB
+WBW
+
+Middle Layer:
+TGT
+G G
+TGT
+
+Top Layer:
+WLW
+LPL
+WLW
+
+W - Wildersung Logs
+B - Polished Blackstone
+S - Space Forged Block
+T - Time Forged Block
+G - Frozen Time Glass
+L - Frozen Time Lamp
+P - Proteus Controller
+```
+
 ### Wormhole Transporter
 
 Simple example using the Wormhole Transporter:
