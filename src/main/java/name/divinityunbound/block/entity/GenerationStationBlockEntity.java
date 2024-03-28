@@ -143,6 +143,10 @@ public class GenerationStationBlockEntity extends BlockEntity implements Extende
     private void craftItem() {
         Optional<RecipeEntry<GenerationStationRecipe>> recipe = getCurrentRecipe();
         //this.removeStack(INPUT_SLOT, 1);
+        if(this.getStack(INPUT_SLOT).damage(1, world.getRandom(), null)) {
+            this.getStack(INPUT_SLOT).setCount(0);
+        }
+
         this.getStack(FUEL_SLOT).setCount(this.getStack(FUEL_SLOT).getCount() - 1);
 
         this.setStack(OUTPUT_SLOT, new ItemStack(recipe.get().value().getResult(null).getItem(),

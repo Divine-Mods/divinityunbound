@@ -8,6 +8,7 @@
   "item.divinityunbound.grain_of_time": "Grain of Time",
   "item.divinityunbound.chronos_clock": "Chronos Clock",
   "item.divinityunbound.unholy_dust": "Unholy Dust",
+  "item.divinityunbound.condensed_matter_dust": "Condensed Matter Dust",
   "item.divinityunbound.wildersung_string": "Wildersung String",
   "item.divinityunbound.time_forged_ingot": "Time Forged Ingot",
   "item.divinityunbound.unholy_ingot": "Unholy Ingot",
@@ -23,6 +24,8 @@
   "item.divinityunbound.export_card": "Export Card",
   "block.divinityunbound.divine_torch": "Divine Torch",
   "item.divinityunbound.gold_band": "Gold Band",
+  "item.divinityunbound.ethereal_crystal_greens": "Ethereal Crystal Greens",
+  "item.divinityunbound.ethereal_crystal_greens_seeds": "Ethereal Crystal Greens Seeds",
 
   "block.divinityunbound.celestite_block": "Block of Celestite",
   "block.divinityunbound.raw_celestite_block": "Block of Raw Celestite",

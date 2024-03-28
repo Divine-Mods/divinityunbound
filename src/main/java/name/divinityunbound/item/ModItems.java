@@ -27,6 +27,7 @@ public class ModItems {
     public static final Item GRAIN_OF_TIME = registerItem("grain_of_time", new GrainOfTimeItem(new FabricItemSettings()));
     public static final Item CHRONOS_CLOCK = registerItem("chronos_clock", new Item(new FabricItemSettings()));
     public static final Item UNHOLY_DUST = registerItem("unholy_dust", new Item(new FabricItemSettings()));
+    public static final Item CONDENSED_MATTER_DUST = registerItem("condensed_matter_dust", new Item(new FabricItemSettings()));
     public static final Item WILDERSUNG_STRING = registerItem("wildersung_string", new Item(new FabricItemSettings()));
     public static final Item TIME_FORGED_INGOT = registerItem("time_forged_ingot", new Item(new FabricItemSettings()));
     public static final Item UNHOLY_INGOT = registerItem("unholy_ingot", new Item(new FabricItemSettings()));
@@ -184,17 +185,24 @@ public class ModItems {
     public static final Item HERMES_BOOTS = registerItem("hermes_boots",
             new HermesBootsArmorItem(ModArmorMaterials.HERMES, ArmorItem.Type.BOOTS, new FabricItemSettings().maxCount(1)));
 
+    public static final Item PROTEUS_TRIDENT = registerItem("proteus_trident",
+            new TridentItem(new Item.Settings().maxDamage(250)));
+
 
     /* Foci */
     // TODO: Add foci for some few building blocks
-    public static final Item CELESTITE_COAL_FOCUS = registerItem("celestite_coal_focus", new Item(new FabricItemSettings().maxCount(1)));
-    public static final Item CELESTITE_REDSTONE_FOCUS = registerItem("celestite_redstone_focus", new Item(new FabricItemSettings().maxCount(1)));
-    public static final Item CELESTITE_LAPIS_LAZULI_FOCUS = registerItem("celestite_lapis_lazuli_focus", new Item(new FabricItemSettings().maxCount(1)));
-    public static final Item CELESTITE_IRON_FOCUS = registerItem("celestite_iron_focus", new Item(new FabricItemSettings().maxCount(1)));
-    public static final Item CELESTITE_GOLD_FOCUS = registerItem("celestite_gold_focus", new Item(new FabricItemSettings().maxCount(1)));
-    public static final Item CELESTITE_DIAMOND_FOCUS = registerItem("celestite_diamond_focus", new Item(new FabricItemSettings().maxCount(1)));
-    public static final Item CELESTITE_NETHERITE_FOCUS = registerItem("celestite_netherite_focus", new Item(new FabricItemSettings().maxCount(1)));
+    public static final Item CELESTITE_COAL_FOCUS = registerItem("celestite_coal_focus", new Item(new FabricItemSettings().maxDamage(128)));
+    public static final Item CELESTITE_REDSTONE_FOCUS = registerItem("celestite_redstone_focus", new Item(new FabricItemSettings().maxDamage(128)));
+    public static final Item CELESTITE_LAPIS_LAZULI_FOCUS = registerItem("celestite_lapis_lazuli_focus", new Item(new FabricItemSettings().maxDamage(128)));
+    public static final Item CELESTITE_IRON_FOCUS = registerItem("celestite_iron_focus", new Item(new FabricItemSettings().maxDamage(64)));
+    public static final Item CELESTITE_GOLD_FOCUS = registerItem("celestite_gold_focus", new Item(new FabricItemSettings().maxDamage(64)));
+    public static final Item CELESTITE_DIAMOND_FOCUS = registerItem("celestite_diamond_focus", new Item(new FabricItemSettings().maxDamage(32)));
+    public static final Item CELESTITE_NETHERITE_FOCUS = registerItem("celestite_netherite_focus", new Item(new FabricItemSettings().maxDamage(16)));
 
+    /* Crops */
+    public static final Item ETHEREAL_CRYSTAL_GREENS = registerItem("ethereal_crystal_greens", new Item(new FabricItemSettings().food(ModFoodComponents.ETHEREAL_CRYSTAL_GREENS)));
+    public static final Item ETHEREAL_CRYSTAL_GREENS_SEEDS = registerItem("ethereal_crystal_greens_seeds",
+            new AliasedBlockItem(ModBlocks.ETHEREAL_CRYSTAL_GREENS, new FabricItemSettings()));
     /* Blocks */
     // TODO: Fix broken animated item model for space siphon
     //RegistryEntry.Reference reference = overrideItem("space_siphon", new SpaceSiphonItem(ModBlocks.SPACE_SIPHON, new FabricItemSettings()));
@@ -210,6 +218,7 @@ public class ModItems {
         entries.add(CHRONOS_CLOCK);
         entries.add(UNHOLY_DUST);
         entries.add(SPACE_DUST);
+        entries.add(CONDENSED_MATTER_DUST);
         entries.add(WILDERSUNG_STRING);
         entries.add(TIME_FORGED_INGOT);
         entries.add(SPACE_FORGED_INGOT);
@@ -219,6 +228,7 @@ public class ModItems {
         entries.add(QUANTITY_CORE);
         entries.add(MOB_CORE);
         entries.add(WAND_BINDING);
+        entries.add(GOLD_BAND);
     }
 
     public static RegistryEntry.Reference overrideItem(String itemName, Item item) {

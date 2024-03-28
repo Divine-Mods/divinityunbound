@@ -186,6 +186,9 @@ public class ModBlocks {
                     .allowsSpawning(Blocks::never)
                     .blockVision(Blocks::never)));
 
+    public static final Block ETHEREAL_CRYSTAL_GREENS = registerBlockWithoutBlockItem("ethereal_crystal_greens",
+            new EtherealCrystalGreensBlock(FabricBlockSettings.copyOf(Blocks.WHEAT)));
+
     public static final Block MYSTIC_CHRONOGRAPH = registerBlock("mystic_chronograph",
             new MysticChronographBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
     public static final Block DIVINE_REPLICATOR = registerBlock("divine_replicator",

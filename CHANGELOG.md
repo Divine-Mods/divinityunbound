@@ -1,6 +1,13 @@
 # Changelog
 
 ---
+## v0.4.0
+- Added Proteus Trident weapon
+- Added Condensed Matter Dust
+- Added Ethereal Crystal Greens and Ethereal Crystal Greens Seeds
+- Foci now have a max durability and will break after generating a certain amount of resources.
+
+---
 ## v0.3.0
 - Added Proteus Controller and Proteus Converter
 - Added multiblock structure to craft Proteus Converter

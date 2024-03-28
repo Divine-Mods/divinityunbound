@@ -4,6 +4,7 @@ import com.ibm.icu.text.Normalizer2;
 import dev.architectury.platform.Mod;
 import name.divinityunbound.DivinityUnbound;
 import name.divinityunbound.block.ModBlocks;
+import name.divinityunbound.block.custom.EtherealCrystalGreensBlock;
 import name.divinityunbound.fluid.ModFluids;
 import name.divinityunbound.item.ModItems;
 import name.divinityunbound.item.client.SpaceSiphonItemModel;
@@ -87,6 +88,9 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.PROTEUS_CONVERTER_BLOCK);
 
         blockStateModelGenerator.registerCooker(ModBlocks.SPACE_TIME_FURNACE, TexturedModel.ORIENTABLE);
+
+        /* Crops */
+        blockStateModelGenerator.registerCrop(ModBlocks.ETHEREAL_CRYSTAL_GREENS, EtherealCrystalGreensBlock.AGE, 0, 1, 2, 3);
     }
 
     @Override
@@ -101,6 +105,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.CHRONOS_CLOCK, Models.GENERATED);
         itemModelGenerator.register(ModItems.UNHOLY_DUST, Models.GENERATED);
         itemModelGenerator.register(ModItems.SPACE_DUST, Models.GENERATED);
+        itemModelGenerator.register(ModItems.CONDENSED_MATTER_DUST, Models.GENERATED);
         itemModelGenerator.register(ModItems.WILDERSUNG_STRING, Models.GENERATED);
         itemModelGenerator.register(ModItems.TIME_FORGED_INGOT, Models.GENERATED);
         itemModelGenerator.register(ModItems.UNHOLY_INGOT, Models.GENERATED);
@@ -185,6 +190,8 @@ public class ModModelProvider extends FabricModelProvider {
 
         itemModelGenerator.registerArmor((ArmorItem) ModItems.HERMES_BOOTS);
 
+        //itemModelGenerator.register(ModItems.PROTEUS_TRIDENT, Models.);
+
         /* Foci */
         itemModelGenerator.register(ModItems.CELESTITE_COAL_FOCUS, Models.GENERATED);
         itemModelGenerator.register(ModItems.CELESTITE_REDSTONE_FOCUS, Models.GENERATED);
@@ -196,5 +203,8 @@ public class ModModelProvider extends FabricModelProvider {
 
         itemModelGenerator.register(ModBlocks.SPACE_SIPHON.asItem(), Models.GENERATED);
         itemModelGenerator.register(ModBlocks.SPACE_TIME_EVAPORATOR.asItem(), Models.GENERATED);
+
+        /* Crops */
+        itemModelGenerator.register(ModItems.ETHEREAL_CRYSTAL_GREENS, Models.GENERATED);
     }
 }

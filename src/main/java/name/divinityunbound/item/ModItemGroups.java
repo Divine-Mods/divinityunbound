@@ -35,6 +35,7 @@ public class ModItemGroups {
                         entries.add(ModItems.CHRONOS_CLOCK);
                         entries.add(ModItems.UNHOLY_DUST);
                         entries.add(ModItems.SPACE_DUST);
+                        entries.add(ModItems.CONDENSED_MATTER_DUST);
                         entries.add(ModItems.WILDERSUNG_STRING);
                         entries.add(ModItems.TIME_FORGED_INGOT);
                         entries.add(ModItems.UNHOLY_INGOT);
@@ -98,6 +99,8 @@ public class ModItemGroups {
                         entries.add(ModItems.TIME_FORGED_PAXEL);
                         entries.add(ModItems.SPACE_FORGED_PAXEL);
                         entries.add(ModItems.SPACE_TIME_PAXEL);
+
+                        entries.add(ModItems.PROTEUS_TRIDENT);
 
                         /* Armor */
                         entries.add(ModItems.CELESTITE_HELMET);
@@ -187,6 +190,10 @@ public class ModItemGroups {
                         entries.add(ModItems.CELESTITE_GOLD_FOCUS);
                         entries.add(ModItems.CELESTITE_DIAMOND_FOCUS);
                         entries.add(ModItems.CELESTITE_NETHERITE_FOCUS);
+
+                        /* Crops */
+                        entries.add(ModItems.ETHEREAL_CRYSTAL_GREENS);
+                        entries.add(ModItems.ETHEREAL_CRYSTAL_GREENS_SEEDS);
 
                     }).build());
     public static void registerItemGroups() {
