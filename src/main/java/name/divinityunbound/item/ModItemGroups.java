@@ -174,6 +174,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.KNOWLEDGE_EXTRACTOR);
                         entries.add(ModBlocks.COAL_GENERATOR);
                         entries.add(ModBlocks.MOB_ATTRACTOR);
+                        entries.add(ModBlocks.ZEUS_BATTERY);
                         //entries.add(ModBlocks.ITEM_SINGULARITY_STORAGE);
 
                         //entries.add(ModBlocks.SPACE_TIME_FURNACE);

@@ -3,8 +3,11 @@
 ---
 ## v0.4.0
 - Added Proteus Trident weapon
+- Added Zeus Battery
 - Added Condensed Matter Dust
 - Added Ethereal Crystal Greens and Ethereal Crystal Greens Seeds
+- Changed Wormhole Transporters to now work in any direction, (previously did not work on the up/down on blocks)
+- Added the ability to pick up the Zeus Battery and Hallowed Fluid Tank and still maintain their fluids/energy.
 - Foci now have a max durability and will break after generating a certain amount of resources.
 
 ---

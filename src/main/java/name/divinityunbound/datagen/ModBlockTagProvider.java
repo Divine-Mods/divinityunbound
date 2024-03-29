@@ -75,6 +75,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.PROTEUS_CONVERTER_BLOCK)
                 .add(ModBlocks.TIME_FORGED_BLOCK)
                 .add(ModBlocks.SPACE_FORGED_BLOCK)
+                .add(ModBlocks.ZEUS_BATTERY)
                 .add(ModBlocks.SPACE_TIME_FURNACE);
 
         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
@@ -112,6 +113,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.MOB_ATTRACTOR)
                 .add(ModBlocks.TIME_FORGED_BLOCK)
                 .add(ModBlocks.SPACE_FORGED_BLOCK)
+                .add(ModBlocks.ZEUS_BATTERY)
                 .add(ModBlocks.ITEM_SINGULARITY_STORAGE);
 
         getOrCreateTagBuilder(BlockTags.NEEDS_DIAMOND_TOOL)

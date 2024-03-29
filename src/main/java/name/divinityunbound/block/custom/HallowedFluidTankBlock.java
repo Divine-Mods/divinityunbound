@@ -1,8 +1,10 @@
 package name.divinityunbound.block.custom;
 
 import com.mojang.serialization.MapCodec;
+import name.divinityunbound.block.ModBlocks;
 import name.divinityunbound.block.entity.HallowedFluidTankBlockEntity;
 import name.divinityunbound.block.entity.ModBlockEntities;
+import name.divinityunbound.block.entity.ZeusBatteryBlockEntity;
 import name.divinityunbound.fluid.ModFluids;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.transfer.v1.context.ContainerItemContext;
@@ -16,6 +18,7 @@ import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.Fluids;
@@ -110,6 +113,27 @@ public class HallowedFluidTankBlock extends BlockWithEntity implements BlockEnti
         }
 
         return ActionResult.SUCCESS;
+    }
+
+    @Override
+    public BlockState onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
+        BlockEntity blockEntity = world.getBlockEntity(pos);
+        if (blockEntity instanceof HallowedFluidTankBlockEntity) {
+            HallowedFluidTankBlockEntity hallowedFluidTankBlockEntity = (HallowedFluidTankBlockEntity)blockEntity;
+            if (!world.isClient) {
+                ItemStack itemStack = HallowedFluidTankBlock.getItemStack();
+                blockEntity.setStackNbt(itemStack);
+
+                ItemEntity itemEntity = new ItemEntity(world, (double)pos.getX() + 0.5, (double)pos.getY() + 0.5, (double)pos.getZ() + 0.5, itemStack);
+                itemEntity.setToDefaultPickupDelay();
+                world.spawnEntity(itemEntity);
+            }
+        }
+        return super.onBreak(world, pos, state, player);
+    }
+
+    public static ItemStack getItemStack() {
+        return new ItemStack(ModBlocks.HALLOWED_FLUID_TANK);
     }
 
     @Nullable

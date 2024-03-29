@@ -241,6 +241,9 @@ public class ModBlocks {
     public static final Block PROTEUS_CONVERTER_BLOCK = registerBlock("proteus_converter",
             new ProteusConverterBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
 
+    public static final Block ZEUS_BATTERY = registerBlock("zeus_battery",
+            new ZeusBatteryBlock(FabricBlockSettings.copyOf(Blocks.COPPER_BLOCK).nonOpaque()));
+
     public static final Block ITEM_SINGULARITY_STORAGE = registerBlock("item_singularity_storage",
             new ItemSingularityStorageBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
 

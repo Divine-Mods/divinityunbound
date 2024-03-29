@@ -7,7 +7,6 @@ import name.divinityunbound.util.MouseUtil;
 import net.fabricmc.fabric.api.client.screen.v1.Screens;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
-import net.minecraft.client.item.TooltipContext;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.text.Text;
@@ -15,18 +14,18 @@ import net.minecraft.util.Identifier;
 
 import java.util.Optional;
 
-public class EnergyTrashcanScreen extends HandledScreen<EnergyTrashcanScreenHandler> {
-    private static final Identifier TEXTURE = new Identifier((DivinityUnbound.MOD_ID), "textures/gui/energy_trashcan_gui.png");
+public class ZeusBatteryScreen extends HandledScreen<ZeusBatteryScreenHandler> {
+    private static final Identifier TEXTURE = new Identifier((DivinityUnbound.MOD_ID), "textures/gui/zeus_battery_gui.png");
     private EnergyInfoArea energyInfoArea;
-    public EnergyTrashcanScreen(EnergyTrashcanScreenHandler handler, PlayerInventory inventory, Text title) {
+    public ZeusBatteryScreen(ZeusBatteryScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
     }
 
     @Override
     protected void init() {
         super.init();
-        titleY = 1000;
-        playerInventoryTitleY = 1000;
+        //titleY = 1000;
+        //playerInventoryTitleY = 1000;
 
         assignEnergyInfoArea();
     }

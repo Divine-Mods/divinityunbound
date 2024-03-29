@@ -82,10 +82,11 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.ITEM_TRASHCAN);
         addDrop(ModBlocks.FLUID_TRASHCAN);
         addDrop(ModBlocks.ENERGY_TRASHCAN);
-        addDrop(ModBlocks.HALLOWED_FLUID_TANK);
+        //addDrop(ModBlocks.HALLOWED_FLUID_TANK);
         addDrop(ModBlocks.ITEM_SINGULARITY_STORAGE);
         addDrop(ModBlocks.KNOWLEDGE_EXTRACTOR);
         addDrop(ModBlocks.MOB_ATTRACTOR);
+        //addDrop(ModBlocks.ZEUS_BATTERY);
 
         addDrop(ModBlocks.SPACE_TIME_FURNACE);
 

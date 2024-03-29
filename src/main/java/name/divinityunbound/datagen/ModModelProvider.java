@@ -10,12 +10,12 @@ import name.divinityunbound.item.ModItems;
 import name.divinityunbound.item.client.SpaceSiphonItemModel;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
-import net.minecraft.data.client.BlockStateModelGenerator;
-import net.minecraft.data.client.ItemModelGenerator;
-import net.minecraft.data.client.Models;
-import net.minecraft.data.client.TexturedModel;
+import net.minecraft.block.Block;
+import net.minecraft.data.client.*;
 import net.minecraft.item.ArmorItem;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.Direction;
 
 public class ModModelProvider extends FabricModelProvider {
     public ModModelProvider(FabricDataOutput output) {
@@ -74,7 +74,9 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.DIVINE_REPLICATOR);
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.SPACE_TIME_EVAPORATOR);
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.SPACE_TIME_AMALGAMATOR);
-        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.WORMHOLE_TRANSPORTER);
+        //blockStateModelGenerator.registerRod(ModBlocks.WORMHOLE_TRANSPORTER);
+        //blockStateModelGenerator.registerRotatable(ModBlocks.WORMHOLE_TRANSPORTER);
+        registerNorthDefaultAllAxisRotation(blockStateModelGenerator, ModBlocks.WORMHOLE_TRANSPORTER);
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.ITEM_TRASHCAN);
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.FLUID_TRASHCAN);
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.ENERGY_TRASHCAN);
@@ -91,6 +93,26 @@ public class ModModelProvider extends FabricModelProvider {
 
         /* Crops */
         blockStateModelGenerator.registerCrop(ModBlocks.ETHEREAL_CRYSTAL_GREENS, EtherealCrystalGreensBlock.AGE, 0, 1, 2, 3);
+    }
+
+    public final void registerNorthDefaultAllAxisRotation(BlockStateModelGenerator blockStateModelGenerator, Block block) {
+        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(block, BlockStateVariant.create().put(VariantSettings.MODEL, ModelIds.getBlockModelId(block))).coordinate(this.createNorthDefaultFacingVariantMap()));
+    }
+
+    public final BlockStateVariantMap createNorthDefaultFacingVariantMap() {
+        return BlockStateVariantMap.create(Properties.FACING)
+                .register(Direction.DOWN,
+                        BlockStateVariant.create()
+                                .put(VariantSettings.X, VariantSettings.Rotation.R90))
+                .register(Direction.UP, BlockStateVariant.create()
+                        .put(VariantSettings.X, VariantSettings.Rotation.R270))
+                .register(Direction.NORTH, BlockStateVariant.create())
+                .register(Direction.SOUTH, BlockStateVariant.create()
+                        .put(VariantSettings.Y, VariantSettings.Rotation.R180))
+                .register(Direction.WEST, BlockStateVariant.create()
+                        .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                .register(Direction.EAST, BlockStateVariant.create()
+                        .put(VariantSettings.Y, VariantSettings.Rotation.R90));
     }
 
     @Override

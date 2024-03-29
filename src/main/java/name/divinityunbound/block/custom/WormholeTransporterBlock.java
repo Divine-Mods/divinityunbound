@@ -25,7 +25,7 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 public class WormholeTransporterBlock extends BlockWithEntity implements BlockEntityProvider {
-    public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
+    public static final DirectionProperty FACING = Properties.FACING;
     private static final VoxelShape SHAPE = Block.createCuboidShape(0, 0, 0, 16, 16, 16);
     protected final Random random = Random.create();
     public static final MapCodec<WormholeTransporterBlock> CODEC = WormholeTransporterBlock.createCodec(WormholeTransporterBlock::new);
@@ -51,7 +51,7 @@ public class WormholeTransporterBlock extends BlockWithEntity implements BlockEn
     @Nullable
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return this.getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing().getOpposite());
+        return this.getDefaultState().with(FACING, ctx.getPlayerLookDirection().getOpposite());
     }
 
     @Override

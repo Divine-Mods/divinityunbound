@@ -107,6 +107,11 @@ public class ModBlockEntities {
                     FabricBlockEntityTypeBuilder.create(ProteusConverterBlockEntity::new,
                             ModBlocks.PROTEUS_CONVERTER_BLOCK).build());
 
+    public static final BlockEntityType<ZeusBatteryBlockEntity> ZEUS_BATTERY_BLOCK_ENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(DivinityUnbound.MOD_ID, "zeus_battery_be"),
+                    FabricBlockEntityTypeBuilder.create(ZeusBatteryBlockEntity::new,
+                            ModBlocks.ZEUS_BATTERY).build());
+
     public static final BlockEntityType<SpaceTimeFurnaceBlockEntity> SPACE_TIME_FURNACE_BLOCK_ENTITY =
             Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(DivinityUnbound.MOD_ID, "space_time_furnace_be"),
                     FabricBlockEntityTypeBuilder.create(SpaceTimeFurnaceBlockEntity::new,
@@ -136,5 +141,7 @@ public class ModBlockEntities {
 
         ItemStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.inventoryWrapper, PROTEUS_CONVERTER_BLOCK_ENTITY);
         EnergyStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.energyStorage, PROTEUS_CONVERTER_BLOCK_ENTITY);
+
+        EnergyStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.energyStorage, ZEUS_BATTERY_BLOCK_ENTITY);
     }
 }

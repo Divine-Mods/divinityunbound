@@ -144,22 +144,22 @@ public class HallowedFluidTankBlockEntity extends BlockEntity implements Extende
             return;
         }
 
-        if (true) {
-            if (upgradeCheck >= CHECK_UPGRADE_TICKS) {
-                countUpgrades(world, pos);
-                upgradeCheck = 0;
-            }
-            upgradeCheck++;
-            increaseCraftProgress();
-            markDirty(world, pos, state);
-
-            if (hasCraftingFinished()) {
-                resetProgress();
-            }
-        }
-        else {
-            resetProgress();
-        }
+//        if (true) {
+//            if (upgradeCheck >= CHECK_UPGRADE_TICKS) {
+//                countUpgrades(world, pos);
+//                upgradeCheck = 0;
+//            }
+//            upgradeCheck++;
+//            increaseCraftProgress();
+//            markDirty(world, pos, state);
+//
+//            if (hasCraftingFinished()) {
+//                resetProgress();
+//            }
+//        }
+//        else {
+//            resetProgress();
+//        }
     }
 
     private boolean hasRecipe() {
