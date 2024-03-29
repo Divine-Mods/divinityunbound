@@ -85,6 +85,8 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.KNOWLEDGE_EXTRACTOR);
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.COAL_GENERATOR);
         blockStateModelGenerator.registerSimpleState(ModBlocks.MOB_ATTRACTOR);
+        //blockStateModelGenerator.registerSimpleState(ModBlocks.ZEUS_BATTERY);
+        //blockStateModelGenerator.registerSimpleState(ModBlocks.DEMETERS_HARVESTER);
 
         blockStateModelGenerator.registerSimpleState(ModBlocks.PROTEUS_CONTROLLER_BLOCK);
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.PROTEUS_CONVERTER_BLOCK);
@@ -128,6 +130,8 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.UNHOLY_DUST, Models.GENERATED);
         itemModelGenerator.register(ModItems.SPACE_DUST, Models.GENERATED);
         itemModelGenerator.register(ModItems.CONDENSED_MATTER_DUST, Models.GENERATED);
+        itemModelGenerator.register(ModItems.DIVINE_TIME_DUST, Models.GENERATED);
+        itemModelGenerator.register(ModItems.DIVINE_SPACE_DUST, Models.GENERATED);
         itemModelGenerator.register(ModItems.WILDERSUNG_STRING, Models.GENERATED);
         itemModelGenerator.register(ModItems.TIME_FORGED_INGOT, Models.GENERATED);
         itemModelGenerator.register(ModItems.UNHOLY_INGOT, Models.GENERATED);
@@ -228,5 +232,6 @@ public class ModModelProvider extends FabricModelProvider {
 
         /* Crops */
         itemModelGenerator.register(ModItems.ETHEREAL_CRYSTAL_GREENS, Models.GENERATED);
+        itemModelGenerator.register(ModItems.ETHEREAL_CRYSTAL_GREENS_SALAD, Models.GENERATED);
     }
 }

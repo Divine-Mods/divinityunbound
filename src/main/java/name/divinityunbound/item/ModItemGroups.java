@@ -36,6 +36,8 @@ public class ModItemGroups {
                         entries.add(ModItems.UNHOLY_DUST);
                         entries.add(ModItems.SPACE_DUST);
                         entries.add(ModItems.CONDENSED_MATTER_DUST);
+                        entries.add(ModItems.DIVINE_TIME_DUST);
+                        entries.add(ModItems.DIVINE_SPACE_DUST);
                         entries.add(ModItems.WILDERSUNG_STRING);
                         entries.add(ModItems.TIME_FORGED_INGOT);
                         entries.add(ModItems.UNHOLY_INGOT);
@@ -175,6 +177,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.COAL_GENERATOR);
                         entries.add(ModBlocks.MOB_ATTRACTOR);
                         entries.add(ModBlocks.ZEUS_BATTERY);
+                        entries.add(ModBlocks.DEMETERS_HARVESTER);
                         //entries.add(ModBlocks.ITEM_SINGULARITY_STORAGE);
 
                         //entries.add(ModBlocks.SPACE_TIME_FURNACE);
@@ -195,6 +198,7 @@ public class ModItemGroups {
                         /* Crops */
                         entries.add(ModItems.ETHEREAL_CRYSTAL_GREENS);
                         entries.add(ModItems.ETHEREAL_CRYSTAL_GREENS_SEEDS);
+                        entries.add(ModItems.ETHEREAL_CRYSTAL_GREENS_SALAD);
 
                     }).build());
     public static void registerItemGroups() {

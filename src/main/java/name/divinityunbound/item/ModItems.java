@@ -28,6 +28,8 @@ public class ModItems {
     public static final Item CHRONOS_CLOCK = registerItem("chronos_clock", new Item(new FabricItemSettings()));
     public static final Item UNHOLY_DUST = registerItem("unholy_dust", new Item(new FabricItemSettings()));
     public static final Item CONDENSED_MATTER_DUST = registerItem("condensed_matter_dust", new Item(new FabricItemSettings()));
+    public static final Item DIVINE_TIME_DUST = registerItem("divine_time_dust", new Item(new FabricItemSettings()));
+    public static final Item DIVINE_SPACE_DUST = registerItem("divine_space_dust", new Item(new FabricItemSettings()));
     public static final Item WILDERSUNG_STRING = registerItem("wildersung_string", new Item(new FabricItemSettings()));
     public static final Item TIME_FORGED_INGOT = registerItem("time_forged_ingot", new Item(new FabricItemSettings()));
     public static final Item UNHOLY_INGOT = registerItem("unholy_ingot", new Item(new FabricItemSettings()));
@@ -200,7 +202,10 @@ public class ModItems {
     public static final Item CELESTITE_NETHERITE_FOCUS = registerItem("celestite_netherite_focus", new Item(new FabricItemSettings().maxDamage(16)));
 
     /* Crops */
-    public static final Item ETHEREAL_CRYSTAL_GREENS = registerItem("ethereal_crystal_greens", new Item(new FabricItemSettings().food(ModFoodComponents.ETHEREAL_CRYSTAL_GREENS)));
+    public static final Item ETHEREAL_CRYSTAL_GREENS = registerItem("ethereal_crystal_greens",
+            new Item(new FabricItemSettings().food(ModFoodComponents.ETHEREAL_CRYSTAL_GREENS)));
+    public static final Item ETHEREAL_CRYSTAL_GREENS_SALAD = registerItem("ethereal_crystal_greens_salad",
+            new Item(new FabricItemSettings().food(ModFoodComponents.ETHEREAL_CRYSTAL_GREENS_SALAD)));
     public static final Item ETHEREAL_CRYSTAL_GREENS_SEEDS = registerItem("ethereal_crystal_greens_seeds",
             new AliasedBlockItem(ModBlocks.ETHEREAL_CRYSTAL_GREENS, new FabricItemSettings()));
     /* Blocks */
@@ -219,6 +224,8 @@ public class ModItems {
         entries.add(UNHOLY_DUST);
         entries.add(SPACE_DUST);
         entries.add(CONDENSED_MATTER_DUST);
+        entries.add(DIVINE_SPACE_DUST);
+        entries.add(DIVINE_TIME_DUST);
         entries.add(WILDERSUNG_STRING);
         entries.add(TIME_FORGED_INGOT);
         entries.add(SPACE_FORGED_INGOT);

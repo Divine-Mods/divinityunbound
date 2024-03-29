@@ -1,5 +1,6 @@
 package name.divinityunbound.datagen;
 
+import dev.architectury.platform.Mod;
 import name.divinityunbound.block.ModBlocks;
 import name.divinityunbound.block.custom.EtherealCrystalGreensBlock;
 import name.divinityunbound.item.ModItems;
@@ -87,6 +88,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.KNOWLEDGE_EXTRACTOR);
         addDrop(ModBlocks.MOB_ATTRACTOR);
         //addDrop(ModBlocks.ZEUS_BATTERY);
+        addDrop(ModBlocks.DEMETERS_HARVESTER);
 
         addDrop(ModBlocks.SPACE_TIME_FURNACE);
 
