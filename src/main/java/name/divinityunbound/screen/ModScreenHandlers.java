@@ -74,6 +74,10 @@ public class ModScreenHandlers {
             Registry.register(Registries.SCREEN_HANDLER, new Identifier(DivinityUnbound.MOD_ID, "zeus_battery"),
                     new ExtendedScreenHandlerType<>(ZeusBatteryScreenHandler::new));
 
+    public static final ScreenHandlerType<DemetersHarvesterScreenHandler> DEMETERS_HARVESTER_SCREEN_HANDLER =
+            Registry.register(Registries.SCREEN_HANDLER, new Identifier(DivinityUnbound.MOD_ID, "demeters_harvester"),
+                    new ExtendedScreenHandlerType<>(DemetersHarvesterScreenHandler::new));
+
     public static final ScreenHandlerType<SpaceTimeFurnaceScreenHandler> SPACE_TIME_FURNACE_SCREEN_HANDLER =
             Registry.register(Registries.SCREEN_HANDLER, new Identifier(DivinityUnbound.MOD_ID, "space_time_furnace"),
                     new ScreenHandlerType<>(SpaceTimeFurnaceScreenHandler::new, FeatureFlags.VANILLA_FEATURES));

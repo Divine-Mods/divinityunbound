@@ -5,11 +5,13 @@
 - Added Proteus Trident weapon
 - Added Zeus Battery (can be used to store power)
 - Added Demeter's Harvester (can be used to automatically harvest crops)
+- Added Persephone's Blessing (can be used to speed up crop growth)
 - Added Condensed Matter Dust, Divine Time Dust, and Divine Space Dust
 - Added Ethereal Crystal Greens, Ethereal Crystal Greens Seeds, and Etheral Crystal Greens Salad
 - Changed Wormhole Transporters to now work in any direction, (previously did not work on the up/down on blocks)
 - Added the ability to pick up the Zeus Battery and Hallowed Fluid Tank and still maintain their fluids/energy.
 - Foci now have a max durability and will break after generating a certain amount of resources.
+- Put restrictions on what blocks the Mystic Chronograph can tick accelerate.
 
 ---
 ## v0.3.0

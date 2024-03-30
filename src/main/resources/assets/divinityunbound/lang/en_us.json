@@ -146,6 +146,9 @@
   "block.divinityunbound.mob_attractor": "Mob Attractor",
   "block.divinityunbound.proteus_controller": "Proteus Controller",
   "block.divinityunbound.proteus_converter": "Proteus Converter",
+  "block.divinityunbound.zeus_battery": "Zeus' Battery",
+  "block.divinityunbound.demeters_harvester": "Demeter's Harvest",
+  "block.divinityunbound.persephones_blessing": "Persephone's Blessing",
   "block.divinityunbound.space_time_furnace": "Space Time Furnace",
 
   "block.minecraft.empty": "Empty",

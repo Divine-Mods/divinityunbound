@@ -88,6 +88,13 @@ Withered Glass - Wither, Dragon, and Explosion proof glass.
 
 Mob Attractor - Pulls mobs towards itself. Redstone Toggleable.
 
+#### Farming Blocks
+
+Demeter's Harvester - Needs power and a hoe to run. Will plant seeds from internal inventory on farmland in a radius around the block. 
+Will harvest fully grown plants, but leaves drops on the ground. Recommended to use Space Siphon with some range and speed upgrades to retrieve crops and seeds.
+
+Persephone's Blessing - Randomly applies a growth tick to crops in a radius around the block.
+
 #### Magical Blocks
 
 Chronos Time Accumulator magically distills Grains of Time.
@@ -106,6 +113,10 @@ Wormhole Transporter - Creates a localized wormhole that is linked to another tr
 Use an Import or Export card to link to another wormhole.
 
 Coal Generator - Basic generator that takes coal to create power.
+
+Hallowed Fluid Tank - Can store fluids. Can be moved and retains inventory.
+
+Zeus' Battery - Can store energy. Can be moved and retains inventory.
 
 Item Trashcan - Voids any item inserted into it
 
@@ -191,6 +202,8 @@ surrounding the block you are upgrading.
 | Space Time Amalgamator   | N             | N                | N             |
 | Wormhole Transporter     | N             | N                | N             |
 | Mob Attractor            | Y             | N                | Y             |
+| Demeter's Harvest        | Y             | N                | Y             |
+| Persephone's Blessing    | Y             | N                | Y             |
 
 ---
 
@@ -221,6 +234,12 @@ Wand of The Archer shoots spectral arrows and can be enchanted with bow enchantm
 Wand of the Celebration shoots firework rockets (duration 3).
 
 Wand of Fire Bending summons temporary lava in a plus pattern and provides Fire Resistance. Can be used on mobs and blocks.
+
+Wand of Magnetization - Pulls items within a 5 block radius to you when active in your inventory.
+
+Wand of Healing - Heals you for a couple hearts and gives Regeneration and Absorption for a short period of time.
+
+Greater Wand of Healing - Heals you for several hearts and gives Regeneration for a short period of time. Provides Absorption, Resistance, and Fire Resistance for a moderate amount of time.
 
 ---
 
@@ -269,8 +288,8 @@ Full sets of armor have different full set bonuses!
 - [X] Space Time Tools
 - [ ] Space Time Armor
 - [X] Paxels
-- [ ] Food items
-- [ ] More Wands
+- [X] Food items
+- [X] More Wands
 - [X] Space Time Fluid
 - [ ] Linked chests with filters
 - [ ] Processing type machines for automation

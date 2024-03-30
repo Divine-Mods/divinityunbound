@@ -178,6 +178,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.MOB_ATTRACTOR);
                         entries.add(ModBlocks.ZEUS_BATTERY);
                         entries.add(ModBlocks.DEMETERS_HARVESTER);
+                        entries.add(ModBlocks.PERSEPHONES_BLESSING);
                         //entries.add(ModBlocks.ITEM_SINGULARITY_STORAGE);
 
                         //entries.add(ModBlocks.SPACE_TIME_FURNACE);

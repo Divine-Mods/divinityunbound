@@ -89,6 +89,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.MOB_ATTRACTOR);
         //addDrop(ModBlocks.ZEUS_BATTERY);
         addDrop(ModBlocks.DEMETERS_HARVESTER);
+        addDrop(ModBlocks.PERSEPHONES_BLESSING);
 
         addDrop(ModBlocks.SPACE_TIME_FURNACE);
 

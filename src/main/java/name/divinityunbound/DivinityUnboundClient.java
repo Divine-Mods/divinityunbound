@@ -63,6 +63,7 @@ public class DivinityUnboundClient implements ClientModInitializer {
         HandledScreens.register(ModScreenHandlers.COAL_GENERATOR_SCREEN_HANDLER, CoalGeneratorScreen::new);
         HandledScreens.register(ModScreenHandlers.PROTEUS_CONVERTER_SCREEN_HANDLER, ProteusConverterScreen::new);
         HandledScreens.register(ModScreenHandlers.ZEUS_BATTERY_SCREEN_HANDLER, ZeusBatteryScreen::new);
+        HandledScreens.register(ModScreenHandlers.DEMETERS_HARVESTER_SCREEN_HANDLER, DemetersHarvesterScreen::new);
         HandledScreens.register(ModScreenHandlers.SPACE_TIME_FURNACE_SCREEN_HANDLER, SpaceTimeFurnaceScreen::new);
 
         BlockEntityRendererFactories.register(ModBlockEntities.SPACE_SIPHON_BLOCK_ENTITY, SpaceSiphonBlockRenderer::new);
