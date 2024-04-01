@@ -411,6 +411,16 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(Items.GLASS), conditionsFromItem(Items.GLASS))
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.GOLD_BAND)));
 
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.BATTERY_CORE, 2)
+                .pattern("B")
+                .pattern("C")
+                .pattern("B")
+                .input('C', ModBlocks.CELESTITE_BLOCK)
+                .input('B', Blocks.COAL_BLOCK)
+                .criterion(hasItem(ModBlocks.CELESTITE_BLOCK), conditionsFromItem(ModBlocks.CELESTITE_BLOCK))
+                .criterion(hasItem(Blocks.COAL_BLOCK), conditionsFromItem(Blocks.COAL_BLOCK))
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.BATTERY_CORE)));
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.TIME_FORGED_INGOT, 1)
                 .pattern("DUD")
                 .pattern("UCU")
@@ -730,6 +740,36 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(ModItems.SPACE_FORGED_INGOT), conditionsFromItem(ModItems.SPACE_FORGED_INGOT))
                 .criterion(hasItem(ModBlocks.WILDERSUNG_PLANKS), conditionsFromItem(ModBlocks.WILDERSUNG_PLANKS))
                 .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.SPACE_TIME_AMALGAMATOR)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.ZEUS_BATTERY, 1)
+                .pattern(" I ")
+                .pattern("CBC")
+                .pattern("CiC")
+                .input('I', Blocks.IRON_BLOCK)
+                .input('i', Items.IRON_INGOT)
+                .input('C', Blocks.COPPER_BLOCK)
+                .input('B', ModItems.BATTERY_CORE)
+                .criterion(hasItem(Blocks.IRON_BLOCK), conditionsFromItem(Blocks.IRON_BLOCK))
+                .criterion(hasItem(Items.IRON_INGOT), conditionsFromItem(Items.IRON_INGOT))
+                .criterion(hasItem(ModItems.BATTERY_CORE), conditionsFromItem(ModItems.BATTERY_CORE))
+                .criterion(hasItem(Blocks.COPPER_BLOCK), conditionsFromItem(Blocks.COPPER_BLOCK))
+                .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.ZEUS_BATTERY)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.DEMETERS_HARVESTER, 1)
+                .pattern(" G ")
+                .pattern("HPH")
+                .pattern("CPZ")
+                .input('G', Items.GOLDEN_APPLE)
+                .input('H', Items.DIAMOND_HOE)
+                .input('P', Blocks.QUARTZ_PILLAR)
+                .input('C', Blocks.CHEST)
+                .input('Z', ModBlocks.ZEUS_BATTERY)
+                .criterion(hasItem(Items.GOLDEN_APPLE), conditionsFromItem(Items.GOLDEN_APPLE))
+                .criterion(hasItem(Items.DIAMOND_HOE), conditionsFromItem(Items.DIAMOND_HOE))
+                .criterion(hasItem(Blocks.QUARTZ_PILLAR), conditionsFromItem(Blocks.QUARTZ_PILLAR))
+                .criterion(hasItem(Blocks.CHEST), conditionsFromItem(Blocks.CHEST))
+                .criterion(hasItem(ModBlocks.ZEUS_BATTERY), conditionsFromItem(ModBlocks.ZEUS_BATTERY))
+                .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.DEMETERS_HARVESTER)));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.MOB_CORE, 1)
                 .pattern("UUU")

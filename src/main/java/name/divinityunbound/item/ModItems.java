@@ -42,6 +42,7 @@ public class ModItems {
     public static final Item RANGE_CORE = registerItem("range_core", new Item(new FabricItemSettings()));
     public static final Item MOB_CORE = registerItem("mob_core", new Item(new FabricItemSettings()));
     public static final Item GOLD_BAND = registerItem("gold_band", new Item(new FabricItemSettings()));
+    public static final Item BATTERY_CORE = registerItem("battery_core", new Item(new FabricItemSettings()));
     public static final Item IMPORT_CARD = registerItem("import_card", new IOCardItem(new FabricItemSettings()));
     public static final Item EXPORT_CARD = registerItem("export_card", new IOCardItem(new FabricItemSettings()));
 
@@ -236,6 +237,7 @@ public class ModItems {
         entries.add(MOB_CORE);
         entries.add(WAND_BINDING);
         entries.add(GOLD_BAND);
+        entries.add(BATTERY_CORE);
     }
 
     public static RegistryEntry.Reference overrideItem(String itemName, Item item) {

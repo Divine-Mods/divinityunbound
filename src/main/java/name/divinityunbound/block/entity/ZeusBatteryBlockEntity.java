@@ -78,7 +78,7 @@ public class ZeusBatteryBlockEntity extends BlockEntity implements ExtendedScree
         };
     }
 
-    public final SimpleEnergyStorage energyStorage = new SimpleEnergyStorage(5000000, Integer.MAX_VALUE, Integer.MAX_VALUE) {
+    public final SimpleEnergyStorage energyStorage = new SimpleEnergyStorage(50000000, Integer.MAX_VALUE, Integer.MAX_VALUE) {
         @Override
         protected void onFinalCommit() {
             markDirty();

@@ -8,6 +8,7 @@
 - Added Persephone's Blessing (can be used to speed up crop growth)
 - Added Condensed Matter Dust, Divine Time Dust, and Divine Space Dust
 - Added Ethereal Crystal Greens, Ethereal Crystal Greens Seeds, and Etheral Crystal Greens Salad
+- Added Battery Core item, used in crafting Zeus Battery
 - Changed Wormhole Transporters to now work in any direction, (previously did not work on the up/down on blocks)
 - Added the ability to pick up the Zeus Battery and Hallowed Fluid Tank and still maintain their fluids/energy.
 - Foci now have a max durability and will break after generating a certain amount of resources.

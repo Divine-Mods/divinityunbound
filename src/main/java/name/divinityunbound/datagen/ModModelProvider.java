@@ -85,8 +85,9 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.KNOWLEDGE_EXTRACTOR);
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.COAL_GENERATOR);
         blockStateModelGenerator.registerSimpleState(ModBlocks.MOB_ATTRACTOR);
-        //blockStateModelGenerator.registerSimpleState(ModBlocks.ZEUS_BATTERY);
-        //blockStateModelGenerator.registerSimpleState(ModBlocks.DEMETERS_HARVESTER);
+        blockStateModelGenerator.registerSimpleState(ModBlocks.ZEUS_BATTERY);
+        blockStateModelGenerator.registerSimpleState(ModBlocks.DEMETERS_HARVESTER);
+        blockStateModelGenerator.registerSimpleState(ModBlocks.PERSEPHONES_BLESSING);
 
         blockStateModelGenerator.registerSimpleState(ModBlocks.PROTEUS_CONTROLLER_BLOCK);
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.PROTEUS_CONVERTER_BLOCK);
@@ -146,6 +147,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.IMPORT_CARD, Models.GENERATED);
         itemModelGenerator.register(ModItems.EXPORT_CARD, Models.GENERATED);
         itemModelGenerator.register(ModItems.GOLD_BAND, Models.GENERATED);
+        itemModelGenerator.register(ModItems.BATTERY_CORE, Models.GENERATED);
 
         itemModelGenerator.register(ModFluids.SPACE_TIME_BUCKET, Models.GENERATED);
 
