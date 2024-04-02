@@ -129,6 +129,16 @@ public class WormholeTransporterBlockEntity extends BlockEntity implements Exten
 
     public final SimpleEnergyStorage energyStorage = new SimpleEnergyStorage(5000000, Integer.MAX_VALUE, Integer.MAX_VALUE) {
         @Override
+        public boolean supportsExtraction() {
+            return getEnergyEnabled() && isImportMode();
+        }
+
+        @Override
+        public boolean supportsInsertion() {
+            return getEnergyEnabled() && isExportMode();
+        }
+
+        @Override
         protected void onFinalCommit() {
             markDirty();
             getWorld().updateListeners(pos, getCachedState(), getCachedState(), 3);
@@ -150,6 +160,16 @@ public class WormholeTransporterBlockEntity extends BlockEntity implements Exten
         protected void onFinalCommit() {
             markDirty();
             getWorld().updateListeners(pos, getCachedState(), getCachedState(), 3);
+        }
+
+        @Override
+        public boolean supportsExtraction() {
+            return getFluidsEnabled();
+        }
+
+        @Override
+        public boolean supportsInsertion() {
+            return getFluidsEnabled();
         }
     };
     @Override
@@ -268,7 +288,7 @@ public class WormholeTransporterBlockEntity extends BlockEntity implements Exten
                     pushFluidToAdjacentStorage(this.fluidStorage, neighborFluidStorage);
                 }
             }
-            else {  // Export Mode
+            else if (isExportMode()) {  // Export Mode
                 if (neighborInv != null && this.getItemsEnabled()) { // Import Items from Neighbor Inv
                     //attemptExtractionToInternalInv(neighborInv);
                     // TODO: cleanup and move to separate method
@@ -297,9 +317,10 @@ public class WormholeTransporterBlockEntity extends BlockEntity implements Exten
                     }
                 }
 
-                if (neighborEnergyStorage != null && this.getEnergyEnabled()) { // Import Energy from Neighbor Energy Storage
-                    pushEnergyToAdjacentStorage(neighborEnergyStorage, this.energyStorage);
-                }
+                // NOTE: According to API docs, do not pull from other blocks
+                //if (neighborEnergyStorage != null && this.getEnergyEnabled()) { // Import Energy from Neighbor Energy Storage
+                //    pushEnergyToAdjacentStorage(neighborEnergyStorage, this.energyStorage);
+                //}
 
                 if (neighborFluidStorage != null && this.getFluidsEnabled()) { // Import Fluid from Neighbor Fluid Storage
                     pushFluidToAdjacentStorage(neighborFluidStorage, this.fluidStorage);
@@ -439,6 +460,10 @@ public class WormholeTransporterBlockEntity extends BlockEntity implements Exten
 
     private boolean isImportMode() {
         return this.getStack(CARD_SLOT).getItem().equals(ModItems.IMPORT_CARD);
+    }
+
+    private boolean isExportMode() {
+        return this.getStack(CARD_SLOT).getItem().equals(ModItems.EXPORT_CARD);
     }
 
     private void extractFluid() {

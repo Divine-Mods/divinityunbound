@@ -76,6 +76,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.TIME_FORGED_BLOCK)
                 .add(ModBlocks.SPACE_FORGED_BLOCK)
                 .add(ModBlocks.ZEUS_BATTERY)
+                .add(ModBlocks.CREATIVE_ZEUS_BATTERY)
                 .add(ModBlocks.DEMETERS_HARVESTER)
                 .add(ModBlocks.PERSEPHONES_BLESSING)
                 .add(ModBlocks.SPACE_TIME_FURNACE);
@@ -116,6 +117,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.TIME_FORGED_BLOCK)
                 .add(ModBlocks.SPACE_FORGED_BLOCK)
                 .add(ModBlocks.ZEUS_BATTERY)
+                .add(ModBlocks.CREATIVE_ZEUS_BATTERY)
                 .add(ModBlocks.DEMETERS_HARVESTER)
                 .add(ModBlocks.PERSEPHONES_BLESSING)
                 .add(ModBlocks.ITEM_SINGULARITY_STORAGE);

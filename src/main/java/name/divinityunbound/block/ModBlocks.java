@@ -244,6 +244,9 @@ public class ModBlocks {
     public static final Block ZEUS_BATTERY = registerBlock("zeus_battery",
             new ZeusBatteryBlock(FabricBlockSettings.copyOf(Blocks.COPPER_BLOCK).nonOpaque()));
 
+    public static final Block CREATIVE_ZEUS_BATTERY = registerBlock("creative_zeus_battery",
+            new ZeusBatteryBlock(true, FabricBlockSettings.copyOf(Blocks.COPPER_BLOCK).nonOpaque()));
+
     public static final Block DEMETERS_HARVESTER = registerBlock("demeters_harvester",
             new DemetersHarvesterBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
 

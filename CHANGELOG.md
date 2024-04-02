@@ -13,6 +13,7 @@
 - Added the ability to pick up the Zeus Battery and Hallowed Fluid Tank and still maintain their fluids/energy.
 - Foci now have a max durability and will break after generating a certain amount of resources.
 - Put restrictions on what blocks the Mystic Chronograph can tick accelerate.
+- Fixed bug that was preventing Wand of Teleportation from working across dimensions. Should now work across Overworld, Nether, and End.
 
 ---
 ## v0.3.0

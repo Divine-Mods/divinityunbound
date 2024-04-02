@@ -34,10 +34,15 @@ import java.util.List;
 public class ZeusBatteryBlock extends BlockWithEntity implements BlockEntityProvider {
     protected final Random random = Random.create();
     public static final BooleanProperty ENABLED = Properties.ENABLED;
+    public static final BooleanProperty CREATIVE = Properties.CONDITIONAL;
     public static final MapCodec<ZeusBatteryBlock> CODEC = ZeusBatteryBlock.createCodec(ZeusBatteryBlock::new);
     public ZeusBatteryBlock(Settings settings) {
         super(settings);
-        this.setDefaultState(this.stateManager.getDefaultState().with(ENABLED, false));
+        this.setDefaultState(this.stateManager.getDefaultState().with(ENABLED, false).with(CREATIVE, false));
+    }
+    public ZeusBatteryBlock(boolean creative, Settings settings) {
+        super(settings);
+        this.setDefaultState(this.stateManager.getDefaultState().with(ENABLED, false).with(CREATIVE, creative));
     }
     @Override
     public BlockRenderType getRenderType(BlockState state) {
@@ -51,6 +56,7 @@ public class ZeusBatteryBlock extends BlockWithEntity implements BlockEntityProv
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(ENABLED);
+        builder.add(CREATIVE);
     }
     @Nullable
     @Override
@@ -68,6 +74,7 @@ public class ZeusBatteryBlock extends BlockWithEntity implements BlockEntityProv
 
     @Override
     public BlockState onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
+        if (state.get(ZeusBatteryBlock.CREATIVE)) return super.onBreak(world, pos, state, player);
         BlockEntity blockEntity = world.getBlockEntity(pos);
         if (blockEntity instanceof ZeusBatteryBlockEntity) {
             ZeusBatteryBlockEntity zeusBatteryBlockEntity = (ZeusBatteryBlockEntity)blockEntity;

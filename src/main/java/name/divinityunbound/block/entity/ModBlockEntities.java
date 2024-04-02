@@ -110,7 +110,7 @@ public class ModBlockEntities {
     public static final BlockEntityType<ZeusBatteryBlockEntity> ZEUS_BATTERY_BLOCK_ENTITY =
             Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(DivinityUnbound.MOD_ID, "zeus_battery_be"),
                     FabricBlockEntityTypeBuilder.create(ZeusBatteryBlockEntity::new,
-                            ModBlocks.ZEUS_BATTERY).build());
+                            ModBlocks.ZEUS_BATTERY, ModBlocks.CREATIVE_ZEUS_BATTERY).build());
 
     public static final BlockEntityType<DemetersHarvesterBlockEntity> DEMETERS_HARVESTER_BLOCK_ENTITY =
             Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(DivinityUnbound.MOD_ID, "demeters_harvester_be"),

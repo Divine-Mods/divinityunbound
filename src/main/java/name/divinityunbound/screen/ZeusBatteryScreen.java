@@ -12,6 +12,7 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
+import java.util.List;
 import java.util.Optional;
 
 public class ZeusBatteryScreen extends HandledScreen<ZeusBatteryScreenHandler> {
@@ -58,7 +59,8 @@ public class ZeusBatteryScreen extends HandledScreen<ZeusBatteryScreenHandler> {
 
     private void renderEnergyAreaTooltips(DrawContext context, int pMouseX, int pMouseY, int x, int y) {
         if(isMouseAboveArea(pMouseX, pMouseY, x, y, 84, 11, 8, 64)) {
-            context.drawTooltip(Screens.getTextRenderer(this), energyInfoArea.getTooltips(),
+            context.drawTooltip(Screens.getTextRenderer(this),
+                    handler.blockEntity.isCreative ? List.of(Text.literal("Infinite")) : energyInfoArea.getTooltips(),
                     Optional.empty(), pMouseX - x, pMouseY - y);
         }
     }

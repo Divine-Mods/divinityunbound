@@ -86,6 +86,7 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.COAL_GENERATOR);
         blockStateModelGenerator.registerSimpleState(ModBlocks.MOB_ATTRACTOR);
         blockStateModelGenerator.registerSimpleState(ModBlocks.ZEUS_BATTERY);
+        blockStateModelGenerator.registerSimpleState(ModBlocks.CREATIVE_ZEUS_BATTERY);
         blockStateModelGenerator.registerSimpleState(ModBlocks.DEMETERS_HARVESTER);
         blockStateModelGenerator.registerSimpleState(ModBlocks.PERSEPHONES_BLESSING);
 

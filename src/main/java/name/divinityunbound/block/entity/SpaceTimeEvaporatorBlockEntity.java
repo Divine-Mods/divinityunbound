@@ -166,6 +166,7 @@ public class SpaceTimeEvaporatorBlockEntity extends BlockEntity implements Exten
         return new SpaceTimeEvaporatorScreenHandler(syncId, playerInventory, this, this.propertyDelegate);
     }
 
+    // TODO: Change power to push
     public void tick(World world, BlockPos pos, BlockState state) {
         if (world.isClient()) {
             return;

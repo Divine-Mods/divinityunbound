@@ -148,6 +148,8 @@ public class CoalGeneratorBlockEntity extends BlockEntity implements ExtendedScr
     }
 
     private boolean currentlyProducing = false;
+
+    // TODO: Change power to push
     public void tick(World world, BlockPos pos, BlockState state) {
         if (world.isClient()) {
             return;

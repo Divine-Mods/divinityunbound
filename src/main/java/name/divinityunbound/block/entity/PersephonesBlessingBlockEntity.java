@@ -33,6 +33,7 @@ import team.reborn.energy.api.base.SimpleEnergyStorage;
 
 public class PersephonesBlessingBlockEntity extends BlockEntity {
     private static final int DEFAULT_RANGE = 8;
+    private static final int MAX_CROPS_GROWN = 8;
 
     protected final PropertyDelegate propertyDelegate;
     private int progress = 0;
@@ -109,7 +110,7 @@ public class PersephonesBlessingBlockEntity extends BlockEntity {
         if (world.isClient()) {
             return;
         }
-        if (cooldown < (60 - (speedCount * 6))) {
+        if (cooldown < (50 - (speedCount * 6))) {
             cooldown++;
             return;
         }
@@ -120,6 +121,7 @@ public class PersephonesBlessingBlockEntity extends BlockEntity {
     }
 
     private void fertilizeCrops(World world, BlockPos pos, int range) {
+        int cropsGrown = 0;
         for (int i = -range; i <= range; i++) {
             for (int j = -range; j <= range; j++) {
                 BlockPos offsetPos = pos.add(i, 0, j);
@@ -129,6 +131,10 @@ public class PersephonesBlessingBlockEntity extends BlockEntity {
                             ((CropBlock) blockState.getBlock()).getMaxAge()) {
                         if(world.getRandom().nextInt(100) < 8) {
                             ((CropBlock) blockState.getBlock()).applyGrowth(world, offsetPos, blockState);
+                            cropsGrown++;
+                            if (cropsGrown > MAX_CROPS_GROWN) {
+                                return;
+                            }
                         }
                     }
                 }

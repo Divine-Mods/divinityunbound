@@ -178,6 +178,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.COAL_GENERATOR);
                         entries.add(ModBlocks.MOB_ATTRACTOR);
                         entries.add(ModBlocks.ZEUS_BATTERY);
+                        entries.add(ModBlocks.CREATIVE_ZEUS_BATTERY);
                         entries.add(ModBlocks.DEMETERS_HARVESTER);
                         entries.add(ModBlocks.PERSEPHONES_BLESSING);
                         //entries.add(ModBlocks.ITEM_SINGULARITY_STORAGE);

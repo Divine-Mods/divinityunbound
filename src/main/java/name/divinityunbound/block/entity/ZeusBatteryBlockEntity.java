@@ -1,6 +1,8 @@
 package name.divinityunbound.block.entity;
 
 import name.divinityunbound.block.ModBlocks;
+import name.divinityunbound.block.custom.DivineReplicatorBlock;
+import name.divinityunbound.block.custom.ZeusBatteryBlock;
 import name.divinityunbound.fluid.ModFluids;
 import name.divinityunbound.item.ModItems;
 import name.divinityunbound.screen.SpaceTimeAmalgamatorScreenHandler;
@@ -40,6 +42,9 @@ import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInst
 import software.bernie.geckolib.core.animation.*;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.RenderUtils;
+import team.reborn.energy.api.EnergyStorage;
+import team.reborn.energy.api.EnergyStorageUtil;
+import team.reborn.energy.api.base.InfiniteEnergyStorage;
 import team.reborn.energy.api.base.SimpleEnergyStorage;
 
 import java.util.Iterator;
@@ -51,6 +56,7 @@ public class ZeusBatteryBlockEntity extends BlockEntity implements ExtendedScree
     private int progress = 0;
     private int maxProgress = 72;
     private int quantityCount = 0;
+    public boolean isCreative = false;
     public ZeusBatteryBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.ZEUS_BATTERY_BLOCK_ENTITY, pos, state);
         this.propertyDelegate = new PropertyDelegate() {
@@ -76,22 +82,39 @@ public class ZeusBatteryBlockEntity extends BlockEntity implements ExtendedScree
                 return 2;
             }
         };
+
+        if (state.get(ZeusBatteryBlock.CREATIVE)) {
+            isCreative = true;
+            energyStorage = InfiniteEnergyStorage.INSTANCE;
+        }
+        else {
+           energyStorage = new SimpleEnergyStorage(50000000, Integer.MAX_VALUE, Integer.MAX_VALUE) {
+                @Override
+                protected void onFinalCommit() {
+                    markDirty();
+                    getWorld().updateListeners(pos, getCachedState(), getCachedState(), 3);
+                }
+            };
+        }
     }
 
-    public final SimpleEnergyStorage energyStorage = new SimpleEnergyStorage(50000000, Integer.MAX_VALUE, Integer.MAX_VALUE) {
-        @Override
-        protected void onFinalCommit() {
-            markDirty();
-            getWorld().updateListeners(pos, getCachedState(), getCachedState(), 3);
-        }
-    };
+    public EnergyStorage energyStorage;
+//    public final SimpleEnergyStorage energyStorage = new SimpleEnergyStorage(50000000, Integer.MAX_VALUE, Integer.MAX_VALUE) {
+//        @Override
+//        protected void onFinalCommit() {
+//            markDirty();
+//            getWorld().updateListeners(pos, getCachedState(), getCachedState(), 3);
+//        }
+//    };
 
     @Override
     protected void writeNbt(NbtCompound nbt) {
         super.writeNbt(nbt);
         nbt.putInt("zeus_battery.progress", progress);
         nbt.putInt("zeus_battery.quantityCount", quantityCount);
-        nbt.putLong(("zeus_battery.energy"), energyStorage.amount);
+        if (!isCreative) {
+            nbt.putLong(("zeus_battery.energy"), ((SimpleEnergyStorage)energyStorage).amount);
+        }
     }
 
     @Override
@@ -99,7 +122,9 @@ public class ZeusBatteryBlockEntity extends BlockEntity implements ExtendedScree
         super.readNbt(nbt);
         progress = nbt.getInt("zeus_battery.progress");
         quantityCount = nbt.getInt("zeus_battery.quantityCount");
-        energyStorage.amount = nbt.getLong("zeus_battery.energy");
+        if (!isCreative) {
+            ((SimpleEnergyStorage)energyStorage).amount = nbt.getLong("zeus_battery.energy");
+        }
     }
 
     public void setEnergyAmount(long amount) {
@@ -129,7 +154,28 @@ public class ZeusBatteryBlockEntity extends BlockEntity implements ExtendedScree
         if (world.isClient()) {
             return;
         }
+        for (Direction dir : Direction.values()) {
+            EnergyStorage neighborEnergyStorage = findEnergyStorage(world, pos, dir);
+            if (neighborEnergyStorage != null && neighborEnergyStorage.supportsInsertion()) {
+                pushEnergyToAdjacentStorage(energyStorage, neighborEnergyStorage);
+            }
+        }
+    }
 
+    private EnergyStorage findEnergyStorage(World world, BlockPos pos, Direction direction) {
+        return EnergyStorage.SIDED.find(world, pos.offset(direction), direction);
+    }
+
+    private void pushEnergyToAdjacentStorage(EnergyStorage source, EnergyStorage target) {
+        try(Transaction transaction = Transaction.openOuter()) {
+            long amountMoved = EnergyStorageUtil.move(
+                    source, // from source
+                    target, // into target
+                    Integer.MAX_VALUE, // no limit on the amount
+                    transaction // create a new transaction for this operation
+            );
+            transaction.commit();
+        }
     }
 
     private void extractEnergy() {
