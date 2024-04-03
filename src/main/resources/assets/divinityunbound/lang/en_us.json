@@ -24,6 +24,7 @@
   "item.divinityunbound.mob_core": "Mob Core",
   "item.divinityunbound.import_card": "Import Card",
   "item.divinityunbound.export_card": "Export Card",
+  "item.divinityunbound.filter_item": "Item Filter",
   "block.divinityunbound.divine_torch": "Divine Torch",
   "item.divinityunbound.gold_band": "Gold Band",
   "item.divinityunbound.battery_core": "Battery Core",
@@ -202,6 +203,7 @@
   "tooltip.divinityunbound.dark_celestial_glass1": "Players can phase through, Mobs cannot.",
   "tooltip.divinityunbound.dark_celestial_glass2": "Acts like Tinted Glass. Hold Shift to stand on.",
   "tooltip.divinityunbound.withered_glass": "Wither, Dragon, and Explosion proof",
+  "tooltip.divinityunbound.hold_shift": "Hold Shift",
 
   "divinityunbound.wormhole_transporter.type": "Type",
   "divinityunbound.wormhole_transporter.items": "Items",

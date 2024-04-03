@@ -152,6 +152,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.EXPORT_CARD, Models.GENERATED);
         itemModelGenerator.register(ModItems.GOLD_BAND, Models.GENERATED);
         itemModelGenerator.register(ModItems.BATTERY_CORE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.FILTER_ITEM, Models.GENERATED);
 
         itemModelGenerator.register(ModFluids.SPACE_TIME_BUCKET, Models.GENERATED);
 

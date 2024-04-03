@@ -45,6 +45,7 @@ public class ModItems {
     public static final Item BATTERY_CORE = registerItem("battery_core", new Item(new FabricItemSettings()));
     public static final Item IMPORT_CARD = registerItem("import_card", new IOCardItem(new FabricItemSettings()));
     public static final Item EXPORT_CARD = registerItem("export_card", new IOCardItem(new FabricItemSettings()));
+    public static final Item FILTER_ITEM = registerItem("filter_item", new FilterItem(new FabricItemSettings()));
 
     public static final Item DIVINE_TORCH = Items.register(
             new VerticallyAttachableBlockItem(ModBlocks.DIVINE_TORCH,

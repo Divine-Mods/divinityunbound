@@ -25,7 +25,7 @@
           "L": "divinityunbound:frozen_time_lamp",
           "B": "minecraft:polished_blackstone"
         },
-        "symmetrical": true,
+        "symmetrical": true
       },
       "text": "divinityunbound.page.proteus_converter1"
     }

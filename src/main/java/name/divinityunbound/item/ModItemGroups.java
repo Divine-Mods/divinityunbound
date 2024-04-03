@@ -55,6 +55,7 @@ public class ModItemGroups {
                         entries.add(ModItems.SAND_OF_TIME);
                         entries.add(ModItems.GOLD_BAND);
                         entries.add(ModItems.BATTERY_CORE);
+                        entries.add(ModItems.FILTER_ITEM);
 
                         entries.add(ModFluids.SPACE_TIME_BUCKET);
 
