@@ -154,6 +154,10 @@ public class ZeusBatteryBlockEntity extends BlockEntity implements ExtendedScree
         if (world.isClient()) {
             return;
         }
+        findNeighborsAndPushEnergy();
+    }
+
+    private void findNeighborsAndPushEnergy() {
         for (Direction dir : Direction.values()) {
             EnergyStorage neighborEnergyStorage = findEnergyStorage(world, pos, dir);
             if (neighborEnergyStorage != null && neighborEnergyStorage.supportsInsertion()) {

@@ -127,7 +127,7 @@ public class WormholeTransporterBlockEntity extends BlockEntity implements Exten
 //                }));
     }
 
-    public final SimpleEnergyStorage energyStorage = new SimpleEnergyStorage(5000000, Integer.MAX_VALUE, Integer.MAX_VALUE) {
+    public final SimpleEnergyStorage energyStorage = new SimpleEnergyStorage(2500000, Integer.MAX_VALUE, Integer.MAX_VALUE) {
         @Override
         public boolean supportsExtraction() {
             return getEnergyEnabled() && isImportMode();
@@ -196,6 +196,9 @@ public class WormholeTransporterBlockEntity extends BlockEntity implements Exten
         Inventories.readNbt(nbt, inventory);
         this.progress = nbt.getInt("wormhole_transporter.progress");
         this.energyStorage.amount = nbt.getLong("wormhole_transporter.energy");
+        if (energyStorage.getAmount() > energyStorage.getCapacity()) {
+            energyStorage.amount = energyStorage.getCapacity();
+        }
         this.fluidStorage.variant = FluidVariant.fromNbt((NbtCompound) nbt.get("wormhole_transporter.variant"));
         this.fluidStorage.amount = nbt.getLong("wormhole_transporter.fluid_amount");
         itemsEnabled = nbt.getBoolean("wormhole_transporter.itemsEnabled");

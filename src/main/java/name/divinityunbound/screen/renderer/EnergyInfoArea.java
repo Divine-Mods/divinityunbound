@@ -5,6 +5,7 @@ import net.minecraft.client.util.math.Rect2i;
 import net.minecraft.text.Text;
 import team.reborn.energy.api.EnergyStorage;
 
+import java.text.NumberFormat;
 import java.util.List;
 
 /*
@@ -13,6 +14,7 @@ import java.util.List;
  *
  *  This code is licensed under "Blu's License of Common Sense" (FORGE VERSION)
  *  Modified for Fabric by: Kaupenjoe
+ *  Modified further by: Lohrun
  */
 public class EnergyInfoArea {
     private final Rect2i area;
@@ -32,7 +34,9 @@ public class EnergyInfoArea {
     }
 
     public List<Text> getTooltips() {
-        return List.of(Text.literal(energy.getAmount()+" / "+energy.getCapacity()+" E"));
+        return List.of(Text.literal( NumberFormat.getInstance().format(energy.getAmount())
+                + " / " + NumberFormat.getInstance().format(energy.getCapacity()) +" E"));
+
     }
 
     public void draw(DrawContext context) {

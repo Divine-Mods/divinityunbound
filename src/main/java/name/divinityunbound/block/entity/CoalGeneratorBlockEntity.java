@@ -113,6 +113,11 @@ public class CoalGeneratorBlockEntity extends BlockEntity implements ExtendedScr
             markDirty();
             getWorld().updateListeners(pos, getCachedState(), getCachedState(), 3);
         }
+
+        @Override
+        public boolean supportsInsertion() {
+            return false;
+        }
     };
 
     @Override
@@ -149,7 +154,6 @@ public class CoalGeneratorBlockEntity extends BlockEntity implements ExtendedScr
 
     private boolean currentlyProducing = false;
 
-    // TODO: Change power to push
     public void tick(World world, BlockPos pos, BlockState state) {
         if (world.isClient()) {
             return;
@@ -172,17 +176,43 @@ public class CoalGeneratorBlockEntity extends BlockEntity implements ExtendedScr
         else {
             resetProgress();
         }
+        findNeighborsAndPushEnergy();
+    }
+
+    private void findNeighborsAndPushEnergy() {
+        for (Direction dir : Direction.values()) {
+            EnergyStorage neighborEnergyStorage = findEnergyStorage(world, pos, dir);
+            if (neighborEnergyStorage != null && neighborEnergyStorage.supportsInsertion()) {
+                pushEnergyToAdjacentStorage(energyStorage, neighborEnergyStorage);
+            }
+        }
+    }
+
+    private EnergyStorage findEnergyStorage(World world, BlockPos pos, Direction direction) {
+        return EnergyStorage.SIDED.find(world, pos.offset(direction), direction);
+    }
+
+    private void pushEnergyToAdjacentStorage(EnergyStorage source, EnergyStorage target) {
+        try(Transaction transaction = Transaction.openOuter()) {
+            long amountMoved = EnergyStorageUtil.move(
+                    source, // from source
+                    target, // into target
+                    Integer.MAX_VALUE, // no limit on the amount
+                    transaction // create a new transaction for this operation
+            );
+            transaction.commit();
+        }
     }
 
     private void produceEnergy() {
         try(Transaction transaction = Transaction.openOuter()) {
-            if (this.energyStorage.getCapacity() - this.energyStorage.getAmount() <= 64) {
+            if (this.energyStorage.getCapacity() - this.energyStorage.getAmount() <= 56) {
                 this.energyStorage.insert(
                         this.energyStorage.getCapacity() - this.energyStorage.getAmount(),
                         transaction);
             }
             else {
-                this.energyStorage.insert(64, transaction);
+                this.energyStorage.insert(56, transaction);
             }
             transaction.commit();
         }

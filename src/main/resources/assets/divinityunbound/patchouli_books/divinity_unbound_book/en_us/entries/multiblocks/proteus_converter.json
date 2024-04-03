@@ -1,0 +1,33 @@
+{
+  "name": "divinityunbound.entry.proteus_converter",
+  "icon": "divinityunbound:proteus_converter",
+  "category": "divinityunbound:multiblocks",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "divinityunbound.page.proteus_converter0"
+    },
+    {
+      "type": "patchouli:multiblock",
+      "name": "divinityunbound.entry.proteus_converter",
+      "multiblock": {
+        "pattern": [
+          ["WLW", "L#L", "WLW"],
+          ["TFT", "F0F", "TFT"],
+          ["WBW", "BSB", "WBW"]
+        ],
+        "mapping": {
+          "#": "divinityunbound:proteus_controller",
+          "W": "divinityunbound:wildersung_log",
+          "F": "divinityunbound:frozen_time_glass",
+          "T": "divinityunbound:time_forged_block",
+          "S": "divinityunbound:space_forged_block",
+          "L": "divinityunbound:frozen_time_lamp",
+          "B": "minecraft:polished_blackstone"
+        },
+        "symmetrical": true,
+      },
+      "text": "divinityunbound.page.proteus_converter1"
+    }
+  ]
+}

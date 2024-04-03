@@ -147,7 +147,8 @@
   "block.divinityunbound.mob_attractor": "Mob Attractor",
   "block.divinityunbound.proteus_controller": "Proteus Controller",
   "block.divinityunbound.proteus_converter": "Proteus Converter",
-  "block.divinityunbound.zeus_battery": "Zeus' Battery",
+  "block.divinityunbound.zeus_battery": "Zeus Battery",
+  "block.divinityunbound.creative_zeus_battery": "Creative Zeus Battery",
   "block.divinityunbound.demeters_harvester": "Demeter's Harvest",
   "block.divinityunbound.persephones_blessing": "Persephone's Blessing",
   "block.divinityunbound.space_time_furnace": "Space Time Furnace",
@@ -214,6 +215,7 @@
   "divinityunbound.category.basics": "Basics",
   "divinityunbound.category.functional_blocks": "Functional Blocks",
   "divinityunbound.category.decorative_blocks": "Decorative Blocks",
+  "divinityunbound.category.multiblocks": "Multiblocks",
   "divinityunbound.category.wands": "Wands",
 
   "divinityunbound.entry.raw_celestite": "Raw Celestite",
@@ -276,6 +278,10 @@
   "divinityunbound.entry.wand_of_capturing": "Wand of Capturing",
   "divinityunbound.page.wand_of_capturing0": "The $(item)Wand of Capturing$(0) is one that has puzzled mages in magical academia for ages. Their best guess after millennia of research is that the captured entity is brought to a pocket dimension within the wand.",
   "divinityunbound.page.wand_of_capturing1": "Right click on a mob with the wand to capture it, right click on a block to release it. The wand will inform you what mob is captured in the pocket dimension in it's tooltip.",
+
+  "divinityunbound.entry.proteus_converter": "Proteus Converter",
+  "divinityunbound.page.proteus_converter0": "The $(item)Proteus Converter$(0) is an ancient technology left abandoned by the gods. It was previously discovered by explorers in an Ocean Monument. ",
+  "divinityunbound.page.proteus_converter1": "The final block you should place to form the multiblock is the $(item)Proteus Controller$(0).",
 
   "itemgroup.celestite": "Divinity Unbound"
 }

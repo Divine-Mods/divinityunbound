@@ -26,16 +26,30 @@ import org.jetbrains.annotations.Nullable;
 
 public class WormholeTransporterBlock extends BlockWithEntity implements BlockEntityProvider {
     public static final DirectionProperty FACING = Properties.FACING;
-    private static final VoxelShape SHAPE = Block.createCuboidShape(0, 0, 0, 16, 16, 16);
     protected final Random random = Random.create();
     public static final MapCodec<WormholeTransporterBlock> CODEC = WormholeTransporterBlock.createCodec(WormholeTransporterBlock::new);
     public WormholeTransporterBlock(Settings settings) {
         super(settings);
     }
 
+    private static final VoxelShape DEFAULT_SHAPE = Block.createCuboidShape(5, 6, 5, 11, 12, 16);
+    private static final VoxelShape SOUTH_SHAPE = Block.createCuboidShape(5, 6, 0, 11, 12, 11);
+    private static final VoxelShape EAST_SHAPE = Block.createCuboidShape(0, 6, 5, 11, 12, 11);
+    private static final VoxelShape WEST_SHAPE = Block.createCuboidShape(5, 6, 5, 16, 12, 11);
+    private static final VoxelShape DOWN_SHAPE = Block.createCuboidShape(6, 5, 6, 12, 16, 12);
+    private static final VoxelShape UP_SHAPE = Block.createCuboidShape(6, 0, 6, 12, 11, 12);
+
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return SHAPE;
+        switch(state.get(WormholeTransporterBlock.FACING)) {
+            case NORTH: return DEFAULT_SHAPE;
+            case SOUTH: return SOUTH_SHAPE;
+            case EAST: return EAST_SHAPE;
+            case WEST: return  WEST_SHAPE;
+            case DOWN: return DOWN_SHAPE;
+            case UP: return UP_SHAPE;
+            default: return DEFAULT_SHAPE;
+        }
     }
 
     @Override

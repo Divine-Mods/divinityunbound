@@ -16,6 +16,8 @@ import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
@@ -25,6 +27,7 @@ public class PersephonesBlessingBlock extends BlockWithEntity implements BlockEn
     protected final Random random = Random.create();
     public static final BooleanProperty ENABLED = Properties.ENABLED;
     public static final MapCodec<PersephonesBlessingBlock> CODEC = PersephonesBlessingBlock.createCodec(PersephonesBlessingBlock::new);
+    private static final VoxelShape SHAPE = Block.createCuboidShape(0, 0, 0, 16, 12, 16);
     public PersephonesBlessingBlock(Settings settings) {
         super(settings);
         this.setDefaultState(this.stateManager.getDefaultState().with(ENABLED, false));
@@ -32,6 +35,11 @@ public class PersephonesBlessingBlock extends BlockWithEntity implements BlockEn
     @Override
     public BlockRenderType getRenderType(BlockState state) {
         return BlockRenderType.MODEL;
+    }
+
+    @Override
+    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return SHAPE;
     }
     @Override
     protected MapCodec<? extends BlockWithEntity> getCodec() {

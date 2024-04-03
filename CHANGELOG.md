@@ -9,11 +9,15 @@
 - Added Condensed Matter Dust, Divine Time Dust, and Divine Space Dust
 - Added Ethereal Crystal Greens, Ethereal Crystal Greens Seeds, and Etheral Crystal Greens Salad
 - Added Battery Core item, used in crafting Zeus Battery
+- Added Proteus Converter multiblock structure to Patchouli Book for in-world visualization
 - Changed Wormhole Transporters to now work in any direction, (previously did not work on the up/down on blocks)
+- Changed Zeus Battery, Coal Generator, and Space Time Evaporator to push power to neighboring blocks automatically
 - Added the ability to pick up the Zeus Battery and Hallowed Fluid Tank and still maintain their fluids/energy.
 - Foci now have a max durability and will break after generating a certain amount of resources.
 - Put restrictions on what blocks the Mystic Chronograph can tick accelerate.
+- Slightly adjusted Coal Generator's energy output from 64/t to 55/t to be more in line with the standard
 - Fixed bug that was preventing Wand of Teleportation from working across dimensions. Should now work across Overworld, Nether, and End.
+- Fixed outline boxes for Wormhole Transporter and Persephone's Blessing
 
 ---
 ## v0.3.0

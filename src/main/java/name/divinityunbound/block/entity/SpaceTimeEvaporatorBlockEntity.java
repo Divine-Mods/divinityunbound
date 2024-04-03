@@ -194,6 +194,32 @@ public class SpaceTimeEvaporatorBlockEntity extends BlockEntity implements Exten
         else {
             resetProgress();
         }
+        findNeighborsAndPushEnergy();
+    }
+
+    private void findNeighborsAndPushEnergy() {
+        for (Direction dir : Direction.values()) {
+            EnergyStorage neighborEnergyStorage = findEnergyStorage(world, pos, dir);
+            if (neighborEnergyStorage != null && neighborEnergyStorage.supportsInsertion()) {
+                pushEnergyToAdjacentStorage(energyStorage, neighborEnergyStorage);
+            }
+        }
+    }
+
+    private EnergyStorage findEnergyStorage(World world, BlockPos pos, Direction direction) {
+        return EnergyStorage.SIDED.find(world, pos.offset(direction), direction);
+    }
+
+    private void pushEnergyToAdjacentStorage(EnergyStorage source, EnergyStorage target) {
+        try(Transaction transaction = Transaction.openOuter()) {
+            long amountMoved = EnergyStorageUtil.move(
+                    source, // from source
+                    target, // into target
+                    Integer.MAX_VALUE, // no limit on the amount
+                    transaction // create a new transaction for this operation
+            );
+            transaction.commit();
+        }
     }
 
     private boolean hasRecipe() {

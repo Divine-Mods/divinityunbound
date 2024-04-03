@@ -1,5 +1,6 @@
 package name.divinityunbound.block.entity;
 
+import name.divinityunbound.block.custom.DivineReplicatorBlock;
 import name.divinityunbound.screen.DemetersHarvesterScreenHandler;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.fabricmc.fabric.api.transfer.v1.item.InventoryStorage;
@@ -88,6 +89,11 @@ public class DemetersHarvesterBlockEntity extends BlockEntity implements Extende
     };
     public final SimpleInventory internalInventory = new SimpleInventory(9) {
         @Override
+        public boolean isValid(int slot, ItemStack stack) {
+            return !stack.isEmpty() && Block.getBlockFromItem(stack.getItem()) instanceof CropBlock;
+        }
+
+        @Override
         public void markDirty() {
             DemetersHarvesterBlockEntity.this.markDirty();
         }
@@ -155,6 +161,7 @@ public class DemetersHarvesterBlockEntity extends BlockEntity implements Extende
         if (world.isClient()) {
             return;
         }
+        if (!state.get(DivineReplicatorBlock.ENABLED)) return;
         if (cooldown < (60 - (speedCount * 6))) {
             cooldown++;
             return;
@@ -162,11 +169,13 @@ public class DemetersHarvesterBlockEntity extends BlockEntity implements Extende
         cooldown = 0;
 
         int range = (DEFAULT_RANGE + (rangeCount * 2)) / 2;
-        if (hasItemInHoeSlot()) {
+        if (hasItemInHoeSlot() && hasEnoughEnergyToCraft()) {
             harvestCrops(world, pos, range);
             plantCrops(world, pos, range);
+            extractEnergy();
         }
     }
+
 
     private void harvestCrops(World world, BlockPos pos, int range) {
         for (int i = -range; i <= range; i++) {
@@ -231,9 +240,13 @@ public class DemetersHarvesterBlockEntity extends BlockEntity implements Extende
         return !internalHoeInventory.getStack(0).isEmpty() && internalHoeInventory.getStack(0).isIn(ItemTags.HOES);
     }
 
+    private boolean hasEnoughEnergyToCraft() {
+        return this.energyStorage.amount >= 333L;
+    }
+
     private void extractEnergy() {
         try(Transaction transaction = Transaction.openOuter()) {
-            this.energyStorage.extract(25000L, transaction);
+            this.energyStorage.extract(333L, transaction);
             transaction.commit();
         }
     }

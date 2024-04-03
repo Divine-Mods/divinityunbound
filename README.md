@@ -92,6 +92,7 @@ Mob Attractor - Pulls mobs towards itself. Redstone Toggleable.
 
 Demeter's Harvester - Needs power and a hoe to run. Will plant seeds from internal inventory on farmland in a radius around the block. 
 Will harvest fully grown plants, but leaves drops on the ground. Recommended to use Space Siphon with some range and speed upgrades to retrieve crops and seeds.
+Redstone Toggleable.
 
 Persephone's Blessing - Randomly applies a growth tick to crops in a radius around the block.
 
