@@ -93,6 +93,30 @@ public class ModBlocks {
                 }
             });
 
+    public static final Block CONDENSED_MATTER_DUST_BLOCK = registerBlock("condensed_matter_dust_block",
+            new FallingBlock(FabricBlockSettings.copyOf(Blocks.SAND)) {
+                @Override
+                protected MapCodec<? extends FallingBlock> getCodec() {
+                    return null;
+                }
+            });
+
+    public static final Block DIVINE_TIME_DUST_BLOCK = registerBlock("divine_time_dust_block",
+            new FallingBlock(FabricBlockSettings.copyOf(Blocks.SAND)) {
+                @Override
+                protected MapCodec<? extends FallingBlock> getCodec() {
+                    return null;
+                }
+            });
+
+    public static final Block DIVINE_SPACE_DUST_BLOCK = registerBlock("divine_space_dust_block",
+            new FallingBlock(FabricBlockSettings.copyOf(Blocks.SAND)) {
+                @Override
+                protected MapCodec<? extends FallingBlock> getCodec() {
+                    return null;
+                }
+            });
+
     public static final Block WILDERSUNG_LEAVES = registerBlock("wildersung_leaves",
             new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).strength(4f).nonOpaque()));
 

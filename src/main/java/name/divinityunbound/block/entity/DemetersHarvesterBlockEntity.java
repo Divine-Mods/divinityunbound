@@ -162,16 +162,18 @@ public class DemetersHarvesterBlockEntity extends BlockEntity implements Extende
             return;
         }
         if (!state.get(DivineReplicatorBlock.ENABLED)) return;
-        if (cooldown < (60 - (speedCount * 6))) {
-            cooldown++;
-            return;
-        }
-        cooldown = 0;
 
         int range = (DEFAULT_RANGE + (rangeCount * 2)) / 2;
         if (hasItemInHoeSlot() && hasEnoughEnergyToCraft()) {
-            harvestCrops(world, pos, range);
-            plantCrops(world, pos, range);
+            if (cooldown > (60 - (speedCount * 6))) {
+                harvestCrops(world, pos, range);
+                plantCrops(world, pos, range);
+                cooldown = 0;
+            }
+            else {
+                cooldown++;
+            }
+
             extractEnergy();
         }
     }

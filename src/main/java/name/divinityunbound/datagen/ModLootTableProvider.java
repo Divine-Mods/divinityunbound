@@ -36,6 +36,9 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.CELESTIUM_DUST_BLOCK);
         addDrop(ModBlocks.UNHOLY_DUST_BLOCK);
         addDrop(ModBlocks.SPACE_DUST_BLOCK);
+        addDrop(ModBlocks.CONDENSED_MATTER_DUST_BLOCK);
+        addDrop(ModBlocks.DIVINE_TIME_DUST_BLOCK);
+        addDrop(ModBlocks.DIVINE_SPACE_DUST_BLOCK);
         addDrop(ModBlocks.FROZEN_TIME_LAMP);
         addDrop(ModBlocks.ARCANE_FLOOR_LAMP);
         addDrop(ModBlocks.DIVINE_TORCH);

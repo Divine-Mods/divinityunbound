@@ -37,6 +37,9 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CELESTIUM_DUST_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.UNHOLY_DUST_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.SPACE_DUST_BLOCK);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CONDENSED_MATTER_DUST_BLOCK);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DIVINE_TIME_DUST_BLOCK);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DIVINE_SPACE_DUST_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.FROZEN_TIME_LAMP);
         blockStateModelGenerator.registerSimpleState(ModBlocks.ARCANE_FLOOR_LAMP);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CELESTIAL_GLASS);

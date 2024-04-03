@@ -148,6 +148,9 @@ public class ModItemGroups {
                         entries.add(ModBlocks.CELESTIUM_DUST_BLOCK);
                         entries.add(ModBlocks.UNHOLY_DUST_BLOCK);
                         entries.add(ModBlocks.SPACE_DUST_BLOCK);
+                        entries.add(ModBlocks.CONDENSED_MATTER_DUST_BLOCK);
+                        entries.add(ModBlocks.DIVINE_TIME_DUST_BLOCK);
+                        entries.add(ModBlocks.DIVINE_SPACE_DUST_BLOCK);
                         entries.add(ModBlocks.CELESTIAL_GLASS);
                         entries.add(ModBlocks.DARK_CELESTIAL_GLASS);
                         entries.add(ModBlocks.MINI_GLASS);

@@ -6,7 +6,7 @@
 - Added Zeus Battery (can be used to store power)
 - Added Demeter's Harvester (can be used to automatically harvest crops)
 - Added Persephone's Blessing (can be used to speed up crop growth)
-- Added Condensed Matter Dust, Divine Time Dust, and Divine Space Dust
+- Added Condensed Matter Dust, Divine Time Dust, and Divine Space Dust (and compressed storage blocks for each)
 - Added Ethereal Crystal Greens, Ethereal Crystal Greens Seeds, and Etheral Crystal Greens Salad
 - Added Battery Core item, used in crafting Zeus Battery
 - Added Proteus Converter multiblock structure to Patchouli Book for in-world visualization

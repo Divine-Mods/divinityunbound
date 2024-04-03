@@ -54,6 +54,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItems.CELESTIUM_DUST, RecipeCategory.BUILDING_BLOCKS, ModBlocks.CELESTIUM_DUST_BLOCK);
         offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItems.UNHOLY_DUST, RecipeCategory.BUILDING_BLOCKS, ModBlocks.UNHOLY_DUST_BLOCK);
         offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItems.SPACE_DUST, RecipeCategory.BUILDING_BLOCKS, ModBlocks.SPACE_DUST_BLOCK);
+        offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItems.CONDENSED_MATTER_DUST, RecipeCategory.BUILDING_BLOCKS, ModBlocks.CONDENSED_MATTER_DUST_BLOCK);
+        offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItems.DIVINE_TIME_DUST, RecipeCategory.BUILDING_BLOCKS, ModBlocks.DIVINE_TIME_DUST_BLOCK);
+        offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItems.DIVINE_SPACE_DUST, RecipeCategory.BUILDING_BLOCKS, ModBlocks.DIVINE_SPACE_DUST_BLOCK);
         offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItems.TIME_FORGED_INGOT, RecipeCategory.BUILDING_BLOCKS, ModBlocks.TIME_FORGED_BLOCK);
         offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItems.SPACE_FORGED_INGOT, RecipeCategory.BUILDING_BLOCKS, ModBlocks.SPACE_FORGED_BLOCK);
 
@@ -770,6 +773,22 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(Blocks.CHEST), conditionsFromItem(Blocks.CHEST))
                 .criterion(hasItem(ModBlocks.ZEUS_BATTERY), conditionsFromItem(ModBlocks.ZEUS_BATTERY))
                 .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.DEMETERS_HARVESTER)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.PERSEPHONES_BLESSING, 1)
+                .pattern("DRD")
+                .pattern("MMM")
+                .pattern("SES")
+                .input('D', Items.OXEYE_DAISY)
+                .input('R', Items.RED_TULIP)
+                .input('M', Blocks.MOSS_CARPET)
+                .input('S', ModItems.SPACE_TIME_INGOT)
+                .input('E', ModItems.EXPERIENCE_INGOT)
+                .criterion(hasItem(ModItems.SPACE_TIME_INGOT), conditionsFromItem(ModItems.SPACE_TIME_INGOT))
+                .criterion(hasItem(ModItems.EXPERIENCE_INGOT), conditionsFromItem(ModItems.EXPERIENCE_INGOT))
+                .criterion(hasItem(Items.OXEYE_DAISY), conditionsFromItem(Items.OXEYE_DAISY))
+                .criterion(hasItem(Items.RED_TULIP), conditionsFromItem(Items.RED_TULIP))
+                .criterion(hasItem(Blocks.MOSS_CARPET), conditionsFromItem(Blocks.MOSS_CARPET))
+                .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.PERSEPHONES_BLESSING)));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.MOB_CORE, 1)
                 .pattern("UUU")
