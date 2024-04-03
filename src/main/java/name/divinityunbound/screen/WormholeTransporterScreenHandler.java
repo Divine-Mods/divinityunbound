@@ -24,7 +24,7 @@ public class WormholeTransporterScreenHandler extends ScreenHandler {
     public WormholeTransporterScreenHandler(int syncId, PlayerInventory playerInventory,
                                             BlockEntity blockEntity, PropertyDelegate arrayPropertyDelegate) {
         super(ModScreenHandlers.WORMHOLE_TRANSPORTER_SCREEN_HANDLER, syncId);
-        checkSize(((Inventory) blockEntity), 2);
+        checkSize(((Inventory) blockEntity), 3);
         this.inventory = (Inventory)blockEntity;
         this.propertyDelegate = arrayPropertyDelegate;
         this.blockEntity = ((WormholeTransporterBlockEntity) blockEntity);
@@ -33,6 +33,8 @@ public class WormholeTransporterScreenHandler extends ScreenHandler {
         this.addSlot(new Slot(inventory, 0, 75, 34));
         // Item Slot
         this.addSlot(new Slot(inventory, 1, 102, 34));
+        // Card Slot
+        this.addSlot(new Slot(inventory, 2, 75, 54));
 
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);

@@ -1,9 +1,11 @@
 package name.divinityunbound.block.entity;
 
+import dev.architectury.platform.Mod;
 import name.divinityunbound.block.ModBlocks;
 import name.divinityunbound.block.custom.WormholeTransporterBlock;
 import name.divinityunbound.fluid.ModFluids;
 import name.divinityunbound.item.ModItems;
+import name.divinityunbound.item.custom.FilterItem;
 import name.divinityunbound.screen.WormholeTransporterScreenHandler;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidConstants;
@@ -28,6 +30,7 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.SidedInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
@@ -56,15 +59,17 @@ import team.reborn.energy.api.EnergyStorage;
 import team.reborn.energy.api.EnergyStorageUtil;
 import team.reborn.energy.api.base.SimpleEnergyStorage;
 
+import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
 
 public class WormholeTransporterBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory,
         ImplementedInventory, SidedInventory, GeoBlockEntity {
     private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
-    private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(2, ItemStack.EMPTY);
+    private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(3, ItemStack.EMPTY);
     private static final int CARD_SLOT = 0;
     private static final int ITEM_SLOT = 1;
+    private static final int FILTER_SLOT = 2;
     private static final int CHECK_UPGRADE_TICKS = 20;
     private Direction localDir;
 
@@ -300,6 +305,11 @@ public class WormholeTransporterBlockEntity extends BlockEntity implements Exten
                         while (it.hasNext()) {
                             StorageView<ItemVariant> storage = (StorageView<ItemVariant>) it.next();
                             ItemVariant itemVar = storage.getResource();
+                            if (!itemVar.isBlank()) {
+                                if (!canMoveItem(itemVar.toStack())) {
+                                    continue;
+                                }
+                            }
 
                             if (!itemVar.isBlank() && this.getStack(ITEM_SLOT).isEmpty()) {
                                 int amountTransferred = (int) neighborInv.extract(itemVar, 64, transaction);
@@ -354,6 +364,44 @@ public class WormholeTransporterBlockEntity extends BlockEntity implements Exten
 
             markDirty(world, pos, state);
         }
+    }
+
+    private boolean canMoveItem(ItemStack itemStack) {
+        boolean canMoveItem = false;
+        if(this.getStack(FILTER_SLOT).getItem().equals(ModItems.FILTER_ITEM)) {
+            ItemStack filter = this.getStack(FILTER_SLOT);
+            if (filter.hasNbt()) {
+                Hashtable<Integer, ItemStack> items = FilterItem.getItemsToFilterFromNbt(filter);
+                for (ItemStack item : items.values()) {
+                    if (item.getItem().equals(itemStack.getItem())) {
+                        canMoveItem = true;
+                        break;
+                    }
+                }
+
+                return FilterItem.getModeFromNbt(filter) == FilterItem.MODE.WHITELIST ? canMoveItem : !canMoveItem;
+            }
+        }
+        return true;
+    }
+
+    private boolean canMoveItem(ItemStack itemStack, WormholeTransporterBlockEntity blockEntity) {
+        boolean canMoveItem = false;
+        if(blockEntity.getStack(FILTER_SLOT).getItem().equals(ModItems.FILTER_ITEM)) {
+            ItemStack filter = blockEntity.getStack(FILTER_SLOT);
+            if (filter.hasNbt()) {
+                Hashtable<Integer, ItemStack> items = FilterItem.getItemsToFilterFromNbt(filter);
+                for (ItemStack item : items.values()) {
+                    if (item.getItem().equals(itemStack.getItem())) {
+                        canMoveItem = true;
+                        break;
+                    }
+                }
+
+                return FilterItem.getModeFromNbt(filter) == FilterItem.MODE.WHITELIST ? canMoveItem : !canMoveItem;
+            }
+        }
+        return true;
     }
 
     private EnergyStorage findEnergyStorage(World world, BlockPos pos) {
@@ -421,6 +469,11 @@ public class WormholeTransporterBlockEntity extends BlockEntity implements Exten
 
     private void attemptExtractInvToInternalInv(WormholeTransporterBlockEntity blockEntity) {
         ItemStack checkedStack = blockEntity.getStack(ITEM_SLOT);
+        if (checkedStack.getCount() > 0) {
+            if (!canMoveItem(checkedStack)) {
+                return;
+            }
+        }
         if (this.getStack(ITEM_SLOT).isEmpty()) {
             this.setStack(ITEM_SLOT, checkedStack.copy());
             blockEntity.removeStack(ITEM_SLOT);
@@ -442,6 +495,11 @@ public class WormholeTransporterBlockEntity extends BlockEntity implements Exten
 
     private void attemptExtractInvToExternalInv(WormholeTransporterBlockEntity blockEntity) {
         ItemStack checkedStack = blockEntity.getStack(ITEM_SLOT);
+        if (this.getStack(ITEM_SLOT).getCount() > 0) {
+            if (!canMoveItem(checkedStack, blockEntity)) {
+                return;
+            }
+        }
         if (checkedStack.isEmpty()) {
             blockEntity.setStack(ITEM_SLOT, checkedStack.copy());
             this.removeStack(ITEM_SLOT);
