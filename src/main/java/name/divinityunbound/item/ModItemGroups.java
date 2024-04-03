@@ -104,7 +104,7 @@ public class ModItemGroups {
                         entries.add(ModItems.SPACE_FORGED_PAXEL);
                         entries.add(ModItems.SPACE_TIME_PAXEL);
 
-                        entries.add(ModItems.PROTEUS_TRIDENT);
+                        //entries.add(ModItems.PROTEUS_TRIDENT);
 
                         /* Armor */
                         entries.add(ModItems.CELESTITE_HELMET);

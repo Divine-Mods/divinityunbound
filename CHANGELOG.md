@@ -2,12 +2,13 @@
 
 ---
 ## v0.4.0
-- Added Proteus Trident weapon
-- Added Zeus Battery (can be used to store power)
+- Added Item Filter (can be used in Wormhole Transporter as a Whitelist or a Blacklist)
+- Added Zeus Battery and Creative Zeus Battery (can be used to store power)
 - Added Demeter's Harvester (can be used to automatically harvest crops)
 - Added Persephone's Blessing (can be used to speed up crop growth)
 - Added Condensed Matter Dust, Divine Time Dust, and Divine Space Dust (and compressed storage blocks for each)
-- Added Ethereal Crystal Greens, Ethereal Crystal Greens Seeds, and Etheral Crystal Greens Salad
+- Added Ethereal Crystal Greens, Ethereal Crystal Greens Seeds, and Ethereal Crystal Greens Salad
+- Added Ethereal Crystal Greens Seeds to plains village chest loot table
 - Added Battery Core item, used in crafting Zeus Battery
 - Added Proteus Converter multiblock structure to Patchouli Book for in-world visualization
 - Changed Wormhole Transporters to now work in any direction, (previously did not work on the up/down on blocks)

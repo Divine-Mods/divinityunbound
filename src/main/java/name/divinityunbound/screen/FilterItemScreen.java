@@ -68,9 +68,9 @@ public class FilterItemScreen extends HandledScreen<FilterItemScreenHandler> {
         if (itemsToFilter != null) {
             for (int m = 0; m < 2; ++m) {
                 for (int l = 0; l < 9; ++l) {
-                    int itemIndex = l + m * 8;
-                    int x = (17 + l * 18) + (width - backgroundWidth) / 2;
-                    int y = (17 + m * 18) + (height - backgroundHeight) / 2;
+                    int itemIndex = l + m * 8 + m;
+                    int x = (8 + l * 18) + (width - backgroundWidth) / 2;
+                    int y = (30 + m * 18) + (height - backgroundHeight) / 2;
 
                     ItemStack itemStack = itemsToFilter.get(itemIndex);
                     if (itemStack != null) {

@@ -43,7 +43,7 @@ public class FilterItemScreenHandler extends ScreenHandler {
         // This inventory
         for (m = 0; m < 2; ++m) {
             for (l = 0; l < 9; ++l) {
-                this.addSlot(new Slot(inventory, l + m * 8, 17 + l * 18, 17 + m * 18) {
+                this.addSlot(new Slot(inventory, l + m * 8, 8 + l * 18, 30 + m * 18) {
                     // This is executed on the client-side I believe
                     @Override
                     public boolean canInsert(ItemStack stack) {

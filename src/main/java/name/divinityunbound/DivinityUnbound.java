@@ -11,6 +11,7 @@ import name.divinityunbound.networking.ModMessages;
 import name.divinityunbound.particle.ModParticles;
 import name.divinityunbound.recipe.ModRecipes;
 import name.divinityunbound.screen.ModScreenHandlers;
+import name.divinityunbound.util.ModLootTableModifiers;
 import name.divinityunbound.world.gen.ModWorldGeneration;
 import net.fabricmc.api.ModInitializer;
 
@@ -40,6 +41,8 @@ public class DivinityUnbound implements ModInitializer {
 		ModRecipes.registerRecipes();
 
 		ModMessages.registerC2SPackets();
+
+		ModLootTableModifiers.modifyLootTables();
 
 		StrippableBlockRegistry.register(ModBlocks.WILDERSUNG_LOG, ModBlocks.STRIPPED_WILDERSUNG_LOG);
 		StrippableBlockRegistry.register(ModBlocks.WILDERSUNG_WOOD, ModBlocks.STRIPPED_WILDERSUNG_WOOD);

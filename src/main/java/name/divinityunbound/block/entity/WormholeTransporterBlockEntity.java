@@ -193,6 +193,9 @@ public class WormholeTransporterBlockEntity extends BlockEntity implements Exten
         nbt.putBoolean("wormhole_transporter.itemsEnabled", itemsEnabled);
         nbt.putBoolean("wormhole_transporter.fluidsEnabled", fluidsEnabled);
         nbt.putBoolean("wormhole_transporter.energyEnabled", energyEnabled);
+        if (!this.getStack(FILTER_SLOT).isEmpty() && this.getStack(FILTER_SLOT).getItem().equals(ModItems.FILTER_ITEM) && this.getStack(FILTER_SLOT).hasNbt()) {
+            nbt.put("wormhole_transporter.filter_item", this.getStack(FILTER_SLOT).getNbt());
+        }
     }
 
     @Override
@@ -209,6 +212,9 @@ public class WormholeTransporterBlockEntity extends BlockEntity implements Exten
         itemsEnabled = nbt.getBoolean("wormhole_transporter.itemsEnabled");
         fluidsEnabled = nbt.getBoolean("wormhole_transporter.fluidsEnabled");
         energyEnabled = nbt.getBoolean("wormhole_transporter.energyEnabled");
+        if (!this.getStack(FILTER_SLOT).isEmpty() && this.getStack(FILTER_SLOT).getItem().equals(ModItems.FILTER_ITEM)) {
+            this.getStack(FILTER_SLOT).setNbt((NbtCompound) nbt.get("wormhole_transporter.filter_item"));
+        }
     }
 
     @Override

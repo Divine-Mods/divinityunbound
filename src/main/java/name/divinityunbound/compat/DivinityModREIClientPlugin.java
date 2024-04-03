@@ -12,6 +12,7 @@ import me.shedaniel.rei.api.common.entry.type.VanillaEntryTypes;
 import me.shedaniel.rei.api.common.util.EntryIngredients;
 import me.shedaniel.rei.api.common.util.EntryStacks;
 import name.divinityunbound.block.ModBlocks;
+import name.divinityunbound.item.ModItems;
 import name.divinityunbound.recipe.ChronosTimeAccumulatorRecipe;
 import name.divinityunbound.recipe.GenerationStationRecipe;
 import name.divinityunbound.recipe.InWorldRecipe;
@@ -58,6 +59,7 @@ public class DivinityModREIClientPlugin implements REIClientPlugin {
         // TODO: Remember to remove this once these blocks are fully implemented
         registry.removeEntry(EntryStacks.of(new ItemStack(ModBlocks.SPACE_TIME_FURNACE, 1)));
         registry.removeEntry(EntryStacks.of(new ItemStack(ModBlocks.ITEM_SINGULARITY_STORAGE, 1)));
+        registry.removeEntry(EntryStacks.of(new ItemStack(ModItems.PROTEUS_TRIDENT, 1)));
     }
 
 }

@@ -147,6 +147,13 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                                 .criterion(hasItem(ModItems.CELESTITE), conditionsFromItem((ModItems.CELESTITE)))
                                         .offerTo(exporter, new Identifier("celestite_nuggets_from_celestite"));
 
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.FILTER_ITEM, 4)
+                .input(ModItems.GRAIN_OF_TIME)
+                .input(Items.PAPER)
+                .criterion(hasItem(ModItems.GRAIN_OF_TIME), conditionsFromItem((ModItems.GRAIN_OF_TIME)))
+                .criterion(hasItem(Items.PAPER), conditionsFromItem((Items.PAPER)))
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.FILTER_ITEM)));
+
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.CELESTITE_INFUSED_STONE, 1)
                 .input(ModItems.CELESTITE)
                 .input(Blocks.STONE)

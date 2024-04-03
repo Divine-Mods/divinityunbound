@@ -2,6 +2,7 @@ package name.divinityunbound.item.custom;
 
 import name.divinityunbound.DivinityUnbound;
 import name.divinityunbound.block.entity.DemetersHarvesterBlockEntity;
+import name.divinityunbound.block.entity.ImplementedInventory;
 import name.divinityunbound.screen.FilterItemScreenHandler;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.fabricmc.fabric.api.transfer.v1.item.InventoryStorage;
@@ -10,17 +11,21 @@ import net.minecraft.block.CropBlock;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.network.PacketByteBuf;
+import net.minecraft.registry.Registries;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.TypedActionResult;
+import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
@@ -31,7 +36,7 @@ import java.util.List;
 /*
 Modified code from Gitko01's VacuumHopper FilterItem
  */
-public class FilterItem extends Item {
+public class FilterItem extends Item implements ImplementedInventory {
     public enum MODE {
         WHITELIST,
         BLACKLIST,
@@ -40,9 +45,11 @@ public class FilterItem extends Item {
     public FilterItem(Settings settings) {
         super(settings);
     }
-    public final SimpleInventory internalInventory = new SimpleInventory(18) {
-    };
-    public final InventoryStorage inventoryWrapper = InventoryStorage.of(internalInventory, null);
+
+    private final DefaultedList<ItemStack> items = DefaultedList.ofSize(18, ItemStack.EMPTY);
+//    public final SimpleInventory internalInventory = new SimpleInventory(18) {
+//    };
+//    public final InventoryStorage inventoryWrapper = InventoryStorage.of(internalInventory, null);
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
@@ -51,7 +58,7 @@ public class FilterItem extends Item {
                 @Nullable
                 @Override
                 public ScreenHandler createMenu(int syncId, PlayerInventory inv, PlayerEntity player) {
-                    return new FilterItemScreenHandler(syncId, inv, internalInventory);
+                    return new FilterItemScreenHandler(syncId, inv, getInv());
                 }
 
                 @Override
@@ -69,6 +76,15 @@ public class FilterItem extends Item {
             user.openHandledScreen(extendedScreenHandlerFactory);
         }
         return TypedActionResult.success(user.getStackInHand(hand));
+    }
+
+    public Inventory getInv() {
+        return this;
+    }
+
+    @Override
+    public DefaultedList<ItemStack> getItems() {
+        return this.items;
     }
 
     public static void saveModeNbt(ItemStack itemStack, MODE mode) {
@@ -134,7 +150,8 @@ public class FilterItem extends Item {
             int[] itemIndexes = nbt.getIntArray(DivinityUnbound.MOD_ID + ".itemsToFilterIndexes");
 
             for (int i : itemIndexes) {
-                ItemStack itemStack = new ItemStack(Item.byRawId(nbt.getInt(DivinityUnbound.MOD_ID + "." + i)));
+                //ItemStack itemStack = new ItemStack(Item.byRawId(nbt.getInt(DivinityUnbound.MOD_ID + "." + i)));
+                ItemStack itemStack = new ItemStack(Registries.ITEM.get(new Identifier(nbt.getString(DivinityUnbound.MOD_ID + "." + i))));
                 itemsToFilter.put(i, itemStack);
             }
 
@@ -160,8 +177,11 @@ public class FilterItem extends Item {
         for (int i : itemsToFilter.keySet()) {
             indexes[count] = i;
 
-            newNbt.putInt(DivinityUnbound.MOD_ID + "." + i, Item.getRawId(itemsToFilter.get(i).getItem()));
-            //VacuumHopper.LOGGER.info("[Vacuum Hopper] Saving " + Item.getRawId(itemsToFilter.get(i).getItem()) + " in slot " + i);
+            //newNbt.putInt(DivinityUnbound.MOD_ID + "." + i, Item.getRawId(itemsToFilter.get(i).getItem()));
+
+            DivinityUnbound.LOGGER.info("[Divinity Unbound] Saving " + Item.getRawId(itemsToFilter.get(i).getItem()) + " in slot " + i);
+            DivinityUnbound.LOGGER.info("[Divinity Unbound] Saving " + itemsToFilter.get(i).getItem().getRegistryEntry().registryKey().getValue() + " in slot " + i);
+            newNbt.putString(DivinityUnbound.MOD_ID + "." + i, String.valueOf(itemsToFilter.get(i).getItem().getRegistryEntry().registryKey().getValue()));
 
             count = count + 1;
         }
@@ -169,6 +189,11 @@ public class FilterItem extends Item {
         newNbt.putIntArray(DivinityUnbound.MOD_ID + ".itemsToFilterIndexes", indexes);
 
         itemStackInHand.setNbt(newNbt);
+    }
+
+    @Override
+    public boolean hasGlint(ItemStack stack) {
+        return stack.hasNbt();
     }
 
     @Override
