@@ -280,6 +280,9 @@ public class ModBlocks {
     public static final Block PORTUNUS_PROPAGATOR = registerBlock("portunus_propagator",
             new PortunusPropagatorBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
 
+    public static final Block VELES_GATHERER = registerBlock("veles_gatherer",
+            new VelesGathererBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
+
     public static final Block ITEM_SINGULARITY_STORAGE = registerBlock("item_singularity_storage",
             new ItemSingularityStorageBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
 

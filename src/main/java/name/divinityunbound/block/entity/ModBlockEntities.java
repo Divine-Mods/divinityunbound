@@ -127,6 +127,11 @@ public class ModBlockEntities {
                     FabricBlockEntityTypeBuilder.create(PortunusPropagatorBlockEntity::new,
                             ModBlocks.PORTUNUS_PROPAGATOR).build());
 
+    public static final BlockEntityType<VelesGathererBlockEntity> VELES_GATHERER_BLOCK_ENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(DivinityUnbound.MOD_ID, "veles_gatherer_be"),
+                    FabricBlockEntityTypeBuilder.create(VelesGathererBlockEntity::new,
+                            ModBlocks.VELES_GATHERER).build());
+
     public static final BlockEntityType<SpaceTimeFurnaceBlockEntity> SPACE_TIME_FURNACE_BLOCK_ENTITY =
             Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(DivinityUnbound.MOD_ID, "space_time_furnace_be"),
                     FabricBlockEntityTypeBuilder.create(SpaceTimeFurnaceBlockEntity::new,
@@ -164,5 +169,8 @@ public class ModBlockEntities {
 
         EnergyStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.energyStorage, PORTUNUS_PROPAGATOR_BLOCK_ENTITY);
         ItemStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.inventoryWrapper, PORTUNUS_PROPAGATOR_BLOCK_ENTITY);
+
+        EnergyStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.energyStorage, VELES_GATHERER_BLOCK_ENTITY);
+        ItemStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.inventoryWrapper, VELES_GATHERER_BLOCK_ENTITY);
     }
 }

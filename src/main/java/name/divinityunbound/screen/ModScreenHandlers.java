@@ -86,6 +86,10 @@ public class ModScreenHandlers {
             Registry.register(Registries.SCREEN_HANDLER, new Identifier(DivinityUnbound.MOD_ID, "portunus_propagator"),
                     new ExtendedScreenHandlerType<>(PortunusPropagatorScreenHandler::new));
 
+    public static final ScreenHandlerType<VelesGathererScreenHandler> VELES_GATHERER_SCREEN_HANDLER =
+            Registry.register(Registries.SCREEN_HANDLER, new Identifier(DivinityUnbound.MOD_ID, "veles_gatherer"),
+                    new ExtendedScreenHandlerType<>(VelesGathererScreenHandler::new));
+
     public static final ScreenHandlerType<SpaceTimeFurnaceScreenHandler> SPACE_TIME_FURNACE_SCREEN_HANDLER =
             Registry.register(Registries.SCREEN_HANDLER, new Identifier(DivinityUnbound.MOD_ID, "space_time_furnace"),
                     new ScreenHandlerType<>(SpaceTimeFurnaceScreenHandler::new, FeatureFlags.VANILLA_FEATURES));
