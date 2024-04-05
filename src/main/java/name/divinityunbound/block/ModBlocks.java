@@ -277,6 +277,9 @@ public class ModBlocks {
     public static final Block PERSEPHONES_BLESSING = registerBlock("persephones_blessing",
             new PersephonesBlessingBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
 
+    public static final Block PORTUNUS_PROPAGATOR = registerBlock("portunus_propagator",
+            new PortunusPropagatorBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
+
     public static final Block ITEM_SINGULARITY_STORAGE = registerBlock("item_singularity_storage",
             new ItemSingularityStorageBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
 

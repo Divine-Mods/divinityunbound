@@ -82,6 +82,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.CREATIVE_ZEUS_BATTERY)
                 .add(ModBlocks.DEMETERS_HARVESTER)
                 .add(ModBlocks.PERSEPHONES_BLESSING)
+                .add(ModBlocks.PORTUNUS_PROPAGATOR)
                 .add(ModBlocks.SPACE_TIME_FURNACE);
 
         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
@@ -126,6 +127,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.CREATIVE_ZEUS_BATTERY)
                 .add(ModBlocks.DEMETERS_HARVESTER)
                 .add(ModBlocks.PERSEPHONES_BLESSING)
+                .add(ModBlocks.PORTUNUS_PROPAGATOR)
                 .add(ModBlocks.ITEM_SINGULARITY_STORAGE);
 
         getOrCreateTagBuilder(BlockTags.NEEDS_DIAMOND_TOOL)

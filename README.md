@@ -111,7 +111,7 @@ Space Time Amalgamator - Combines Celestium Dust, Unholy Dust, and Space Dust to
 Liquid Space Time. Needs power.
 
 Wormhole Transporter - Creates a localized wormhole that is linked to another transporter. Can move Items, Liquids, and Energy.
-Use an Import or Export card to link to another wormhole.
+Use an Import or Export card to link to another wormhole. Can use an Item Filter to set a Whitelist or Blacklist.
 
 Coal Generator - Basic generator that takes coal to create power.
 

@@ -1,22 +1,19 @@
 package name.divinityunbound.block.entity;
 
-import name.divinityunbound.block.custom.DemetersHarvesterBlock;
 import name.divinityunbound.block.custom.DivineReplicatorBlock;
-import name.divinityunbound.screen.DemetersHarvesterScreenHandler;
+import name.divinityunbound.block.custom.PortunusPropagatorBlock;
+import name.divinityunbound.screen.PortunusPropagatorScreenHandler;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.fabricmc.fabric.api.transfer.v1.item.InventoryStorage;
 import net.fabricmc.fabric.api.transfer.v1.transaction.Transaction;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.CropBlock;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemUsageContext;
-import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
 import net.minecraft.network.PacketByteBuf;
@@ -27,18 +24,17 @@ import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
-import net.minecraft.world.ModifiableWorld;
 import net.minecraft.world.World;
-import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
 import team.reborn.energy.api.base.SimpleEnergyStorage;
 
 import java.util.List;
 
-public class DemetersHarvesterBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory {
+public class PortunusPropagatorBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory {
     private static final int DEFAULT_RANGE = 8;
 
     protected final PropertyDelegate propertyDelegate;
@@ -47,14 +43,14 @@ public class DemetersHarvesterBlockEntity extends BlockEntity implements Extende
     private int speedCount = 0;
     private int quantityCount = 0;
     private int rangeCount = 0;
-    public DemetersHarvesterBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.DEMETERS_HARVESTER_BLOCK_ENTITY, pos, state);
+    public PortunusPropagatorBlockEntity(BlockPos pos, BlockState state) {
+        super(ModBlockEntities.PORTUNUS_PROPAGATOR_BLOCK_ENTITY, pos, state);
         this.propertyDelegate = new PropertyDelegate() {
             @Override
             public int get(int index) {
                 return switch (index) {
-                    case 0 -> DemetersHarvesterBlockEntity.this.progress;
-                    case 1 -> DemetersHarvesterBlockEntity.this.maxProgress;
+                    case 0 -> PortunusPropagatorBlockEntity.this.progress;
+                    case 1 -> PortunusPropagatorBlockEntity.this.maxProgress;
                     default -> 0;
                 };
             }
@@ -62,8 +58,8 @@ public class DemetersHarvesterBlockEntity extends BlockEntity implements Extende
             @Override
             public void set(int index, int value) {
                 switch (index) {
-                    case 0 -> DemetersHarvesterBlockEntity.this.progress = value;
-                    case 1 -> DemetersHarvesterBlockEntity.this.maxProgress = value;
+                    case 0 -> PortunusPropagatorBlockEntity.this.progress = value;
+                    case 1 -> PortunusPropagatorBlockEntity.this.maxProgress = value;
                 };
             }
 
@@ -73,33 +69,12 @@ public class DemetersHarvesterBlockEntity extends BlockEntity implements Extende
             }
         };
     }
-
-    public final SimpleInventory internalHoeInventory = new SimpleInventory(1) {
-        @Override
-        public boolean isValid(int slot, ItemStack stack) {
-            if (slot == 0) {
-                return stack.isIn(ItemTags.HOES);
-            }
-            return false;
-        }
-
-        @Override
-        public void markDirty() {
-            DemetersHarvesterBlockEntity.this.markDirty();
-        }
-    };
     public final SimpleInventory internalInventory = new SimpleInventory(9) {
         @Override
-        public boolean isValid(int slot, ItemStack stack) {
-            return !stack.isEmpty() && Block.getBlockFromItem(stack.getItem()) instanceof CropBlock;
-        }
-
-        @Override
         public void markDirty() {
-            DemetersHarvesterBlockEntity.this.markDirty();
+            PortunusPropagatorBlockEntity.this.markDirty();
         }
     };
-    public final InventoryStorage inventoryHoeWrapper = InventoryStorage.of(internalHoeInventory, null);
     public final InventoryStorage inventoryWrapper = InventoryStorage.of(internalInventory, null);
 
     public final SimpleEnergyStorage energyStorage = new SimpleEnergyStorage(500000, Integer.MAX_VALUE, Integer.MAX_VALUE) {
@@ -113,25 +88,23 @@ public class DemetersHarvesterBlockEntity extends BlockEntity implements Extende
     @Override
     protected void writeNbt(NbtCompound nbt) {
         super.writeNbt(nbt);
-        nbt.put("demeters_harvester.internalHoeInventory", internalHoeInventory.toNbtList());
-        nbt.put("demeters_harvester.internalInventory", internalInventory.toNbtList());
-        nbt.putInt("demeters_harvester.progress", progress);
-        nbt.putInt("demeters_harvester.speedCount", speedCount);
-        nbt.putInt("demeters_harvester.quantityCount", quantityCount);
-        nbt.putInt("demeters_harvester.rangeCount", rangeCount);
-        nbt.putLong(("demeters_harvester.energy"), energyStorage.amount);
+        nbt.put("portunus_propagator.internalInventory", internalInventory.toNbtList());
+        nbt.putInt("portunus_propagator.progress", progress);
+        nbt.putInt("portunus_propagator.speedCount", speedCount);
+        nbt.putInt("portunus_propagator.quantityCount", quantityCount);
+        nbt.putInt("portunus_propagator.rangeCount", rangeCount);
+        nbt.putLong(("portunus_propagator.energy"), energyStorage.amount);
     }
 
     @Override
     public void readNbt(NbtCompound nbt) {
         super.readNbt(nbt);
-        internalHoeInventory.readNbtList((NbtList) nbt.get("demeters_harvester.internalHoeInventory"));
-        internalInventory.readNbtList((NbtList) nbt.get("demeters_harvester.internalInventory"));
-        progress = nbt.getInt("demeters_harvester.progress");
-        speedCount = nbt.getInt("demeters_harvester.speedCount");
-        quantityCount = nbt.getInt("demeters_harvester.quantityCount");
-        rangeCount = nbt.getInt("demeters_harvester.rangeCount");
-        energyStorage.amount = nbt.getLong("demeters_harvester.energy");
+        internalInventory.readNbtList((NbtList) nbt.get("portunus_propagator.internalInventory"));
+        progress = nbt.getInt("portunus_propagator.progress");
+        speedCount = nbt.getInt("portunus_propagator.speedCount");
+        quantityCount = nbt.getInt("portunus_propagator.quantityCount");
+        rangeCount = nbt.getInt("portunus_propagator.rangeCount");
+        energyStorage.amount = nbt.getLong("portunus_propagator.energy");
     }
 
     public void setEnergyAmount(long amount) {
@@ -148,13 +121,13 @@ public class DemetersHarvesterBlockEntity extends BlockEntity implements Extende
 
     @Override
     public Text getDisplayName() {
-        return Text.literal("Demeters Harvester");
+        return Text.literal("Portunus Propagator");
     }
 
     @Nullable
     @Override
     public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
-        return new DemetersHarvesterScreenHandler(syncId, playerInventory, this, this.propertyDelegate);
+        return new PortunusPropagatorScreenHandler(syncId, playerInventory, this, this.propertyDelegate);
     }
 
     private int cooldown = 0;
@@ -162,13 +135,21 @@ public class DemetersHarvesterBlockEntity extends BlockEntity implements Extende
         if (world.isClient()) {
             return;
         }
-        if (!state.get(DemetersHarvesterBlock.ENABLED)) return;
+        if (!state.get(PortunusPropagatorBlock.ENABLED)) return;
 
         int range = (DEFAULT_RANGE + (rangeCount * 2)) / 2;
-        if (hasItemInHoeSlot() && hasEnoughEnergyToCraft()) {
+        if (hasEnoughEnergyToCraft()) {
             if (cooldown > (60 - (speedCount * 6))) {
-                harvestCrops(world, pos, range);
-                plantCrops(world, pos, range);
+                List<AnimalEntity> animals = getEntities();
+                if (countBreedableAnimals(animals) > 1) {
+                    ItemStack itemStack = ItemStack.EMPTY;
+                    for (int i = 0; i < internalInventory.size(); i++) {
+                        itemStack = internalInventory.getStack(i);
+                        if (!itemStack.isEmpty() && itemStack.getCount() > 1) {
+                            breedAnimals(itemStack, animals);
+                        }
+                    }
+                }
                 cooldown = 0;
             }
             else {
@@ -179,68 +160,56 @@ public class DemetersHarvesterBlockEntity extends BlockEntity implements Extende
         }
     }
 
-
-    private void harvestCrops(World world, BlockPos pos, int range) {
-        for (int i = -range; i <= range; i++) {
-            for (int j = -range; j <= range; j++) {
-                BlockPos offsetPos = pos.add(i, 0, j);
-                BlockState blockState = world.getBlockState(offsetPos);
-                if (blockState.getBlock() instanceof CropBlock) {
-                    if (((CropBlock) blockState.getBlock()).getAge(blockState) ==
-                            ((CropBlock) blockState.getBlock()).getMaxAge()) {
-                        ((ModifiableWorld) world).breakBlock(offsetPos, true);
-                        damageHoe();
-                    }
-                }
-                else if (blockState.getBlock().equals(Blocks.MELON) ||
-                        blockState.getBlock().equals(Blocks.PUMPKIN)) {
-                    ((ModifiableWorld) world).breakBlock(offsetPos, true);
-                    damageHoe();
-                }
-            }
-        }
+    private List<AnimalEntity> getEntities() {
+        int range = (DEFAULT_RANGE + (rangeCount * 2)) / 2;
+        int posx = pos.getX();
+        int posy = pos.getY();
+        int posz = pos.getZ();
+        Box box = new Box(posx - range, posy - range, posz - range,
+                posx + range, posy + range, posz + range);
+        List<AnimalEntity> livingEntities = world.getEntitiesByClass(AnimalEntity.class, box, e -> (
+                !e.isPlayer()
+        ));
+        return livingEntities;
     }
 
-    private void damageHoe() {
-        if(internalHoeInventory.getStack(0).damage(1, world.getRandom(), null)) {
-            internalHoeInventory.getStack(0).setCount(0);
+    private int countBreedableAnimals(List<AnimalEntity> animals) {
+        int count = 0;
+        for (AnimalEntity animal : animals) {
+            if (animal.getBreedingAge() == 0 && animal.canEat()) { count++; }
         }
+        return count;
     }
 
-    private void plantCrops(World world, BlockPos pos, int range) {
-        for (int i = -range; i <= range; i++) {
-            for (int j = -range; j <= range; j++) {
-                BlockPos offsetPos = pos.add(i, -1, j);
-                BlockState blockState = world.getBlockState(offsetPos);
-                if (blockState.getBlock().equals(Blocks.FARMLAND)) {
-                    BlockState blockStateAbove = world.getBlockState(offsetPos.up());
-                    if (blockStateAbove.isAir()) {
-                        ItemStack seeds = getSeeds();
-                        if (!seeds.isEmpty()) {
-                            BlockState defaultBlockState = Block.getBlockFromItem(seeds.getItem()).getDefaultState();
-                            world.setBlockState(offsetPos.up(), defaultBlockState, Block.NOTIFY_ALL);
-                            world.emitGameEvent(GameEvent.BLOCK_PLACE, offsetPos.up(), GameEvent.Emitter.of(defaultBlockState));
-                            seeds.decrement(1);
+    private void breedAnimals(ItemStack itemStack, List<AnimalEntity> animals) {
+        if (animals.size() > 1) {
+            AnimalEntity first = null;
+            for (AnimalEntity animal : animals) {
+                if (animal.isBreedingItem(itemStack)) {
+                    if (first != null && animal.getBreedingAge() == 0 && animal.canEat()) {
+                        first.lovePlayer(null);
+                        animal.lovePlayer(null);
+                        if (animal.canBreedWith(first)) {
+                            animal.breed((ServerWorld) world, first);
+                            itemStack.decrement(2);
+                            first = null;
                         }
                     }
+                    else if (first == null && animal.getBreedingAge() == 0 && animal.canEat()) {
+                        first = animal;
+                        continue;
+                    }
                 }
             }
         }
     }
 
-    private ItemStack getSeeds() {
+    private boolean hasItemInSlot() {
         ItemStack itemStack = ItemStack.EMPTY;
         for (int i = 0; i < internalInventory.size(); i++) {
             itemStack = internalInventory.getStack(i);
-            if (!itemStack.isEmpty() && Block.getBlockFromItem(itemStack.getItem()) instanceof CropBlock) {
-                return itemStack;
-            }
         }
-        return ItemStack.EMPTY;
-    }
-
-    private boolean hasItemInHoeSlot() {
-        return !internalHoeInventory.getStack(0).isEmpty() && internalHoeInventory.getStack(0).isIn(ItemTags.HOES);
+        return true;
     }
 
     private boolean hasEnoughEnergyToCraft() {

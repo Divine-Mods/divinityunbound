@@ -1,6 +1,10 @@
 # Changelog
 
 ---
+## v0.5.0
+- Added Portunus Propagator (can be used to automatically breed animals)
+
+---
 ## v0.4.0
 - Added Item Filter (can be used in Wormhole Transporter as a Whitelist or a Blacklist)
 - Added Zeus Battery and Creative Zeus Battery (can be used to store power)

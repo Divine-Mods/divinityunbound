@@ -122,6 +122,11 @@ public class ModBlockEntities {
                     FabricBlockEntityTypeBuilder.create(PersephonesBlessingBlockEntity::new,
                             ModBlocks.PERSEPHONES_BLESSING).build());
 
+    public static final BlockEntityType<PortunusPropagatorBlockEntity> PORTUNUS_PROPAGATOR_BLOCK_ENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(DivinityUnbound.MOD_ID, "portunus_propagator_be"),
+                    FabricBlockEntityTypeBuilder.create(PortunusPropagatorBlockEntity::new,
+                            ModBlocks.PORTUNUS_PROPAGATOR).build());
+
     public static final BlockEntityType<SpaceTimeFurnaceBlockEntity> SPACE_TIME_FURNACE_BLOCK_ENTITY =
             Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(DivinityUnbound.MOD_ID, "space_time_furnace_be"),
                     FabricBlockEntityTypeBuilder.create(SpaceTimeFurnaceBlockEntity::new,
@@ -156,5 +161,8 @@ public class ModBlockEntities {
 
         EnergyStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.energyStorage, DEMETERS_HARVESTER_BLOCK_ENTITY);
         ItemStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.inventoryWrapper, DEMETERS_HARVESTER_BLOCK_ENTITY);
+
+        EnergyStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.energyStorage, PORTUNUS_PROPAGATOR_BLOCK_ENTITY);
+        ItemStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.inventoryWrapper, PORTUNUS_PROPAGATOR_BLOCK_ENTITY);
     }
 }
