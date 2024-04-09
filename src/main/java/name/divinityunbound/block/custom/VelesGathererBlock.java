@@ -11,16 +11,19 @@ import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
@@ -29,11 +32,12 @@ import java.util.Iterator;
 
 public class VelesGathererBlock extends BlockWithEntity implements BlockEntityProvider {
     protected final Random random = Random.create();
+    public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
     public static final BooleanProperty ENABLED = Properties.ENABLED;
     public static final MapCodec<VelesGathererBlock> CODEC = VelesGathererBlock.createCodec(VelesGathererBlock::new);
     public VelesGathererBlock(Settings settings) {
         super(settings);
-        this.setDefaultState(this.stateManager.getDefaultState().with(ENABLED, false));
+        this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH).with(ENABLED, false));
     }
     @Override
     public BlockRenderType getRenderType(BlockState state) {
@@ -44,8 +48,14 @@ public class VelesGathererBlock extends BlockWithEntity implements BlockEntityPr
         return CODEC;
     }
 
+    @Nullable
+    @Override
+    public BlockState getPlacementState(ItemPlacementContext ctx) {
+        return this.getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing().getOpposite());
+    }
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+        builder.add(FACING);
         builder.add(ENABLED);
     }
     @Nullable

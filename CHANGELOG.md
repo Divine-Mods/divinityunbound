@@ -3,6 +3,7 @@
 ---
 ## v0.5.0
 - Added Portunus Propagator (can be used to automatically breed animals)
+- Added Veles Gatherer (can be used to automatically shear sheep and to collect milk buckets from cows)
 
 ---
 ## v0.4.0
